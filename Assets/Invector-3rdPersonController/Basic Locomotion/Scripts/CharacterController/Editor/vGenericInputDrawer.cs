@@ -45,14 +45,11 @@ namespace Invector.CharacterController
             {
                 var keyboard = property.FindPropertyRelative("keyboard");
                 var joystick = property.FindPropertyRelative("joystick");
-                var mobile = property.FindPropertyRelative("mobile");
 
                 var keyboardAxis = property.FindPropertyRelative("keyboardAxis");
                 var joystickAxis = property.FindPropertyRelative("joystickAxis");
                 var joystickAxisInvert = property.FindPropertyRelative("joystickAxisInvert");
                 var keyboardAxisInvert = property.FindPropertyRelative("keyboardAxisInvert");
-                var mobileAxisInvert = property.FindPropertyRelative("mobileAxisInvert");
-                var mobileAxis = property.FindPropertyRelative("mobileAxis");
 
                 var inputs = GetInputNames();
                 position.x += 5;
@@ -83,18 +80,6 @@ namespace Invector.CharacterController
                     _position.width = 20;
                     _position.x += 36;
                     joystickAxisInvert.boolValue = GUI.Toggle(_position, joystickAxisInvert.boolValue, "-1", EditorStyles.miniButton);
-                }
-                if (mobile != null)
-                {
-                    position.y += 20;
-                    DrawInputEnum(mobile, inputs, position, true);
-                    var _position = position;
-                    _position.width = 35;
-                    _position.x = position.width + 20;
-                    mobileAxis.boolValue = GUI.Toggle(_position, mobileAxis.boolValue, "Axis", EditorStyles.miniButton);
-                    _position.width = 20;
-                    _position.x += 36;
-                    mobileAxisInvert.boolValue = GUI.Toggle(_position, mobileAxisInvert.boolValue, "-1", EditorStyles.miniButton);
                 }
             }
             GUI.enabled = true;

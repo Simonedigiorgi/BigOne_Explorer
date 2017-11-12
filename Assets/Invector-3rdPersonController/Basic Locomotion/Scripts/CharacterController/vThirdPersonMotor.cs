@@ -137,6 +137,8 @@ namespace Invector.CharacterController
             isRolling,
             isJumping,
             isGettingUp,
+            isTorch,
+            isMenu,
             inTurn,
             quickStop,
             landHigh;

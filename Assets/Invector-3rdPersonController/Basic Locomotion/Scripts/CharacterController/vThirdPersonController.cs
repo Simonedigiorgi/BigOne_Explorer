@@ -104,6 +104,42 @@ namespace Invector.CharacterController
             currentStaminaRecoveryDelay = 2f;
         }
 
+        public virtual void Torch() // Richiama la torcia
+        {
+            if (isGrounded && !actions)
+            {
+                if (isTorch)
+                {
+                    isTorch = false;
+                    Debug.Log("NOTTORCH");
+
+                }
+                else if (!isTorch)
+                {
+                    isTorch = true;
+                    Debug.Log("TORCH");
+                }
+            }
+        }
+
+        public virtual void Menu() // Richiama il menu
+        {
+            if (isGrounded && !actions)
+            {
+                if (isMenu)
+                {
+                    isMenu = false;
+                    Debug.Log("EXITMenu");
+
+                }
+                else if (!isTorch)
+                {
+                    isMenu = true;
+                    Debug.Log("ENTERMenu");
+                }
+            }
+        }
+
         /// <summary>
         /// Use another transform as  reference to rotate
         /// </summary>

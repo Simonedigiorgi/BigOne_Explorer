@@ -18,13 +18,15 @@ namespace Invector.CharacterController
         [vEditorToolbar("Inputs")]
         [Header("Default Input")]
         public bool lockInput;
-        public GenericInput horizontalInput = new GenericInput("Horizontal", "LeftAnalogHorizontal", "Horizontal");
-        public GenericInput verticallInput = new GenericInput("Vertical", "LeftAnalogVertical", "Vertical");
-        public GenericInput jumpInput = new GenericInput("Space", "X", "X");
-        public GenericInput rollInput = new GenericInput("Q", "B", "B");
-        public GenericInput strafeInput = new GenericInput("Tab", "RightStickClick", "RightStickClick");
-        public GenericInput sprintInput = new GenericInput("LeftShift", "LeftStickClick", "LeftStickClick");
-        public GenericInput crouchInput = new GenericInput("C", "Y", "Y");
+        public GenericInput horizontalInput = new GenericInput("Horizontal", "LeftAnalogHorizontal", "");
+        public GenericInput verticallInput = new GenericInput("Vertical", "LeftAnalogVertical", "");
+        public GenericInput jumpInput = new GenericInput("Space", "X", "");
+        public GenericInput rollInput = new GenericInput("Q", "B", "");
+        public GenericInput strafeInput = new GenericInput("Tab", "RightStickClick", "");
+        public GenericInput sprintInput = new GenericInput("LeftShift", "LeftStickClick", "");
+        public GenericInput crouchInput = new GenericInput("C", "Y", "");
+        public GenericInput torchInput = new GenericInput("T", "RB", "");
+        public GenericInput menuInput = new GenericInput("M", "Start", "");
 
         [vEditorToolbar("Camera Settings")]
         public bool lockCameraInput;
@@ -169,7 +171,9 @@ namespace Invector.CharacterController
             CrouchInput();
             StrafeInput();
             JumpInput();
-            RollInput();            
+            RollInput();
+            TorchInput(); // Torcia
+            MenuInput(); // Menu
         }
 
         #region Generic Methods
@@ -301,7 +305,19 @@ namespace Invector.CharacterController
             if (rollInput.GetButtonDown())
                 cc.Roll();
         }
-        
+
+        protected virtual void TorchInput() // Torcia
+        {
+            if (torchInput.GetButtonDown())
+                cc.Torch();
+        }
+
+        protected virtual void MenuInput() // Menu
+        {
+            if (menuInput.GetButtonDown())
+                cc.Menu();
+        }
+
         protected virtual void OnTriggerStay(Collider other)
         {
             cc.CheckTriggers(other);

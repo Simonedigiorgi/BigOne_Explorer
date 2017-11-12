@@ -109,7 +109,7 @@ public class vObjectDamage : MonoBehaviour
 public class vDamage
 {
     [Tooltip("Apply damage to the Character Health")]
-    public int damageValue = 15;
+    public float damageValue = 15;
     [Tooltip("How much stamina the target will lost when blocking this attack")]
     public float staminaBlockCost = 5;
     [Tooltip("How much time the stamina of the target will wait to recovery")]

@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.IO;
+using System;
 using UnityEngine.UI;
 
 public class GameController : MonoBehaviour {
@@ -14,7 +16,10 @@ public class GameController : MonoBehaviour {
 
     void Awake()
     {
-    	dataPath = System.IO.Path.Combine(Application.persistentDataPath, "actors.json");
+    	//dataPath = System.IO.Path.Combine(Application.persistentDataPath, "actors.json");
+		dataPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory),"save.json");
+
+
     }
 
     void Start()

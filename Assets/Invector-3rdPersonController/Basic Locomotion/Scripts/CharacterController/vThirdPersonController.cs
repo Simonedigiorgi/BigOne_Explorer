@@ -68,22 +68,52 @@ namespace Invector.CharacterController
 
         public virtual void Jump()
         {
-            if (customAction) return;
+            if (animator.IsInTransition(0)) return;
 
             // know if has enough stamina to make this action
             bool staminaConditions = currentStamina > jumpStamina;
+
             // conditions to do this action
-            bool jumpConditions = !isCrouching && isGrounded && !actions && staminaConditions && !isJumping;
-            // return if jumpCondigions is false
+            bool jumpConditions = !isCrouching && !actions && staminaConditions;
+
+            // check if multi jump is possible
+            if (MultiJump > 1)
+            {
+                // reset multi jump counter
+                if (isGrounded) currentMultiJump = 0;
+
+                // check if we reached the max jump value
+                jumpConditions = jumpConditions && currentMultiJump < MultiJump;
+
+                // increase multi jump counter
+                if (jumpConditions)
+                {
+                    currentMultiJump++;
+                    // zero out velocity before next jump
+                    Vector3 jumpVelocity = _rigidbody.velocity;
+                    jumpVelocity.y = 0f;
+                    _rigidbody.velocity = jumpVelocity;
+                }
+            }
+            else
+            {
+                // single jump conditions
+                jumpConditions = jumpConditions && isGrounded && !isJumping;
+            }
+
+            // return if jumpConditions is false
             if (!jumpConditions) return;
+
             // trigger jump behaviour
             jumpCounter = jumpTimer;
             isJumping = true;
+
             // trigger jump animations
-            if (input.sqrMagnitude < 0.1f)
+            if (speed < 0.1f)
                 animator.CrossFadeInFixedTime("Jump", 0.1f);
             else
-                animator.CrossFadeInFixedTime("JumpMove", .2f);
+                animator.CrossFadeInFixedTime("JumpMove", 0.05f);
+
             // reduce stamina
             ReduceStamina(jumpStamina, false);
             currentStaminaRecoveryDelay = 1f;

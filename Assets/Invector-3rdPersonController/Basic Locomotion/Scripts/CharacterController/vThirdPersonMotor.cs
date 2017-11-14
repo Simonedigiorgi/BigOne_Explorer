@@ -77,6 +77,11 @@ namespace Invector.CharacterController
         public float jumpForward = 3f;
         [Tooltip("Add Extra jump height, if you want to jump only with Root Motion leave the value with 0.")]
         public float jumpHeight = 4f;
+        [Tooltip("Increase number to enable multiple jumps on your character")]
+        [Range(1, 10)]
+        public int MultiJump = 1;
+        [HideInInspector]
+        public int currentMultiJump;
 
         [vEditorToolbar("Grounded")]
         [Tooltip("Distance to became not grounded")]

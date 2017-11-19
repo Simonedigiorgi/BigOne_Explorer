@@ -50,16 +50,6 @@ public class SaveLoadEnviroment : MonoBehaviour {
 
 			Save ();
 
-			Debug.Log ("Salvo!");
-
-		}
-
-		if (Input.GetKey (KeyCode.L)) {
-
-			Load ();
-
-			Debug.Log ("Carico i dati");
-
 		}
 
 	}
@@ -68,7 +58,16 @@ public class SaveLoadEnviroment : MonoBehaviour {
 	void Save()
 	{
 
-		string jsonString = JsonUtility.ToJson (EnviromentObjects[0]);
+		Debug.Log ("Salvo i dati");
+		string jsonString = null;
+
+		foreach (EnviromentData Ed in EnviromentObjects) 
+		{
+			
+			jsonString = JsonUtility.ToJson (Ed);
+
+		}
+
 		File.WriteAllText (FilePath, jsonString);
 
 	}
@@ -77,8 +76,13 @@ public class SaveLoadEnviroment : MonoBehaviour {
 	void Load()
 	{
 
-		string jsonString = File.ReadAllText (FilePath);
-		JsonUtility.FromJsonOverwrite (jsonString, EnviromentObjects);
+		Debug.Log ("Carichiamo i dari");
+
+		for(int i =0; i < EnviromentObjects.Count; i++)
+		{
+			string jsonString = File.ReadAllText (FilePath);
+			JsonUtility.FromJsonOverwrite (jsonString, EnviromentObjects[i]);
+		}
 
 	}
 }

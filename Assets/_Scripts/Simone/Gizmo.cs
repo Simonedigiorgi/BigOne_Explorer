@@ -33,5 +33,7 @@ public class Gizmo : MonoBehaviour {
         Gizmos.matrix = transform.localToWorldMatrix;
         if (comp == null) gameObject.AddComponent<BoxCollider>();
         Gizmos.DrawCube(Vector3.zero, Vector3.one);
+
+		Gizmos.DrawLine(Vector3.zero, Vector3.forward);
     }
 }

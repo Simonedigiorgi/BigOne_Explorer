@@ -3,14 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
 
+[System.Serializable]
 public class SaveLoadEnviroment : MonoBehaviour {
 
 	[Header("Oggetti da salvare nella scena")]
-	public List<EnviromentData> EnviromentObjects;
+	public List<EnviromentData> EnviromentsObjects = new List<EnviromentData>();
+	//private EnviromentsData ListEnviromentsObjects = new EnviromentsData ();
 	private string FilePath;
+	private string jsonString;
 
 	void Awake()
 	{
+
+		//ListEnviromentsObjects.EnviromentObjects = EnviromentsObjects;
 
 		//Path del file di salvataggio
 		FilePath = Path.Combine(Application.dataPath, "EnviromentSave.json");
@@ -30,16 +35,9 @@ public class SaveLoadEnviroment : MonoBehaviour {
 			//Il file di salvataggio esiste
 
 			Debug.Log ("File salvtaggio OK");
+			Load ();
 
 		}
-
-	}
-
-	// Use this for initialization
-	void Start () 
-	{
-
-		Load ();
 
 	}
 
@@ -59,16 +57,14 @@ public class SaveLoadEnviroment : MonoBehaviour {
 	{
 
 		Debug.Log ("Salvo i dati");
-		string jsonString = null;
 
-		foreach (EnviromentData Ed in EnviromentObjects) 
+		for (int i = 0; i < EnviromentsObjects.Count; i++) 
 		{
-			
-			jsonString = JsonUtility.ToJson (Ed);
-
+			jsonString += JsonUtility.ToJson (EnviromentsObjects [1]);
 		}
 
 		File.WriteAllText (FilePath, jsonString);
+	
 
 	}
 
@@ -77,12 +73,17 @@ public class SaveLoadEnviroment : MonoBehaviour {
 	{
 
 		Debug.Log ("Carichiamo i dari");
-
-		for(int i =0; i < EnviromentObjects.Count; i++)
-		{
-			string jsonString = File.ReadAllText (FilePath);
-			JsonUtility.FromJsonOverwrite (jsonString, EnviromentObjects[i]);
-		}
+		jsonString = File.ReadAllText (FilePath);
+		EnviromentsObjects = JsonUtility.FromJson<List<EnviromentData>> (jsonString);
 
 	}
 }
+
+[System.Serializable]
+public class EnviromentsData 
+{
+	//Lista degli oggetti in scena da salvare
+	public List<EnviromentData> EnviromentObjects;
+
+}
+

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
 public class EnviromentData: MonoBehaviour {
 
 	//Per identificare univocamente l'oggetto
@@ -16,6 +17,11 @@ public class EnviromentData: MonoBehaviour {
 
 		hashcode = this.gameObject.GetHashCode();
 
+	}
+
+	public override string ToString ()
+	{
+		return string.Format ("Hashcode: {0} - Position {1} - isDestroyed {2}", hashcode, position, isDestroyed);
 	}
 
 

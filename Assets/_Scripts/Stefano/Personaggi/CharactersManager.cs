@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public class ManagerCharacters : MonoBehaviour {
+public class CharactersManager : MonoBehaviour {
 
 	#region Tuple
 	public struct Tuple

@@ -1,1 +1,0 @@
-﻿using System.Collections; using System.Collections.Generic; using UnityEngine;  public class LightController : MonoBehaviour { 	public bool torcia; 	public Light luce;  	void Start() 	{ 		luce = GetComponent<Light>(); 	}  	// Update is called once per frame 	void Update () 	{ 		if(Input.GetKeyDown(KeyCode.T)) 		{ 			luce.enabled = !luce.enabled; 		} 	} } 

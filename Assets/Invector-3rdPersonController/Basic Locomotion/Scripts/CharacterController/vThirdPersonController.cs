@@ -141,7 +141,7 @@ namespace Invector.CharacterController
                 if (isTorch)
                 {
                     isTorch = false;
-                    Debug.Log("NOTTORCH");
+s                    Debug.Log("NOTTORCH");
 
                 }
                 else if (!isTorch)

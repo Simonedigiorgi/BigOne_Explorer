@@ -4,11 +4,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using Invector.CharacterController;
+using UnityEngine.UI;
 
 public class CollectableManager : MonoBehaviour {
 
     public List<vPickupItem> collectables;
     public vHUDController hudController;
+    public int maxCollectables;
 
     private void Awake()
     {
@@ -18,12 +20,18 @@ public class CollectableManager : MonoBehaviour {
         {
             collectables.Add(collectable);
         }
+        maxCollectables = collectables.Count;
+        hudController.transform.GetChild(9).gameObject.SetActive(true);
+        hudController.transform.GetChild(9).gameObject.GetComponent<Text>().text = "Collectables: 0/" + maxCollectables;
+        
+        
     }
 
     public void DecreaseCollectable(vPickupItem collectable)
     {
         collectables.Remove(collectable);
-        if(collectables.Count <= 0)
+        hudController.transform.GetChild(9).gameObject.GetComponent<Text>().text = "Collectables: " + (maxCollectables-collectables.Count) + "/" + maxCollectables;
+        if (collectables.Count <= 0)
         {
             Camera.main.GetComponent<vThirdPersonCamera>().lockCamera = true;
             hudController.transform.GetChild(8).gameObject.SetActive(true);

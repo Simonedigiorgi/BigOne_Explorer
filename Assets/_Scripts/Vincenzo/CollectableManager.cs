@@ -25,6 +25,7 @@ public class CollectableManager : MonoBehaviour {
         collectables.Remove(collectable);
         if(collectables.Count <= 0)
         {
+            Camera.main.GetComponent<vThirdPersonCamera>().lockCamera = true;
             hudController.transform.GetChild(8).gameObject.SetActive(true);
         }
     }

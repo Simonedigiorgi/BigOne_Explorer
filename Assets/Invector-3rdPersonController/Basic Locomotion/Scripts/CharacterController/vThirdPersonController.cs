@@ -10,6 +10,7 @@ namespace Invector.CharacterController
 
         public static vThirdPersonController instance;
 
+        public Light torcia;
         public Light luce;
 
         #endregion
@@ -21,7 +22,6 @@ namespace Invector.CharacterController
 
         protected virtual void Start()
         {
-            luce=GetComponentInChildren<Light>();
             if (instance == null)
             {
                 instance = this;
@@ -145,13 +145,15 @@ namespace Invector.CharacterController
                 {
                     isTorch = false;
                     Debug.Log("NOTTORCH");
+                    torcia.enabled = false;
                     luce.enabled = false;
                 }
                 else if (!isTorch)
                 {
                     isTorch = true;
                     Debug.Log("TORCH");
-                    luce.enabled=true;
+                    torcia.enabled = true;
+                    luce.enabled = true;
                 }
             }
         }

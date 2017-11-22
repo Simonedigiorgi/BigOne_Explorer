@@ -21,8 +21,16 @@ public class RoverManager : MonoBehaviour {
         if (other.gameObject.tag.Equals("Player"))
         {
             hud.transform.GetChild(7).gameObject.SetActive(true);
-            Camera.main.GetComponent<vThirdPersonCamera>().lockCamera = true;
-            
+            Camera.main.GetComponent<vThirdPersonCamera>().lockCamera = true; 
+        }
+    }
+
+    void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.tag.Equals("Player"))
+        {
+            hud.transform.GetChild(7).gameObject.SetActive(false);
+            Camera.main.GetComponent<vThirdPersonCamera>().lockCamera = false;
         }
     }
 

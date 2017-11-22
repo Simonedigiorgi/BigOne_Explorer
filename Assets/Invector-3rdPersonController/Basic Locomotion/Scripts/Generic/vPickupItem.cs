@@ -5,11 +5,14 @@ public class vPickupItem : MonoBehaviour
 {
     AudioSource _audioSource;
     public AudioClip _audioClip;
-    public GameObject _particle;    
+    public GameObject _particle;
+
+    private CollectableManager collectableManager;
 
     void Start()
     {
         _audioSource = GetComponent<AudioSource>();
+        collectableManager = FindObjectOfType<CollectableManager>();
     }
 
     void OnTriggerEnter(Collider other)
@@ -21,6 +24,7 @@ public class vPickupItem : MonoBehaviour
                 r.enabled = false;            
 
             _audioSource.PlayOneShot(_audioClip);
+            collectableManager.DecreaseCollectable(this);
             Destroy(gameObject, _audioClip.length);
         }
     }

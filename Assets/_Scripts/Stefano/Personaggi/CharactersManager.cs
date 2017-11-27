@@ -20,15 +20,15 @@ public class CharactersManager : MonoBehaviour {
 	public CharacterData Billy;
 	#endregion
 
-	#region Inventory
+	#region gadgets
 	//metodo per controllare se esiste l'oggetto nella lista
 	public Tuple searchObject(GameObject obj)
 	{
 		//Dichiaro la struct di ritorno
 		Tuple T = new Tuple ();
 
-		T.valueInt = Billy.inventory.FindIndex (x => x.nameObject == obj.name);
-		var item = Billy.inventory [T.valueInt];
+		T.valueInt = Billy.gadgets.FindIndex (x => x.name == obj.name);
+		var item = Billy.gadgets [T.valueInt];
 
 		if (item != null) 
 		{
@@ -59,7 +59,7 @@ public class CharactersManager : MonoBehaviour {
 	}
 
 	//Metodo per aggiornare o aggiungere un oggetto dell'inventario
-	public void addObjectInventory(GameObject obj, int quantity)
+	/*public void addObjectgadgets(GameObject obj, int quantity)
 	{
 
 		Tuple T = new Tuple ();
@@ -70,21 +70,21 @@ public class CharactersManager : MonoBehaviour {
 		if (T.valueBool == false) 
 		{//Rendo visibile nell'inventario l'oggetto e associo la quantità passata
 
-			Billy.inventory [T.valueInt].isVisible = true;
-			Billy.inventory [T.valueInt].quantity = quantity;
+			Billy.gadgets [T.valueInt].isVisible = true;
+			Billy.gadgets [T.valueInt].quantity = quantity;
 
 		} 
 		else 
 		{//Aggiungo la qauntità passata alla quantità in giacenza
 
-			Billy.inventory [T.valueInt].quantity += quantity;
+			Billy.gadgets [T.valueInt].quantity += quantity;
 
 		}
 
-	}
+	}*/
 
 	//Metodo per togliere o disattivare un oggetto dall'inventario
-	public bool missObjectInventory(GameObject obj, int quantity)
+	/*public bool missObjectgadgets(GameObject obj, int quantity)
 	{
 
 		Tuple T = new Tuple ();
@@ -92,7 +92,7 @@ public class CharactersManager : MonoBehaviour {
 		T = searchObject (obj);
 
 		//Controllo se l'operazione è fattibile
-		if (Billy.inventory [T.valueInt].quantity < quantity) {
+		if (Billy.gadgets [T.valueInt].quantity < quantity) {
 
 			Debug.LogError ("Non hai abbastanza oggetti di questo tipo");
 			return false;
@@ -101,14 +101,14 @@ public class CharactersManager : MonoBehaviour {
 		else 
 		{
 
-			Billy.inventory [T.valueInt].quantity -= quantity;
+			Billy.gadgets [T.valueInt].quantity -= quantity;
 
-			if (Billy.inventory [T.valueInt].quantity == 0) 
+			if (Billy.gadgets [T.valueInt].quantity == 0) 
 			{
 				
 				//La quantità è zero di questo oggetto quindi lo disattivo dall'inventario 
 
-				Billy.inventory [T.valueInt].isVisible = false;
+				Billy.gadgets [T.valueInt].isVisible = false;
 
 			}
 
@@ -116,7 +116,7 @@ public class CharactersManager : MonoBehaviour {
 
 		}
 
-	}
+	}*/
 	#endregion
 
 
@@ -127,13 +127,13 @@ public class CharactersManager : MonoBehaviour {
 		//Dichiaro la struct di ritorno
 		Tuple T = new Tuple ();
 
-		T.valueInt = Billy.inventory.FindIndex (x => x.nameObject == objectName);
+		T.valueInt = Billy.gadgets.FindIndex (x => x.name == objectName);
 		Debug.Log("Index = "+T.valueInt);
 
 		if (T.valueInt != -1) 
 		{
 
-			var item = Billy.inventory [T.valueInt];
+			var item = Billy.gadgets [T.valueInt];
 
 			if (item.isVisible == true) 
 			{
@@ -160,7 +160,7 @@ public class CharactersManager : MonoBehaviour {
 	}
 
 
-	public void testInventory(string objectName)
+	/*public void testgadgets(string objectName)
 	{
 
 		Tuple T = new Tuple ();
@@ -171,18 +171,18 @@ public class CharactersManager : MonoBehaviour {
 		if (T.valueBool == false) 
 		{//Rendo visibile nell'inventario l'oggetto e associo la quantità passata
 
-			Billy.inventory [T.valueInt].isVisible = true;
-			Billy.inventory [T.valueInt].quantity = 1;
+			Billy.gadgets [T.valueInt].isVisible = true;
+			Billy.gadgets [T.valueInt].quantity = 1;
 
 		} 
 		else 
 		{//Aggiungo la qauntità passata alla quantità in giacenza
 
-			Billy.inventory [T.valueInt].quantity += 1;
+			Billy.gadgets [T.valueInt].quantity += 1;
 
 		}
 
-	}
+	}*/
 	#endregion
 
 	

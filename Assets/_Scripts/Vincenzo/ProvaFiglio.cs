@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class ProvaFiglio : ProvaDotween
 {
 
-    public string[] scenes;
+    /*public string[] scenes;
 
     void Update()
     {
@@ -53,5 +53,5 @@ public class ProvaFiglio : ProvaDotween
 
         yield return null;
 
-    }
+    }*/
 }

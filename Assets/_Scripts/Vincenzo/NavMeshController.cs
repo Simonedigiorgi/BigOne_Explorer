@@ -1,105 +1,27 @@
-﻿using System.Collections;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.AI;
-using DG.Tweening;
 
-public class NavMeshController : MonoBehaviour
-{
+public class NavMeshController : MonoBehaviour {
 
     public Transform targetTransform;
 
     NavMeshAgent agent;
     Animator animator;
-    Npc npc;
-    int currentTarget = 0;
-    bool activityTriggered = false;
 
     void Start()
     {
-        agent = transform.parent.GetComponent<NavMeshAgent>();
-        animator = transform.parent.GetComponent<Animator>();
-        npc = transform.parent.GetComponent<Npc>();
-        agent.SetDestination(npc.targets[currentTarget].transform.position);
-        animator.SetBool("Move", true);
-
+        agent = GetComponent<NavMeshAgent>();
+        animator = GetComponent<Animator>();
     }
 
-    private void OnTriggerEnter(Collider other)
+    void Update()
     {
-        if (other.tag == "Player")
+        if(Input.GetKeyDown(KeyCode.G))
         {
-            agent.transform.GetChild(2).gameObject.SetActive(true);
-
-            if (agent.hasPath)
-            {
-                agent.isStopped = true;
-                animator.SetBool("Move", false);
-                
-            }
-            animator.SetBool("Greet", true);
-        }
-        if (other.tag == "NpcActivity" && !activityTriggered)
-        {
-            animator.SetBool("Move", false);
-            activityTriggered = true;
-
-            StartCoroutine(SetTarget());
-        }
-    }
-
-    /*private void OnCollisionStay(Collision collision)
-    {
-        print("Stay");
-        if (collision.gameObject.tag == "Player")
-        {
-            if (agent.hasPath)
-            {
-                agent.isStopped = true;
-                animator.SetBool("Move", false);
-            }
-        }
-    }*/
-
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.tag == "Player")
-        {
-            if (agent.hasPath)
-            {
-                agent.isStopped = false;
-
-                animator.SetBool("Move", true);
-
-            }
-            agent.transform.GetChild(2).gameObject.SetActive(false);
-            animator.SetBool("Greet", false);
-        }
-        if (other.tag == "NpcActivity" && activityTriggered)
-        {
+            agent.SetDestination(targetTransform.position);
             animator.SetBool("Move", true);
-            activityTriggered = false;
+
         }
-
-    }
-
-    
-
-    IEnumerator SetTarget()
-    {
-
-        yield return new WaitForSeconds(2);
-
-        currentTarget++;
-        if (currentTarget >= npc.targets.Length)
-        {
-            currentTarget = 0;
-        }
-
-        agent.SetDestination(npc.targets[currentTarget].transform.position);
-        animator.SetBool("Move", true);
-
-        
         
     }
-
 }

@@ -13,6 +13,7 @@ public class NavMeshController : MonoBehaviour
     Npc npc;
     int currentTarget = 0;
     bool activityTriggered = false;
+    bool playerTriggered = false;
 
     void Start()
     {
@@ -26,8 +27,9 @@ public class NavMeshController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Player")
+        if (other.tag == "Player" && !playerTriggered)
         {
+            playerTriggered = true;
             agent.transform.GetChild(2).gameObject.SetActive(true);
 
             if (agent.hasPath)
@@ -36,7 +38,8 @@ public class NavMeshController : MonoBehaviour
                 animator.SetBool("Move", false);
                 
             }
-            animator.SetBool("Greet", true);
+            //animator.SetBool("Greet", true);
+            
         }
         if (other.tag == "NpcActivity" && !activityTriggered)
         {
@@ -62,8 +65,10 @@ public class NavMeshController : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.tag == "Player")
+        if (other.tag == "Player" && playerTriggered)
         {
+            playerTriggered = false;
+
             if (agent.hasPath)
             {
                 agent.isStopped = false;

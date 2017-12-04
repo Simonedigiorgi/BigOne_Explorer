@@ -11,6 +11,8 @@ public class NavMeshController : MonoBehaviour
     NavMeshAgent agent;
     Animator animator;
     Npc npc;
+    Quest activedQuest;
+    QuestManager questManager;
     int currentTarget = 0;
     bool activityTriggered = false;
     bool playerTriggered = false;
@@ -20,8 +22,10 @@ public class NavMeshController : MonoBehaviour
         agent = transform.parent.GetComponent<NavMeshAgent>();
         animator = transform.parent.GetComponent<Animator>();
         npc = transform.parent.GetComponent<Npc>();
-        agent.SetDestination(npc.targets[currentTarget].transform.position);
-        animator.SetBool("Move", true);
+        questManager = FindObjectOfType<QuestManager>();
+        activedQuest = questManager.currentQuest;
+        //agent.SetDestination(npc.targets[currentTarget].transform.position);
+        //animator.SetBool("Move", true);
 
     }
 
@@ -32,12 +36,21 @@ public class NavMeshController : MonoBehaviour
             playerTriggered = true;
             agent.transform.GetChild(2).gameObject.SetActive(true);
 
+            if (activedQuest.GetComponent<Quest>().npcAssociated == npc.gameObject)
+            {
+                //print(activedQuest.GetComponent<Quest>().dialogue[0]);
+                questManager.ActivateQuest();
+
+
+            }
+            /*agent.transform.GetChild(2).gameObject.SetActive(true);
+
             if (agent.hasPath)
             {
                 agent.isStopped = true;
                 animator.SetBool("Move", false);
                 
-            }
+            }*/
             //animator.SetBool("Greet", true);
             
         }

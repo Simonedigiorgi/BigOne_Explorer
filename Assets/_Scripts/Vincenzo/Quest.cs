@@ -9,15 +9,18 @@ public class Quest : MonoBehaviour
     {
         DISABLED,
         ENABLED,
+        ACTIVED,
         COMPLETED
     }
 
 	public string questName;
-    public QuestState curresntState;
+    public QuestState currentState;
     public GameObject npcAssociated;
     public int priority;
     [Header("Dialogues for this quest")]
     [TextArea]
     public string[] dialogue;
+
+    
 
 }

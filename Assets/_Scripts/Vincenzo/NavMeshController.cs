@@ -59,7 +59,7 @@ public class NavMeshController : MonoBehaviour
             animator.SetBool("Move", false);
             activityTriggered = true;
 
-            StartCoroutine(SetTarget());
+            //StartCoroutine(SetTarget());
         }
     }
 
@@ -102,7 +102,7 @@ public class NavMeshController : MonoBehaviour
 
     
 
-    IEnumerator SetTarget()
+    /*IEnumerator SetTarget()
     {
 
         yield return new WaitForSeconds(2);
@@ -118,6 +118,6 @@ public class NavMeshController : MonoBehaviour
 
         
         
-    }
+    }*/
 
 }

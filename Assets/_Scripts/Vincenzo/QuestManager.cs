@@ -17,6 +17,8 @@ public class QuestManager : MonoBehaviour {
     private void Awake()
     {
 
+        print("Awake");
+
         DontDestroyOnLoad(this);
 
         hudDialogues = FindObjectOfType<vHUDController>().transform.GetChild(10).gameObject;
@@ -87,7 +89,7 @@ public class QuestManager : MonoBehaviour {
         currentQuest = quests[priority];
         currentQuest.currentState = Quest.QuestState.ENABLED;
 
-        SceneManager.LoadScene("_Main_Alessandro");
+        //SceneManager.LoadScene("_Main_Alessandro");
 
     }
 

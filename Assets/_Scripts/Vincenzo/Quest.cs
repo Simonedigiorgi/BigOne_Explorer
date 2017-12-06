@@ -26,7 +26,7 @@ public class Quest : MonoBehaviour
 
     private void Start()
     {
-        DontDestroyOnLoad(this);
+        //DontDestroyOnLoad(this);
 
         actions = GameObject.FindGameObjectsWithTag("NpcActivity");
     }

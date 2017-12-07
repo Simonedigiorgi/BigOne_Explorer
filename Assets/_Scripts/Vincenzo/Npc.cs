@@ -42,5 +42,13 @@ public class Npc : MonoBehaviour {
         }
     }
 
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.tag == "Player" && playerTriggered)
+        {
+            playerTriggered = false;
+        }
+    }
+
 
 }

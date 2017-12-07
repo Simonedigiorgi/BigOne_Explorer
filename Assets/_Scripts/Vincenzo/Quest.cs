@@ -23,11 +23,10 @@ public class Quest : MonoBehaviour
     [Header("Dialogues for this quest")]
     [TextArea]
     public string[] dialogue;
+    public int currentDialogue = 0;
 
     private void Start()
     {
-        //DontDestroyOnLoad(this);
-
         actions = GameObject.FindGameObjectsWithTag("NpcActivity");
     }
 

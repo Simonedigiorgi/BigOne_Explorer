@@ -10,14 +10,12 @@ public class QuestManager : MonoBehaviour {
     public List<Quest> quests = new List<Quest>();
     public Quest currentQuest;
 
-    int currentDialogue = 0;
     GameObject questsObject;
     GameObject hudDialogues;
+    string questTargetText;
 
     private void Awake()
     {
-
-        print("Awake");
 
         DontDestroyOnLoad(this);
 
@@ -33,6 +31,9 @@ public class QuestManager : MonoBehaviour {
                 currentQuest = quest;
             }
         }
+
+        questTargetText = "Parla con " + currentQuest.npcAssociated.name;
+        print(questTargetText);
 
     }
 
@@ -54,10 +55,10 @@ public class QuestManager : MonoBehaviour {
 
     public void SwitchQuestDialogue()
     {
-        currentDialogue++;
+        currentQuest.currentDialogue++;
 
-        if (currentDialogue < currentQuest.dialogue.Length)
-            hudDialogues.transform.GetChild(0).GetComponent<Text>().text = currentQuest.dialogue[currentDialogue];
+        if (currentQuest.currentDialogue < currentQuest.dialogue.Length)
+            hudDialogues.transform.GetChild(0).GetComponent<Text>().text = currentQuest.dialogue[currentQuest.currentDialogue];
         else
             ActivateQuest();
 
@@ -68,13 +69,15 @@ public class QuestManager : MonoBehaviour {
     IEnumerator ShowDialogues()
     {
         hudDialogues.gameObject.SetActive(true);
-        hudDialogues.transform.GetChild(0).GetComponent<Text>().text = currentQuest.dialogue[currentDialogue];
+        hudDialogues.transform.GetChild(0).GetComponent<Text>().text = currentQuest.dialogue[currentQuest.currentDialogue];
         yield return null;
     }
 
     public void ActivateQuest()
     {
         hudDialogues.gameObject.SetActive(false);
+        questTargetText = currentQuest.questName;
+        print(questTargetText);
         currentQuest.currentState = Quest.QuestState.ACTIVED;
         foreach (GameObject action in currentQuest.actions)
         {
@@ -88,6 +91,9 @@ public class QuestManager : MonoBehaviour {
         int priority = (currentQuest.priority) + 1;
         currentQuest = quests[priority];
         currentQuest.currentState = Quest.QuestState.ENABLED;
+
+        questTargetText = "Parla con " + currentQuest.npcAssociated.name;
+        print(questTargetText);
 
         //SceneManager.LoadScene("_Main_Alessandro");
 

@@ -12,6 +12,7 @@ public class QuestManager : MonoBehaviour {
 
     GameObject questsObject;
     GameObject hudDialogues;
+    GameObject hudTarget;
     string questTargetText;
 
     private void Awake()
@@ -19,7 +20,8 @@ public class QuestManager : MonoBehaviour {
 
         DontDestroyOnLoad(this);
 
-        hudDialogues = FindObjectOfType<vHUDController>().transform.GetChild(10).gameObject;
+        hudTarget = FindObjectOfType<vHUDController>().transform.GetChild(10).gameObject;
+        hudDialogues = FindObjectOfType<vHUDController>().transform.GetChild(11).gameObject;
         questsObject = FindObjectOfType<QuestManager>().gameObject;
 
         for(int i = 0; i < questsObject.transform.childCount; i++)
@@ -33,7 +35,7 @@ public class QuestManager : MonoBehaviour {
         }
 
         questTargetText = "Parla con " + currentQuest.npcAssociated.name;
-        print(questTargetText);
+        hudTarget.GetComponent<Text>().text = questTargetText;
 
     }
 
@@ -76,12 +78,31 @@ public class QuestManager : MonoBehaviour {
     public void ActivateQuest()
     {
         hudDialogues.gameObject.SetActive(false);
-        questTargetText = currentQuest.questName;
-        print(questTargetText);
+        questTargetText = currentQuest.questName + "\n" + currentQuest.questTag + ": " 
+                                      + (currentQuest.actionsNumber - currentQuest.actions.Count) + "/" + currentQuest.actionsNumber;
+        hudTarget.GetComponent<Text>().text = questTargetText;
         currentQuest.currentState = Quest.QuestState.ACTIVED;
         foreach (GameObject action in currentQuest.actions)
         {
             action.transform.GetChild(0).gameObject.SetActive(true);
+        }
+    }
+
+    public void CheckQuestState(GameObject action)
+    {
+        
+        currentQuest.actions.Remove(action);
+        print(currentQuest.actions.Count);
+
+        if(currentQuest.actions.Count == 0)
+        {
+            CompleteQuest();
+        }
+        else
+        {
+            questTargetText = currentQuest.questName + "\n" + currentQuest.questTag + ": "
+                              + (currentQuest.actionsNumber - currentQuest.actions.Count) + "/" + currentQuest.actionsNumber;
+            hudTarget.GetComponent<Text>().text = questTargetText;
         }
     }
 
@@ -93,7 +114,7 @@ public class QuestManager : MonoBehaviour {
         currentQuest.currentState = Quest.QuestState.ENABLED;
 
         questTargetText = "Parla con " + currentQuest.npcAssociated.name;
-        print(questTargetText);
+        hudTarget.GetComponent<Text>().text = questTargetText;
 
         //SceneManager.LoadScene("_Main_Alessandro");
 

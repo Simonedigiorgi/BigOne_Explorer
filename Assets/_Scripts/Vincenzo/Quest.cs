@@ -18,16 +18,30 @@ public class Quest : MonoBehaviour
     public QuestState currentState;
     public GameObject npcAssociated;
     public int priority;
-    public GameObject[] actions;
+    //public GameObject[] actions;
+    public List<GameObject> actions;
+
+    [HideInInspector]
+    public int actionsNumber;
+
+    public string questTag;
 
     [Header("Dialogues for this quest")]
     [TextArea]
     public string[] dialogue;
+
+    [HideInInspector]
     public int currentDialogue = 0;
 
-    private void Start()
+    void Start()
     {
-        actions = GameObject.FindGameObjectsWithTag("NpcActivity");
+        var tempActions = GameObject.FindGameObjectsWithTag(questTag);
+        foreach(GameObject action in tempActions)
+        {
+            actions.Add(action);
+        }
+        actionsNumber = actions.Count;
+
     }
 
 }

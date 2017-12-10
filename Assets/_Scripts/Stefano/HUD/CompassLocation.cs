@@ -54,7 +54,8 @@ public class CompassLocation : MonoBehaviour {
 	public void DisableCompass()
 	{
 
-		gameObject.layer = 20;
+		GameObject.Find("Canvas_bussola").layer = 20;
+
 
 	}
 
@@ -62,7 +63,7 @@ public class CompassLocation : MonoBehaviour {
 	public void EnableCompass()
 	{
 
-		gameObject.layer = 19;
+		GameObject.Find("Canvas_bussola").layer = 19;
 
 	}
 

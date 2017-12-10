@@ -95,7 +95,7 @@ public class Ossigeno : MonoBehaviour {
 	public void DisableOssigeno()
 	{
 
-		gameObject.layer = 20;
+		GameObject.Find("Canvas_ossigeno").layer = 20;
 
 	}
 
@@ -103,7 +103,8 @@ public class Ossigeno : MonoBehaviour {
 	public void EnableOssigneo()
 	{
 
-		gameObject.layer = 19;
+		GameObject.Find("Canvas_ossigeno").layer = 19;
+
 
 	}
 

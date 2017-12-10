@@ -69,6 +69,13 @@ public static class InputManager
 
 	}
 
+	public static bool StartButton()
+	{
+
+		return Input.GetButtonDown ("Start");
+
+	}
+
 	#endregion
 
 	#region Arrow

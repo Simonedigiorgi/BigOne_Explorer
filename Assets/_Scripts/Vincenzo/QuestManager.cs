@@ -92,7 +92,6 @@ public class QuestManager : MonoBehaviour {
     {
         
         currentQuest.actions.Remove(action);
-        print(currentQuest.actions.Count);
 
         if(currentQuest.actions.Count == 0)
         {

@@ -5,11 +5,12 @@ using UnityEngine.UI;
 
 public class CompassLocation : MonoBehaviour {
 
+	#region Public
 	public Vector3 NorthDirection;
-
 	public Transform Player;
 	public Quaternion MissionDirection;
 	public Transform missionPlace;
+	#endregion
 
 	void Update() 
 	{
@@ -19,7 +20,8 @@ public class CompassLocation : MonoBehaviour {
 
 	}
 
-	public void ChangeNorthDirection()
+	//Metodo per aggionrare il punto di riferimento
+	private void ChangeNorthDirection()
 	{
 
 		NorthDirection.z = Player.eulerAngles.y;
@@ -27,7 +29,7 @@ public class CompassLocation : MonoBehaviour {
 	}
 
 	//Metodo per ruotare il compasso 
-	public void ChangeMissionDirection()
+	private void ChangeMissionDirection()
 	{
 
 		Vector3 dir = transform.position - missionPlace.position;
@@ -37,6 +39,30 @@ public class CompassLocation : MonoBehaviour {
 		MissionDirection.y = 0;
 
 		transform.localRotation = MissionDirection * Quaternion.Euler (NorthDirection);
+
+	}
+
+	//Metodo per cambiare il target della missione
+	public void ChangeTargetMission(Transform newMissionPlace)
+	{
+
+		missionPlace = newMissionPlace;
+
+	}
+
+	//Metodo che non rende visibile il GPS
+	public void DisableCompass()
+	{
+
+		gameObject.layer = 20;
+
+	}
+
+	//Metodo che rende visibile il GPS
+	public void EnableCompass()
+	{
+
+		gameObject.layer = 19;
 
 	}
 

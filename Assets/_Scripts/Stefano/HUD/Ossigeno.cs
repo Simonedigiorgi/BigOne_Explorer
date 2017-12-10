@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class Ossigeno : MonoBehaviour {
 
+	#region Public
 	[Header("Ossigeno in percentuale")]
 	public int O2;
 	[Header("Tempo per di durata per ogni percentuale")]
@@ -17,8 +18,11 @@ public class Ossigeno : MonoBehaviour {
 	public Color colorBar;
 	[Header("Testo della bombola di ossigeno")]
 	public Text textO2;
+	#endregion
 
+	#region Private
 	private float timer = 0; 
+	#endregion
 
 	void Awake()
 	{
@@ -53,7 +57,7 @@ public class Ossigeno : MonoBehaviour {
 	}
 
 	//Perdere ossigeno nel tempo
-	public void O2decreases()
+	private void O2decreases()
 	{
 
 		O2 -= 1;
@@ -63,7 +67,7 @@ public class Ossigeno : MonoBehaviour {
 	}
 
 	//Metodo che setta al massimo la bombola
-	public void SetMaxO2()
+	private void SetMaxO2()
 	{
 
 		O2 = 100;
@@ -72,7 +76,7 @@ public class Ossigeno : MonoBehaviour {
 	}
 
 	//Metodo che trasforma la barra dal colore blu al colore rosso
-	public void ChangeColorOfBar()
+	private void ChangeColorOfBar()
 	{
 
 		bar.color = colorBar;
@@ -84,6 +88,22 @@ public class Ossigeno : MonoBehaviour {
 	{
 
 		return O2 > 0;
+
+	}
+
+	//Metodo che non rende visibile la barra dell'ossigeno 
+	public void DisableOssigeno()
+	{
+
+		gameObject.layer = 20;
+
+	}
+
+	//Metodo che rende visibile la barra dell'ossigeno
+	public void EnableOssigneo()
+	{
+
+		gameObject.layer = 19;
 
 	}
 

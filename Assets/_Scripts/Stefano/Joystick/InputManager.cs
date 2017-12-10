@@ -5,6 +5,8 @@ using UnityEngine;
 public static class InputManager
 {
 
+	#region Axis
+
 	public static float MainHorizontal()
 	{
 
@@ -35,7 +37,9 @@ public static class InputManager
 
 	}
 
-	//----------- Buttons
+	#endregion
+
+	#region Buttons
 
 	public static bool ABotton()
 	{
@@ -64,5 +68,38 @@ public static class InputManager
 		return Input.GetButtonDown ("Y");
 
 	}
-	
+
+	#endregion
+
+	#region Arrow
+
+	public static bool UPArrow()
+	{
+
+		return Input.GetAxis ("D-Pad Vertical") > 0;
+
+	}
+
+	public static bool DOWNArrow()
+	{
+
+		return Input.GetAxis ("D-Pad Vertical") < 0;
+
+	}
+
+	public static bool LEFTArrow()
+	{
+
+		return Input.GetAxis ("D-Pad Horizontal") < 0;
+
+	}
+
+	public static bool RIGHTArrow()
+	{
+
+		return Input.GetAxis ("D-Pad Horizontal") > 0;
+
+	}
+
+	#endregion
 }

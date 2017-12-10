@@ -5,22 +5,38 @@ using UnityEngine.UI;
 
 public class CompassLocation : MonoBehaviour {
 
-	public Transform target;
-	public float speed;
+	public Vector3 NorthDirection;
+
+	public Transform Player;
+	public Quaternion MissionDirection;
+	public Transform missionPlace;
 
 	void Update() 
 	{
-		Vector3 targetDir = target.position - transform.position;
-		float step = speed * Time.deltaTime;
-		Vector3 newDir = Vector3.RotateTowards(transform.forward, targetDir, step, 0.0F);
-		transform.rotation = Quaternion.LookRotation(newDir);
+
+		ChangeNorthDirection ();
+		ChangeMissionDirection ();
+
+	}
+
+	public void ChangeNorthDirection()
+	{
+
+		NorthDirection.z = Player.eulerAngles.y;
+
 	}
 
 	//Metodo per ruotare il compasso 
-	public void Compass()
+	public void ChangeMissionDirection()
 	{
 
+		Vector3 dir = transform.position - missionPlace.position;
+		MissionDirection = Quaternion.LookRotation (dir);
+		MissionDirection.z = - MissionDirection.y;
+		MissionDirection.x = 0;
+		MissionDirection.y = 0;
 
+		transform.localRotation = MissionDirection * Quaternion.Euler (NorthDirection);
 
 	}
 

@@ -66,6 +66,13 @@ public class TestInput : MonoBehaviour {
 			PauseMenu.SetActive (true);
 
 		}
+
+		if (Input.GetKeyDown (KeyCode.M)) {
+
+			Debug.Log ("Attivo il menu di start");
+			PauseMenu.SetActive (true);
+
+		}
 		
 	}
 }

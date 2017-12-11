@@ -13,6 +13,7 @@ public class QuestManager : MonoBehaviour {
     GameObject questsObject;
     GameObject hudDialogues;
     GameObject hudTarget;
+    GameObject compass;
     string questTargetText;
 
     private void Awake()
@@ -23,6 +24,7 @@ public class QuestManager : MonoBehaviour {
         hudTarget = FindObjectOfType<vHUDController>().transform.GetChild(10).gameObject;
         hudDialogues = FindObjectOfType<vHUDController>().transform.GetChild(11).gameObject;
         questsObject = FindObjectOfType<QuestManager>().gameObject;
+        compass = FindObjectOfType<CompassLocation>().gameObject;
 
         for(int i = 0; i < questsObject.transform.childCount; i++)
         {
@@ -82,6 +84,14 @@ public class QuestManager : MonoBehaviour {
                                       + (currentQuest.actionsNumber - currentQuest.actions.Count) + "/" + currentQuest.actionsNumber;
         hudTarget.GetComponent<Text>().text = questTargetText;
         currentQuest.currentState = Quest.QuestState.ACTIVED;
+
+        if(currentQuest.actions.Count > 0)
+        {
+            var actionContainer = currentQuest.actions[0].transform.parent;
+            compass.GetComponent<CompassLocation>().ChangeTargetMission(actionContainer.transform);
+        }
+        
+
         foreach (GameObject action in currentQuest.actions)
         {
             action.transform.GetChild(0).gameObject.SetActive(true);
@@ -92,6 +102,7 @@ public class QuestManager : MonoBehaviour {
     {
         
         currentQuest.actions.Remove(action);
+        action.SetActive(false);
 
         if(currentQuest.actions.Count == 0)
         {
@@ -111,7 +122,10 @@ public class QuestManager : MonoBehaviour {
         int priority = (currentQuest.priority) + 1;
         currentQuest = quests[priority];
         currentQuest.currentState = Quest.QuestState.ENABLED;
-
+        if(currentQuest.npcAssociated != null)
+        {
+            compass.GetComponent<CompassLocation>().ChangeTargetMission(currentQuest.npcAssociated.transform);
+        }
         questTargetText = "Parla con " + currentQuest.npcAssociated.name;
         hudTarget.GetComponent<Text>().text = questTargetText;
 

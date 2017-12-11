@@ -42,6 +42,8 @@ public class Quest : MonoBehaviour
         }
         actionsNumber = actions.Count;
 
+        print(actionsNumber);
+
     }
 
 }

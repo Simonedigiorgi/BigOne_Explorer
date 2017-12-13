@@ -158,6 +158,16 @@ namespace Invector.CharacterController
             }
         }
 
+        public virtual void Scanner()
+        {
+            // Scanner
+        }
+
+        public virtual void Geiger()
+        {
+            // Geiger
+        }
+
         public virtual void Menu() // Richiama il menu
         {
             if (isGrounded && !actions)

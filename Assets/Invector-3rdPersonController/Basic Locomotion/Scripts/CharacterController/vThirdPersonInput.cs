@@ -26,6 +26,8 @@ namespace Invector.CharacterController
         public GenericInput sprintInput = new GenericInput("LeftShift", "LeftStickClick", "");
         public GenericInput crouchInput = new GenericInput("C", "Y", "");
         public GenericInput torchInput = new GenericInput("T", "RB", "");
+        public GenericInput scannerInput = new GenericInput("1", "RB", "");
+        public GenericInput geigerInput = new GenericInput("2", "LB", "");
         public GenericInput menuInput = new GenericInput("M", "Start", "");
 
         [vEditorToolbar("Camera Settings")]
@@ -173,6 +175,8 @@ namespace Invector.CharacterController
             JumpInput();
             RollInput();
             TorchInput(); // Torcia
+            GeigerInput(); // Geiger
+            ScannerInput(); // Scanner
             MenuInput(); // Menu
         }
 
@@ -310,6 +314,18 @@ namespace Invector.CharacterController
         {
             if (torchInput.GetButtonDown())
                 cc.Torch();
+        }
+
+        protected virtual void ScannerInput() // Torcia
+        {
+            if (scannerInput.GetButtonDown())
+                cc.Scanner();
+        }
+
+        protected virtual void GeigerInput() // Torcia
+        {
+            if (geigerInput.GetButtonDown())
+                cc.Geiger();
         }
 
         protected virtual void MenuInput() // Menu

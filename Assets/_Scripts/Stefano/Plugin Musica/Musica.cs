@@ -4,15 +4,23 @@ using UnityEngine;
 
 public class Musica : MonoBehaviour {
 
+	#region Public
 	public List<Brano> PlayList;
-	public AudioSource AudioSource;
+	[Header("Audio source per l'output")]
+	public AudioSource Output;
+	[Header("Debug mode")]
+	public bool DebugMode;
+	#endregion
+
+	#region Private
 	private int ID_suono;
+	#endregion
 
 	[System.Serializable]
 	public class Brano
 	{
 		[Header("Suono da istanziare")]
-		public AudioClip audio;
+		public AudioClip Audio;
 		[Header("ID univoco della canzone numerico crescente")]
 		public int ID;
 		[Header("Descrizione del suono")]
@@ -23,27 +31,6 @@ public class Musica : MonoBehaviour {
 
 	}
 
-	void Awake()
-	{
-
-		AudioSource = gameObject.GetComponent<AudioSource> ();
-
-	}
-	
-	// Update is called once per frame
-	void Update () 
-	{
-
-		if (Input.GetKeyDown (KeyCode.A)) 
-		{
-
-			ID_suono =  Random.Range (0, 3);
-
-			RiproduciSuono (ID_suono);
-
-		}
-
-	}
 
 	/// <summary>
 	/// Metodo che riproduce l'audio passando l'ID della canzone della lista
@@ -52,15 +39,27 @@ public class Musica : MonoBehaviour {
 	public void RiproduciSuono(int ID)
 	{
 
-		for (int i = 0; i < PlayList.Count; i++) {
+		if (Output.isActiveAndEnabled == true) 
+		{
 
-			if (PlayList [i].ID == ID) {
+			for (int i = 0; i < PlayList.Count; i++) {
 
-				Debug.Log ("Riproduco suono "+ PlayList[i].ID);
-				AudioSource.PlayOneShot (PlayList [i].audio, PlayList[i].Volume);
-				return;
+				if (PlayList [i].ID == ID) {
+
+					if (DebugMode == true)
+						Debug.Log ("Riproduco suono " + PlayList [i].ID);
+
+					Output.PlayOneShot (PlayList [i].Audio, PlayList [i].Volume);
+					return;
+
+				}
 
 			}
+		} 
+		else 
+		{
+
+			Debug.Log ("Errore nell'Audio Source");
 
 		}
 

@@ -5,9 +5,14 @@ using UnityEngine;
 public class Musica : MonoBehaviour {
 
 	#region Public
+	[Header("Play list suoni singoli")]
 	public List<Brano> PlayList;
+	[Header("Play list suoni random")]
+	public List<RandomAudio> ClusterSuoniRandom;
 	[Header("Audio source per l'output")]
 	public AudioSource Output;
+	[Header("Audio source global")]
+	public AudioSource Global;
 	[Header("Debug mode")]
 	public bool DebugMode;
 	#endregion
@@ -19,10 +24,27 @@ public class Musica : MonoBehaviour {
 	[System.Serializable]
 	public class Brano
 	{
+		[Header("Nome del cluster")]
+		public string NomeCluster;
 		[Header("Suono da istanziare")]
 		public AudioClip Audio;
 		[Header("ID univoco della canzone numerico crescente")]
 		public int ID;
+		[Header("Descrizione del cluster")]
+		public string Descrizione;
+		[Header("Volume del cluster")]
+		[Range(0f,1f)]
+		public float Volume;
+
+	}
+
+	[System.Serializable]
+	public class RandomAudio
+	{
+		[Header("Nome del cluster")]
+		public string NomeCluster;
+		[Header("Suoni randomici")]
+		public List<AudioClip> ListaSuoni;
 		[Header("Descrizione del suono")]
 		public string Descrizione;
 		[Header("Volume del suono")]
@@ -65,6 +87,26 @@ public class Musica : MonoBehaviour {
 
 		Debug.LogError ("Muisca non trovata CONTROLLARE LISTA");
 
+
+	}
+
+	/// <summary>
+	/// Setting dell'audio source globale
+	/// </summary>
+	public void SetAudioSourceGlobal(float value)
+	{
+
+		Global.volume = value;
+
+	}
+
+	/// <summary>
+	/// Setting dell'audio source globale
+	/// </summary>
+	public void SetAudioSourceSuoni(float value)
+	{
+
+		Output.volume = value;
 
 	}
 }

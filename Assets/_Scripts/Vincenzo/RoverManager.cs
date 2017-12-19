@@ -10,6 +10,7 @@ public class RoverManager : MonoBehaviour {
     [Tooltip("Assign here the spawnPoint name of the scene that you will load")]
     public string spawnPointName;
     private GameObject hud;
+    private GameObject player;
 
     private void Awake()
     {
@@ -34,13 +35,20 @@ public class RoverManager : MonoBehaviour {
         }
     }
 
-    public void ChangeScene(GameObject player)
+    public void ChangeScene()
     {
         var spawnPointFinderObj = new GameObject("spawnPointFinder");
         var spawnPointFinder = spawnPointFinderObj.AddComponent<vFindSpawnPoint>();
+        //Debug.Log(spawnPointName+" "+gameObject.name);
 
+        player = GameObject.FindGameObjectWithTag("Player");
         spawnPointFinder.AlighObjetToSpawnPoint(player, spawnPointName);
+
+        #if UNITY_5_3_OR_NEWER
         SceneManager.LoadScene(levelToLoad);
+        #else
+        		Application.LoadLevel(levelToLoad);
+        #endif
     }
 
     public void HideChangeScene()

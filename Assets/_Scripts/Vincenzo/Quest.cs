@@ -9,6 +9,64 @@ public class Quest : MonoBehaviour
     {
         DISABLED,
         ENABLED,
+        COMPLETED
+    }
+
+    public QuestState currentState;
+    public string questName;
+    public int questPriority;
+    public Task taskActived;
+
+    public List<Task> questTasks;
+
+    private void Awake()
+    {
+        questTasks = new List<Task>();
+        for (int i = 0; i < this.gameObject.transform.childCount; i++)
+        {
+            questTasks.Add(this.gameObject.transform.GetChild(i).gameObject.GetComponent<Task>());
+        }
+
+        if(this.currentState == QuestState.ENABLED)
+        {
+            taskActived = questTasks.Find(x => x.currentState == Task.TaskState.ENABLED);
+        }
+
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    /*public enum QuestState
+    {
+        DISABLED,
+        ENABLED,
         ACTIVING,
         ACTIVED,
         COMPLETED
@@ -42,8 +100,8 @@ public class Quest : MonoBehaviour
         }
         actionsNumber = actions.Count;
 
-        print(actionsNumber);
+        //print(actionsNumber);
 
-    }
+    }*/
 
 }

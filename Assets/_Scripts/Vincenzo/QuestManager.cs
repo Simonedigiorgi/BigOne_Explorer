@@ -5,8 +5,31 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class QuestManager : MonoBehaviour {
+    
+    public List<Quest> quests = new List<Quest>();
+    public Quest currentQuest;
 
-    [SerializeField]
+
+
+    private void Awake()
+    {
+
+        DontDestroyOnLoad(this);
+
+        for (int i = 0; i < this.transform.childCount; i++)
+        {
+            Quest quest = this.transform.GetChild(i).gameObject.GetComponent<Quest>();
+            quests.Add(quest);
+            if (quest.currentState == Quest.QuestState.ENABLED)
+            {
+                currentQuest = quest;
+            }
+        }
+
+    }
+
+
+    /*[SerializeField]
     public List<Quest> quests = new List<Quest>();
     public Quest currentQuest;
 
@@ -131,6 +154,6 @@ public class QuestManager : MonoBehaviour {
 
         //SceneManager.LoadScene("_Main_Alessandro");
 
-    }
+    }*/
 
 }

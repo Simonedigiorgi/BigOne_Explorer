@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.AI;
 using DG.Tweening;
-
+/*
 public class NavMeshController : MonoBehaviour
 {
 
@@ -50,7 +50,7 @@ public class NavMeshController : MonoBehaviour
                 agent.isStopped = true;
                 animator.SetBool("Move", false);
                 
-            }*/
+            }
             //animator.SetBool("Greet", true);
             
         }
@@ -74,7 +74,7 @@ public class NavMeshController : MonoBehaviour
                 animator.SetBool("Move", false);
             }
         }
-    }*/
+    }
 
     private void OnTriggerExit(Collider other)
     {
@@ -118,6 +118,7 @@ public class NavMeshController : MonoBehaviour
 
         
         
-    }*/
+    }
 
 }
+*/

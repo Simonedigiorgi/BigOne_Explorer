@@ -37,6 +37,7 @@ GameObject:
   - component: {fileID: 95499992695097158}
   - component: {fileID: 54114936328215792}
   - component: {fileID: 136581931489795826}
+  - component: {fileID: 114205925755362446}
   m_Layer: 0
   m_Name: Engineer
   m_TagString: Untagged
@@ -2092,6 +2093,18 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114205925755362446
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1043511487615064}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4b547e141147874690e7474d6d3dde8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  npc: 0
 --- !u!114 &114858492947262514
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2103,6 +2116,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4b547e141147874690e7474d6d3dde8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  npc: 0
 --- !u!136 &136581931489795826
 CapsuleCollider:
   m_ObjectHideFlags: 1

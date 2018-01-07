@@ -5,8 +5,10 @@ using UnityEngine;
 public class Musica : MonoBehaviour {
 
 	#region Public
-	[Header("Play list suoni singoli")]
-	public List<Brano> PlayList;
+	[Header("Suoni singoli")]
+	public List<Brano> Suoni;
+	[Header("Play list")]
+	public List<BranoPlayList> PlayList;
 	[Header("Play list suoni random")]
 	public List<RandomAudio> ClusterSuoniRandom;
 	[Header("Audio source per l'output")]
@@ -19,13 +21,14 @@ public class Musica : MonoBehaviour {
 
 	#region Private
 	private int ID_suono;
+	private int indexPlayList = 0;
 	#endregion
 
 	[System.Serializable]
 	public class Brano
 	{
-		[Header("Nome del cluster")]
-		public string NomeCluster;
+		[Header("Nome della sezione")]
+		public string NomeBrano;
 		[Header("Suono da istanziare")]
 		public AudioClip Audio;
 		[Header("ID univoco della canzone numerico crescente")]
@@ -53,6 +56,28 @@ public class Musica : MonoBehaviour {
 
 	}
 
+	[System.Serializable]
+	public class BranoPlayList
+	{
+		[Header("Brano da riprodurre")]
+		public AudioClip Brano;
+		[Header("Volume del brano")]
+		[Range(0f,1f)]
+		public float Volume;
+	}
+
+	void Update()
+	{
+
+		if (Output.isPlaying == false) 
+		{
+
+			RiproduciPlayList ();
+			indexPlayList++;
+
+		}
+
+	}
 
 	/// <summary>
 	/// Metodo che riproduce l'audio passando l'ID della canzone della lista
@@ -64,14 +89,14 @@ public class Musica : MonoBehaviour {
 		if (Output.isActiveAndEnabled == true) 
 		{
 
-			for (int i = 0; i < PlayList.Count; i++) {
+			for (int i = 0; i < Suoni.Count; i++) {
 
-				if (PlayList [i].ID == ID) {
+				if (Suoni [i].ID == ID) {
 
 					if (DebugMode == true)
-						Debug.Log ("Riproduco suono " + PlayList [i].ID);
+						Debug.Log ("Riproduco suono " + Suoni [i].ID);
 
-					Output.PlayOneShot (PlayList [i].Audio, PlayList [i].Volume);
+					Output.PlayOneShot (Suoni [i].Audio, Suoni [i].Volume);
 					return;
 
 				}
@@ -87,6 +112,17 @@ public class Musica : MonoBehaviour {
 
 		Debug.LogError ("Muisca non trovata CONTROLLARE LISTA");
 
+
+	}
+
+	public void RiproduciPlayList()
+	{
+
+		if (indexPlayList == PlayList.Count - 1)
+			indexPlayList = 0;
+
+		Output.clip = PlayList [indexPlayList].Brano;
+		Output.Play ();
 
 	}
 

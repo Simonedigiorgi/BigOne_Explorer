@@ -43,6 +43,11 @@ public class MainMenu : MonoBehaviour
 
 	}
 
+	/// <summary>
+	/// Cambiare il first select dell'Event System
+	/// </summary>
+	/// <param name="button">Button.</param>
+	/// <param name="isGamepad">If set to <c>true</c> is gamepad.</param>
 	public void ChangeFirstSelected(GameObject button, bool isGamepad)
 	{
 
@@ -63,7 +68,9 @@ public class MainMenu : MonoBehaviour
 
 	}
 
-	//Metodo per caricare i dati
+	/// <summary>
+	/// Caricare i dati 
+	/// </summary>
 	public void Load()
 	{
 

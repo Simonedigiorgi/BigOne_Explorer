@@ -5,7 +5,8 @@ using UnityEngine;
 public class TaskTalk : Task 
 {
 
-    public string npcAssociated;
+    //public string npcAssociated;
+    public Npc.NpcType npcAssociated;
 
     private void Start()
     {

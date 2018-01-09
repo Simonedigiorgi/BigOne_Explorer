@@ -33,7 +33,7 @@ public class Npc : MonoBehaviour {
         if (other.tag == "Player" && !playerTriggered)
         {
             playerTriggered = true;
-            if(taskActived.GetComponent<TaskTalk>() && taskActived.GetComponent<TaskTalk>().npcAssociated == this.npc.ToString())
+            if(taskActived.GetComponent<TaskTalk>() && taskActived.GetComponent<TaskTalk>().npcAssociated == this.npc)
             {
                 print("npc giusto");
             }

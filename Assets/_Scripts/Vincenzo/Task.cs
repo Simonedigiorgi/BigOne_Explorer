@@ -17,4 +17,17 @@ public class Task : MonoBehaviour
     public string taskName;
     public int taskPriority;
 
+    protected DialogueManager dialogueManager;
+
+    void Awake()
+    {
+        dialogueManager = FindObjectOfType<DialogueManager>();
+    }
+
+    public virtual void CompleteTask()
+    {
+        this.currentState = Task.TaskState.COMPLETED;
+        QuestManager.currentQuest.SwitchToNextTask();
+    }
+
 }

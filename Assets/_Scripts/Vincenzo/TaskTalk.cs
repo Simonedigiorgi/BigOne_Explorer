@@ -4,13 +4,27 @@ using UnityEngine;
 
 public class TaskTalk : Task 
 {
-
-    //public string npcAssociated;
     public Npc.NpcType npcAssociated;
+    public TextAsset taskDialogue;
+    public int currentDialogue = 0;
 
-    private void Start()
+    public void DoTask()
     {
-       
+        if(currentDialogue >= taskDialogue.ToString().Split('\n').Length)
+        {
+            CompleteTask();
+        }
+        else
+        {
+            dialogueManager.SetDialogue(this.taskDialogue, false);
+        }
+    }
+
+    public override void CompleteTask()
+    {
+        
+        base.CompleteTask();
+
     }
 
 

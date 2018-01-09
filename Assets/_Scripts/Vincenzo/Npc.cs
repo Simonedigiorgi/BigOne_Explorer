@@ -12,39 +12,60 @@ public class Npc : MonoBehaviour {
         DOCTOR
     }
     public NpcType npc;
+    public TextAsset npcDefaultDialogue;
 
-    QuestManager questManager;
-    Quest questActived;
-    Task taskActived;
     bool playerTriggered;
+    bool activedNpcMission;
+    DialogueManager dialogueManager;
 
-    private void Start()
+    void Awake()
     {
-        questManager = FindObjectOfType<QuestManager>();
-        questActived = questManager.quests.Find(x => x.currentState == Quest.QuestState.ENABLED);
-        taskActived = questActived.questTasks.Find(x => x.currentState == Task.TaskState.ENABLED);
-
+        dialogueManager = FindObjectOfType<DialogueManager>();
     }
 
-
+    // Update is called once per frame
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.E) && playerTriggered)
+        {
+            if (activedNpcMission)
+                QuestManager.currentQuest.taskActived.GetComponent<TaskTalk>().DoTask();
+            else
+                dialogueManager.SetDialogue(npcDefaultDialogue, true);
+            //StartCoroutine(questManager.ActivateDialogQuest());
+        }
+    }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Player" && !playerTriggered)
         {
-            playerTriggered = true;
-            if(taskActived.GetComponent<TaskTalk>() && taskActived.GetComponent<TaskTalk>().npcAssociated == this.npc)
-            {
-                print("npc giusto");
-            }
-            else
-            {
-                print("npc sbagliato");
-            }
 
+            playerTriggered = true;
+            this.transform.parent.GetChild(2).gameObject.SetActive(true);
+
+
+            if (QuestManager.currentQuest.taskActived.GetComponent<TaskTalk>() && 
+                QuestManager.currentQuest.taskActived.GetComponent<TaskTalk>().npcAssociated == this.npc)
+            {
+                activedNpcMission = true;
+            }
 
         }
     }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.tag == "Player" && playerTriggered)
+        {
+            playerTriggered = false;
+            this.transform.parent.GetChild(2).gameObject.SetActive(false);
+            activedNpcMission = false;
+            dialogueManager.HideDialogue();
+        }
+    }
+
+
 
     /*[SerializeField]
     public GameObject[] targets;

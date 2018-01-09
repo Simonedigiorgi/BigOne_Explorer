@@ -151,7 +151,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   quests: []
-  currentQuest: {fileID: 0}
 --- !u!1 &61817163
 GameObject:
   m_ObjectHideFlags: 0
@@ -732,6 +731,8 @@ MonoBehaviour:
   taskName: Parla con l'ingegnere
   taskPriority: 0
   npcAssociated: 0
+  taskDialogue: {fileID: 4900000, guid: 767b165cdc035444a9010c0ee3be5f49, type: 3}
+  currentDialogue: 0
 --- !u!1 &666266358
 GameObject:
   m_ObjectHideFlags: 0
@@ -1022,6 +1023,8 @@ MonoBehaviour:
   taskName: Parla con il botanico
   taskPriority: 4
   npcAssociated: 1
+  taskDialogue: {fileID: 4900000, guid: c2aac1e215d7a6a44b16ef486a1635c3, type: 3}
+  currentDialogue: 0
 --- !u!1 &804963829
 GameObject:
   m_ObjectHideFlags: 0
@@ -1344,26 +1347,6 @@ Prefab:
         type: 2}
       propertyPath: m_Pivot.y
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 224975189327724600, guid: ab6046904f686924a90b3fa479b65ece,
-        type: 2}
-      propertyPath: m_AnchorMax.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 224975189327724600, guid: ab6046904f686924a90b3fa479b65ece,
-        type: 2}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 224221382293375694, guid: ab6046904f686924a90b3fa479b65ece,
-        type: 2}
-      propertyPath: m_AnchorMax.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 224221382293375694, guid: ab6046904f686924a90b3fa479b65ece,
-        type: 2}
-      propertyPath: m_AnchorMax.y
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ab6046904f686924a90b3fa479b65ece, type: 2}
@@ -1967,6 +1950,8 @@ MonoBehaviour:
   taskName: Parla con l'ingegnere
   taskPriority: 3
   npcAssociated: 0
+  taskDialogue: {fileID: 4900000, guid: 32c3d5d82f2ee4845bea46ee9e6ff3f6, type: 3}
+  currentDialogue: 0
 --- !u!1001 &1593026698
 Prefab:
   m_ObjectHideFlags: 0
@@ -2821,6 +2806,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   npc: 0
+  npcDefaultDialogue: {fileID: 0}
 --- !u!4 &2061951784 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4010932759918286, guid: 7d8c6d0b20d480240aa0b93a9a9337f4,
@@ -2844,7 +2830,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &2077603706
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2858,7 +2844,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levelToLoad: Olympus Mons
   findSpawnPoint: 1
-  spawnPointName: SpawnMonteOlimpo
+  spawnPointName: SpawnOlympusMons
 --- !u!23 &2077603707
 MeshRenderer:
   m_ObjectHideFlags: 0

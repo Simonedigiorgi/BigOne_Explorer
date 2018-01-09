@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class QuestManager : MonoBehaviour {
     
     public List<Quest> quests = new List<Quest>();
-    public Quest currentQuest;
+    public static Quest currentQuest;
 
 
 

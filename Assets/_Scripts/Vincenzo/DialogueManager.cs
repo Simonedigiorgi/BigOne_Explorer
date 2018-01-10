@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class DialogueManager : MonoBehaviour
 {
-	public void SetDialogue(TextAsset dialogueText, bool defaultDialogue)
+	/*public void SetDialogue(TextAsset dialogueText, bool defaultDialogue)
     {
         ShowDialog();
         string[] dialogues = (dialogueText.ToString()).Split('\n');
@@ -18,10 +18,25 @@ public class DialogueManager : MonoBehaviour
             this.GetComponentInChildren<Text>().text = dialogues[Random.Range(0, dialogues.Length)];
         }
         
+    }*/
+
+    public void SetDialogue(TextAsset dialogue, bool defaultDialogue)
+    {
+        ShowDialog();
+        string[] dialogues = (dialogue.ToString()).Split('\n');
+        if(defaultDialogue)
+        {
+            this.GetComponentInChildren<Text>().text = dialogues[Random.Range(0, dialogues.Length)];
+        }
+        else
+        {
+            this.GetComponentInChildren<Text>().text = dialogues[0];
+        }
     }
 
     public void ShowDialog()
     {
+        this.GetComponentInChildren<Text>().text = "";
         this.GetComponent<Image>().color = new Color(0f, 0f, 0f, 0.8f);
     }
 
@@ -33,9 +48,10 @@ public class DialogueManager : MonoBehaviour
 
     public void SwitchDialogues(string[] dialoguesToSwitch)
     {
-        int dialoguePointer = QuestManager.currentQuest.taskActived.GetComponent<TaskTalk>().currentDialogue;
-        this.GetComponentInChildren<Text>().text = dialoguesToSwitch[dialoguePointer];
-        (QuestManager.currentQuest.taskActived.GetComponent<TaskTalk>().currentDialogue)++;
+        TaskTalk dialoguePointer = QuestManager.currentQuest.taskActived.GetComponent<TaskTalk>();
+        (dialoguePointer.currentDialogue)++;
+        this.GetComponentInChildren<Text>().text = dialoguesToSwitch[dialoguePointer.currentDialogue];
+        
     }
 
 }

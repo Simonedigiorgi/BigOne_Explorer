@@ -7,23 +7,43 @@ public class TaskTalk : Task
     public Npc.NpcType npcAssociated;
     public TextAsset taskDialogue;
     public int currentDialogue = 0;
+    public GadgetManager.GadgetType[] gadgetsReward;
 
-    public void DoTask()
+    GadgetManager gadgetManager;
+
+    public override void ActiveTask()
     {
-        if(currentDialogue >= taskDialogue.ToString().Split('\n').Length)
+        base.ActiveTask();
+        dialogueManager.SetDialogue(this.taskDialogue, false);
+    }
+
+    public override void DoTask()
+    {
+        if(currentDialogue >= taskDialogue.ToString().Split('\n').Length-1)
         {
             CompleteTask();
         }
         else
         {
-            dialogueManager.SetDialogue(this.taskDialogue, false);
+            dialogueManager.SwitchDialogues(taskDialogue.ToString().Split('\n'));
         }
     }
 
     public override void CompleteTask()
     {
-        
+
         base.CompleteTask();
+
+        dialogueManager.HideDialogue();
+        gadgetManager = FindObjectOfType<GadgetManager>();
+        if(gadgetsReward.Length > 0)
+        {
+            foreach (GadgetManager.GadgetType gadget in gadgetsReward)
+            {
+                gadgetManager.ActivateGadget(gadget);
+            }
+        }
+        
 
     }
 

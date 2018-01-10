@@ -26,13 +26,26 @@ public class Npc : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E) && playerTriggered)
+        if(Input.GetKeyDown(KeyCode.E) && playerTriggered)
         {
-            if (activedNpcMission)
-                QuestManager.currentQuest.taskActived.GetComponent<TaskTalk>().DoTask();
-            else
-                dialogueManager.SetDialogue(npcDefaultDialogue, true);
-            //StartCoroutine(questManager.ActivateDialogQuest());
+            
+                if (QuestManager.currentQuest.taskActived.GetComponent<TaskTalk>() &&
+                    QuestManager.currentQuest.taskActived.GetComponent<TaskTalk>().npcAssociated == this.npc)
+                {
+                    if (QuestManager.currentQuest.taskActived.currentState == Task.TaskState.ENABLED)
+                    {
+                        QuestManager.currentQuest.taskActived.GetComponent<Task>().ActiveTask();
+                    }
+                    else if (QuestManager.currentQuest.taskActived.currentState == Task.TaskState.ACTIVED)
+                    {
+                        QuestManager.currentQuest.taskActived.GetComponent<Task>().DoTask();
+                    }
+                }
+                else
+                {
+                    dialogueManager.SetDialogue(npcDefaultDialogue, true);
+                }
+            
         }
     }
 
@@ -44,12 +57,11 @@ public class Npc : MonoBehaviour {
             playerTriggered = true;
             this.transform.parent.GetChild(2).gameObject.SetActive(true);
 
-
-            if (QuestManager.currentQuest.taskActived.GetComponent<TaskTalk>() && 
+            /*if (QuestManager.currentQuest.taskActived.GetComponent<TaskTalk>() && 
                 QuestManager.currentQuest.taskActived.GetComponent<TaskTalk>().npcAssociated == this.npc)
             {
                 activedNpcMission = true;
-            }
+            }*/
 
         }
     }

@@ -39,9 +39,9 @@ public class Quest : MonoBehaviour
     {
         if(questPriority < questTasks.Count)
         {
-            int nextTaskPriority = taskActived.taskPriority++;
-            questTasks[nextTaskPriority].currentState = Task.TaskState.ENABLED;
-            taskActived = questTasks[nextTaskPriority];
+            int tempPriority = taskActived.taskPriority;
+            questTasks[++tempPriority].currentState = Task.TaskState.ENABLED;
+            taskActived = questTasks[tempPriority++];
         }
     }
 

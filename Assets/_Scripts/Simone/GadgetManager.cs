@@ -18,6 +18,18 @@ public class GadgetManager : MonoBehaviour {
     public bool isJetPack;                                              // Hai il Jetpack
     public bool isGeiger;                                               // Hai il Geiger
 
+    public enum GadgetType
+    {
+        TORCH,
+        COMPASS,
+        PICKAXE,
+        SCANNER,
+        AUGER,
+        CAMERA,
+        JETPACK,
+        GEIGER
+    }
+
 	void Start () {
 
         // EQUIPAGGIAMENTO
@@ -119,6 +131,40 @@ public class GadgetManager : MonoBehaviour {
 
     public void Geiger()
     {
+
+    }
+
+    public void ActivateGadget(GadgetType gadgetType)
+    {
+
+        switch(gadgetType)
+        {
+            case GadgetType.TORCH:
+                isTorch = true;
+            break;
+            case GadgetType.COMPASS:
+                isCompass = true;
+            break;
+            case GadgetType.PICKAXE:
+                isPickaxe = true;
+            break;
+            case GadgetType.SCANNER:
+                isScanner = true;
+            break;
+            case GadgetType.CAMERA:
+                isCamera = true;
+            break;
+            case GadgetType.AUGER:
+                isAuger = true;
+            break;
+            case GadgetType.JETPACK:
+                isJetPack = true;
+            break;
+            case GadgetType.GEIGER:
+                isGeiger = true;
+            break;
+
+        }
 
     }
 }

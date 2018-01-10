@@ -24,9 +24,19 @@ public class Task : MonoBehaviour
         dialogueManager = FindObjectOfType<DialogueManager>();
     }
 
+    public virtual void ActiveTask()
+    {
+        this.currentState = TaskState.ACTIVED;
+    }
+
+    public virtual void DoTask()
+    {
+
+    }
+
     public virtual void CompleteTask()
     {
-        this.currentState = Task.TaskState.COMPLETED;
+        this.currentState = TaskState.COMPLETED;
         QuestManager.currentQuest.SwitchToNextTask();
     }
 

@@ -62,6 +62,8 @@ namespace Invector.CharacterController
         public vHUDController hud;                          // acess vHUDController component        
         protected bool updateIK = false;     
         protected bool isInit;
+
+        public GadgetManager gadgetManager;                 // GADGETMANAGER
        
         protected InputDevice inputDevice { get { return vInput.instance.inputDevice; } }
         public Animator animator
@@ -80,6 +82,7 @@ namespace Invector.CharacterController
 
         protected virtual void Start()
         {
+            gadgetManager = GetComponent<GadgetManager>();
             cc = GetComponent<vThirdPersonController>();
 
             if (cc != null)
@@ -312,17 +315,20 @@ namespace Invector.CharacterController
 
         protected virtual void TorchInput() // Torcia
         {
-            if (torchInput.GetButtonDown())
+            if (torchInput.GetButtonDown() && gadgetManager.isTorch == true)
+            {
                 cc.Torch();
+            }
+
         }
 
-        protected virtual void ScannerInput() // Torcia
+        protected virtual void ScannerInput() // Scanner
         {
             if (scannerInput.GetButtonDown())
                 cc.Scanner();
         }
 
-        protected virtual void GeigerInput() // Torcia
+        protected virtual void GeigerInput() // Geiger
         {
             if (geigerInput.GetButtonDown())
                 cc.Geiger();

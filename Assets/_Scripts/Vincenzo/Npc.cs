@@ -15,7 +15,6 @@ public class Npc : MonoBehaviour {
     public TextAsset npcDefaultDialogue;
 
     bool playerTriggered;
-    bool activedNpcMission;
     DialogueManager dialogueManager;
 
     void Awake()
@@ -28,23 +27,23 @@ public class Npc : MonoBehaviour {
     {
         if(Input.GetKeyDown(KeyCode.E) && playerTriggered)
         {
-            
-                if (QuestManager.currentQuest.taskActived.GetComponent<TaskTalk>() &&
-                    QuestManager.currentQuest.taskActived.GetComponent<TaskTalk>().npcAssociated == this.npc)
+            dialogueManager.ShowDialog();
+            if (QuestManager.currentQuest.taskActived.GetComponent<TaskTalk>() &&
+                QuestManager.currentQuest.taskActived.GetComponent<TaskTalk>().npcAssociated == this.npc)
+            {
+                if (QuestManager.currentQuest.taskActived.currentState == Task.TaskState.ENABLED)
                 {
-                    if (QuestManager.currentQuest.taskActived.currentState == Task.TaskState.ENABLED)
-                    {
-                        QuestManager.currentQuest.taskActived.GetComponent<Task>().ActiveTask();
-                    }
-                    else if (QuestManager.currentQuest.taskActived.currentState == Task.TaskState.ACTIVED)
-                    {
-                        QuestManager.currentQuest.taskActived.GetComponent<Task>().DoTask();
-                    }
+                    QuestManager.currentQuest.taskActived.GetComponent<Task>().ActiveTask();
                 }
-                else
+                else if (QuestManager.currentQuest.taskActived.currentState == Task.TaskState.ACTIVED)
                 {
-                    dialogueManager.SetDialogue(npcDefaultDialogue, true);
+                    QuestManager.currentQuest.taskActived.GetComponent<Task>().DoTask();
                 }
+            }
+            else
+            {
+                dialogueManager.SetDialogue(npcDefaultDialogue, true);
+            }
             
         }
     }
@@ -53,16 +52,8 @@ public class Npc : MonoBehaviour {
     {
         if (other.tag == "Player" && !playerTriggered)
         {
-
             playerTriggered = true;
             this.transform.parent.GetChild(2).gameObject.SetActive(true);
-
-            /*if (QuestManager.currentQuest.taskActived.GetComponent<TaskTalk>() && 
-                QuestManager.currentQuest.taskActived.GetComponent<TaskTalk>().npcAssociated == this.npc)
-            {
-                activedNpcMission = true;
-            }*/
-
         }
     }
 
@@ -72,7 +63,6 @@ public class Npc : MonoBehaviour {
         {
             playerTriggered = false;
             this.transform.parent.GetChild(2).gameObject.SetActive(false);
-            activedNpcMission = false;
             dialogueManager.HideDialogue();
         }
     }

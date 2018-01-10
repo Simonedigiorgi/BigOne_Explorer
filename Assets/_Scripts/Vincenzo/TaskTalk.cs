@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Invector.CharacterController;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -10,10 +11,12 @@ public class TaskTalk : Task
     public GadgetManager.GadgetType[] gadgetsReward;
 
     GadgetManager gadgetManager;
+    GameObject player;
 
     public override void ActiveTask()
     {
         base.ActiveTask();
+       
         dialogueManager.SetDialogue(this.taskDialogue, false);
     }
 

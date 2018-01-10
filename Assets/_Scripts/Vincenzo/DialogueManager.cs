@@ -22,7 +22,6 @@ public class DialogueManager : MonoBehaviour
 
     public void SetDialogue(TextAsset dialogue, bool defaultDialogue)
     {
-        ShowDialog();
         string[] dialogues = (dialogue.ToString()).Split('\n');
         if(defaultDialogue)
         {
@@ -51,7 +50,6 @@ public class DialogueManager : MonoBehaviour
         TaskTalk dialoguePointer = QuestManager.currentQuest.taskActived.GetComponent<TaskTalk>();
         (dialoguePointer.currentDialogue)++;
         this.GetComponentInChildren<Text>().text = dialoguesToSwitch[dialoguePointer.currentDialogue];
-        
     }
 
 }

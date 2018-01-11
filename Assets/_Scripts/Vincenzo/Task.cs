@@ -16,6 +16,7 @@ public class Task : MonoBehaviour
     public TaskState currentState;
     public string taskName;
     public int taskPriority;
+    public string taskScene;
 
     protected DialogueManager dialogueManager;
 

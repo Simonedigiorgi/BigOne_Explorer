@@ -28,6 +28,16 @@ public class QuestManager : MonoBehaviour {
 
     }
 
+    public void SwitchToNextQuest()
+    {
+        if (currentQuest.questPriority < quests.Count)
+        {
+            int tempPriority = currentQuest.questPriority;
+            quests[++tempPriority].currentState = Quest.QuestState.ENABLED;
+            currentQuest = quests[tempPriority++];
+        }
+    }
+
 
     /*[SerializeField]
     public List<Quest> quests = new List<Quest>();

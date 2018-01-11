@@ -43,6 +43,10 @@ public class Quest : MonoBehaviour
             questTasks[++tempPriority].currentState = Task.TaskState.ENABLED;
             taskActived = questTasks[tempPriority++];
         }
+        else
+        {
+            this.transform.parent.GetComponent<QuestManager>().SwitchToNextQuest();
+        }
     }
 
 

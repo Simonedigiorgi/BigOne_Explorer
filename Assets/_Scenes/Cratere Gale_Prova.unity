@@ -14,7 +14,7 @@ OcclusionCullingSettings:
 RenderSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 8
-  m_Fog: 0
+  m_Fog: 1
   m_FogColor: {r: 1, g: 0.47450984, b: 0.32941177, a: 1}
   m_FogMode: 1
   m_FogDensity: 0.01
@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 1753218108}
-  m_IndirectSpecularColor: {r: 0.07422032, g: 0.039128665, b: 0.025858516, a: 1}
+  m_IndirectSpecularColor: {r: 0.32553777, g: 0.070358455, b: 0.005404573, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -86,7 +86,7 @@ LightmapSettings:
     m_PVRFilteringAtrousColorSigma: 1
     m_PVRFilteringAtrousNormalSigma: 1
     m_PVRFilteringAtrousPositionSigma: 1
-  m_LightingDataAsset: {fileID: 112000002, guid: 3b2ce831b6fc31a4ab44f8caaf4fe258,
+  m_LightingDataAsset: {fileID: 112000002, guid: 069e35b7e11dfa84a912a7cfaae16ea1,
     type: 2}
   m_UseShadowmask: 1
 --- !u!196 &4
@@ -4429,17 +4429,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1005fc67097e3643ad1fd2e1c7d6809, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  questName: Raccolta Minerali
   currentState: 1
-  npcAssociated: {fileID: 1763968860}
-  priority: 1
-  actions: []
-  actionsNumber: 0
-  questTag: Minerali
-  dialogue:
-  - Ciao
-  - Pulizia Pannelli
-  currentDialogue: 0
+  questName: Raccolta Minerali
+  questPriority: 0
+  taskActived: {fileID: 0}
+  questTasks: []
 --- !u!1001 &442311802
 Prefab:
   m_ObjectHideFlags: 0
@@ -5074,17 +5068,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1005fc67097e3643ad1fd2e1c7d6809, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  questName: Pulizia Pannelli
   currentState: 0
-  npcAssociated: {fileID: 1763968860}
-  priority: 0
-  actions: []
-  actionsNumber: 0
-  questTag: Pannelli
-  dialogue:
-  - Ciao
-  - Pulizia Pannelli
-  currentDialogue: 0
+  questName: Pulizia Pannelli
+  questPriority: 0
+  taskActived: {fileID: 0}
+  questTasks: []
 --- !u!1 &475870088 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 100000, guid: 1082072fa1136b64ebc10c2fad6a0690, type: 3}
@@ -5170,27 +5158,27 @@ Prefab:
     - target: {fileID: 224731570514292318, guid: 979f66f76a28d6843850dbb6af56a1a4,
         type: 2}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 224731570514292318, guid: 979f66f76a28d6843850dbb6af56a1a4,
         type: 2}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 224212974616532936, guid: 979f66f76a28d6843850dbb6af56a1a4,
         type: 2}
       propertyPath: m_AnchorMin.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 224212974616532936, guid: 979f66f76a28d6843850dbb6af56a1a4,
         type: 2}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 224212974616532936, guid: 979f66f76a28d6843850dbb6af56a1a4,
         type: 2}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 224076819394551770, guid: 979f66f76a28d6843850dbb6af56a1a4,
         type: 2}
@@ -5205,7 +5193,7 @@ Prefab:
     - target: {fileID: 114008587723495026, guid: 979f66f76a28d6843850dbb6af56a1a4,
         type: 2}
       propertyPath: selectedToolbar
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114391435465316896, guid: 979f66f76a28d6843850dbb6af56a1a4,
         type: 2}
@@ -5366,6 +5354,21 @@ Prefab:
         type: 2}
       propertyPath: m_AnchoredPosition.x
       value: 2.600006
+      objectReference: {fileID: 0}
+    - target: {fileID: 114074388170369682, guid: 979f66f76a28d6843850dbb6af56a1a4,
+        type: 2}
+      propertyPath: selectedToolbar
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114980322658236440, guid: 979f66f76a28d6843850dbb6af56a1a4,
+        type: 2}
+      propertyPath: O2
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 114221159224723276, guid: 979f66f76a28d6843850dbb6af56a1a4,
+        type: 2}
+      propertyPath: openCloseWindow
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 979f66f76a28d6843850dbb6af56a1a4, type: 2}
@@ -9340,7 +9343,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   quests: []
-  currentQuest: {fileID: 0}
 --- !u!4 &644871970
 Transform:
   m_ObjectHideFlags: 0
@@ -9354,7 +9356,7 @@ Transform:
   - {fileID: 470830876}
   - {fileID: 439250448}
   m_Father: {fileID: 0}
-  m_RootOrder: 59
+  m_RootOrder: 60
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &646797932 stripped
 GameObject:
@@ -11640,6 +11642,24 @@ Transform:
   m_Father: {fileID: 260852443}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &790863918 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1327261909413534, guid: 979f66f76a28d6843850dbb6af56a1a4,
+    type: 2}
+  m_PrefabInternal: {fileID: 476872713}
+--- !u!114 &790863920
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 790863918}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 153bfba017503c74d919ab3c55d40277, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  materialIndex: 0
+  stepHandleType: 0
 --- !u!1001 &794781258
 Prefab:
   m_ObjectHideFlags: 0
@@ -12978,7 +12998,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: cdc101e075458ac49be8daeb2d4cf5d2, type: 3}
       propertyPath: m_RootOrder
-      value: 63
+      value: 62
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: cdc101e075458ac49be8daeb2d4cf5d2, type: 3}
       propertyPath: m_LocalScale.x
@@ -19286,7 +19306,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 7be78b0300e649c43955024e87aff263, type: 3}
       propertyPath: m_RootOrder
-      value: 64
+      value: 63
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 7be78b0300e649c43955024e87aff263, type: 3}
       propertyPath: m_LocalScale.x
@@ -21169,7 +21189,7 @@ Transform:
   - {fileID: 885653490}
   - {fileID: 1502659188}
   m_Father: {fileID: 0}
-  m_RootOrder: 60
+  m_RootOrder: 61
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1466905996 stripped
 GameObject:
@@ -26619,11 +26639,6 @@ MeshCollider:
   m_InflateMesh: 0
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300010, guid: f4754587e0b34db4399fd8237dc99d05, type: 3}
---- !u!1 &1763968860 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1043511487615064, guid: 262286b8ca66f460d8d6b930eb0b9c8b,
-    type: 2}
-  m_PrefabInternal: {fileID: 1247273695}
 --- !u!4 &1763968864 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4299414622037546, guid: 262286b8ca66f460d8d6b930eb0b9c8b,
@@ -28495,7 +28510,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 7be78b0300e649c43955024e87aff263, type: 3}
       propertyPath: m_RootOrder
-      value: 61
+      value: 59
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 7be78b0300e649c43955024e87aff263, type: 3}
       propertyPath: m_LocalScale.x
@@ -30657,7 +30672,7 @@ Transform:
   - {fileID: 2114078480}
   - {fileID: 1751265653}
   m_Father: {fileID: 0}
-  m_RootOrder: 62
+  m_RootOrder: 64
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2145705479 stripped
 GameObject:

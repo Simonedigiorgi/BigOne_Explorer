@@ -487,6 +487,46 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+--- !u!1 &473420905
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 473420907}
+  - component: {fileID: 473420906}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &473420906
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 473420905}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5bfa79540f9f349b792a81ee6bf21dbe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &473420907
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 473420905}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 796.5984, y: 223.9988, z: 19.75}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 16
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &548059934
 GameObject:
   m_ObjectHideFlags: 0
@@ -2329,6 +2369,11 @@ Prefab:
       propertyPath: m_RootOrder
       value: 13
       objectReference: {fileID: 0}
+    - target: {fileID: 114628546372398050, guid: f92b2cd44c2e3204a899c701e86d32f6,
+        type: 2}
+      propertyPath: currentState
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f92b2cd44c2e3204a899c701e86d32f6, type: 2}
   m_IsPrefabParent: 0
@@ -2844,9 +2889,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 306b1f07aee1a504fb94659520fc9287, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelToLoad: Olympus Mons
+  levelToLoad: Cratere Gale
   findSpawnPoint: 1
-  spawnPointName: SpawnOlympusMons
+  spawnPointName: SpawnCratereGale
 --- !u!23 &2077603707
 MeshRenderer:
   m_ObjectHideFlags: 0

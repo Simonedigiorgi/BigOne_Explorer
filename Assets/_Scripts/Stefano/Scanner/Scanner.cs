@@ -5,7 +5,9 @@ using System;
 
 public class Scanner : MonoBehaviour {
 
-	#region Public
+    #region Public
+    public bool equip = false;
+    public float T_distance = 50;
 	[Header("Lista di oggetti da cercare nella scena")]
 	public List<Transform> listObjects;
 	[Header("Suono da riprodurre")]
@@ -54,8 +56,23 @@ public class Scanner : MonoBehaviour {
 		if (timer >= 2) 
 		{
 
-			ChangeRippleColor (ChooseRippleEffect ().color);
-			StartCoroutine (Sound ());
+            if(currentDistance <= T_distance && equip == false)
+            {
+
+                audioSource.PlayOneShot(beep);
+
+            }
+
+            if (equip == true)
+            {
+                ripple.gameObject.SetActive(true);
+                ChangeRippleColor(ChooseRippleEffect().color);
+                StartCoroutine(Sound());
+            }
+            else
+            {
+                ripple.gameObject.SetActive(false);
+            }
 			timer = 0;
 
 		}
@@ -167,6 +184,7 @@ public class Scanner : MonoBehaviour {
 	/// </summary>
 	IEnumerator Sound()
 	{
+
 
 		Debug.Log ("Avvio");
 

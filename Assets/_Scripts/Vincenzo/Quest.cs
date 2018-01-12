@@ -21,7 +21,7 @@ public class Quest : MonoBehaviour
 
     private void Awake()
     {
-        questTasks = new List<Task>();
+        /*questTasks = new List<Task>();
         for (int i = 0; i < this.gameObject.transform.childCount; i++)
         {
             questTasks.Add(this.gameObject.transform.GetChild(i).gameObject.GetComponent<Task>());
@@ -30,9 +30,52 @@ public class Quest : MonoBehaviour
         if(this.currentState == QuestState.ENABLED)
         {
             taskActived = questTasks.Find(x => x.currentState == Task.TaskState.ENABLED);
+        }*/
+
+
+    }
+
+    public IEnumerator InitQuest(Database.DataQuest quest)
+    {
+        questTasks = new List<Task>();
+
+        for (int i = 0; i < this.gameObject.transform.childCount; i++)
+        {
+
+            Task task = this.gameObject.transform.GetChild(i).gameObject.GetComponent<Task>();
+            questTasks.Add(task);
+
+            Database.DataTask dataTask = new Database.DataTask(task.currentState, task.taskName, task.taskPriority);
+            quest.tasks.Add(dataTask);
+
+            if (task.currentState == Task.TaskState.ENABLED)
+            {
+                taskActived = task;
+                quest.activedTask = dataTask;
+            }
+            
         }
 
+        yield return null;
+    }
 
+    public IEnumerator SetQuest(Database.DataQuest quest)
+    {
+        questTasks = new List<Task>();
+
+        foreach(Database.DataTask dataTask in quest.tasks)
+        {
+            Task task = this.gameObject.transform.GetChild(dataTask.taskPriority).gameObject.GetComponent<Task>();
+            task.currentState = dataTask.currentState;
+            questTasks.Add(task);
+
+            if (dataTask.currentState == Task.TaskState.ENABLED)
+            {
+                taskActived = questTasks[task.taskPriority];
+            }
+        }
+
+        yield return null;
     }
 
     public void SwitchToNextTask()
@@ -41,7 +84,12 @@ public class Quest : MonoBehaviour
         {
             int tempPriority = taskActived.taskPriority;
             questTasks[++tempPriority].currentState = Task.TaskState.ENABLED;
+
+            Database.currentQuest.tasks[tempPriority].currentState = Task.TaskState.ENABLED;
+
             taskActived = questTasks[tempPriority++];
+            Database.currentQuest.activedTask = Database.quests[questPriority].tasks[tempPriority++];
+
         }
         else
         {

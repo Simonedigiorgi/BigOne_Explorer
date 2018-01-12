@@ -28,6 +28,7 @@ public class Task : MonoBehaviour
     public virtual void ActiveTask()
     {
         this.currentState = TaskState.ACTIVED;
+        Database.currentQuest.activedTask.currentState = TaskState.ACTIVED;
     }
 
     public virtual void DoTask()
@@ -38,6 +39,7 @@ public class Task : MonoBehaviour
     public virtual void CompleteTask()
     {
         this.currentState = TaskState.COMPLETED;
+        Database.currentQuest.activedTask.currentState = TaskState.COMPLETED;
         QuestManager.currentQuest.SwitchToNextTask();
     }
 

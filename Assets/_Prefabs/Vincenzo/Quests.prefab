@@ -35,6 +35,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4189688059971958}
+  - component: {fileID: 114286794450939410}
   m_Layer: 0
   m_Name: Task1
   m_TagString: Untagged
@@ -66,6 +67,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4850954058876718}
+  - component: {fileID: 114221559394913456}
   m_Layer: 0
   m_Name: Task2
   m_TagString: Untagged
@@ -129,6 +131,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4753525874702072}
+  - component: {fileID: 114811945505153794}
   m_Layer: 0
   m_Name: Task3
   m_TagString: Untagged
@@ -160,6 +163,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4622914117543768}
+  - component: {fileID: 114740887374777600}
   m_Layer: 0
   m_Name: Task4
   m_TagString: Untagged
@@ -427,6 +431,25 @@ MonoBehaviour:
   questPriority: 0
   taskActived: {fileID: 0}
   questTasks: []
+--- !u!114 &114221559394913456
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1240064666749266}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ebce6ebe160aa4de0a2ef090c6abed2e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentState: 0
+  taskName: ssss
+  taskPriority: 0
+  taskScene: 
+  npcAssociated: 0
+  taskDialogue: {fileID: 0}
+  currentDialogue: 0
+  gadgetsReward: 
 --- !u!114 &114267627077751734
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -446,6 +469,24 @@ MonoBehaviour:
   taskDialogue: {fileID: 4900000, guid: 32c3d5d82f2ee4845bea46ee9e6ff3f6, type: 3}
   currentDialogue: 0
   gadgetsReward: 
+--- !u!114 &114286794450939410
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1120137819266332}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f54a30eeef0db41b499a20e86a9c0a79, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentState: 0
+  taskName: aaaa
+  taskPriority: 0
+  taskScene: 
+  taskObjects: []
+  tagTaskObjects: 
+  taskObjectsNumber: 0
 --- !u!114 &114341177063839508
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -495,6 +536,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   quests: []
+--- !u!114 &114740887374777600
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1630841398676886}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f54a30eeef0db41b499a20e86a9c0a79, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentState: 0
+  taskName: ffff
+  taskPriority: 0
+  taskScene: 
+  taskObjects: []
+  tagTaskObjects: 
+  taskObjectsNumber: 0
 --- !u!114 &114801028466272088
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -514,6 +573,21 @@ MonoBehaviour:
   taskDialogue: {fileID: 4900000, guid: 767b165cdc035444a9010c0ee3be5f49, type: 3}
   currentDialogue: 0
   gadgetsReward: 
+--- !u!114 &114811945505153794
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1358809232971660}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a09510dd4686404698031a84b119863, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentState: 0
+  taskName: dddd
+  taskPriority: 0
+  taskScene: 
 --- !u!114 &114854423056491894
 MonoBehaviour:
   m_ObjectHideFlags: 1

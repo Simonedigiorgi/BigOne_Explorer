@@ -5,8 +5,9 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class QuestManager : MonoBehaviour {
-    
-    public List<Quest> quests = new List<Quest>();
+
+    public static QuestManager instance;
+    public List<Quest> quests;
     public static Quest currentQuest;
 
 
@@ -14,18 +15,58 @@ public class QuestManager : MonoBehaviour {
     private void Awake()
     {
 
-        DontDestroyOnLoad(this);
+        if(instance != null)
+        {
+            Destroy(gameObject);
+            return;
+        }
 
+        instance = this;
+
+        DontDestroyOnLoad(this);
+        quests = new List<Quest>();
+
+    }
+
+    public IEnumerator InitQuests()
+    {
         for (int i = 0; i < this.transform.childCount; i++)
         {
             Quest quest = this.transform.GetChild(i).gameObject.GetComponent<Quest>();
             quests.Add(quest);
+
+            Database.DataQuest dataQuest = new Database.DataQuest(quest.currentState, quest.questName, quest.questPriority);
+            Database.quests.Add(dataQuest);
+
             if (quest.currentState == Quest.QuestState.ENABLED)
             {
                 currentQuest = quest;
+                Database.currentQuest = dataQuest;
             }
+
+            yield return StartCoroutine(quest.InitQuest(dataQuest));
+
         }
 
+        yield return null;
+    }
+
+    public IEnumerator SetQuests()
+    {
+
+        foreach(Database.DataQuest dataQuest in Database.quests)
+        {
+            Quest quest = this.transform.GetChild(dataQuest.questPriority).gameObject.GetComponent<Quest>();
+            quest.currentState = dataQuest.currentState;
+            quests.Add(quest);
+
+            yield return StartCoroutine(quest.SetQuest(dataQuest));
+
+        }
+
+        currentQuest = this.quests[Database.currentQuest.questPriority];
+
+        yield return null;
     }
 
     public void SwitchToNextQuest()

@@ -7,7 +7,7 @@ public class GameManager : MonoBehaviour {
 
     public static GameManager instance;
     QuestManager questManager;
-    public static bool newGame = false;
+    public static bool newGame = true;
     
 
     private void Awake()

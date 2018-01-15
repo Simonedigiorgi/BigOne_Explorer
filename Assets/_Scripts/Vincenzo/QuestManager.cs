@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class QuestManager : MonoBehaviour {
 
     public static QuestManager instance;
-    public List<Quest> quests;
+    public List<Quest> quests = new List<Quest>();
     public static Quest currentQuest;
 
 
@@ -24,12 +24,11 @@ public class QuestManager : MonoBehaviour {
         instance = this;
 
         DontDestroyOnLoad(this);
-        quests = new List<Quest>();
-
     }
 
     public IEnumerator InitQuests()
     {
+        
         for (int i = 0; i < this.transform.childCount; i++)
         {
             Quest quest = this.transform.GetChild(i).gameObject.GetComponent<Quest>();
@@ -71,11 +70,30 @@ public class QuestManager : MonoBehaviour {
 
     public void SwitchToNextQuest()
     {
-        if (currentQuest.questPriority < quests.Count)
+        if (currentQuest.questPriority <= quests.Count-1)
         {
             int tempPriority = currentQuest.questPriority;
             quests[++tempPriority].currentState = Quest.QuestState.ENABLED;
-            currentQuest = quests[tempPriority++];
+
+            Database.quests[tempPriority].currentState = Quest.QuestState.ENABLED;
+            
+            currentQuest = quests[tempPriority];
+            //Database.currentQuest = Database.quests[tempPriority];
+
+            currentQuest.taskActived = currentQuest.questTasks[0];
+            currentQuest.questTasks[0].EnableTask();
+
+            foreach(Database.DataQuest q in Database.quests)
+            {
+                print(q.questName+": "+q.currentState);
+                foreach(Database.DataTask t in q.tasks)
+                {
+                    print(t.taskName+" "+t.currentState);
+                }
+            }
+            print("Current: "+currentQuest.questName);
+            print("Database current: "+Database.currentQuest.questName);
+
         }
     }
 

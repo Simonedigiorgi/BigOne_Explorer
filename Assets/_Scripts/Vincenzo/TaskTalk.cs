@@ -22,6 +22,7 @@ public class TaskTalk : Task
 
     public override void DoTask()
     {
+
         if(currentDialogue >= taskDialogue.ToString().Split('\n').Length-1)
         {
             CompleteTask();

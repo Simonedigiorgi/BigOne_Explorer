@@ -25,6 +25,12 @@ public class Task : MonoBehaviour
         dialogueManager = FindObjectOfType<DialogueManager>();
     }
 
+    public virtual void EnableTask()
+    {
+        this.currentState = TaskState.ENABLED;
+        Database.currentQuest.activedTask.currentState = TaskState.ENABLED;
+    }
+
     public virtual void ActiveTask()
     {
         this.currentState = TaskState.ACTIVED;

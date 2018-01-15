@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class QuestManager : MonoBehaviour {
 
     public static QuestManager instance;
-    public List<Quest> quests;
+    public List<Quest> quests = new List<Quest>();
     public static Quest currentQuest;
 
 
@@ -24,12 +24,12 @@ public class QuestManager : MonoBehaviour {
         instance = this;
 
         DontDestroyOnLoad(this);
-        quests = new List<Quest>();
-
     }
 
-    public IEnumerator InitQuests()
+    //public IEnumerator InitQuests()
+    public void InitQuests()
     {
+        
         for (int i = 0; i < this.transform.childCount; i++)
         {
             Quest quest = this.transform.GetChild(i).gameObject.GetComponent<Quest>();
@@ -44,11 +44,12 @@ public class QuestManager : MonoBehaviour {
                 Database.currentQuest = dataQuest;
             }
 
-            yield return StartCoroutine(quest.InitQuest(dataQuest));
+            //yield return StartCoroutine(quest.InitQuest(dataQuest));
+            quest.InitQuest(dataQuest);
 
         }
 
-        yield return null;
+        //yield return null;
     }
 
     public IEnumerator SetQuests()
@@ -71,14 +72,37 @@ public class QuestManager : MonoBehaviour {
 
     public void SwitchToNextQuest()
     {
-        if (currentQuest.questPriority < quests.Count)
+        if (currentQuest.questPriority <= quests.Count-1)
         {
             int tempPriority = currentQuest.questPriority;
-            quests[++tempPriority].currentState = Quest.QuestState.ENABLED;
-            currentQuest = quests[tempPriority++];
+            tempPriority++;
+            currentQuest = quests[tempPriority];
+            Database.currentQuest = Database.quests[tempPriority];
+            quests[tempPriority].EnableQuest();
+            //quests[tempPriority].currentState = Quest.QuestState.ENABLED;
+            
+
+            //Database.quests[tempPriority].currentState = Quest.QuestState.ENABLED;
+            
+
+            currentQuest.taskActived = currentQuest.questTasks[0];
+            Database.currentQuest.activedTask = Database.currentQuest.tasks[0];
+            currentQuest.questTasks[0].EnableTask();
+
         }
     }
 
+    public static void CheckQuest()
+    {
+        if(SceneManager.GetActiveScene().name == currentQuest.taskActived.taskScene)
+        {
+            currentQuest.taskActived.ReadyTask();
+        }
+        else
+        {
+            currentQuest.taskActived.EnableTask();
+        }
+    }
 
     /*[SerializeField]
     public List<Quest> quests = new List<Quest>();

@@ -17,7 +17,7 @@ public class Quest : MonoBehaviour
     public int questPriority;
     public Task taskActived;
 
-    public List<Task> questTasks;
+    public List<Task> questTasks = new List<Task>();
 
     private void Awake()
     {
@@ -35,10 +35,9 @@ public class Quest : MonoBehaviour
 
     }
 
-    public IEnumerator InitQuest(Database.DataQuest quest)
-    {
-        questTasks = new List<Task>();
-
+    //public IEnumerator InitQuest(Database.DataQuest quest)
+    public void InitQuest(Database.DataQuest quest)
+    {    
         for (int i = 0; i < this.gameObject.transform.childCount; i++)
         {
 
@@ -56,13 +55,11 @@ public class Quest : MonoBehaviour
             
         }
 
-        yield return null;
+        //yield return null;
     }
 
     public IEnumerator SetQuest(Database.DataQuest quest)
     {
-        questTasks = new List<Task>();
-
         foreach(Database.DataTask dataTask in quest.tasks)
         {
             Task task = this.gameObject.transform.GetChild(dataTask.taskPriority).gameObject.GetComponent<Task>();
@@ -78,22 +75,37 @@ public class Quest : MonoBehaviour
         yield return null;
     }
 
+    public void EnableQuest()
+    {
+        this.currentState = QuestState.ENABLED;
+        Database.quests[Database.currentQuest.questPriority].currentState = QuestState.ENABLED;
+    }
+
+    public void CompleteQuest()
+    {
+        this.currentState = QuestState.COMPLETED;
+
+        Database.quests[Database.currentQuest.questPriority].currentState = QuestState.COMPLETED;
+
+        this.transform.parent.GetComponent<QuestManager>().SwitchToNextQuest();
+    }
+
     public void SwitchToNextTask()
     {
-        if(questPriority < questTasks.Count)
+        if (taskActived.taskPriority < questTasks.Count-1)
         {
             int tempPriority = taskActived.taskPriority;
-            questTasks[++tempPriority].currentState = Task.TaskState.ENABLED;
+            tempPriority++;
 
-            Database.currentQuest.tasks[tempPriority].currentState = Task.TaskState.ENABLED;
+            taskActived = questTasks[tempPriority];
+            Database.currentQuest.activedTask = Database.quests[Database.currentQuest.questPriority].tasks[tempPriority];
 
-            taskActived = questTasks[tempPriority++];
-            Database.currentQuest.activedTask = Database.quests[questPriority].tasks[tempPriority++];
+            taskActived.EnableTask();
 
         }
         else
         {
-            this.transform.parent.GetComponent<QuestManager>().SwitchToNextQuest();
+            CompleteQuest();
         }
     }
 

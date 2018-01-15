@@ -9,6 +9,7 @@ public class Task : MonoBehaviour
     {
         DISABLED,
         ENABLED,
+        READY,
         ACTIVED,
         COMPLETED
     }
@@ -18,11 +19,16 @@ public class Task : MonoBehaviour
     public int taskPriority;
     public string taskScene;
 
-    protected DialogueManager dialogueManager;
-
-    void Awake()
+    public virtual void EnableTask()
     {
-        dialogueManager = FindObjectOfType<DialogueManager>();
+        this.currentState = TaskState.ENABLED;
+        Database.currentQuest.activedTask.currentState = TaskState.ENABLED;
+    }
+
+    public virtual void ReadyTask()
+    {
+        this.currentState = TaskState.READY;
+        Database.currentQuest.activedTask.currentState = TaskState.READY;
     }
 
     public virtual void ActiveTask()
@@ -41,6 +47,7 @@ public class Task : MonoBehaviour
         this.currentState = TaskState.COMPLETED;
         Database.currentQuest.activedTask.currentState = TaskState.COMPLETED;
         QuestManager.currentQuest.SwitchToNextTask();
+        QuestManager.CheckQuest();
     }
 
 }

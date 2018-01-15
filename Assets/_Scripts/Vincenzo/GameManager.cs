@@ -7,7 +7,7 @@ public class GameManager : MonoBehaviour {
 
     public static GameManager instance;
     QuestManager questManager;
-    public static bool newGame = false;
+    public static bool newGame = true;
     
 
     private void Awake()
@@ -26,7 +26,8 @@ public class GameManager : MonoBehaviour {
         questManager = FindObjectOfType<QuestManager>();
 
         if(newGame)
-            StartCoroutine(questManager.InitQuests());
+            //StartCoroutine(questManager.InitQuests());
+            questManager.InitQuests();
     }
 
     // Use this for initialization
@@ -45,45 +46,36 @@ public class GameManager : MonoBehaviour {
     public void InitSavedGame()
     {
 
-    }
+    }*/
 
     void OnEnable()
     {
-        if(startedGame)
-            SceneManager.sceneLoaded += OnSceneLoaded;
+        SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
     void OnDisable()
     {
-        if (startedGame)
-            SceneManager.sceneLoaded -= OnSceneLoaded;
+        SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 
     
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        if(!setGame)
+        QuestManager.CheckQuest();
+        /*foreach (Database.DataQuest quest in Database.quests)
         {
-            StartCoroutine(InitNewGame());
-        }
-        /*else
-        {
-            foreach (Database.DataQuest quest in Database.quests)
+            print(quest.questName);
+            print(quest.currentState);
+            foreach (Database.DataTask task in quest.tasks)
             {
-                print(quest.questName);
-                print(quest.currentState);
-                foreach (Database.DataTask task in quest.tasks)
-                {
-                    print(task.currentState);
-                    print(task.taskName);
-                }
-
-                print("\n");
+                    
+                print(task.taskName);
+                print(task.currentState);
             }
 
-            print(Database.currentQuest.questName);
-            StartCoroutine(questManager.SetQuests());
-        }
-    }*/
+            print("\n");
+        }*/
+        
+    }
 }

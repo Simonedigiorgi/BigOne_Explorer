@@ -26,7 +26,8 @@ public class QuestManager : MonoBehaviour {
         DontDestroyOnLoad(this);
     }
 
-    public IEnumerator InitQuests()
+    //public IEnumerator InitQuests()
+    public void InitQuests()
     {
         
         for (int i = 0; i < this.transform.childCount; i++)
@@ -43,11 +44,12 @@ public class QuestManager : MonoBehaviour {
                 Database.currentQuest = dataQuest;
             }
 
-            yield return StartCoroutine(quest.InitQuest(dataQuest));
+            //yield return StartCoroutine(quest.InitQuest(dataQuest));
+            quest.InitQuest(dataQuest);
 
         }
 
-        yield return null;
+        //yield return null;
     }
 
     public IEnumerator SetQuests()
@@ -73,30 +75,34 @@ public class QuestManager : MonoBehaviour {
         if (currentQuest.questPriority <= quests.Count-1)
         {
             int tempPriority = currentQuest.questPriority;
-            quests[++tempPriority].currentState = Quest.QuestState.ENABLED;
-
-            Database.quests[tempPriority].currentState = Quest.QuestState.ENABLED;
-            
+            tempPriority++;
             currentQuest = quests[tempPriority];
-            //Database.currentQuest = Database.quests[tempPriority];
+            Database.currentQuest = Database.quests[tempPriority];
+            quests[tempPriority].EnableQuest();
+            //quests[tempPriority].currentState = Quest.QuestState.ENABLED;
+            
+
+            //Database.quests[tempPriority].currentState = Quest.QuestState.ENABLED;
+            
 
             currentQuest.taskActived = currentQuest.questTasks[0];
+            Database.currentQuest.activedTask = Database.currentQuest.tasks[0];
             currentQuest.questTasks[0].EnableTask();
-
-            foreach(Database.DataQuest q in Database.quests)
-            {
-                print(q.questName+": "+q.currentState);
-                foreach(Database.DataTask t in q.tasks)
-                {
-                    print(t.taskName+" "+t.currentState);
-                }
-            }
-            print("Current: "+currentQuest.questName);
-            print("Database current: "+Database.currentQuest.questName);
 
         }
     }
 
+    public static void CheckQuest()
+    {
+        if(SceneManager.GetActiveScene().name == currentQuest.taskActived.taskScene)
+        {
+            currentQuest.taskActived.ReadyTask();
+        }
+        else
+        {
+            currentQuest.taskActived.EnableTask();
+        }
+    }
 
     /*[SerializeField]
     public List<Quest> quests = new List<Quest>();

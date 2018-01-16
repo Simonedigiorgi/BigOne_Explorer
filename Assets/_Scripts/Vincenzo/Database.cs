@@ -73,6 +73,12 @@ public static class Database
     [Serializable]
     public class DataGadget
     {
+        public DataGadget(string pGadgetName, bool pIsActive)
+        {
+            gadgetName = pGadgetName;
+            isActive = pIsActive;
+        }
+
         public string gadgetName;
         public bool isActive;
     }

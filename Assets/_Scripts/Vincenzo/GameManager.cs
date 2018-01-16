@@ -63,6 +63,7 @@ public class GameManager : MonoBehaviour {
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         QuestManager.CheckQuest();
+        Database.currentScene = scene.name;
         /*foreach (Database.DataQuest quest in Database.quests)
         {
             print(quest.questName);

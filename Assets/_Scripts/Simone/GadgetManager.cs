@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -134,37 +135,57 @@ public class GadgetManager : MonoBehaviour {
 
     }
 
-    public void ActivateGadget(GadgetType gadgetType)
+    public void ActivateGadget(GadgetType gadgetType, bool active)
     {
 
         switch(gadgetType)
         {
             case GadgetType.TORCH:
-                isTorch = true;
+                isTorch = active;
             break;
             case GadgetType.COMPASS:
-                isCompass = true;
+                isCompass = active;
             break;
             case GadgetType.PICKAXE:
-                isPickaxe = true;
+                isPickaxe = active;
             break;
             case GadgetType.SCANNER:
-                isScanner = true;
+                isScanner = active;
             break;
             case GadgetType.CAMERA:
-                isCamera = true;
+                isCamera = active;
             break;
             case GadgetType.AUGER:
-                isAuger = true;
+                isAuger = active;
             break;
             case GadgetType.JETPACK:
-                isJetPack = true;
+                isJetPack = active;
             break;
             case GadgetType.GEIGER:
-                isGeiger = true;
+                isGeiger = active;
             break;
 
         }
 
     }
+
+    public void InitGadgets()
+    {
+        var gadget = Enum.GetNames(typeof(GadgetType));
+        for (int i = 0; i < gadget.Length - 1; i++)
+        {
+            Database.DataGadget dataGadget = new Database.DataGadget(gadget[i], false);
+            Database.gadgets.Add(dataGadget);
+        }
+    }
+
+    public void SetGadgets()
+    {
+        foreach(Database.DataGadget dataGadget in Database.gadgets)
+        {
+            GadgetType gadget = (GadgetType)Enum.Parse(typeof(GadgetType), dataGadget.gadgetName);
+            ActivateGadget(gadget, dataGadget.isActive);
+        }
+    }
+
 }

@@ -46,7 +46,7 @@ public class TaskTalk : Task
         {
             foreach (GadgetManager.GadgetType gadget in gadgetsReward)
             {
-                gadgetManager.ActivateGadget(gadget);
+                gadgetManager.ActivateGadget(gadget, true);
             }
         }
         

@@ -31,13 +31,13 @@ public class Npc : MonoBehaviour {
             if (QuestManager.currentQuest.taskActived.GetComponent<TaskTalk>() &&
                 QuestManager.currentQuest.taskActived.GetComponent<TaskTalk>().npcAssociated == this.npc)
             {
-                if (QuestManager.currentQuest.taskActived.currentState == Task.TaskState.ENABLED)
+                if (QuestManager.currentQuest.taskActived.currentState == Task.TaskState.READY)
                 {
-                    QuestManager.currentQuest.taskActived.GetComponent<Task>().ActiveTask();
+                    QuestManager.currentQuest.taskActived.ActiveTask();
                 }
                 else if (QuestManager.currentQuest.taskActived.currentState == Task.TaskState.ACTIVED)
                 {
-                    QuestManager.currentQuest.taskActived.GetComponent<Task>().DoTask();
+                    QuestManager.currentQuest.taskActived.DoTask();
                 }
             }
             else

@@ -26,8 +26,7 @@ public class GameManager : MonoBehaviour {
         questManager = FindObjectOfType<QuestManager>();
 
         if(newGame)
-            //StartCoroutine(questManager.InitQuests());
-            questManager.InitQuests();
+            StartCoroutine(questManager.InitQuests());
     }
 
     // Use this for initialization
@@ -46,36 +45,45 @@ public class GameManager : MonoBehaviour {
     public void InitSavedGame()
     {
 
-    }*/
+    }
 
     void OnEnable()
     {
-        SceneManager.sceneLoaded += OnSceneLoaded;
+        if(startedGame)
+            SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
     void OnDisable()
     {
-        SceneManager.sceneLoaded -= OnSceneLoaded;
+        if (startedGame)
+            SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 
     
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        QuestManager.CheckQuest();
-        /*foreach (Database.DataQuest quest in Database.quests)
+        if(!setGame)
         {
-            print(quest.questName);
-            print(quest.currentState);
-            foreach (Database.DataTask task in quest.tasks)
+            StartCoroutine(InitNewGame());
+        }
+        /*else
+        {
+            foreach (Database.DataQuest quest in Database.quests)
             {
-                    
-                print(task.taskName);
-                print(task.currentState);
+                print(quest.questName);
+                print(quest.currentState);
+                foreach (Database.DataTask task in quest.tasks)
+                {
+                    print(task.currentState);
+                    print(task.taskName);
+                }
+
+                print("\n");
             }
 
-            print("\n");
-        }*/
-        
-    }
+            print(Database.currentQuest.questName);
+            StartCoroutine(questManager.SetQuests());
+        }
+    }*/
 }

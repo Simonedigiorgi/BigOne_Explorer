@@ -17,10 +17,12 @@ public class Quest : MonoBehaviour
     public int questPriority;
     public Task taskActived;
 
-    public List<Task> questTasks = new List<Task>();
+    public List<Task> questTasks;
 
     private void Awake()
     {
+
+        questTasks = new List<Task>();
         /*questTasks = new List<Task>();
         for (int i = 0; i < this.gameObject.transform.childCount; i++)
         {
@@ -35,8 +37,7 @@ public class Quest : MonoBehaviour
 
     }
 
-    //public IEnumerator InitQuest(Database.DataQuest quest)
-    public void InitQuest(Database.DataQuest quest)
+    public IEnumerator InitQuest(Database.DataQuest quest)
     {    
         for (int i = 0; i < this.gameObject.transform.childCount; i++)
         {
@@ -55,7 +56,7 @@ public class Quest : MonoBehaviour
             
         }
 
-        //yield return null;
+        yield return null;
     }
 
     public IEnumerator SetQuest(Database.DataQuest quest)
@@ -75,12 +76,6 @@ public class Quest : MonoBehaviour
         yield return null;
     }
 
-    public void EnableQuest()
-    {
-        this.currentState = QuestState.ENABLED;
-        Database.quests[Database.currentQuest.questPriority].currentState = QuestState.ENABLED;
-    }
-
     public void CompleteQuest()
     {
         this.currentState = QuestState.COMPLETED;
@@ -95,12 +90,12 @@ public class Quest : MonoBehaviour
         if (taskActived.taskPriority < questTasks.Count-1)
         {
             int tempPriority = taskActived.taskPriority;
-            tempPriority++;
+            questTasks[++tempPriority].currentState = Task.TaskState.ENABLED;
 
-            taskActived = questTasks[tempPriority];
-            Database.currentQuest.activedTask = Database.quests[Database.currentQuest.questPriority].tasks[tempPriority];
+            Database.currentQuest.tasks[tempPriority].currentState = Task.TaskState.ENABLED;
 
-            taskActived.EnableTask();
+            taskActived = questTasks[tempPriority++];
+            Database.currentQuest.activedTask = Database.quests[taskActived.taskPriority].tasks[tempPriority++];
 
         }
         else

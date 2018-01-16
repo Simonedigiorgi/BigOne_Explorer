@@ -11,17 +11,9 @@ public class TaskInteract : Task
 
     public void GetTaskObjects()
     {
-       
         taskObjects = GameObject.FindGameObjectsWithTag(tagTaskObjects);
         taskObjectsNumber = taskObjects.Length;
-        
     }
 
-    public override void ReadyTask()
-    {
-        base.ReadyTask();
 
-        this.GetTaskObjects();
-
-    }
 }

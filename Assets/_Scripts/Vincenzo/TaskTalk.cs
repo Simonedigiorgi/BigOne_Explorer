@@ -16,7 +16,7 @@ public class TaskTalk : Task
     public override void ActiveTask()
     {
         base.ActiveTask();
-        DialogueManager dialogueManager = FindObjectOfType<DialogueManager>();
+       
         dialogueManager.SetDialogue(this.taskDialogue, false);
     }
 
@@ -29,7 +29,6 @@ public class TaskTalk : Task
         }
         else
         {
-            DialogueManager dialogueManager = FindObjectOfType<DialogueManager>();
             dialogueManager.SwitchDialogues(taskDialogue.ToString().Split('\n'));
         }
     }
@@ -39,7 +38,6 @@ public class TaskTalk : Task
 
         base.CompleteTask();
 
-        DialogueManager dialogueManager = FindObjectOfType<DialogueManager>();
         dialogueManager.HideDialogue();
         gadgetManager = FindObjectOfType<GadgetManager>();
         if(gadgetsReward.Length > 0)

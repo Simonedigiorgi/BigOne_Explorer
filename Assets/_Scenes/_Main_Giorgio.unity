@@ -34,11 +34,11 @@ RenderSettings:
   m_SpotCookie: {fileID: 10001, guid: 0000000000000000e000000000000000, type: 0}
   m_DefaultReflectionMode: 0
   m_DefaultReflectionResolution: 128
-  m_ReflectionBounces: 1
+  m_ReflectionBounces: 2
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 1846014363}
-  m_IndirectSpecularColor: {r: 0.21768817, g: 0.12502956, b: 0.08204155, a: 1}
+  m_IndirectSpecularColor: {r: 0.12033853, g: 0.0764859, b: 0.042416945, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -3571,6 +3571,7 @@ GameObject:
   - component: {fileID: 318513808}
   - component: {fileID: 318513807}
   - component: {fileID: 318513814}
+  - component: {fileID: 318513812}
   m_Layer: 0
   m_Name: Camera
   m_TagString: Untagged
@@ -3648,6 +3649,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: -80, y: 0, z: 0}
+--- !u!114 &318513812
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 318513806}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1eed1d9cbe64423499f1fefc0ce50417, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Resolution: 0
+  DefaultSpotCookie: {fileID: 0}
 --- !u!114 &318513814
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3665,8 +3679,8 @@ MonoBehaviour:
   timeText: {fileID: 0}
   Days: 0
   intensity: 0
-  fogDay: {r: 0.5, g: 0.5, b: 0.5, a: 1}
-  fogNight: {r: 0, g: 0, b: 0, a: 1}
+  fogDay: {r: 0.8088235, g: 0.71169907, b: 0.58877593, a: 1}
+  fogNight: {r: 0.25735295, g: 0.16046713, b: 0.03784603, a: 1}
   Speed: 0
 --- !u!1001 &849917520
 Prefab:
@@ -7358,6 +7372,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1846014364}
   - component: {fileID: 1846014363}
+  - component: {fileID: 1846014365}
   m_Layer: 0
   m_Name: Directional light
   m_TagString: Untagged
@@ -7374,13 +7389,13 @@ Light:
   m_Enabled: 1
   serializedVersion: 8
   m_Type: 1
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 0.8602941, a: 1}
   m_Intensity: 1
   m_Range: 10
   m_SpotAngle: 30
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 0
+    m_Type: 2
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
@@ -7428,6 +7443,31 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!114 &1846014365
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1846014362}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dafc90245bfe9e2408e358f71deace2a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SampleCount: 8
+  ScatteringCoef: 0.034
+  ExtinctionCoef: 0.0106
+  SkyboxExtinctionCoef: 0.483
+  MieG: 0.492
+  HeightFog: 1
+  HeightScale: 0.297
+  GroundLevel: 0
+  Noise: 0
+  NoiseScale: 0.015
+  NoiseIntensity: 1
+  NoiseIntensityOffset: 0.3
+  NoiseVelocity: {x: 3, y: 3}
+  MaxRayLength: 400
 --- !u!1001 &2115465445
 Prefab:
   m_ObjectHideFlags: 0

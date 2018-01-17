@@ -18,8 +18,8 @@ public class DayNightCycle : MonoBehaviour {
     public Color fogNight = Color.black;
 
  
-
-    public int Speed;
+    
+    public float Speed;
 
 	void Update () {
         ChangeTime();
@@ -28,19 +28,19 @@ public class DayNightCycle : MonoBehaviour {
     public void ChangeTime()
     {
         time += Time.deltaTime + Speed;
-        if (time > 8)
+        if (time > 80)
         {
             Days += 1;
             time = 0;
         }
         currentTime = TimeSpan.FromSeconds(time);
 
-        SunTransform.rotation = Quaternion.Euler(new Vector3((time-2)/8*360,0,0));
+        SunTransform.rotation = Quaternion.Euler(new Vector3((time-20)/80*360,0,0));
 
-        if (time < 432)
-            intensity = 1 - (4 - time) / 4;
+        if (time < 42)
+            intensity = 1 - (40 - time) / 40;
         else
-            intensity = 1 - ((4 - time) / 4 * -1);
+            intensity = 1 - ((40 - time) / 40 * -1);
 
         RenderSettings.fogColor = Color.Lerp(fogNight, fogDay, intensity * intensity);
 

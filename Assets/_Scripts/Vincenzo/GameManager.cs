@@ -64,6 +64,10 @@ public class GameManager : MonoBehaviour {
     {
         QuestManager.CheckQuest();
         Database.currentScene = scene.name;
+        foreach(Database.InteractableObject o in Database.interactableObjects)
+        {
+            print(o.type+" - "+o.interactableName+" - "+o.isInteractable);
+        }
         /*foreach (Database.DataQuest quest in Database.quests)
         {
             print(quest.questName);

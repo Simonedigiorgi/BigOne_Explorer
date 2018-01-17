@@ -10,8 +10,6 @@ public class QuestManager : MonoBehaviour {
     public List<Quest> quests = new List<Quest>();
     public static Quest currentQuest;
 
-
-
     private void Awake()
     {
 
@@ -45,7 +43,8 @@ public class QuestManager : MonoBehaviour {
             }
 
             //yield return StartCoroutine(quest.InitQuest(dataQuest));
-            quest.InitQuest(dataQuest);
+            //quest.InitQuest(dataQuest);
+            quest.InitQuest();
 
         }
 

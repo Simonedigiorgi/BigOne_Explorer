@@ -36,24 +36,28 @@ public class Quest : MonoBehaviour
     }
 
     //public IEnumerator InitQuest(Database.DataQuest quest)
-    public void InitQuest(Database.DataQuest quest)
+    //public void InitQuest(Database.DataQuest quest)
+    public void InitQuest()
     {    
         for (int i = 0; i < this.gameObject.transform.childCount; i++)
         {
+
+            Database.DataQuest dataQuest = Database.quests[this.questPriority];
 
             Task task = this.gameObject.transform.GetChild(i).gameObject.GetComponent<Task>();
             questTasks.Add(task);
 
             Database.DataTask dataTask = new Database.DataTask(task.currentState, task.taskName, task.taskPriority);
-            quest.tasks.Add(dataTask);
+            dataQuest.tasks.Add(dataTask);
 
             if (task.currentState == Task.TaskState.ENABLED)
             {
                 taskActived = task;
-                quest.activedTask = dataTask;
+                dataQuest.activedTask = dataTask;
             }
             
         }
+
 
         //yield return null;
     }

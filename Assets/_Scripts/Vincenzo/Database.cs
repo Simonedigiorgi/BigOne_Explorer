@@ -5,10 +5,10 @@ using System;
 
 public enum InteractableType
 {
-    EQUIPMENT,
-    PANEL,
-    MINERAL,
-    TUBE,
+    EQUIPAGGIAMENTO,
+    PANNELLI,
+    MINERALI,
+    TUBI,
     PROBE
 }
 

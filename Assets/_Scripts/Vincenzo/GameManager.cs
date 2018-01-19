@@ -60,14 +60,15 @@ public class GameManager : MonoBehaviour {
 
     
 
-    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         QuestManager.CheckQuest();
         Database.currentScene = scene.name;
-        foreach(Database.InteractableObject o in Database.interactableObjects)
+        SetObjectScene(scene);
+        /*foreach(Database.InteractableObject o in Database.interactableObjects)
         {
             print(o.type+" - "+o.interactableName+" - "+o.isInteractable);
-        }
+        }*/
         /*foreach (Database.DataQuest quest in Database.quests)
         {
             print(quest.questName);
@@ -82,5 +83,20 @@ public class GameManager : MonoBehaviour {
             print("\n");
         }*/
         
+    }
+
+    void SetObjectScene(Scene scene)
+    {
+        if(Database.interactableObjects.Count > 0 && Database.interactableObjects.Exists(x => x.sceneContainer == scene.name))
+        {
+            foreach(Database.InteractableObject interactable in Database.interactableObjects)
+            {
+                if(interactable.sceneContainer == scene.name && !interactable.isInteractable)
+                {
+                    GameObject interactableToDestroy = GameObject.Find(interactable.interactableName);
+                    Destroy(interactableToDestroy);
+                }
+            }
+        }
     }
 }

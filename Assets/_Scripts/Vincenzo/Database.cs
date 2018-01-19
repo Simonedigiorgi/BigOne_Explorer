@@ -9,7 +9,7 @@ public enum InteractableType
     PANNELLI,
     MINERALI,
     TUBI,
-    PROBE
+    RESTI_SONDA
 }
 
 public static class Database
@@ -34,13 +34,23 @@ public static class Database
     [Serializable]
     public class InteractableObject
     {
+
+        public InteractableObject(InteractableType pInteractableType, string pInteractableName, bool pIsInteractable, string pScene)
+        {
+            this.type = pInteractableType;
+            this.interactableName = pInteractableName;
+            this.isInteractable = pIsInteractable;
+            this.sceneContainer = pScene;
+        }
+
         public InteractableType type;
         public string interactableName;
         public bool isInteractable;
+        public string sceneContainer;
     }
 
 
-    [Serializable]
+    /*[Serializable]
     public class DataEquipment: InteractableObject
     {
         
@@ -68,7 +78,7 @@ public static class Database
     public class DataProbe : InteractableObject
     {
         
-    }
+    }*/
 
     [Serializable]
     public class DataGadget

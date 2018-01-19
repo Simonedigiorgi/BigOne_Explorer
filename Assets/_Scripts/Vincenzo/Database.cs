@@ -96,6 +96,13 @@ public static class Database
     [Serializable]
     public class DataScene
     {
+
+        public DataScene(string pSceneName, bool pIsUnlocked)
+        {
+            this.sceneName = pSceneName;
+            this.isUnlocked = pIsUnlocked;
+        }
+
         public string sceneName;
         public bool isUnlocked;
     }

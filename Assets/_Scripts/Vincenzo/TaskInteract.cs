@@ -43,6 +43,7 @@ public class TaskInteract : Task
     {
         Database.interactableObjects.Find(x => x.interactableName == interactable.name).isInteractable = false;
         taskObjectsName.Remove(interactable.name);
+        Destroy(interactable);
         taskObjectsNumber--;
         if(taskObjectsNumber <= 0)
         {
@@ -60,7 +61,7 @@ public class TaskInteract : Task
         }
         else
         {
-            //LoadTaskObjects();
+            LoadTaskObjects();
         }
 
     }

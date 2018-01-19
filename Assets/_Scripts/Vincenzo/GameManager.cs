@@ -6,9 +6,10 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour {
 
     public static GameManager instance;
-    QuestManager questManager;
     public static bool newGame = true;
-    
+    public List<string> scenes;
+
+    QuestManager questManager;
 
     private void Awake()
     {
@@ -24,14 +25,26 @@ public class GameManager : MonoBehaviour {
         DontDestroyOnLoad(this);
 
         questManager = FindObjectOfType<QuestManager>();
+        scenes = new List<string>();
 
-        if(newGame)
+        if (newGame)
+        {
             //StartCoroutine(questManager.InitQuests());
             questManager.InitQuests();
+            this.SetScenes();
+
+        }
+            
     }
 
     // Use this for initialization
-    void Start () {
+    void Start ()
+    {
+
+        
+
+        
+        
 		
 	}
 
@@ -97,6 +110,28 @@ public class GameManager : MonoBehaviour {
                     Destroy(interactableToDestroy);
                 }
             }
+        }
+    }
+
+    void SetScenes()
+    {
+        for (int i = 0; i < SceneManager.sceneCountInBuildSettings; i++)
+        {
+            string[] containerSceneName = SceneUtility.GetScenePathByBuildIndex(i).Split('/');
+            string[] sceneName = containerSceneName[2].Split('.');
+            scenes.Add(sceneName[0]);
+            bool isUnlocked = false;
+            if (i == 0 || i == 1)
+            {
+                isUnlocked = true;
+            }
+            Database.DataScene dataScene = new Database.DataScene(sceneName[0], isUnlocked);
+            Database.scenes.Add(dataScene);
+        }
+
+        foreach(Database.DataScene scene in Database.scenes)
+        {
+            print(scene.sceneName+": "+scene.isUnlocked);
         }
     }
 }

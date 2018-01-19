@@ -8,7 +8,7 @@ public class MenuManager : MonoBehaviour {
     public void StartNewGame()
     {
         GameManager.newGame = true;
-        SceneManager.LoadScene("_Main_Vincenzo");
+        SceneManager.LoadScene("Cratere Gale_Prova");
     }
 
 }

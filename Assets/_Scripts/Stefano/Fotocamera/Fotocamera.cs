@@ -14,6 +14,10 @@ public class Fotocamera : MonoBehaviour
 	[Range(0, 10)]
 	public float velocity;
 	public CanvasGroup flash;
+	public bool isActive;
+
+	public GameObject ogg;
+	public GameObject buttonFlash;
 
 	#endregion
 
@@ -21,13 +25,23 @@ public class Fotocamera : MonoBehaviour
 
 	private bool exit;
 	private bool temp = false;
+	private Camera camPhoto;
 
 	#endregion 
 
 	void Update()
 	{
+		
+		if (isActive == true) 
+		{
 
-		FlashTemp ();
+			//Scatto la foto
+			FlashTemp ();
+			//Controllo se ho il target di un oggetto
+			TakeTargetPhoto ();
+
+		}
+			
 
 	}
 
@@ -40,8 +54,11 @@ public class Fotocamera : MonoBehaviour
 
 		Camera.main.enabled = false;
 		cam.enabled = true;
-	}
+		camPhoto = cam;
+		isActive = true;
 
+	}
+		
 	/// <summary>
 	/// Changes the camera to main.
 	/// </summary>
@@ -53,7 +70,7 @@ public class Fotocamera : MonoBehaviour
 		cam.enabled = false;
 
 	}
-
+		
 	/// <summary>
 	/// Metodo che scatta una foto	
 	/// </summary>
@@ -62,9 +79,32 @@ public class Fotocamera : MonoBehaviour
 
 		exit = false;
 		temp = true;
-
 		//StartCoroutine (Flash());
 
+
+	}
+
+	/// <summary>
+	/// Metodo che controlla se stai puntando al target corretto
+	/// </summary>
+	public void TakeTargetPhoto()
+	{
+
+		Plane[] planes = GeometryUtility.CalculateFrustumPlanes (camPhoto);
+
+		if (GeometryUtility.TestPlanesAABB (planes, ogg.GetComponent<Renderer> ().bounds)) 
+		{
+
+			Debug.Log ("Yeah");
+			buttonFlash.SetActive (true);
+
+		} 
+		else 
+		{
+
+			buttonFlash.SetActive (false);
+
+		}
 
 	}
 
@@ -102,6 +142,7 @@ public class Fotocamera : MonoBehaviour
 			{
 				flash.alpha = 0;
 				temp = false;
+				ogg.SetActive (false);
 
 			}
 

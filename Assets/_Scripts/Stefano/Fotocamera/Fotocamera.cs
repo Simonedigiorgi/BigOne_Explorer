@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System;
 
 /// <summary>
 /// Script che gestisce il gadget della fotocamera
@@ -11,13 +12,17 @@ public class Fotocamera : MonoBehaviour
 
 	#region Public 
 
+	//[Header("Se è spuntato il gadget è in esecuzione")]
+	[Header("Velocità del flash")]
 	[Range(0, 10)]
 	public float velocity;
+	[Header("Canvas group del flash")]
 	public CanvasGroup flash;
-	public bool isActive;
-
-	public GameObject ogg;
+	[Header("Bottone da attivare per la fotografia")]
 	public GameObject buttonFlash;
+
+	[Header("lista degli scorci da fotografare")]
+	public List<Place> listPlace;
 
 	#endregion
 
@@ -26,8 +31,19 @@ public class Fotocamera : MonoBehaviour
 	private bool exit;
 	private bool temp = false;
 	private Camera camPhoto;
+	private int indexCurrentPlace;
+	private bool isActive;
 
 	#endregion 
+
+	[Serializable]
+	public class Place
+	{
+
+		public GameObject place;
+		public bool taked;
+
+	}
 
 	void Update()
 	{
@@ -92,18 +108,22 @@ public class Fotocamera : MonoBehaviour
 
 		Plane[] planes = GeometryUtility.CalculateFrustumPlanes (camPhoto);
 
-		if (GeometryUtility.TestPlanesAABB (planes, ogg.GetComponent<Renderer> ().bounds)) 
+		for (int i = 0; i < listPlace.Count; i++) 
 		{
 
-			Debug.Log ("Yeah");
-			buttonFlash.SetActive (true);
+			if (GeometryUtility.TestPlanesAABB (planes, listPlace[i].place.GetComponent<Renderer>().bounds))
+			{
+				
+				buttonFlash.SetActive (true);
+				indexCurrentPlace = i;
 
-		} 
-		else 
-		{
+			} 
+			else 
+			{
 
-			buttonFlash.SetActive (false);
+				buttonFlash.SetActive (false);
 
+			}
 		}
 
 	}
@@ -142,7 +162,8 @@ public class Fotocamera : MonoBehaviour
 			{
 				flash.alpha = 0;
 				temp = false;
-				ogg.SetActive (false);
+				listPlace [indexCurrentPlace].place.SetActive(false);
+				listPlace [indexCurrentPlace].taked = true;
 
 			}
 
@@ -187,6 +208,8 @@ public class Fotocamera : MonoBehaviour
 			if (flash.alpha <= 0.01) 
 			{
 				flash.alpha = 0;
+				listPlace [indexCurrentPlace].place.SetActive(false);
+				listPlace [indexCurrentPlace].taked = true;
 				yield return null;
 
 			}

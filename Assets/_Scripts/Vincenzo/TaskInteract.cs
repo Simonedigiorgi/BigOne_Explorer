@@ -23,9 +23,7 @@ public class TaskInteract : Task
             action.SetActive(true);
 
             action.GetComponent<vTriggerGenericAction>().OnDoAction.AddListener(() => SetTaskObject(action.transform.parent.gameObject));
-
             
-
             taskObjectsName.Add(taskObjects[i].name); 
             Database.InteractableObject interactableObject = new Database.InteractableObject(
                 (InteractableType)Enum.Parse(typeof(InteractableType), tagTaskObjects.ToUpper()), taskObjects[i].name, true, taskScene);
@@ -48,11 +46,6 @@ public class TaskInteract : Task
             }
         }
     }
-
-    public void StampaGesu()
-    {
-        print("Gesù");
-    } 
 
     public void SetTaskObject(GameObject interactable)
     {

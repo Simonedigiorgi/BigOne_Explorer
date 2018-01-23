@@ -71,7 +71,7 @@ public class QuestManager : MonoBehaviour {
 
     public void SwitchToNextQuest()
     {
-        if (currentQuest.questPriority <= quests.Count-1)
+        if (currentQuest.questPriority < quests.Count-1)
         {
             int tempPriority = currentQuest.questPriority;
             tempPriority++;
@@ -88,6 +88,10 @@ public class QuestManager : MonoBehaviour {
             Database.currentQuest.activedTask = Database.currentQuest.tasks[0];
             currentQuest.questTasks[0].EnableTask();
 
+        }
+        else
+        {
+            print("Missioni completate");
         }
     }
 

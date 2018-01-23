@@ -27,8 +27,10 @@ public static class Database
     public static List<DataScene> scenes = new List<DataScene>();
     public static List<DataQuest> quests = new List<DataQuest>();
 
+	//Save
     public static DataQuest currentQuest;
     public static string currentScene;
+	//end save
 
 
     [Serializable]
@@ -43,10 +45,12 @@ public static class Database
             this.sceneContainer = pScene;
         }
 
+		//Save
         public InteractableType type;
         public string interactableName;
         public bool isInteractable;
         public string sceneContainer;
+		//Save
     }
 
 
@@ -89,8 +93,10 @@ public static class Database
             isActive = pIsActive;
         }
 
+		//Save
         public string gadgetName;
         public bool isActive;
+		//end save
     }
 
     [Serializable]
@@ -103,8 +109,10 @@ public static class Database
             this.isUnlocked = pIsUnlocked;
         }
 
+		//Save
         public string sceneName;
         public bool isUnlocked;
+		//end save
     }
 
     [Serializable]
@@ -118,11 +126,13 @@ public static class Database
             this.questPriority = pPriority;
         }
 
+		//Save
         public Quest.QuestState currentState;
         public string questName;
         public List<DataTask> tasks = new List<DataTask>();
-        public DataTask activedTask;
+        public DataTask activedTask; 
         public int questPriority;
+		//end save
     }
 
     [Serializable]
@@ -135,9 +145,11 @@ public static class Database
             this.taskPriority = pPriority;
         }
 
+		//Save
         public Task.TaskState currentState;
         public string taskName;
         public int taskPriority;
+		//end save
     }
 
 }

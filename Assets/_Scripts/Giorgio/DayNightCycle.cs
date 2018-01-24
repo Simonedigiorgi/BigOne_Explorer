@@ -41,6 +41,8 @@ public class DayNightCycle : MonoBehaviour {
             intensity = 1 - (43200 - time) / 43200;
         else
             intensity = 1 - ((43200 - time) / 43200 * -1);
+        if (intensity < 0.3)
+            intensity = 0;
 
         RenderSettings.fogColor = Color.Lerp(fogNight, fogDay, intensity * intensity);
 

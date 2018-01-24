@@ -5,6 +5,18 @@ using UnityEngine;
 public class SavingLoading : MonoBehaviour 
 {
 
+	#region Private 
+
+	private int number = 0;
+
+	#endregion
+
+	void Start()
+	{
+
+		Debug.Log (PlayerPrefs.GetString ("Slot"));
+
+	}
 
 	#region Save
 
@@ -15,7 +27,19 @@ public class SavingLoading : MonoBehaviour
 	{
 
 		SaveCurrentScene ();
+		//SavePlayer ();
 		SaveCurrentQuest ();
+
+		for (int i = 0; i < Database.quests.Count; i++) 
+		{
+
+			SaveQuest (Database.quests [i]);
+			number++;
+
+		}
+
+		number = 0;
+
 		SaveGadget ();
 		SaveScenes ();
 		SaveInteractableObjects ();
@@ -34,6 +58,45 @@ public class SavingLoading : MonoBehaviour
 	}
 
 	/// <summary>
+	/// Metodo che salava le informazioni del player
+	/// </summary>
+	private void SavePlayer()
+	{
+
+		ES2.Save (Database.playerPosition, PlayerPrefs.GetString ("Slot") + ".txt?tag=player");
+
+	}
+
+	/// <summary>
+	/// Metodo che permette il salvataggio di una quest
+	/// </summary>
+	private void SaveQuest(Database.DataQuest q)
+	{
+
+		//Enum string
+		ES2.Save (q.currentState, PlayerPrefs.GetString ("Slot") + ".txt?tag="+number+"CurrentState");
+		//ES2.Save (Database.currentQuest.currentState, PlayerPrefs.GetString ("Slot") + ".txt?tag="+Database.currentQuest.questName+"CurrentState");
+		//string
+		ES2.Save (q.questName, PlayerPrefs.GetString ("Slot") + ".txt?tag="+number+"Name");
+
+		for (int i = 0; i < q.tasks.Count; i++) 
+		{
+
+			//bool
+			ES2.Save (q.tasks [i].currentState, PlayerPrefs.GetString ("Slot") + ".txt?tag="+number+"TaskCurrentState" + i);
+			//string
+			ES2.Save (q.tasks [i].taskName, PlayerPrefs.GetString ("Slot") + ".txt?tag="+number+"TaskTaskName" + i);
+			//int
+			ES2.Save (q.tasks[i].taskPriority, PlayerPrefs.GetString ("Slot") + ".txt?tag="+number+"TaskTaskPriority" + i);
+
+		}
+
+		//int 
+		ES2.Save (q.questPriority, PlayerPrefs.GetString ("Slot") + ".txt?tag="+number+"QuestPriority");
+
+	}
+
+	/// <summary>
 	/// Metodo che permette il salvataggio della quest corrente
 	/// </summary>
 	private void SaveCurrentQuest()
@@ -41,10 +104,11 @@ public class SavingLoading : MonoBehaviour
 
 		//Enum string
 		ES2.Save (Database.currentQuest.currentState, PlayerPrefs.GetString ("Slot") + ".txt?tag=currentQuestCurrentState");
+		//ES2.Save (Database.currentQuest.currentState, PlayerPrefs.GetString ("Slot") + ".txt?tag="+Database.currentQuest.questName+"CurrentState");
 		//string
 		ES2.Save (Database.currentQuest.questName, PlayerPrefs.GetString ("Slot") + ".txt?tag=currentQuestName");
 
-		for (int i = 0; i < Database.currentQuest.tasks.Count; i++) 
+		/*for (int i = 0; i < Database.currentQuest.tasks.Count; i++) 
 		{
 
 			//bool
@@ -54,7 +118,7 @@ public class SavingLoading : MonoBehaviour
 			//int
 			ES2.Save (Database.currentQuest.tasks[i].taskPriority, PlayerPrefs.GetString ("Slot") + ".txt?tag=currentQuestTaskTaskPriority" + i);
 
-		}
+		}*/
 
 		//bool
 		ES2.Save (Database.currentQuest.activedTask.currentState, PlayerPrefs.GetString ("Slot") + ".txt?tag=currentQuestActivedTaskCurrentState");
@@ -109,7 +173,7 @@ public class SavingLoading : MonoBehaviour
 		Debug.Log ("Scene salvate");
 
 	}
-
+		
 	/// <summary>
 	/// Salavtaggio degli interactable Objects
 	/// </summary>
@@ -141,21 +205,41 @@ public class SavingLoading : MonoBehaviour
 	/// <summary>
 	/// Metodo che esegue tutti i metodi di caricamento
 	/// </summary>
-	public void Load()
+	public IEnumerator Load()
 	{
 
-		if (ES2.Exists (PlayerPrefs.GetString("Slot")+".txt")) 
+		if (ES2.Exists (PlayerPrefs.GetString ("Slot") + ".txt")) 
 		{
 
 			LoadCurrentScene ();
+			//LoadPlayer ();
 			LoadCurrentQuest ();
+
+			for (int i = 0; i < Database.quests.Count; i++) 
+			{
+
+				LoadQuest (Database.quests [i]);
+
+			}
+
 			LoadGadgets ();
 			LoadScene ();
 			LoadInteractableObjects ();
 
-		}
-		else
+			GameManager.newGame = false;
+
+			yield return null;
+
+		} 
+		else 
+		{
+			
 			Debug.Log ("Il file non esiste");
+			GameManager.newGame = true;
+
+		}
+
+		yield return null;
 
 	}
 
@@ -172,6 +256,50 @@ public class SavingLoading : MonoBehaviour
 	}
 
 	/// <summary>
+	/// Metodo che carica le informazioni del player
+	/// </summary>
+	private void LoadPlayer()
+	{
+
+		ES2.Load<Transform> (PlayerPrefs.GetString ("Slot") + ".txt?tag=player", Database.playerPosition);
+
+	}
+
+	/// <summary>
+	/// Metodo che carica una quest
+	/// </summary>
+	private void LoadQuest(Database.DataQuest q)
+	{
+
+		q.currentState = ES2.Load<Quest.QuestState> (PlayerPrefs.GetString ("Slot") + ".txt?tag="+q.questName+"CurrentState");
+		q.questName = ES2.Load<string> (PlayerPrefs.GetString ("Slot") + ".txt?tag="+q.questName+"Name");
+
+		for (int i = 0; i < q.tasks.Count; i++) 
+		{
+
+			q.tasks [i].currentState = ES2.Load<Task.TaskState> (PlayerPrefs.GetString ("Slot") + ".txt?tag="+q.questName+"TaskCurrentState" + i);
+			q.tasks [i].taskName = ES2.Load<string> (PlayerPrefs.GetString ("Slot") + ".txt?tag="+q.questName+"TaskTaskName" + i);
+			q.tasks [i].taskPriority = ES2.Load<int> (PlayerPrefs.GetString ("Slot") + ".txt?tag="+q.questName+"TaskTaskPriority" + i);
+
+		}
+			
+		q.questPriority = ES2.Load<int> (PlayerPrefs.GetString ("Slot") + ".txt?tag="+q.questName+"QuestPriority");
+
+		//Per popolare
+/*		Database.DataQuest dataquest = new Database.DataQuest ();
+
+		//For
+		Database.DataTask task = new Database.DataTask ();
+
+		dataquest.tasks.Add ();
+		//end for
+
+		Database.quests.Add (dataquest);*/
+		//fine popolamento
+
+	}
+
+	/// <summary>
 	/// Metodo che carica la quest corrente
 	/// </summary>
 	private void LoadCurrentQuest()
@@ -180,14 +308,14 @@ public class SavingLoading : MonoBehaviour
 		Database.currentQuest.currentState = ES2.Load<Quest.QuestState> (PlayerPrefs.GetString ("Slot") + ".txt?tag=currentQuestCurrentState");
 		Database.currentQuest.questName = ES2.Load<string> (PlayerPrefs.GetString ("Slot") + ".txt?tag=currentQuestName");
 
-		for (int i = 0; i < Database.currentQuest.tasks.Count; i++) 
+		/*for (int i = 0; i < Database.currentQuest.tasks.Count; i++) 
 		{
 
 			Database.currentQuest.tasks [i].currentState = ES2.Load<Task.TaskState> (PlayerPrefs.GetString ("Slot") + ".txt?tag=currentQuestTaskCurrentState" + i);
 			Database.currentQuest.tasks [i].taskName = ES2.Load<string> (PlayerPrefs.GetString ("Slot") + ".txt?tag=currentQuestTaskTaskName" + i);
 			Database.currentQuest.tasks [i].taskPriority = ES2.Load<int> (PlayerPrefs.GetString ("Slot") + ".txt?tag=currentQuestTaskTaskPriority" + i);
 
-		}
+		}*/
 
 		Database.currentQuest.activedTask.currentState = ES2.Load<Task.TaskState> (PlayerPrefs.GetString ("Slot") + ".txt?tag=currentQuestActivedTaskCurrentState");
 		Database.currentQuest.activedTask.taskName = ES2.Load<string> (PlayerPrefs.GetString ("Slot") + ".txt?tag=currentQuestActivedTaskTaskName");

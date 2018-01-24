@@ -9,6 +9,7 @@ public class QuestManager : MonoBehaviour {
     public static QuestManager instance;
     public List<Quest> quests = new List<Quest>();
     public static Quest currentQuest;
+    public string currentTarget;
 
     private void Awake()
     {
@@ -95,7 +96,7 @@ public class QuestManager : MonoBehaviour {
         }
     }
 
-    public static void CheckQuest()
+    public void CheckQuest()
     {
         if(SceneManager.GetActiveScene().name == currentQuest.taskActived.taskScene)
         {

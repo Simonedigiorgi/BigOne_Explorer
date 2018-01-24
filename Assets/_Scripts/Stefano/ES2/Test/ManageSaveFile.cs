@@ -26,25 +26,24 @@ public class ManageSaveFile : MonoBehaviour
 	#endregion
 
 	/// <summary>
-	/// Settiamo il fileda cui caricheremo e salveremo i dati in questa partitia
+	/// Settiamo un nuovo file di salvataggio
+	/// </summary>
+	public void SetNewSlot()
+	{
+
+		PlayerPrefs.SetString ("Slot", "Slot"+PlayerPrefs.GetInt("numberSlot").ToString());
+		PlayerPrefs.SetInt ("numberSlot", PlayerPrefs.GetInt ("numberSlot") + 1);
+
+	}
+
+	/// <summary>
+	/// Settiamo il file da cui caricheremo e salveremo i dati in questa partitia
 	/// </summary>
 	/// <param name="value">Value.</param>
 	public void SetSlot(string value)
 	{
 
 		PlayerPrefs.SetString ("Slot", value);
-
-	}
-
-	/// <summary>
-	/// Puliamo uno slot e lo reinizializiamo
-	/// </summary>
-	/// <param name="value">Value.</param>
-	public void RefreshFile()
-	{
-		 
-		ES2.Delete ( newGame + ".txt");
-		SceneManager.LoadScene (firstScene);
 
 	}
 

@@ -11,13 +11,6 @@ public class SavingLoading : MonoBehaviour
 
 	#endregion
 
-	void Start()
-	{
-
-		Debug.Log (PlayerPrefs.GetString ("Slot"));
-
-	}
-
 	#region Save
 
 	/// <summary>
@@ -30,10 +23,14 @@ public class SavingLoading : MonoBehaviour
 		//SavePlayer ();
 		SaveCurrentQuest ();
 
+		//Salviamo il numero di quest per il caricamento
+		ES2.Save (Database.quests.Count, PlayerPrefs.GetString ("Slot") + ".txt?tag=questNumberQuests"); 
+
 		for (int i = 0; i < Database.quests.Count; i++) 
 		{
 
 			SaveQuest (Database.quests [i]);
+
 			number++;
 
 		}
@@ -75,9 +72,11 @@ public class SavingLoading : MonoBehaviour
 
 		//Enum string
 		ES2.Save (q.currentState, PlayerPrefs.GetString ("Slot") + ".txt?tag="+number+"CurrentState");
-		//ES2.Save (Database.currentQuest.currentState, PlayerPrefs.GetString ("Slot") + ".txt?tag="+Database.currentQuest.questName+"CurrentState");
 		//string
 		ES2.Save (q.questName, PlayerPrefs.GetString ("Slot") + ".txt?tag="+number+"Name");
+
+		//Mi slalvo il numero di task che ha la quest per il caricamento
+		ES2.Save (q.tasks.Count, PlayerPrefs.GetString ("Slot") + ".txt?tag=" + number + "NumberTasks");
 
 		for (int i = 0; i < q.tasks.Count; i++) 
 		{
@@ -140,6 +139,9 @@ public class SavingLoading : MonoBehaviour
 	private void SaveGadget()
 	{
 
+		//Salvimao il numero di gadget per il caricamento
+		ES2.Save (Database.gadgets.Count, PlayerPrefs.GetString ("Slot") + ".txt?tag=gadgetNumberGadgets");
+
 		for (int i = 0; i < Database.gadgets.Count; i++) 
 		{
 
@@ -160,6 +162,9 @@ public class SavingLoading : MonoBehaviour
 	private void SaveScenes()
 	{
 
+		//Salvo il numero delle scene per il caricamento
+		ES2.Save (Database.scenes.Count, PlayerPrefs.GetString ("Slot") + ".txt?tag=scenesNumberScenes");
+
 		for (int i = 0; i < Database.scenes.Count; i++) 
 		{
 
@@ -179,6 +184,9 @@ public class SavingLoading : MonoBehaviour
 	/// </summary>
 	private void SaveInteractableObjects()
 	{
+
+		//Salvo il numero degli interactableObject per il caricamento
+		ES2.Save(Database.interactableObjects.Count, PlayerPrefs.GetString ("Slot") + ".txt?tag=interactableObjectNumberInteractableObjects");
 
 		for (int i = 0; i < Database.interactableObjects.Count; i++) 
 		{
@@ -203,9 +211,19 @@ public class SavingLoading : MonoBehaviour
 	#region Load
 
 	/// <summary>
+	/// Metodo che avvia il caricamento con coroutine
+	/// </summary>
+	public void Load()
+	{
+
+		StartCoroutine (LoadCoroutine ());
+
+	}
+
+	/// <summary>
 	/// Metodo che esegue tutti i metodi di caricamento
 	/// </summary>
-	public IEnumerator Load()
+	public IEnumerator LoadCoroutine()
 	{
 
 		if (ES2.Exists (PlayerPrefs.GetString ("Slot") + ".txt")) 
@@ -215,12 +233,19 @@ public class SavingLoading : MonoBehaviour
 			//LoadPlayer ();
 			LoadCurrentQuest ();
 
-			for (int i = 0; i < Database.quests.Count; i++) 
+			//Carichiamo il numero di qust che abbiamo salvato
+			int numberQuest = ES2.Load<int> (PlayerPrefs.GetString ("Slot") + ".txt?tag=questNumberQuests");
+
+			for (int i = 0; i < numberQuest; i++) 
 			{
 
-				LoadQuest (Database.quests [i]);
+				LoadQuest ();
+
+				number++;
 
 			}
+
+			number = 0;
 
 			LoadGadgets ();
 			LoadScene ();
@@ -268,34 +293,36 @@ public class SavingLoading : MonoBehaviour
 	/// <summary>
 	/// Metodo che carica una quest
 	/// </summary>
-	private void LoadQuest(Database.DataQuest q)
+	private void LoadQuest()
 	{
 
-		q.currentState = ES2.Load<Quest.QuestState> (PlayerPrefs.GetString ("Slot") + ".txt?tag="+q.questName+"CurrentState");
-		q.questName = ES2.Load<string> (PlayerPrefs.GetString ("Slot") + ".txt?tag="+q.questName+"Name");
+		//Costruttore della quest
+		Database.DataQuest dataQuest = new Database.DataQuest (
+			ES2.Load<Quest.QuestState> (PlayerPrefs.GetString ("Slot") + ".txt?tag=" + number + "CurrentState"),
+			ES2.Load<string> (PlayerPrefs.GetString ("Slot") + ".txt?tag=" + number + "Name"),
+			ES2.Load<int> (PlayerPrefs.GetString ("Slot") + ".txt?tag=" + number + "QuestPriority"));
 
-		for (int i = 0; i < q.tasks.Count; i++) 
+		//Inizilizzo la variabile Task
+		Database.DataTask task;
+
+		int numberTasks = ES2.Load<int> (PlayerPrefs.GetString ("Slot") + ".txt?tag=" + number + "NumberTasks");
+		
+		for (int i = 0; i < numberTasks; i++) 
 		{
 
-			q.tasks [i].currentState = ES2.Load<Task.TaskState> (PlayerPrefs.GetString ("Slot") + ".txt?tag="+q.questName+"TaskCurrentState" + i);
-			q.tasks [i].taskName = ES2.Load<string> (PlayerPrefs.GetString ("Slot") + ".txt?tag="+q.questName+"TaskTaskName" + i);
-			q.tasks [i].taskPriority = ES2.Load<int> (PlayerPrefs.GetString ("Slot") + ".txt?tag="+q.questName+"TaskTaskPriority" + i);
+			task = new Database.DataTask(
+				ES2.Load<Task.TaskState> (PlayerPrefs.GetString ("Slot") + ".txt?tag="+ number +"TaskCurrentState" + i),
+				ES2.Load<string> (PlayerPrefs.GetString ("Slot") + ".txt?tag="+ number +"TaskTaskName" + i),
+				ES2.Load<int> (PlayerPrefs.GetString ("Slot") + ".txt?tag="+ number +"TaskTaskPriority" + i)
+			);
+				
+			//Aggiungo la task alla quest
+			dataQuest.tasks.Add (task);
 
 		}
 			
-		q.questPriority = ES2.Load<int> (PlayerPrefs.GetString ("Slot") + ".txt?tag="+q.questName+"QuestPriority");
-
-		//Per popolare
-/*		Database.DataQuest dataquest = new Database.DataQuest ();
-
-		//For
-		Database.DataTask task = new Database.DataTask ();
-
-		dataquest.tasks.Add ();
-		//end for
-
-		Database.quests.Add (dataquest);*/
-		//fine popolamento
+		//popolo la lista di quest 
+		Database.quests.Add (dataQuest);
 
 	}
 
@@ -332,12 +359,19 @@ public class SavingLoading : MonoBehaviour
 	private void LoadGadgets()
 	{
 
-		for (int i = 0; i < Database.gadgets.Count; i++) 
+		Database.DataGadget gadget;
+
+		int numberGadgets = ES2.Load<int> (PlayerPrefs.GetString ("Slot") + ".txt?tag=gadgetNumberGadgets");
+
+		for (int i = 0; i < numberGadgets; i++) 
 		{
 			
+			gadget = new Database.DataGadget (
+				ES2.Load<string> (PlayerPrefs.GetString ("Slot") + ".txt?tag=gadgetGadgetName" + i),
+				ES2.Load<bool> (PlayerPrefs.GetString ("Slot") + ".txt?tag=gadgetIsActive" + i));
 
-			Database.gadgets [i].gadgetName = ES2.Load<string> (PlayerPrefs.GetString ("Slot") + ".txt?tag=gadgetGadgetName" + i);
-			Database.gadgets [i].isActive = ES2.Load<bool> (PlayerPrefs.GetString ("Slot") + ".txt?tag=gadgetIsActive" + i);
+
+			Database.gadgets.Add (gadget);
 
 		}
 
@@ -351,11 +385,17 @@ public class SavingLoading : MonoBehaviour
 	private void LoadScene()
 	{
 
-		for (int i = 0; i < Database.scenes.Count; i++) 
-		{
+		Database.DataScene scena;
 
-			Database.scenes [i].sceneName = ES2.Load<string> (PlayerPrefs.GetString ("Slot") + ".txt?tag=scenesSceneName" + i);
-			Database.scenes [i].isUnlocked = ES2.Load<bool> (PlayerPrefs.GetString ("Slot") + ".txt?tag=scenesIsActive" + i);
+		int numberScenes = ES2.Load<int> (PlayerPrefs.GetString ("Slot") + ".txt?tag=scenesNumberScenes");
+
+		for (int i = 0; i < numberScenes; i++) 
+		{
+			scena = new Database.DataScene (
+				ES2.Load<string> (PlayerPrefs.GetString ("Slot") + ".txt?tag=scenesSceneName" + i),
+				ES2.Load<bool> (PlayerPrefs.GetString ("Slot") + ".txt?tag=scenesIsActive" + i));
+
+			Database.scenes.Add (scena);
 
 		}
 
@@ -369,13 +409,20 @@ public class SavingLoading : MonoBehaviour
 	private void LoadInteractableObjects()
 	{
 
-		for (int i = 0; i < Database.interactableObjects.Count; i++) 
+		Database.InteractableObject obj;
+
+		int numberInteractableObjects = ES2.Load<int> (PlayerPrefs.GetString ("Slot") + ".txt?tag=interactableObjectNumberInteractableObjects");
+
+		for (int i = 0; i < numberInteractableObjects; i++) 
 		{
-			
-			Database.interactableObjects [i].type = ES2.Load<InteractableType> (PlayerPrefs.GetString ("Slot") + ".txt?tag=interactableObjectType" + i);
-			Database.interactableObjects [i].interactableName = ES2.Load<string> (PlayerPrefs.GetString ("Slot") + ".txt?tag=interactableObjectIntercatableName" + i);
-			Database.interactableObjects [i].isInteractable = ES2.Load<bool> (PlayerPrefs.GetString ("Slot") + ".txt?tag=interactableObjectIsinteractable" + i);
-			Database.interactableObjects [i].sceneContainer = ES2.Load<string> (PlayerPrefs.GetString ("Slot") + ".txt?tag=interactableObjectSceneContainer" + i);
+
+			obj = new Database.InteractableObject (
+				ES2.Load<InteractableType> (PlayerPrefs.GetString ("Slot") + ".txt?tag=interactableObjectType" + i),
+				ES2.Load<string> (PlayerPrefs.GetString ("Slot") + ".txt?tag=interactableObjectIntercatableName" + i),
+				ES2.Load<bool> (PlayerPrefs.GetString ("Slot") + ".txt?tag=interactableObjectIsinteractable" + i),
+				ES2.Load<string> (PlayerPrefs.GetString ("Slot") + ".txt?tag=interactableObjectSceneContainer" + i));
+
+			Database.interactableObjects.Add (obj);
 
 		}
 

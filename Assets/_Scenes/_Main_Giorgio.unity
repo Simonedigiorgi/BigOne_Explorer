@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 1846014363}
-  m_IndirectSpecularColor: {r: 0.12033853, g: 0.0764859, b: 0.042416945, a: 1}
+  m_IndirectSpecularColor: {r: 0.1927302, g: 0.17567259, b: 0.13934736, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -7373,6 +7373,7 @@ GameObject:
   - component: {fileID: 1846014364}
   - component: {fileID: 1846014363}
   - component: {fileID: 1846014365}
+  - component: {fileID: 1846014366}
   m_Layer: 0
   m_Name: Directional light
   m_TagString: Untagged
@@ -7468,6 +7469,26 @@ MonoBehaviour:
   NoiseIntensityOffset: 0.3
   NoiseVelocity: {x: 3, y: 3}
   MaxRayLength: 400
+--- !u!114 &1846014366
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1846014362}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0fa7c45db4e1d9d4285cc59ae7ffe0ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  time: 0
+  SunTransform: {fileID: 1846014364}
+  Sun: {fileID: 1846014363}
+  timeText: {fileID: 0}
+  Days: 0
+  intensity: 0
+  fogDay: {r: 0.7647059, g: 0.6527145, b: 0.5510381, a: 1}
+  fogNight: {r: 0.33088237, g: 0.28880057, b: 0.25059474, a: 1}
+  Speed: 0
 --- !u!1001 &2115465445
 Prefab:
   m_ObjectHideFlags: 0

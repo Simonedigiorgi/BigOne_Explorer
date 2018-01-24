@@ -1692,7 +1692,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1053694547919552}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 107.8, y: 267.206, z: 261.517}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
   m_Children:
   - {fileID: 224478943636985680}
@@ -2727,10 +2727,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   O2: 100
   timeRange: 2
-  sliderO2: {fileID: 0}
-  bar: {fileID: 0}
+  sliderO2: {fileID: 114327904096187568}
+  bar: {fileID: 114680484957303740}
   colorBar: {r: 0.8235294, g: 0.32698965, b: 0.32698965, a: 1}
-  textO2: {fileID: 0}
+  textO2: {fileID: 114677334542206958}
 --- !u!114 &114259522625128524
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2742,8 +2742,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56bba9a6aadb7fb49ac4a4c775a6320e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  O2controller: {fileID: 0}
-  CompassController: {fileID: 0}
+  O2controller: {fileID: 1053694547919552}
+  CompassController: {fileID: 1281838943838290}
   PauseMenu: {fileID: 0}
 --- !u!114 &114292263862828144
 MonoBehaviour:
@@ -2821,7 +2821,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   openCloseEvents: 0
   openCloseWindow: 1
-  selectedToolbar: 2
+  selectedToolbar: 0
   lockInput: 0
   horizontalInput:
     useInput: 1
@@ -3124,7 +3124,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   openCloseEvents: 0
   openCloseWindow: 1
-  selectedToolbar: 5
+  selectedToolbar: 1
   maxHealth: 200
   healthRecovery: 0
   maxStamina: 300
@@ -3410,7 +3410,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isHelmet: 0
   isBackpack: 0
-  isTorch: 1
+  isTorch: 0
   isCompass: 0
   isPickaxe: 0
   isScanner: 0
@@ -3424,7 +3424,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1053694547919552}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6a6e29aa7f269ea44973293e4f139d58, type: 3}
   m_Name: 

@@ -9,29 +9,34 @@ public class TaskInteract : Task
     public List<String> taskObjectsName;
     public string tagTaskObjects;
     public int taskObjectsNumber;
+    public int allTaskObjectsNumber;
 
-    void InitTaskObjects()
+    protected virtual void InitTaskObjects()
     {
         GameObject[] taskObjects = GameObject.FindGameObjectsWithTag(tagTaskObjects);
-        taskObjectsNumber = taskObjects.Length;
+        allTaskObjectsNumber = taskObjects.Length;
         taskObjectsName = new List<string>();
 
-        for(int i = 0; i < taskObjectsNumber; i++)
+        for(int i = 0; i < allTaskObjectsNumber; i++)
         {
             GameObject action = taskObjects[i].transform.GetChild(0).gameObject;
 
             action.SetActive(true);
 
             action.GetComponent<vTriggerGenericAction>().OnDoAction.AddListener(() => SetTaskObject(action.transform.parent.gameObject));
+            //action.GetComponent<vTriggerGenericAction>().OnPlayerEnter.AddListener(() => ShowHelpKey(action));
+            //action.GetComponent<vTriggerGenericAction>().OnPlayerExit.AddListener(() => HideHelpKey(action));
             
             taskObjectsName.Add(taskObjects[i].name); 
             Database.InteractableObject interactableObject = new Database.InteractableObject(
                 (InteractableType)Enum.Parse(typeof(InteractableType), tagTaskObjects.ToUpper()), taskObjects[i].name, true, taskScene);
             Database.interactableObjects.Add(interactableObject);
         }
+
+        QuestManager.instance.CurrentTarget += "\n" + tagTaskObjects + ": " + taskObjectsNumber + "/" + allTaskObjectsNumber;
     }
 
-    void LoadTaskObjects()
+    protected virtual void LoadTaskObjects()
     {
         taskObjectsName.Clear();
         foreach(Database.InteractableObject interactable in Database.interactableObjects)
@@ -45,16 +50,18 @@ public class TaskInteract : Task
                 taskObjectsName.Add(interactable.interactableName);
             }
         }
+        QuestManager.instance.CurrentTarget = taskName + "\n" + tagTaskObjects + ": " + taskObjectsNumber + "/" + allTaskObjectsNumber;
     }
 
-    public void SetTaskObject(GameObject interactable)
+    public virtual void SetTaskObject(GameObject interactable)
     {
         Database.interactableObjects.Find(x => x.interactableName == interactable.name).isInteractable = false;
         taskObjectsName.Remove(interactable.name);
         interactable.transform.GetChild(0).GetComponent<vTriggerGenericAction>().OnDoAction.RemoveListener(() => SetTaskObject(interactable));
         Destroy(interactable);
-        taskObjectsNumber--;
-        if(taskObjectsNumber <= 0)
+        taskObjectsNumber++;
+        QuestManager.instance.CurrentTarget = taskName + "\n" + tagTaskObjects + ": " + taskObjectsNumber + "/" + allTaskObjectsNumber;
+        if(taskObjectsNumber >= allTaskObjectsNumber)
         {
             this.CompleteTask();
         }
@@ -73,5 +80,15 @@ public class TaskInteract : Task
             LoadTaskObjects();
         }
 
+    }
+
+    public virtual void ShowHelpKey(GameObject actionAssociated)
+    {
+        actionAssociated.transform.GetChild(0).gameObject.SetActive(true);
+    }
+
+    public virtual void HideHelpKey(GameObject actionAssociated)
+    {
+        actionAssociated.transform.GetChild(0).gameObject.SetActive(false);
     }
 }

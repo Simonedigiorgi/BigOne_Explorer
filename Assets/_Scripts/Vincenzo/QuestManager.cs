@@ -8,8 +8,18 @@ public class QuestManager : MonoBehaviour {
 
     public static QuestManager instance;
     public List<Quest> quests = new List<Quest>();
-    public static Quest currentQuest;
-    public string currentTarget;
+    public Quest currentQuest;
+    string currentTarget;
+
+    public string CurrentTarget
+    {
+        get { return currentTarget; }
+        set 
+        { 
+            currentTarget = value; 
+            UIManager.instance.SetTartgetText(value);
+        }
+    }
 
     private void Awake()
     {
@@ -23,6 +33,7 @@ public class QuestManager : MonoBehaviour {
         instance = this;
 
         DontDestroyOnLoad(this);
+
     }
 
     //public IEnumerator InitQuests()

@@ -23,14 +23,14 @@ public class Task : MonoBehaviour
     {
         this.currentState = TaskState.ENABLED;
         Database.currentQuest.activedTask.currentState = TaskState.ENABLED;
-        QuestManager.instance.currentTarget = "Viaggia verso " + this.taskScene;
+        QuestManager.instance.CurrentTarget = "Viaggia verso " + this.taskScene;
     }
 
     public virtual void ReadyTask()
     {
         this.currentState = TaskState.READY;
         Database.currentQuest.activedTask.currentState = TaskState.READY;
-        QuestManager.instance.currentTarget = this.taskName;
+        QuestManager.instance.CurrentTarget = this.taskName;
     }
 
     public virtual void ActiveTask()
@@ -48,7 +48,7 @@ public class Task : MonoBehaviour
     {
         this.currentState = TaskState.COMPLETED;
         Database.currentQuest.activedTask.currentState = TaskState.COMPLETED;
-        QuestManager.currentQuest.SwitchToNextTask();
+        QuestManager.instance.currentQuest.SwitchToNextTask();
         QuestManager.instance.CheckQuest();
     }
 

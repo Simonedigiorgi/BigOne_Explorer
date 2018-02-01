@@ -9,7 +9,7 @@ public class GameManager : MonoBehaviour {
     public static bool newGame = true;
     public List<string> scenes;
 
-    //QuestManager questManager;
+    QuestManager questManager;
 
     private void Awake()
     {
@@ -24,14 +24,13 @@ public class GameManager : MonoBehaviour {
 
         DontDestroyOnLoad(this);
 
-        //questManager = FindObjectOfType<QuestManager>();
+        questManager = FindObjectOfType<QuestManager>();
         scenes = new List<string>();
 
         if (newGame)
         {
             //StartCoroutine(questManager.InitQuests());
-            //questManager.InitQuests();
-            QuestManager.instance.InitQuests();
+            questManager.InitQuests();
             this.SetScenes();
 
         }
@@ -76,10 +75,10 @@ public class GameManager : MonoBehaviour {
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        QuestManager.instance.CheckQuest();
+        questManager.CheckQuest();
         Database.currentScene = scene.name;
         SetObjectScene(scene);
-        print(QuestManager.instance.currentTarget);
+        //print(questManager.currentTarget);
         /*foreach(Database.InteractableObject o in Database.interactableObjects)
         {
             print(o.type+" - "+o.interactableName+" - "+o.isInteractable);

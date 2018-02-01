@@ -45,6 +45,15 @@ public class UIManager : MonoBehaviour
         this.targetText.GetComponent<Text>().text = targetText;
     }
 
+    public void ShowScenePanel()
+    {
+        this.ChangeScenePanel.gameObject.SetActive(true);
+    }
+
+    public void HideScenePanel()
+    {
+        this.ChangeScenePanel.gameObject.SetActive(false);
+    }
 
 
 }

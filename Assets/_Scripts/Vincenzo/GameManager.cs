@@ -134,5 +134,31 @@ public class GameManager : MonoBehaviour {
         {
             print(scene.sceneName+": "+scene.isUnlocked);
         }*/
+
     }
+
+    /*public void PrintData()
+    {
+
+        print("Ciao");
+
+        foreach (Database.DataQuest quest in Database.quests)
+        {
+            print(quest.questName);
+            print(quest.currentState);
+            foreach (Database.DataTask task in quest.tasks)
+            {
+
+                print(task.taskName);
+                print(task.currentState);
+            }
+
+            print("\n");
+        }
+
+        foreach(Database.DataScene scene in Database.scenes)
+        {
+            print(scene.sceneName + ": " + scene.isUnlocked);
+        }
+    }*/
 }

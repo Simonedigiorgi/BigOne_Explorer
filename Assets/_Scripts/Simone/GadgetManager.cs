@@ -21,6 +21,8 @@ public class GadgetManager : MonoBehaviour {
 
     public enum GadgetType
     {
+        HELMET,
+        BACKPACK,
         TORCH,
         COMPASS,
         PICKAXE,
@@ -35,7 +37,7 @@ public class GadgetManager : MonoBehaviour {
 
         // EQUIPAGGIAMENTO
 
-        if(isHelmet == true && isBackpack == false)
+        /*if(isHelmet == true && isBackpack == false)
         {
             Debug.Log("Hai bisogno dello Zaino");
         }
@@ -50,14 +52,14 @@ public class GadgetManager : MonoBehaviour {
         if (isJetPack == true)
         {
             Debug.Log("Se JetPack è true aggiungi 1 a Multijump");
-        }
+        }*/
     }
 	
 	void Update () {
 
         // EQUIPAGGIAMENTO
 
-        if (isHelmet == false && isBackpack == true)
+       /* if (isHelmet == false && isBackpack == true)
         {
             Debug.Log("Apri la porta");
         }
@@ -92,7 +94,7 @@ public class GadgetManager : MonoBehaviour {
         if (isGeiger == true)
         {
             Debug.Log("Se premi _ e isGeiger è true avvia il metodo Geiger");
-        }
+        }*/
     }
 
     public void Torch()
@@ -140,6 +142,12 @@ public class GadgetManager : MonoBehaviour {
 
         switch(gadgetType)
         {
+            case GadgetType.HELMET:
+                isHelmet = active;
+                break;
+            case GadgetType.BACKPACK:
+                isBackpack = active;
+                break;
             case GadgetType.TORCH:
                 isTorch = active;
             break;

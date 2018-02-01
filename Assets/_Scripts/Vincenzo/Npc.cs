@@ -15,34 +15,28 @@ public class Npc : MonoBehaviour {
     public TextAsset npcDefaultDialogue;
 
     bool playerTriggered;
-    DialogueManager dialogueManager;
-
-    void Awake()
-    {
-        dialogueManager = FindObjectOfType<DialogueManager>();
-    }
 
     // Update is called once per frame
     void Update()
     {
         if(Input.GetKeyDown(KeyCode.E) && playerTriggered)
         {
-            dialogueManager.ShowDialog();
-            if (QuestManager.currentQuest.taskActived.GetComponent<TaskTalk>() &&
-                QuestManager.currentQuest.taskActived.GetComponent<TaskTalk>().npcAssociated == this.npc)
+            UIManager.instance.ShowDialoguePanel();
+            if (QuestManager.instance.currentQuest.taskActived.GetComponent<TaskTalk>() &&
+                QuestManager.instance.currentQuest.taskActived.GetComponent<TaskTalk>().npcAssociated == this.npc)
             {
-                if (QuestManager.currentQuest.taskActived.currentState == Task.TaskState.READY)
+                if (QuestManager.instance.currentQuest.taskActived.currentState == Task.TaskState.READY)
                 {
-                    QuestManager.currentQuest.taskActived.ActiveTask();
+                    QuestManager.instance.currentQuest.taskActived.ActiveTask();
                 }
-                else if (QuestManager.currentQuest.taskActived.currentState == Task.TaskState.ACTIVED)
+                else if (QuestManager.instance.currentQuest.taskActived.currentState == Task.TaskState.ACTIVED)
                 {
-                    QuestManager.currentQuest.taskActived.DoTask();
+                    QuestManager.instance.currentQuest.taskActived.DoTask();
                 }
             }
             else
             {
-                dialogueManager.SetDialogue(npcDefaultDialogue, true);
+                DialogueManager.instance.SetDialogue(npcDefaultDialogue, true);
             }
             
         }
@@ -63,7 +57,7 @@ public class Npc : MonoBehaviour {
         {
             playerTriggered = false;
             this.transform.parent.GetChild(2).gameObject.SetActive(false);
-            dialogueManager.HideDialogue();
+            UIManager.instance.HideDialoguePanel();
         }
     }
 

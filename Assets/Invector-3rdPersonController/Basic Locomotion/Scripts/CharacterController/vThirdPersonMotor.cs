@@ -144,6 +144,8 @@ namespace Invector.CharacterController
             isGettingUp,
             isTorch,
             isMenu,
+            isScanner,
+            isGeiger,
             inTurn,
             quickStop,
             landHigh;

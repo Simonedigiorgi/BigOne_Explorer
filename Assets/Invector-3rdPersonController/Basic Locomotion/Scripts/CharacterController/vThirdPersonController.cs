@@ -158,14 +158,40 @@ namespace Invector.CharacterController
             }
         }
 
-        public virtual void Scanner()
+        public virtual void Scanner() // Richiama lo scanner
         {
             // Scanner
+            if (isGrounded && !actions)
+            {
+                if(isScanner)
+                {
+                    isScanner = false;
+                    Debug.Log("NOSCANNER");
+                }
+                else if(!isScanner)
+                {
+                    isScanner = true;
+                    Debug.Log("SCANNER");
+                }
+            }
         }
 
         public virtual void Geiger()
         {
             // Geiger
+            if (isGrounded && !actions)
+            {
+                if (isGeiger)
+                {
+                    isGeiger = false;
+                    Debug.Log("NOGEIGER");
+                }
+                else if (!isGeiger)
+                {
+                    isGeiger = true;
+                    Debug.Log("GEIGER");
+                }
+            }
         }
 
         public virtual void Menu() // Richiama il menu
@@ -178,7 +204,7 @@ namespace Invector.CharacterController
                     Debug.Log("EXITMenu");
 
                 }
-                else if (!isTorch)
+                else if (!isMenu)
                 {
                     isMenu = true;
                     Debug.Log("ENTERMenu");

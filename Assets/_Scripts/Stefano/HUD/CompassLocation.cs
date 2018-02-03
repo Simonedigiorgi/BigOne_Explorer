@@ -9,6 +9,9 @@ public class CompassLocation : MonoBehaviour {
 	public Vector3 NorthDirection;
 	public Transform Player;
 	public Quaternion MissionDirection;
+	[Header("Pool di posizioni che potrà puntare la bussol")]
+	public List<Transform> listTarget;
+	[Header("Target corrente a cui punta la bussola")]
 	public Transform missionPlace;
 	#endregion
 

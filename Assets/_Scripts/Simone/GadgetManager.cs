@@ -33,7 +33,11 @@ public class GadgetManager : MonoBehaviour {
         GEIGER
     }
 
+    public List<Gadget> gadgets;
+
 	void Start () {
+
+
 
         // EQUIPAGGIAMENTO
 
@@ -56,6 +60,18 @@ public class GadgetManager : MonoBehaviour {
     }
 	
 	void Update () {
+
+        /*if(Input.GetKeyDown(KeyCode.P))
+        {
+            foreach (Gadget g in GetComponentsInChildren<Gadget>(true))
+            {
+                print(g.gadgetType);
+                if(g.gadgetType == GadgetType.HELMET)
+                {
+                    print("Cipolla");
+                }
+            }
+        }
 
         // EQUIPAGGIAMENTO
 
@@ -97,7 +113,7 @@ public class GadgetManager : MonoBehaviour {
         }*/
     }
 
-    public void Torch()
+    /*public void Torch()
     {
 
     }
@@ -135,7 +151,7 @@ public class GadgetManager : MonoBehaviour {
     public void Geiger()
     {
 
-    }
+    }*/
 
     public void ActivateGadget(GadgetType gadgetType, bool active)
     {

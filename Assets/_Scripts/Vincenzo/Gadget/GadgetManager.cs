@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class GadgetManager : MonoBehaviour {
 
-    [Header("Equipaggiamento")]
+    /*[Header("Equipaggiamento")]
     public bool isHelmet;
     public bool isBackpack;
 
@@ -17,7 +17,7 @@ public class GadgetManager : MonoBehaviour {
     public bool isAuger;                                                // Hai la trivella
     public bool isCamera;                                               // Hai la fotocamera
     public bool isJetPack;                                              // Hai il Jetpack
-    public bool isGeiger;                                               // Hai il Geiger
+    public bool isGeiger;                                               // Hai il Geiger*/
 
     public enum GadgetType
     {
@@ -27,7 +27,7 @@ public class GadgetManager : MonoBehaviour {
         COMPASS,
         PICKAXE,
         SCANNER,
-        AUGER,
+        //AUGER,
         CAMERA,
         JETPACK,
         GEIGER
@@ -35,7 +35,7 @@ public class GadgetManager : MonoBehaviour {
 
     public List<Gadget> gadgets;
 
-	void Start () {
+    void Start () {
 
 
 
@@ -153,7 +153,7 @@ public class GadgetManager : MonoBehaviour {
 
     }*/
 
-    public void ActivateGadget(GadgetType gadgetType, bool active)
+    /*public void ActivateGadget(GadgetType gadgetType, bool active)
     {
 
         switch(gadgetType)
@@ -209,6 +209,28 @@ public class GadgetManager : MonoBehaviour {
         {
             GadgetType gadget = (GadgetType)Enum.Parse(typeof(GadgetType), dataGadget.gadgetName);
             ActivateGadget(gadget, dataGadget.isActive);
+        }
+    }*/
+
+    public void InitGadgets()
+    {
+        Gadget[] gadgetList = GetComponentsInChildren<Gadget>(true);
+
+        for(int i = 0; i < gadgetList.Length; i++)
+        {
+            gadgets.Add(gadgetList[i]);
+            Database.DataGadget dataGadget = new Database.DataGadget(Enum.GetName(typeof(GadgetType), gadgetList[i].gadgetType), false);
+            Database.gadgets.Add(dataGadget);
+        }
+
+        //PrintGadget();
+    }
+
+    public void PrintGadget()
+    {
+        foreach(Database.DataGadget g in Database.gadgets)
+        {
+            print(g.gadgetName + ": " + g.isActive);
         }
     }
 

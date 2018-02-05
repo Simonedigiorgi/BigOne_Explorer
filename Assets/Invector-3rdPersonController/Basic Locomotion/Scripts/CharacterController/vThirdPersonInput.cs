@@ -25,9 +25,10 @@ namespace Invector.CharacterController
         public GenericInput strafeInput = new GenericInput("Tab", "RightStickClick", "");
         public GenericInput sprintInput = new GenericInput("LeftShift", "LeftStickClick", "");
         public GenericInput crouchInput = new GenericInput("C", "Y", "");
-        public GenericInput torchInput = new GenericInput("T", "RB", "");
+        public GenericInput torchInput = new GenericInput("T", "Y", "");
         public GenericInput scannerInput = new GenericInput("1", "RB", "");
         public GenericInput geigerInput = new GenericInput("2", "LB", "");
+        public GenericInput compassInput = new GenericInput("2", "LB", "");
         public GenericInput menuInput = new GenericInput("M", "Start", "");
 
         [vEditorToolbar("Camera Settings")]
@@ -180,6 +181,7 @@ namespace Invector.CharacterController
             TorchInput(); // Torcia
             GeigerInput(); // Geiger
             ScannerInput(); // Scanner
+            CompassInput(); // Compass
             MenuInput(); // Menu
         }
 
@@ -315,9 +317,11 @@ namespace Invector.CharacterController
 
         protected virtual void TorchInput() // Torcia
         {
-            if (torchInput.GetButtonDown() && gadgetManager.isTorch == true)
+           
+            if (torchInput.GetButtonDown())
             {
-                cc.Torch();
+                cc.GetComponentInChildren<Torch>().SetGadget();
+                //cc.Torch();
             }
 
         }
@@ -332,6 +336,15 @@ namespace Invector.CharacterController
         {
             if (geigerInput.GetButtonDown())
                 cc.Geiger();
+        }
+
+        protected virtual void CompassInput() // Geiger
+        {
+            if (compassInput.GetButtonDown())
+            {
+                cc.GetComponentInChildren<CompassLocation>(true).SetGadget();
+            }
+                
         }
 
         protected virtual void MenuInput() // Menu

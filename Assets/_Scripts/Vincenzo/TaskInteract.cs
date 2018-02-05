@@ -109,12 +109,16 @@ public class TaskInteract : Task
 
         if (tagTaskObjects == "Equipaggiamento")
         {
+            GadgetManager gadgetManager = FindObjectOfType<GadgetManager>();
             actionComponent.OnDoAction.AddListener(() =>
             {
                 SetTaskObject(action.transform.parent.gameObject);
-                gadgetManager = FindObjectOfType<GadgetManager>();
+                Gadget gadget = gadgetManager.gadgets
+                    .Find(x => x.gadgetType == (GadgetManager.GadgetType)Enum.Parse(typeof(GadgetManager.GadgetType), action.transform.parent.name.ToUpper()));
+                gadget.isEnabled = true;
+                /*gadgetManager = FindObjectOfType<GadgetManager>();
                 GadgetManager.GadgetType gadget = (GadgetManager.GadgetType)Enum.Parse(typeof(GadgetManager.GadgetType), action.transform.parent.name.ToUpper());
-                gadgetManager.ActivateGadget(gadget, true);
+                gadgetManager.ActivateGadget(gadget, true);*/
             });
         }
         else

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class CompassLocation : MonoBehaviour {
+public class CompassLocation : Gadget {
 
 	#region Public
 	public Vector3 NorthDirection;
@@ -17,14 +17,37 @@ public class CompassLocation : MonoBehaviour {
 
 	void Update() 
 	{
-
-		ChangeNorthDirection ();
-		ChangeMissionDirection ();
-
+        UseGadget();
 	}
 
-	//Metodo per aggionrare il punto di riferimento
-	private void ChangeNorthDirection()
+    public override void SetGadget()
+    {
+        base.SetGadget();
+        if(this.isEquipped)
+        {
+            this.transform.parent.gameObject.SetActive(true);
+        }
+        else
+        {
+            this.transform.parent.gameObject.SetActive(false);
+        }
+    }
+
+    protected override void UseGadget()
+    {
+        if(this.isEquipped)
+        {
+            ChangeNorthDirection();
+
+            if (missionPlace)
+                ChangeMissionDirection();
+            else
+                print("No Target");
+        }
+    }
+
+    //Metodo per aggionrare il punto di riferimento
+    private void ChangeNorthDirection()
 	{
 
 		NorthDirection.z = Player.eulerAngles.y;

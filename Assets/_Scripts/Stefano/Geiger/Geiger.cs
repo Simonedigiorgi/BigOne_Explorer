@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public class Geiger : MonoBehaviour 
+public class Geiger : Gadget 
 {
 
 	#region Public
-	public bool equip = false;
+	//public bool equip = false;
 	[Header("Lista di oggetti da cercare nella scena")]
 	public List<Transform> listObjects;
 	[Header("Suono geiger LOW")]
@@ -41,7 +41,7 @@ public class Geiger : MonoBehaviour
 	void Update () 
 	{
 
-		if (equip == true) 
+		if (isEquipped == true) 
 		{
 			
 			SearchObject ();

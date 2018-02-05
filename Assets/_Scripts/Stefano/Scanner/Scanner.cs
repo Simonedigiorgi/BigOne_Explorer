@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public class Scanner : MonoBehaviour {
+public class Scanner : Gadget {
 
     #region Public
-    public bool equip = false;
+    //public bool equip = false;
     public float T_distance = 50;
 	[Header("Lista di oggetti da cercare nella scena")]
 	public List<Transform> listObjects;
@@ -49,21 +49,21 @@ public class Scanner : MonoBehaviour {
 	void Update () 
 	{
 
-		SearchObject ();
+		//SearchObject ();
 
 		timer += Time.deltaTime;
 
 		if (timer >= 2) 
 		{
 
-            if(currentDistance <= T_distance && equip == false)
+            if(currentDistance <= T_distance && isEquipped == false)
             {
 
                 audioSource.PlayOneShot(beep);
 
             }
 
-            if (equip == true)
+            if (isEquipped == true)
             {
                 ripple.gameObject.SetActive(true);
                 ChangeRippleColor(ChooseRippleEffect().color);

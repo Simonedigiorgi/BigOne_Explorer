@@ -10,8 +10,8 @@ namespace Invector.CharacterController
 
         public static vThirdPersonController instance;
 
-        public Light torcia;
-        public Light luce;
+        /*public Light torcia;
+        public Light luce;*/
 
         #endregion
 
@@ -137,7 +137,7 @@ namespace Invector.CharacterController
             currentStaminaRecoveryDelay = 2f;
         }
 
-        public virtual void Torch() // Richiama la torcia
+        /*public virtual void Torch() // Richiama la torcia
         {
             if (isGrounded && !actions)
             {
@@ -156,7 +156,7 @@ namespace Invector.CharacterController
                     luce.enabled = true;
                 }
             }
-        }
+        }*/
 
         public virtual void Scanner() // Richiama lo scanner
         {

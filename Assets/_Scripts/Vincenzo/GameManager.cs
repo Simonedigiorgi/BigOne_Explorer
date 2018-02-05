@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour {
     public List<string> scenes;
 
     QuestManager questManager;
+    GadgetManager gadgetManager;
 
     private void Awake()
     {
@@ -25,12 +26,14 @@ public class GameManager : MonoBehaviour {
         DontDestroyOnLoad(this);
 
         questManager = FindObjectOfType<QuestManager>();
+        gadgetManager = FindObjectOfType<GadgetManager>();
         scenes = new List<string>();
 
         if (newGame)
         {
             //StartCoroutine(questManager.InitQuests());
             questManager.InitQuests();
+            gadgetManager.InitGadgets();
             this.SetScenes();
 
         }

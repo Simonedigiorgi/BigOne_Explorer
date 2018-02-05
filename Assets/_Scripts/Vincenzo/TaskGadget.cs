@@ -10,7 +10,8 @@ public class TaskGadget : TaskInteract {
     {
         // Se il gadget è stato preso ed è equipaggiato
 
-        base.ReadyTask();
+        
+
     }
 
 }

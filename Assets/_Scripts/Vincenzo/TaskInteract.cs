@@ -11,8 +11,6 @@ public class TaskInteract : Task
     public int taskObjectsNumber;
     public int allTaskObjectsNumber;
 
-    GadgetManager gadgetManager;
-
     protected virtual void InitTaskObjects()
     {
         GameObject[] taskObjects = GameObject.FindGameObjectsWithTag(tagTaskObjects);
@@ -126,8 +124,8 @@ public class TaskInteract : Task
             actionComponent.OnDoAction.AddListener(() => SetTaskObject(action.transform.parent.gameObject));
         }
 
-        //actionComponent.OnPlayerEnter.AddListener(() => ShowHelpKey(action));
-        //actionComponent.OnPlayerExit.AddListener(() => HideHelpKey(action));
+        actionComponent.OnPlayerEnter.AddListener(() => ShowHelpKey(action));
+        actionComponent.OnPlayerExit.AddListener(() => HideHelpKey(action));
 
     }
 }

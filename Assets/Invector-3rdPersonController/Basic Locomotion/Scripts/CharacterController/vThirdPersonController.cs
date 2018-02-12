@@ -9,6 +9,7 @@ namespace Invector.CharacterController
         #region Variables
 
         public static vThirdPersonController instance;
+        public GadgetManager gadgetManager;
 
         /*public Light torcia;
         public Light luce;*/
@@ -18,10 +19,7 @@ namespace Invector.CharacterController
         protected virtual void Awake()
         {
             StartCoroutine(UpdateRaycast()); // limit raycasts calls for better performance
-        }
 
-        protected virtual void Start()
-        {
             if (instance == null)
             {
                 instance = this;
@@ -33,6 +31,21 @@ namespace Invector.CharacterController
                 Destroy(this.gameObject);
                 return;
             }
+        }
+
+        protected virtual void Start()
+        {
+            /*if (instance == null)
+            {
+                instance = this;
+                DontDestroyOnLoad(this.gameObject);
+                this.gameObject.name = gameObject.name + " Instance";
+            }
+            else
+            {
+                Destroy(this.gameObject);
+                return;
+            }*/
         }
 
         #region Locomotion Actions

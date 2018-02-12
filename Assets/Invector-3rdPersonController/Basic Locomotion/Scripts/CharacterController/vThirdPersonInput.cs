@@ -329,16 +329,18 @@ namespace Invector.CharacterController
         protected virtual void ScannerInput() // Scanner
         {
             if (scannerInput.GetButtonDown())
-                cc.Scanner();
+                cc.GetComponentInChildren<Scanner>().SetGadget();
+                //cc.Scanner();
         }
 
         protected virtual void GeigerInput() // Geiger
         {
             if (geigerInput.GetButtonDown())
-                cc.Geiger();
+                cc.GetComponentInChildren<Geiger>().SetGadget();
+                //cc.Geiger();
         }
 
-        protected virtual void CompassInput() // Geiger
+        protected virtual void CompassInput() // Compass
         {
             if (compassInput.GetButtonDown())
             {

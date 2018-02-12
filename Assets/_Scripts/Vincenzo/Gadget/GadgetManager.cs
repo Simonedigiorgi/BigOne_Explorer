@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Invector.CharacterController;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -37,7 +38,7 @@ public class GadgetManager : MonoBehaviour {
 
     void Start () {
 
-
+        vThirdPersonController.instance.gadgetManager = this;
 
         // EQUIPAGGIAMENTO
 
@@ -224,6 +225,12 @@ public class GadgetManager : MonoBehaviour {
         }
 
         //PrintGadget();
+    }
+
+    public Gadget GetGadgetByType(GadgetType type)
+    {
+        Gadget gadgetToReturn = this.gadgets.Find(x => x.gadgetType == type);
+        return gadgetToReturn;
     }
 
     public void PrintGadget()

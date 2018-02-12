@@ -8,8 +8,8 @@ public class Scanner : Gadget {
     #region Public
     //public bool equip = false;
     public float T_distance = 50;
-	[Header("Lista di oggetti da cercare nella scena")]
-	public List<Transform> listObjects;
+	/*[Header("Lista di oggetti da cercare nella scena")]
+	public List<Transform> listObjects;*/
 	[Header("Suono da riprodurre")]
 	public AudioClip beep;
 	public AudioSource audioSource;
@@ -45,45 +45,93 @@ public class Scanner : Gadget {
 
 	}
 
-	// Update is called once per frame
-	void Update () 
+    // Update is called once per frame
+    void Update () 
 	{
 
-		//SearchObject ();
-
-		timer += Time.deltaTime;
-
-		if (timer >= 2) 
-		{
-
-            if(currentDistance <= T_distance && isEquipped == false)
-            {
-
-                audioSource.PlayOneShot(beep);
-
-            }
-
-            if (isEquipped == true)
-            {
-                ripple.gameObject.SetActive(true);
-                ChangeRippleColor(ChooseRippleEffect().color);
-                StartCoroutine(Sound());
-            }
-            else
-            {
-                ripple.gameObject.SetActive(false);
-            }
-			timer = 0;
-
-		}
+        if(isEnabled)
+            UseGadget();
 
 
 	}
 
-	/// <summary>
-	/// Oggetto da cercare calcolando la distanza
-	/// </summary>
-	private void SearchObject()
+    protected override void UseGadget()
+    {
+
+        if (listObjects.Count > 0)
+        {
+            SearchObject();
+
+            timer += Time.deltaTime;
+
+            if (timer >= 2)
+            {
+
+                if (currentDistance <= T_distance && isEquipped == false)
+                {
+
+                    audioSource.PlayOneShot(beep);
+                    print("Beep");
+
+                }
+
+                if (isEquipped == true)
+                {
+                    ripple.gameObject.SetActive(true);
+                    ChangeRippleColor(ChooseRippleEffect().color);
+                    StartCoroutine(Sound());
+                }
+                else
+                {
+                    ripple.gameObject.SetActive(false);
+                }
+                timer = 0;
+
+            }
+
+        }
+        else
+        {
+            if (isEquipped)
+            {
+                ripple.gameObject.SetActive(true);
+                ChangeRippleColor(listRiplleSystem[0].color);
+            }
+            else
+                ripple.gameObject.SetActive(false);
+                
+        }
+
+    }
+
+    public override void SetGadget()
+    {
+        base.SetGadget();
+
+        if(listObjects.Count < 1)
+        {
+            return;
+        }
+
+        foreach (Transform interactableObject in listObjects)
+        {
+            if (isEquipped)
+            {
+                interactableObject.GetChild(0).gameObject.SetActive(true);
+            }
+            else
+            {
+                interactableObject.GetChild(0).gameObject.SetActive(false);
+            }
+        }
+
+        
+    }
+
+    /// <summary>
+    /// Oggetto da cercare calcolando la distanza
+    /// </summary>
+    private void SearchObject()
 	{
 
 		Transform obj = listObjects[0];
@@ -186,7 +234,7 @@ public class Scanner : Gadget {
 	{
 
 
-		Debug.Log ("Avvio");
+		//Debug.Log ("Avvio");
 
 		BeepSystem bs = ChooseBeepSound ();
 

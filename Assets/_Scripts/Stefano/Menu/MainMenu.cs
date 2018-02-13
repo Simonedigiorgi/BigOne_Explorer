@@ -11,6 +11,8 @@ public class MainMenu : MonoBehaviour
 	public EventSystem eSystem;
 	public Animator anim;
 	public Animator mainMenu;
+	public Animator doorUp;
+	public Animator doorDown;
 
 	void Awake()
 	{
@@ -56,6 +58,20 @@ public class MainMenu : MonoBehaviour
 	{
 
 		mainMenu.Play (value);
+
+	}
+
+	public void PlayAnimationDoorUp()
+	{
+
+		doorUp.Play ("LeftDoor");
+
+	}
+
+	public void PlayAnimationDoorDown()
+	{
+
+		doorDown.Play ("RightOpen");
 
 	}
 

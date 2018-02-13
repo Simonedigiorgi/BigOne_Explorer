@@ -155,6 +155,22 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1624408588327410
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4379135732534508}
+  - component: {fileID: 114811425841144100}
+  m_Layer: 0
+  m_Name: Parla con il medico
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1762304354301590
 GameObject:
   m_ObjectHideFlags: 1
@@ -203,6 +219,22 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1967619206742038
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4261577257872054}
+  - component: {fileID: 114288354563419730}
+  m_Layer: 0
+  m_Name: Quest3
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!4 &4000229779413868
 Transform:
   m_ObjectHideFlags: 1
@@ -232,6 +264,7 @@ Transform:
   m_Children:
   - {fileID: 4000229779413868}
   - {fileID: 4062117130653196}
+  - {fileID: 4261577257872054}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -279,6 +312,20 @@ Transform:
   m_Father: {fileID: 4062117130653196}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4261577257872054
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1967619206742038}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 4379135732534508}
+  m_Father: {fileID: 4025752456576900}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4364821872057056
 Transform:
   m_ObjectHideFlags: 1
@@ -290,6 +337,19 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4062117130653196}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4379135732534508
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1624408588327410}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4261577257872054}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4433653189429230
@@ -455,6 +515,22 @@ MonoBehaviour:
   taskName: Vai al Cratere Gale
   taskPriority: 3
   taskScene: Cratere Gale_Prova
+--- !u!114 &114288354563419730
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1967619206742038}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1005fc67097e3643ad1fd2e1c7d6809, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentState: 0
+  questName: Mission 3
+  questPriority: 2
+  taskActived: {fileID: 0}
+  questTasks: []
 --- !u!114 &114341177063839508
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -544,6 +620,25 @@ MonoBehaviour:
   taskDialogue: {fileID: 4900000, guid: 767b165cdc035444a9010c0ee3be5f49, type: 3}
   currentDialogue: 0
   gadgetsReward: 
+--- !u!114 &114811425841144100
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1624408588327410}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ebce6ebe160aa4de0a2ef090c6abed2e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentState: 0
+  taskName: Parla con il medico
+  taskPriority: 0
+  taskScene: Cratere Gale_Prova
+  npcAssociated: 2
+  taskDialogue: {fileID: 4900000, guid: 8df97709d56562d4c98bf889ec2ba146, type: 3}
+  currentDialogue: 0
+  gadgetsReward: 06000000
 --- !u!114 &114854423056491894
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -69,7 +69,7 @@ public class Scanner : Gadget {
 
                 if (currentDistance <= T_distance && isEquipped == false)
                 {
-                    audioSource.PlayOneShot(beep);
+                   // audioSource.PlayOneShot(beep);
                 }
 
                 if (isEquipped == true)
@@ -235,12 +235,12 @@ public class Scanner : Gadget {
 
 		BeepSystem bs = ChooseBeepSound ();
 
-		for (int i = 0; i < bs.numberBeep; i++) 
+		/*for (int i = 0; i < bs.numberBeep; i++) 
 		{
 
 			audioSource.PlayOneShot (beep);
 			yield return new WaitForSeconds(bs.timer);
-		}
+		}*/
 
 
 		yield return null;

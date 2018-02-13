@@ -20,13 +20,8 @@ public class TaskInteract : Task
         for(int i = 0; i < allTaskObjectsNumber; i++)
         {
             GameObject action = taskObjects[i].transform.GetChild(0).gameObject;
+            SetInteractableListener(action);
 
-            action.SetActive(true);
-
-            action.GetComponent<vTriggerGenericAction>().OnDoAction.AddListener(() => SetTaskObject(action.transform.parent.gameObject));
-            //action.GetComponent<vTriggerGenericAction>().OnPlayerEnter.AddListener(() => ShowHelpKey(action));
-            //action.GetComponent<vTriggerGenericAction>().OnPlayerExit.AddListener(() => HideHelpKey(action));
-            
             taskObjectsName.Add(taskObjects[i].name); 
             Database.InteractableObject interactableObject = new Database.InteractableObject(
                 (InteractableType)Enum.Parse(typeof(InteractableType), tagTaskObjects.ToUpper()), taskObjects[i].name, true, taskScene);
@@ -44,8 +39,7 @@ public class TaskInteract : Task
             if(interactable.type == (InteractableType)Enum.Parse(typeof(InteractableType), tagTaskObjects.ToUpper()) && interactable.isInteractable) 
             {
                 GameObject action = GameObject.Find(interactable.interactableName).transform.GetChild(0).gameObject;
-                action.SetActive(true);
-                action.GetComponent<vTriggerGenericAction>().OnDoAction.AddListener(() => SetTaskObject(action.transform.parent.gameObject));
+                SetInteractableListener(action);
 
                 taskObjectsName.Add(interactable.interactableName);
             }
@@ -53,7 +47,7 @@ public class TaskInteract : Task
         QuestManager.instance.CurrentTarget = taskName + "\n" + tagTaskObjects + ": " + taskObjectsNumber + "/" + allTaskObjectsNumber;
     }
 
-    public virtual void SetTaskObject(GameObject interactable)
+    protected virtual void SetTaskObject(GameObject interactable)
     {
         Database.interactableObjects.Find(x => x.interactableName == interactable.name).isInteractable = false;
         taskObjectsName.Remove(interactable.name);
@@ -82,13 +76,56 @@ public class TaskInteract : Task
 
     }
 
-    public virtual void ShowHelpKey(GameObject actionAssociated)
+    protected virtual void ShowHelpKey(GameObject actionAssociated)
     {
-        actionAssociated.transform.GetChild(0).gameObject.SetActive(true);
+        if (Input.GetJoystickNames().Length > 0)
+        {
+            actionAssociated.transform.GetChild(1).gameObject.SetActive(true);
+        }
+        else
+        {
+            actionAssociated.transform.GetChild(0).gameObject.SetActive(true);
+        }
     }
 
-    public virtual void HideHelpKey(GameObject actionAssociated)
+    protected virtual void HideHelpKey(GameObject actionAssociated)
     {
-        actionAssociated.transform.GetChild(0).gameObject.SetActive(false);
+        if (Input.GetJoystickNames().Length > 0)
+        {
+            actionAssociated.transform.GetChild(1).gameObject.SetActive(false);
+        }
+        else
+        {
+            actionAssociated.transform.GetChild(0).gameObject.SetActive(false);
+        }
+    }
+
+    protected virtual void SetInteractableListener(GameObject action)
+    {
+        action.SetActive(true);
+        vTriggerGenericAction actionComponent = action.GetComponent<vTriggerGenericAction>();
+
+        if (tagTaskObjects == "Equipaggiamento")
+        {
+            GadgetManager gadgetManager = FindObjectOfType<GadgetManager>();
+            actionComponent.OnDoAction.AddListener(() =>
+            {
+                SetTaskObject(action.transform.parent.gameObject);
+                Gadget gadget = gadgetManager.gadgets
+                    .Find(x => x.gadgetType == (GadgetManager.GadgetType)Enum.Parse(typeof(GadgetManager.GadgetType), action.transform.parent.name.ToUpper()));
+                gadget.isEnabled = true;
+                /*gadgetManager = FindObjectOfType<GadgetManager>();
+                GadgetManager.GadgetType gadget = (GadgetManager.GadgetType)Enum.Parse(typeof(GadgetManager.GadgetType), action.transform.parent.name.ToUpper());
+                gadgetManager.ActivateGadget(gadget, true);*/
+            });
+        }
+        else
+        {
+            actionComponent.OnDoAction.AddListener(() => SetTaskObject(action.transform.parent.gameObject));
+        }
+
+        actionComponent.OnPlayerEnter.AddListener(() => ShowHelpKey(action));
+        actionComponent.OnPlayerExit.AddListener(() => HideHelpKey(action));
+
     }
 }

@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour {
     public List<string> scenes;
 
     QuestManager questManager;
+    GadgetManager gadgetManager;
 
     private void Awake()
     {
@@ -25,12 +26,14 @@ public class GameManager : MonoBehaviour {
         DontDestroyOnLoad(this);
 
         questManager = FindObjectOfType<QuestManager>();
+        gadgetManager = FindObjectOfType<GadgetManager>();
         scenes = new List<string>();
 
         if (newGame)
         {
             //StartCoroutine(questManager.InitQuests());
             questManager.InitQuests();
+            gadgetManager.InitGadgets();
             this.SetScenes();
 
         }
@@ -134,5 +137,31 @@ public class GameManager : MonoBehaviour {
         {
             print(scene.sceneName+": "+scene.isUnlocked);
         }*/
+
     }
+
+    /*public void PrintData()
+    {
+
+        print("Ciao");
+
+        foreach (Database.DataQuest quest in Database.quests)
+        {
+            print(quest.questName);
+            print(quest.currentState);
+            foreach (Database.DataTask task in quest.tasks)
+            {
+
+                print(task.taskName);
+                print(task.currentState);
+            }
+
+            print("\n");
+        }
+
+        foreach(Database.DataScene scene in Database.scenes)
+        {
+            print(scene.sceneName + ": " + scene.isUnlocked);
+        }
+    }*/
 }

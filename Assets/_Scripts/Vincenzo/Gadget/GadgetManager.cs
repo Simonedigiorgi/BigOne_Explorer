@@ -1,11 +1,12 @@
-﻿using System;
+﻿using Invector.CharacterController;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class GadgetManager : MonoBehaviour {
 
-    [Header("Equipaggiamento")]
+    /*[Header("Equipaggiamento")]
     public bool isHelmet;
     public bool isBackpack;
 
@@ -17,25 +18,31 @@ public class GadgetManager : MonoBehaviour {
     public bool isAuger;                                                // Hai la trivella
     public bool isCamera;                                               // Hai la fotocamera
     public bool isJetPack;                                              // Hai il Jetpack
-    public bool isGeiger;                                               // Hai il Geiger
+    public bool isGeiger;                                               // Hai il Geiger*/
 
     public enum GadgetType
     {
+        HELMET,
+        BACKPACK,
         TORCH,
         COMPASS,
         PICKAXE,
         SCANNER,
-        AUGER,
+        //AUGER,
         CAMERA,
         JETPACK,
         GEIGER
     }
 
-	void Start () {
+    public List<Gadget> gadgets;
+
+    void Start () {
+
+        vThirdPersonController.instance.gadgetManager = this;
 
         // EQUIPAGGIAMENTO
 
-        if(isHelmet == true && isBackpack == false)
+        /*if(isHelmet == true && isBackpack == false)
         {
             Debug.Log("Hai bisogno dello Zaino");
         }
@@ -50,14 +57,26 @@ public class GadgetManager : MonoBehaviour {
         if (isJetPack == true)
         {
             Debug.Log("Se JetPack è true aggiungi 1 a Multijump");
-        }
+        }*/
     }
 	
 	void Update () {
 
+        /*if(Input.GetKeyDown(KeyCode.P))
+        {
+            foreach (Gadget g in GetComponentsInChildren<Gadget>(true))
+            {
+                print(g.gadgetType);
+                if(g.gadgetType == GadgetType.HELMET)
+                {
+                    print("Cipolla");
+                }
+            }
+        }
+
         // EQUIPAGGIAMENTO
 
-        if (isHelmet == false && isBackpack == true)
+       /* if (isHelmet == false && isBackpack == true)
         {
             Debug.Log("Apri la porta");
         }
@@ -92,10 +111,10 @@ public class GadgetManager : MonoBehaviour {
         if (isGeiger == true)
         {
             Debug.Log("Se premi _ e isGeiger è true avvia il metodo Geiger");
-        }
+        }*/
     }
 
-    public void Torch()
+    /*public void Torch()
     {
 
     }
@@ -133,13 +152,19 @@ public class GadgetManager : MonoBehaviour {
     public void Geiger()
     {
 
-    }
+    }*/
 
-    public void ActivateGadget(GadgetType gadgetType, bool active)
+    /*public void ActivateGadget(GadgetType gadgetType, bool active)
     {
 
         switch(gadgetType)
         {
+            case GadgetType.HELMET:
+                isHelmet = active;
+                break;
+            case GadgetType.BACKPACK:
+                isBackpack = active;
+                break;
             case GadgetType.TORCH:
                 isTorch = active;
             break;
@@ -185,6 +210,34 @@ public class GadgetManager : MonoBehaviour {
         {
             GadgetType gadget = (GadgetType)Enum.Parse(typeof(GadgetType), dataGadget.gadgetName);
             ActivateGadget(gadget, dataGadget.isActive);
+        }
+    }*/
+
+    public void InitGadgets()
+    {
+        Gadget[] gadgetList = GetComponentsInChildren<Gadget>(true);
+
+        for(int i = 0; i < gadgetList.Length; i++)
+        {
+            gadgets.Add(gadgetList[i]);
+            Database.DataGadget dataGadget = new Database.DataGadget(Enum.GetName(typeof(GadgetType), gadgetList[i].gadgetType), false);
+            Database.gadgets.Add(dataGadget);
+        }
+
+        //PrintGadget();
+    }
+
+    public Gadget GetGadgetByType(GadgetType type)
+    {
+        Gadget gadgetToReturn = this.gadgets.Find(x => x.gadgetType == type);
+        return gadgetToReturn;
+    }
+
+    public void PrintGadget()
+    {
+        foreach(Database.DataGadget g in Database.gadgets)
+        {
+            print(g.gadgetName + ": " + g.isActive);
         }
     }
 

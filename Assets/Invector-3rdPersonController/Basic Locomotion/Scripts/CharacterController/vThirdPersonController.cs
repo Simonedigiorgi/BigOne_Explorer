@@ -9,19 +9,17 @@ namespace Invector.CharacterController
         #region Variables
 
         public static vThirdPersonController instance;
+        public GadgetManager gadgetManager;
 
-        public Light torcia;
-        public Light luce;
+        /*public Light torcia;
+        public Light luce;*/
 
         #endregion
 
         protected virtual void Awake()
         {
             StartCoroutine(UpdateRaycast()); // limit raycasts calls for better performance
-        }
 
-        protected virtual void Start()
-        {
             if (instance == null)
             {
                 instance = this;
@@ -33,6 +31,21 @@ namespace Invector.CharacterController
                 Destroy(this.gameObject);
                 return;
             }
+        }
+
+        protected virtual void Start()
+        {
+            /*if (instance == null)
+            {
+                instance = this;
+                DontDestroyOnLoad(this.gameObject);
+                this.gameObject.name = gameObject.name + " Instance";
+            }
+            else
+            {
+                Destroy(this.gameObject);
+                return;
+            }*/
         }
 
         #region Locomotion Actions
@@ -137,7 +150,7 @@ namespace Invector.CharacterController
             currentStaminaRecoveryDelay = 2f;
         }
 
-        public virtual void Torch() // Richiama la torcia
+        /*public virtual void Torch() // Richiama la torcia
         {
             if (isGrounded && !actions)
             {
@@ -156,16 +169,42 @@ namespace Invector.CharacterController
                     luce.enabled = true;
                 }
             }
-        }
+        }*/
 
-        public virtual void Scanner()
+        public virtual void Scanner() // Richiama lo scanner
         {
             // Scanner
+            if (isGrounded && !actions)
+            {
+                if(isScanner)
+                {
+                    isScanner = false;
+                    Debug.Log("NOSCANNER");
+                }
+                else if(!isScanner)
+                {
+                    isScanner = true;
+                    Debug.Log("SCANNER");
+                }
+            }
         }
 
         public virtual void Geiger()
         {
             // Geiger
+            if (isGrounded && !actions)
+            {
+                if (isGeiger)
+                {
+                    isGeiger = false;
+                    Debug.Log("NOGEIGER");
+                }
+                else if (!isGeiger)
+                {
+                    isGeiger = true;
+                    Debug.Log("GEIGER");
+                }
+            }
         }
 
         public virtual void Menu() // Richiama il menu
@@ -178,7 +217,7 @@ namespace Invector.CharacterController
                     Debug.Log("EXITMenu");
 
                 }
-                else if (!isTorch)
+                else if (!isMenu)
                 {
                     isMenu = true;
                     Debug.Log("ENTERMenu");

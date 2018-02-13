@@ -19,7 +19,7 @@ public class Npc : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.E) && playerTriggered)
+        if((Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.Joystick1Button2)) && playerTriggered)
         {
             UIManager.instance.ShowDialoguePanel();
             if (QuestManager.instance.currentQuest.taskActived.GetComponent<TaskTalk>() &&
@@ -47,7 +47,15 @@ public class Npc : MonoBehaviour {
         if (other.tag == "Player" && !playerTriggered)
         {
             playerTriggered = true;
-            this.transform.parent.GetChild(2).gameObject.SetActive(true);
+            if (Input.GetJoystickNames().Length > 0)
+            {
+                this.transform.parent.GetChild(2).GetChild(1).gameObject.SetActive(true);
+            }
+            else
+            {
+                this.transform.parent.GetChild(2).GetChild(0).gameObject.SetActive(true);
+            }
+                
         }
     }
 
@@ -56,7 +64,14 @@ public class Npc : MonoBehaviour {
         if (other.tag == "Player" && playerTriggered)
         {
             playerTriggered = false;
-            this.transform.parent.GetChild(2).gameObject.SetActive(false);
+            if (Input.GetJoystickNames().Length > 0)
+            {
+                this.transform.parent.GetChild(2).GetChild(1).gameObject.SetActive(false);
+            }
+            else
+            {
+                this.transform.parent.GetChild(2).GetChild(0).gameObject.SetActive(false);
+            }
             UIManager.instance.HideDialoguePanel();
         }
     }

@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public class Geiger : MonoBehaviour 
+public class Geiger : Gadget 
 {
 
 	#region Public
-	public bool equip = false;
-	[Header("Lista di oggetti da cercare nella scena")]
-	public List<Transform> listObjects;
+	//public bool equip = false;
+	/*[Header("Lista di oggetti da cercare nella scena")]
+	public List<Transform> listObjects;*/
 	[Header("Suono geiger LOW")]
 	public AudioClip Geiger_LOW;
 	[Header("Suono geiger HIGH")]
@@ -41,57 +41,80 @@ public class Geiger : MonoBehaviour
 	void Update () 
 	{
 
-		if (equip == true) 
-		{
-			
-			SearchObject ();
-
-			if (currentDistance <= vicino && Semaforo1 == false) 
-			{
-
-				audioSource.clip = Geiger_HIGH;
-				audioSource.Play ();
-
-				ChangeRippleColor (coloreVicino);
-
-				Semaforo1 = true;
-				Semaforo2 = false;
-				Semaforo3 = false;
-
-			} 
-			else if (currentDistance > vicino && currentDistance <= lontano && Semaforo2 == false) 
-			{
-
-				audioSource.clip = Geiger_LOW;
-				audioSource.Play ();
-
-				ChangeRippleColor (coloreMedio);
-
-				Semaforo1 = false;
-				Semaforo2 = true;
-				Semaforo3 = false;
-
-			} 
-			else if (currentDistance > lontano && Semaforo3 == false)
-			{
-
-				audioSource.Stop ();
-
-				ChangeRippleColor (coloreLontano);
-
-				Semaforo1 = false;
-				Semaforo2 = false;
-				Semaforo3 = true;
-
-			}
-		}
+        if (isEnabled)
+            UseGadget();
 
 	}
 
-	/// <summary>
-	/// Oggetto da cercare calcolando la distanza
-	/// </summary>
-	private void SearchObject()
+    protected override void UseGadget()
+    {
+        if (listObjects.Count > 0)
+        {
+
+            SearchObject();
+
+            if(isEquipped)
+            {
+                if (currentDistance <= vicino && Semaforo1 == false)
+                {
+
+                    audioSource.clip = Geiger_HIGH;
+                    audioSource.Play();
+
+                    ChangeRippleColor(coloreVicino);
+
+                    Semaforo1 = true;
+                    Semaforo2 = false;
+                    Semaforo3 = false;
+
+                }
+                else if (currentDistance > vicino && currentDistance <= lontano && Semaforo2 == false)
+                {
+
+                    audioSource.clip = Geiger_LOW;
+                    audioSource.Play();
+
+                    ChangeRippleColor(coloreMedio);
+
+                    Semaforo1 = false;
+                    Semaforo2 = true;
+                    Semaforo3 = false;
+
+                }
+                else if (currentDistance > lontano && Semaforo3 == false)
+                {
+
+                    audioSource.Stop();
+
+                    ChangeRippleColor(coloreLontano);
+
+                    Semaforo1 = false;
+                    Semaforo2 = false;
+                    Semaforo3 = true;
+
+                }
+
+                ripple.gameObject.SetActive(true);
+            }
+
+            
+        }
+        else
+        {
+            if (isEquipped)
+            {
+                ripple.gameObject.SetActive(true);
+                ChangeRippleColor(coloreLontano);
+            }
+            else
+                ripple.gameObject.SetActive(false);
+        }
+    }
+
+    /// <summary>
+    /// Oggetto da cercare calcolando la distanza
+    /// </summary>
+    private void SearchObject()
 	{
 
 		Transform obj = listObjects[0];

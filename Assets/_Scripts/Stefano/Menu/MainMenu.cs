@@ -9,6 +9,8 @@ public class MainMenu : MonoBehaviour
 
 	public GameObject firstButton;
 	public EventSystem eSystem;
+	public Animator anim;
+	public Animator mainMenu;
 
 	void Awake()
 	{
@@ -43,6 +45,20 @@ public class MainMenu : MonoBehaviour
 
 	}
 
+	public void PlayAnimationCamera(string value)
+	{
+
+		anim.Play(value);
+
+	}
+
+	public void PlayAnimationMainMenu(string value)
+	{
+
+		mainMenu.Play (value);
+
+	}
+
 	/// <summary>
 	/// Cambiare il first select dell'Event System
 	/// </summary>
@@ -55,6 +71,17 @@ public class MainMenu : MonoBehaviour
 			eSystem.firstSelectedGameObject = button;
 		else
 			eSystem.firstSelectedGameObject = null;
+
+	}
+
+	/// <summary>
+	/// Changes the first selected.
+	/// </summary>
+	/// <param name="button">Button.</param>
+	public void ChangeFirstSelected(GameObject button)
+	{
+
+		eSystem.firstSelectedGameObject = button;
 
 	}
 

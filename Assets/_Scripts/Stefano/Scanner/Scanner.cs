@@ -69,10 +69,7 @@ public class Scanner : Gadget {
 
                 if (currentDistance <= T_distance && isEquipped == false)
                 {
-
                     audioSource.PlayOneShot(beep);
-                    print("Beep");
-
                 }
 
                 if (isEquipped == true)

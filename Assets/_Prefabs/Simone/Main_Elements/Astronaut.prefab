@@ -1907,7 +1907,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1276046548144088}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -8.387021, y: -0.041338872, z: -1.4539948}
+  m_LocalPosition: {x: 0, y: 0, z: 2.44}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4510803716841998}
@@ -1957,7 +1957,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1873887235732820}
   m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0.010000229, y: -0.7270012, z: 0.09000015}
+  m_LocalPosition: {x: 0, y: 0.05, z: 0}
   m_LocalScale: {x: 1, y: 1.0000005, z: 1.0000005}
   m_Children: []
   m_Father: {fileID: 4167839462442564}
@@ -3891,6 +3891,7 @@ MonoBehaviour:
   gadgetType: 2
   isEnabled: 0
   isEquipped: 0
+  listObjects: []
 --- !u!114 &114031185577845360
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3921,6 +3922,7 @@ MonoBehaviour:
   gadgetType: 6
   isEnabled: 0
   isEquipped: 0
+  listObjects: []
 --- !u!114 &114066311312717176
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3997,6 +3999,7 @@ MonoBehaviour:
   gadgetType: 1
   isEnabled: 0
   isEquipped: 0
+  listObjects: []
 --- !u!114 &114166471913878258
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4027,7 +4030,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1717852424742070}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 318a618e60762eb48b5e684a575eca76, type: 3}
   m_Name: 
@@ -4044,7 +4047,7 @@ MonoBehaviour:
   coloreMedio: {r: 0.90344834, g: 1, b: 0, a: 1}
   lontano: 100
   coloreLontano: {r: 1, g: 0, b: 0, a: 1}
-  ripple: {fileID: 0}
+  ripple: {fileID: 198370768940555128}
 --- !u!114 &114194214905002752
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4072,6 +4075,7 @@ MonoBehaviour:
   gadgetType: 4
   isEnabled: 0
   isEquipped: 0
+  listObjects: []
 --- !u!114 &114292398001630424
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4086,6 +4090,7 @@ MonoBehaviour:
   gadgetType: 0
   isEnabled: 0
   isEquipped: 0
+  listObjects: []
 --- !u!114 &114301692959773478
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4154,6 +4159,7 @@ MonoBehaviour:
   gadgetType: 3
   isEnabled: 0
   isEquipped: 0
+  listObjects: []
   NorthDirection: {x: 0, y: 0, z: 0}
   Player: {fileID: 4167839462442564}
   MissionDirection: {x: 0, y: 0, z: 0, w: 0}
@@ -4205,6 +4211,7 @@ MonoBehaviour:
   gadgetType: 7
   isEnabled: 0
   isEquipped: 0
+  listObjects: []
 --- !u!114 &114544557793864076
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4223,7 +4230,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1220621126214842}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 79dbbc0eddc7d0d49b18db1f06f6db53, type: 3}
   m_Name: 
@@ -4231,8 +4238,8 @@ MonoBehaviour:
   gadgetType: 5
   isEnabled: 0
   isEquipped: 0
-  T_distance: 50
   listObjects: []
+  T_distance: 50
   beep: {fileID: 8300000, guid: cb4fd492b52842849977922acad34eee, type: 3}
   audioSource: {fileID: 0}
   listBeepSystem:

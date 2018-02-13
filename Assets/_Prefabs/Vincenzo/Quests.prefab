@@ -35,7 +35,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4189688059971958}
-  - component: {fileID: 114286794450939410}
+  - component: {fileID: 114263987824456992}
   m_Layer: 0
   m_Name: Raccogli i minerali
   m_TagString: Untagged
@@ -401,6 +401,26 @@ MonoBehaviour:
   questPriority: 0
   taskActived: {fileID: 0}
   questTasks: []
+--- !u!114 &114263987824456992
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1120137819266332}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aacb28d253dac404ca43233f4b66cd29, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentState: 0
+  taskName: Raccogli i minerali
+  taskPriority: 2
+  taskScene: Valles_Marineris
+  taskObjectsName: []
+  tagTaskObjects: Minerali
+  taskObjectsNumber: 0
+  allTaskObjectsNumber: 0
+  gadgetType: 5
 --- !u!114 &114267627077751734
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -435,24 +455,6 @@ MonoBehaviour:
   taskName: Vai al Cratere Gale
   taskPriority: 3
   taskScene: Cratere Gale_Prova
---- !u!114 &114286794450939410
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1120137819266332}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f54a30eeef0db41b499a20e86a9c0a79, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currentState: 0
-  taskName: Raccogli i minerali
-  taskPriority: 2
-  taskScene: Valles_Marineris
-  taskObjectsName: []
-  tagTaskObjects: Minerali
-  taskObjectsNumber: 0
 --- !u!114 &114341177063839508
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -509,6 +511,7 @@ MonoBehaviour:
   taskObjectsName: []
   tagTaskObjects: Equipaggiamento
   taskObjectsNumber: 0
+  allTaskObjectsNumber: 0
 --- !u!114 &114713036198179440
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -521,6 +524,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   quests: []
+  currentQuest: {fileID: 0}
 --- !u!114 &114801028466272088
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -574,3 +578,4 @@ MonoBehaviour:
   taskObjectsName: []
   tagTaskObjects: Pannelli
   taskObjectsNumber: 0
+  allTaskObjectsNumber: 0

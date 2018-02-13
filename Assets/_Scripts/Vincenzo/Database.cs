@@ -9,7 +9,7 @@ public enum InteractableType
     PANNELLI,
     MINERALI,
     TUBI,
-    RESTI_SONDA
+    SONDA
 }
 
 public static class Database

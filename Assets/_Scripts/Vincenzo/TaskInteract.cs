@@ -124,8 +124,8 @@ public class TaskInteract : Task
             actionComponent.OnDoAction.AddListener(() => SetTaskObject(action.transform.parent.gameObject));
         }
 
-        //actionComponent.OnPlayerEnter.AddListener(() => ShowHelpKey(action));
-        //actionComponent.OnPlayerExit.AddListener(() => HideHelpKey(action));
+        actionComponent.OnPlayerEnter.AddListener(() => ShowHelpKey(action));
+        actionComponent.OnPlayerExit.AddListener(() => HideHelpKey(action));
 
     }
 }

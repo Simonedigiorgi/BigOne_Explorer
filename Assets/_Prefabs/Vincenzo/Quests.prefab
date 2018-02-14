@@ -11,6 +11,22 @@ Prefab:
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 1239340926185960}
   m_IsPrefabParent: 1
+--- !u!1 &1061652055263608
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4128954400088488}
+  - component: {fileID: 114088301118179020}
+  m_Layer: 0
+  m_Name: Torna al Cratere Gale
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1062701114970962
 GameObject:
   m_ObjectHideFlags: 1
@@ -21,7 +37,7 @@ GameObject:
   - component: {fileID: 4746391833770052}
   - component: {fileID: 114099737587512616}
   m_Layer: 0
-  m_Name: Vai alla Valle Marineris
+  m_Name: Vai a Noctis Labyrinthus
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -35,9 +51,9 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4189688059971958}
-  - component: {fileID: 114263987824456992}
+  - component: {fileID: 114615710023178524}
   m_Layer: 0
-  m_Name: Raccogli i minerali
+  m_Name: Analizza la scatola nera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -102,6 +118,54 @@ GameObject:
   - component: {fileID: 114180379651685160}
   m_Layer: 0
   m_Name: Quest1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1283593049424262
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4025361062155802}
+  - component: {fileID: 114323017015049202}
+  m_Layer: 0
+  m_Name: Vai alla Valle Marineris
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1321943639146440
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4115994248008690}
+  - component: {fileID: 114676978234217774}
+  m_Layer: 0
+  m_Name: Quest3
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1333404506229230
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4198872902339650}
+  - component: {fileID: 114263987824456992}
+  m_Layer: 0
+  m_Name: Raccogli i minerali
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -203,6 +267,22 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1867069000917656
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4642770760014588}
+  - component: {fileID: 114232392022906952}
+  m_Layer: 0
+  m_Name: Raccogli la scatola nera
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1944741176085850
 GameObject:
   m_ObjectHideFlags: 0
@@ -229,12 +309,12 @@ GameObject:
   - component: {fileID: 4261577257872054}
   - component: {fileID: 114288354563419730}
   m_Layer: 0
-  m_Name: Quest3
+  m_Name: Quest4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4000229779413868
 Transform:
   m_ObjectHideFlags: 1
@@ -252,6 +332,19 @@ Transform:
   m_Father: {fileID: 4025752456576900}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4025361062155802
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1283593049424262}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4062117130653196}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4025752456576900
 Transform:
   m_ObjectHideFlags: 1
@@ -259,11 +352,12 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1239340926185960}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 362.8, y: 30.000002, z: 370.6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4000229779413868}
   - {fileID: 4062117130653196}
+  - {fileID: 4115994248008690}
   - {fileID: 4261577257872054}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -279,12 +373,27 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4364821872057056}
-  - {fileID: 4746391833770052}
-  - {fileID: 4189688059971958}
-  - {fileID: 4850954058876718}
+  - {fileID: 4025361062155802}
+  - {fileID: 4198872902339650}
+  - {fileID: 4128954400088488}
   - {fileID: 4753525874702072}
   m_Father: {fileID: 4025752456576900}
   m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4115994248008690
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1321943639146440}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 4379135732534508}
+  - {fileID: 4746391833770052}
+  m_Father: {fileID: 4025752456576900}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4126306006739576
 Transform:
@@ -299,12 +408,38 @@ Transform:
   m_Father: {fileID: 4000229779413868}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4128954400088488
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1061652055263608}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4062117130653196}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4189688059971958
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1120137819266332}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4261577257872054}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4198872902339650
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1333404506229230}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -318,13 +453,15 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1967619206742038}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 4379135732534508}
+  - {fileID: 4642770760014588}
+  - {fileID: 4850954058876718}
+  - {fileID: 4189688059971958}
   m_Father: {fileID: 4025752456576900}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4364821872057056
 Transform:
@@ -349,7 +486,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 4261577257872054}
+  m_Father: {fileID: 4115994248008690}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4433653189429230
@@ -365,6 +502,19 @@ Transform:
   m_Father: {fileID: 4000229779413868}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4642770760014588
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1867069000917656}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4261577257872054}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4746391833770052
 Transform:
   m_ObjectHideFlags: 1
@@ -375,7 +525,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 4062117130653196}
+  m_Father: {fileID: 4115994248008690}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4753525874702072
@@ -414,8 +564,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 4062117130653196}
-  m_RootOrder: 3
+  m_Father: {fileID: 4261577257872054}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4899899538614792
 Transform:
@@ -430,6 +580,21 @@ Transform:
   m_Father: {fileID: 4000229779413868}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114088301118179020
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1061652055263608}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a09510dd4686404698031a84b119863, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentState: 0
+  taskName: Vai al Cratere Gale
+  taskPriority: 3
+  taskScene: Cratere Gale_Prova_2
 --- !u!114 &114099737587512616
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -442,9 +607,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentState: 0
-  taskName: Vai alla Valles Marineris
+  taskName: Vai a Noctis Labyrinthus
   taskPriority: 1
-  taskScene: Valles_Marineris
+  taskScene: Noctis Labyrinthus
 --- !u!114 &114180379651685160
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -456,17 +621,36 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1005fc67097e3643ad1fd2e1c7d6809, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentState: 1
+  currentState: 0
   questName: Mission 1
   questPriority: 0
   taskActived: {fileID: 0}
   questTasks: []
+--- !u!114 &114232392022906952
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1867069000917656}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f54a30eeef0db41b499a20e86a9c0a79, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentState: 0
+  taskName: Raccogli la scatola nera
+  taskPriority: 0
+  taskScene: Noctis Labyrinthus
+  taskObjectsName: []
+  tagTaskObjects: Scatola Nera
+  taskObjectsNumber: 0
+  allTaskObjectsNumber: 0
 --- !u!114 &114263987824456992
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1120137819266332}
+  m_GameObject: {fileID: 1333404506229230}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: aacb28d253dac404ca43233f4b66cd29, type: 3}
@@ -495,7 +679,7 @@ MonoBehaviour:
   currentState: 0
   taskName: Parla con l'ingegnere
   taskPriority: 3
-  taskScene: Cratere Gale_Prova
+  taskScene: Cratere Gale_Prova_2
   npcAssociated: 0
   taskDialogue: {fileID: 4900000, guid: 32c3d5d82f2ee4845bea46ee9e6ff3f6, type: 3}
   currentDialogue: 0
@@ -513,8 +697,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentState: 0
   taskName: Vai al Cratere Gale
-  taskPriority: 3
-  taskScene: Cratere Gale_Prova
+  taskPriority: 1
+  taskScene: Cratere Gale_Prova_2
 --- !u!114 &114288354563419730
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -527,10 +711,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentState: 0
-  questName: Mission 3
-  questPriority: 2
+  questName: Mission 4
+  questPriority: 3
   taskActived: {fileID: 0}
   questTasks: []
+--- !u!114 &114323017015049202
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1283593049424262}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a09510dd4686404698031a84b119863, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentState: 0
+  taskName: Vai alla Valles Marineris
+  taskPriority: 1
+  taskScene: Valles_Marineris
 --- !u!114 &114341177063839508
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -542,14 +741,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ebce6ebe160aa4de0a2ef090c6abed2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentState: 0
+  currentState: 1
   taskName: Parla con il botanico
   taskPriority: 0
-  taskScene: Cratere Gale_Prova
+  taskScene: Cratere Gale_Prova_2
   npcAssociated: 1
   taskDialogue: {fileID: 4900000, guid: c2aac1e215d7a6a44b16ef486a1635c3, type: 3}
   currentDialogue: 0
-  gadgetsReward: 0300000004000000
+  gadgetsReward: 05000000
 --- !u!114 &114380483393514308
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -564,11 +763,30 @@ MonoBehaviour:
   currentState: 0
   taskName: Consegna i minerali al botanico
   taskPriority: 4
-  taskScene: Cratere Gale_Prova
+  taskScene: Cratere Gale_Prova_2
   npcAssociated: 1
   taskDialogue: {fileID: 4900000, guid: b145ff2259d0ecb4586c14a5dd3c7c25, type: 3}
   currentDialogue: 0
   gadgetsReward: 
+--- !u!114 &114615710023178524
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1120137819266332}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f54a30eeef0db41b499a20e86a9c0a79, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentState: 0
+  taskName: Analizza la scatola nera
+  taskPriority: 2
+  taskScene: Cratere Gale_Prova_2
+  taskObjectsName: []
+  tagTaskObjects: Computer
+  taskObjectsNumber: 0
+  allTaskObjectsNumber: 0
 --- !u!114 &114628546372398050
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -583,11 +801,27 @@ MonoBehaviour:
   currentState: 0
   taskName: Recupera l'equipaggiamento
   taskPriority: 1
-  taskScene: Cratere Gale_Prova
+  taskScene: Cratere Gale_Prova_2
   taskObjectsName: []
   tagTaskObjects: Equipaggiamento
   taskObjectsNumber: 0
   allTaskObjectsNumber: 0
+--- !u!114 &114676978234217774
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1321943639146440}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1005fc67097e3643ad1fd2e1c7d6809, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentState: 0
+  questName: Mission 3
+  questPriority: 2
+  taskActived: {fileID: 0}
+  questTasks: []
 --- !u!114 &114713036198179440
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -615,7 +849,7 @@ MonoBehaviour:
   currentState: 1
   taskName: Parla con l'ingegnere
   taskPriority: 0
-  taskScene: Cratere Gale_Prova
+  taskScene: Cratere Gale_Prova_2
   npcAssociated: 0
   taskDialogue: {fileID: 4900000, guid: 767b165cdc035444a9010c0ee3be5f49, type: 3}
   currentDialogue: 0
@@ -634,7 +868,7 @@ MonoBehaviour:
   currentState: 0
   taskName: Parla con il medico
   taskPriority: 0
-  taskScene: Cratere Gale_Prova
+  taskScene: Cratere Gale_Prova_2
   npcAssociated: 2
   taskDialogue: {fileID: 4900000, guid: 8df97709d56562d4c98bf889ec2ba146, type: 3}
   currentDialogue: 0
@@ -650,7 +884,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1005fc67097e3643ad1fd2e1c7d6809, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentState: 0
+  currentState: 1
   questName: Mission 2
   questPriority: 1
   taskActived: {fileID: 0}
@@ -669,7 +903,7 @@ MonoBehaviour:
   currentState: 0
   taskName: Pulisci i pannelli
   taskPriority: 2
-  taskScene: Cratere Gale_Prova
+  taskScene: Cratere Gale_Prova_2
   taskObjectsName: []
   tagTaskObjects: Pannelli
   taskObjectsNumber: 0

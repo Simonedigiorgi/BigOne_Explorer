@@ -3,11 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour 
 {
 
 	#region Public 
+
+	public CanvasGroup background;
 
 	public GameObject firstButton;
 	public EventSystem eSystem;
@@ -102,6 +105,14 @@ public class MainMenu : MonoBehaviour
 		{
 
 			timer += Time.deltaTime;
+
+		}
+
+
+		if (background.alpha == 1) 
+		{
+
+			SceneManager.LoadScene ("Cratere Gale_Prova_2");
 
 		}
 

@@ -7,6 +7,8 @@ using UnityEngine.EventSystems;
 public class MainMenu : MonoBehaviour 
 {
 
+	#region Public 
+
 	public GameObject firstButton;
 	public EventSystem eSystem;
 	public Animator anim;
@@ -14,12 +16,146 @@ public class MainMenu : MonoBehaviour
 	public Animator doorUp;
 	public Animator doorDown;
 
+	[Header("Marker per alzare o diminuire i volumi")]
+	public GameObject mainMuiscButton;
+	public GameObject SFXbutton;
+	public GameObject musicButton;
+
+	public Color32 disableColor;
+	public Color32 enableColor;
+
+	[Header("Lista MAIN VOLUME")]
+	public List<Image> listMainVolume;
+	public AudioSource mainAudio;
+	[Header("Lista SFX VOLUME")]
+	public List<Image> listSFXVolume;
+	public AudioSource SFXaudio;
+	[Header("Lista MUSIC VOLUME")]
+	public List<Image> listMusicVolume;
+	public AudioSource musicAudio;
+
+
+	#endregion 
+
+	#region Private 
+
+	//Pezza
+	private float timer = 0.2f;
+
+	#endregion
+
 	void Awake()
 	{
-
+		
+		//Controlliamo se il Joystick è stato inserito 
 		ChangeFirstSelected (firstButton, CheckJoystick ());
 
 	}
+
+	void Update()
+	{
+
+		//Pezza
+		if (timer >= 0.2f) 
+		{
+
+			timer = 0;
+
+			if (eSystem.currentSelectedGameObject.GetHashCode () == mainMuiscButton.GetHashCode () && InputManager.MainHorizontal () < 0) {
+
+				//Tolgo volume
+				DecreaseVolume (listMainVolume, mainAudio);
+
+			} else if (eSystem.currentSelectedGameObject.GetHashCode () == mainMuiscButton.GetHashCode () && InputManager.MainHorizontal () > 0) {
+				
+				//Tolgo volume
+				EncreaseVolume (listMainVolume, mainAudio);
+
+			}
+
+			if (eSystem.currentSelectedGameObject.GetHashCode () == SFXbutton.GetHashCode () && InputManager.MainHorizontal () < 0) {
+
+				//Tolgo volume
+				DecreaseVolume (listSFXVolume, SFXaudio);
+
+			} else if (eSystem.currentSelectedGameObject.GetHashCode () == SFXbutton.GetHashCode () && InputManager.MainHorizontal () > 0) {
+				
+				//Tolgo volume
+				EncreaseVolume (listSFXVolume, SFXaudio);
+
+			}
+
+			if (eSystem.currentSelectedGameObject.GetHashCode () == musicButton.GetHashCode () && InputManager.MainHorizontal () < 0) {
+
+				//Tolgo volume
+				DecreaseVolume (listMusicVolume, musicAudio);
+
+			} else if (eSystem.currentSelectedGameObject.GetHashCode () == musicButton.GetHashCode () && InputManager.MainHorizontal () > 0) {
+				
+				//Tolgo volume
+				EncreaseVolume (listMusicVolume, musicAudio);
+
+			}
+
+		} 
+		else 
+		{
+
+			timer += Time.deltaTime;
+
+		}
+
+	}
+
+	#region Volume
+
+	/// <summary>
+	/// Metodo che aumenta il volume del gioco
+	/// </summary>
+	public void EncreaseVolume( List<Image> list, AudioSource audio)
+	{
+
+		for (int i = 0; i < list.Count; i++) 
+		{
+
+			if (list [i].color == disableColor) 
+			{
+
+				audio.volume += 0.1f;
+				list [i].color = enableColor;
+				return;
+
+			}
+
+		}
+
+	}
+
+	/// <summary>
+	/// Metodo che diminuisce il volume di gioco
+	/// </summary>
+	public void DecreaseVolume( List<Image> list, AudioSource audio)
+	{
+
+		for (int i = 1; i <= list.Count; i++) 
+		{
+
+			if (list [list.Count-i].color == enableColor) 
+			{
+
+				audio.volume -= 0.1f;
+				list [list.Count-i].color = disableColor;
+				return;
+
+			}
+
+		}
+
+	}
+
+	#endregion
+
+	#region Joystick
 
 	/// <summary>
 	/// Controllo se è inserito un Joystick
@@ -47,6 +183,14 @@ public class MainMenu : MonoBehaviour
 
 	}
 
+	#endregion
+
+	#region Animazioni
+
+	/// <summary>
+	/// Metodo che gestisce l'animator della main camera
+	/// </summary>
+	/// <param name="value">Value.</param>
 	public void PlayAnimationCamera(string value)
 	{
 
@@ -54,6 +198,10 @@ public class MainMenu : MonoBehaviour
 
 	}
 
+	/// <summary>
+	/// Metodo che permette di gestire l'animator del main menu
+	/// </summary>
+	/// <param name="value">Value.</param>
 	public void PlayAnimationMainMenu(string value)
 	{
 
@@ -61,6 +209,9 @@ public class MainMenu : MonoBehaviour
 
 	}
 
+	/// <summary>
+	/// Metodo che attiva il movimento della porta
+	/// </summary>
 	public void PlayAnimationDoorUp()
 	{
 
@@ -68,12 +219,19 @@ public class MainMenu : MonoBehaviour
 
 	}
 
+	/// <summary>
+	/// Metodo che attiva il movimento della porta
+	/// </summary>
 	public void PlayAnimationDoorDown()
 	{
 
 		doorDown.Play ("RightOpen");
 
 	}
+
+	#endregion
+
+	#region EventSystem
 
 	/// <summary>
 	/// Cambiare il first select dell'Event System
@@ -101,6 +259,10 @@ public class MainMenu : MonoBehaviour
 
 	}
 
+	#endregion
+
+	#region Generic
+
 	/// <summary>
 	/// Metodo per uscire dal gioco
 	/// </summary>
@@ -111,16 +273,6 @@ public class MainMenu : MonoBehaviour
 
 	}
 
-	/// <summary>
-	/// Caricare i dati 
-	/// </summary>
-	public void Load()
-	{
-
-		//Metodo
-
-	}
-
-
+	#endregion
 
 }

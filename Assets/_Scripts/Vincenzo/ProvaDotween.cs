@@ -2,18 +2,46 @@
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using UnityEngine.Playables;
+using Cinemachine;
+using Invector.CharacterController;
 
 public class ProvaDotween : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	
+    PlayableDirector playable;
+    CinemachineSmoothPath cineMachine;
+    public vThirdPersonController player;
 
-    protected virtual IEnumerator Prova()
+    bool activePlayable = false;
+
+    // Use this for initialization
+    void Start () {
+        
+	}
+
+    /*private void Update()
+    {
+        if(playable.state == PlayState.Paused && activePlayable)
+        {
+            activePlayable = false;
+            this.gameObject.SetActive(false);
+        }
+    }*/
+
+    public void StartCinematic()
+    {
+        /*this.gameObject.SetActive(true);
+        playable = GetComponent<PlayableDirector>();
+        activePlayable = true;
+        playable.Play();*/
+        player.GetComponent<vThirdPersonInput>().lockInput = true;
+
+    }
+
+    // Update is called once per frame
+
+
+    /*protected virtual IEnumerator Prova()
     {
         Sequence mySequence = DOTween.Sequence();
 
@@ -23,5 +51,9 @@ public class ProvaDotween : MonoBehaviour {
         yield return mySequence.WaitForCompletion();
 
         Debug.Log("Ciao");
-    }
+    }*/
+
+
+
+    
 }

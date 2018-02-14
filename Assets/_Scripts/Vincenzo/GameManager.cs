@@ -10,7 +10,7 @@ public class GameManager : MonoBehaviour {
     public List<string> scenes;
 
     QuestManager questManager;
-    GadgetManager gadgetManager;
+    public GadgetManager gadgetManager;
 
     private void Awake()
     {

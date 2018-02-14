@@ -16,7 +16,8 @@ public class TaskGadget : TaskInteract {
         base.ReadyTask();
 
         gadgetManager = FindObjectOfType<GadgetManager>();
-        gadget = gadgetManager.GetGadgetByType(gadgetType);
+        gadget = GameManager.instance.gadgetManager.GetGadgetByType(gadgetType);
+
         foreach(string objectName in taskObjectsName)
         {
             Transform interactableObject = GameObject.Find(objectName).transform;

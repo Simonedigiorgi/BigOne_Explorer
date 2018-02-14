@@ -9,19 +9,13 @@ public class RoverManager : MonoBehaviour {
     public bool findSpawnPoint = true;
     [Tooltip("Assign here the spawnPoint name of the scene that you will load")]
     public string spawnPointName;
-    private GameObject hud;
     private GameObject player;
-
-    private void Awake()
-    {
-        hud = FindObjectOfType<vHUDController>().gameObject;
-    }
 
     void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag.Equals("Player"))
         {
-            hud.transform.GetChild(7).gameObject.SetActive(true);
+            UIManager.instance.ShowScenePanel();
             Camera.main.GetComponent<vThirdPersonCamera>().lockCamera = true; 
         }
     }
@@ -30,7 +24,7 @@ public class RoverManager : MonoBehaviour {
     {
         if (other.gameObject.tag.Equals("Player"))
         {
-            hud.transform.GetChild(7).gameObject.SetActive(false);
+            UIManager.instance.HideScenePanel();
             Camera.main.GetComponent<vThirdPersonCamera>().lockCamera = false;
         }
     }
@@ -51,10 +45,6 @@ public class RoverManager : MonoBehaviour {
         #endif
     }
 
-    public void HideChangeScene()
-    {
-        hud.transform.GetChild(7).gameObject.SetActive(false);
-        Camera.main.GetComponent<vThirdPersonCamera>().lockCamera = false;
-    }
+    
 
 }

@@ -47,7 +47,8 @@ public class TaskTalk : Task
         {
             foreach (GadgetManager.GadgetType gadget in gadgetsReward)
             {
-                //gadgetManager.ActivateGadget(gadget, true);
+                Gadget gadgetToActivate = GameManager.instance.gadgetManager.gadgets.Find(x => x.gadgetType == gadget);
+                gadgetToActivate.isEnabled = true;
             }
         }
         

@@ -37,6 +37,8 @@ public class CompassLocation : Gadget {
     {
         if(this.isEquipped)
         {
+			//Per cambiare runtime l'obbiettivo
+			ChangeTargetMissionSequenzialy ();
             ChangeNorthDirection();
 
             if (missionPlace)
@@ -73,6 +75,47 @@ public class CompassLocation : Gadget {
 	{
 
 		missionPlace = newMissionPlace;
+
+	}
+
+	/// <summary>
+	/// Metodo che permette alla bussola di puntare sempre verso l'obbiettivo più vicino
+	/// </summary>
+	public void ChangeTargetMissionSequenzialy()
+	{
+
+		if(listTarget.Count > 0)
+			ChangeTargetMission (SearchObject ());
+
+	}
+
+	/// <summary>
+	/// Oggetto da cercare calcolando la distanza
+	/// </summary>
+	private Transform SearchObject()
+	{
+
+		Transform obj = listTarget[0];
+		float distance;
+		float compareDistance = Vector3.Distance(listTarget [0].position, transform.position);
+
+		for (int i = 0; i < listTarget.Count; i++) 
+		{
+
+			distance = Vector3.Distance (listTarget [i].position, transform.position);
+
+			if (distance <= compareDistance) 
+			{
+
+				obj = listTarget [i];
+				compareDistance = distance;
+				return obj;
+
+			}
+
+		}
+
+		return null;
 
 	}
 

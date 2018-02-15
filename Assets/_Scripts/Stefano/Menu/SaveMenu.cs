@@ -8,7 +8,13 @@ public class SaveMenu : MonoBehaviour {
 
 	#region Public 
 
+	[Header("Settaggi audio")]
 	public List<SettingAudio> listAudio;
+
+	[Header("Slot dati")]
+	public Text slot1;
+	public Text slot2;
+	public Text slot3;
 
 	#endregion
 
@@ -25,6 +31,7 @@ public class SaveMenu : MonoBehaviour {
 	{
 
 		LoadAudio ();
+		LoadSlotInfo ();
 
 	}
 
@@ -34,6 +41,8 @@ public class SaveMenu : MonoBehaviour {
 		SaveAudio ();
 
 	}
+
+	#region Save
 
 	/// <summary>
 	/// Metodo che salva i volumi 
@@ -49,13 +58,17 @@ public class SaveMenu : MonoBehaviour {
 			for (int j = 0; j < listAudio [i].listImage.Count; j++) 
 			{
 
-				ES2.Save<Color32> (listAudio [i].listImage [i].color, "Setting.txt?tag=" + listAudio [i].audio.name + listAudio [i].listImage [i].name);
+				ES2.Save<Color32> (listAudio [i].listImage [j].color, "Setting.txt?tag=" + listAudio [i].audio.name + listAudio [i].listImage [j].name);
 
 			}
 
 		}
 
 	}
+
+	#endregion
+
+	#region Load
 
 	/// <summary>
 	/// Metodo che carica i volumi	
@@ -69,7 +82,12 @@ public class SaveMenu : MonoBehaviour {
 			for (int i = 0; i < listAudio.Count; i++) 
 			{
 
-				//ES2.Load<float> ("Setting.txt?tag=" + listAudio [i].name);
+				for (int j = 0; j < listAudio [i].listImage.Count; j++) 
+				{
+					
+					listAudio [i].listImage [j].color = ES2.Load<Color32> ("Setting.txt?tag=" + listAudio [i].audio.name + listAudio [i].listImage [j].name);
+
+				}
 
 			}
 
@@ -82,5 +100,45 @@ public class SaveMenu : MonoBehaviour {
 	}
 
 
+	/// <summary>
+	/// Metodo che carica le informazioni degli slot
+	/// </summary>
+	public void LoadSlotInfo()
+	{
+
+		if (ES2.Exists ("Slot1.txt")) {
+
+			slot1.text = ES2.Load<string> ("Slot1.txt?tag=SaveTime");
+
+		} else {
+
+			slot1.text = "Empty";
+
+		}
+
+		if (ES2.Exists ("Slot2.txt")) {
+
+			slot2.text = ES2.Load<string> ("Slot2.txt?tag=SaveTime");
+
+		} else {
+
+			slot2.text = "Empty";
+
+		}
+
+		if (ES2.Exists ("Slot3.txt")) {
+
+			slot3.text = ES2.Load<string> ("Slot3.txt?tag=SaveTime");
+
+		} else {
+
+			slot3.text = "Empty";
+
+		}
+
+
+	}
+
+	#endregion
 
 }

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class SavingLoading : MonoBehaviour 
 {
@@ -40,6 +41,13 @@ public class SavingLoading : MonoBehaviour
 		SaveGadget ();
 		SaveScenes ();
 		SaveInteractableObjects ();
+
+	}
+
+	private void SaveData()
+	{
+
+		ES2.Save (System.DateTime.Now.ToString (), PlayerPrefs.GetString ("Slot") + ".txt?tag=SaveTime");
 
 	}
 

@@ -66,7 +66,7 @@ public class HUD : MonoBehaviour {
 		}
 
 		//Pezza
-		if (timer >= 0.2f) 
+		if (timer >= 0.2f && semaforo == false) 
 		{
 
 			timer = 0;
@@ -156,6 +156,7 @@ public class HUD : MonoBehaviour {
 	public void ResumeGame()
 	{
 
+		semaforo = true;
 		CloseMenu ();
 		player.GetComponent<Invector.CharacterController.vThirdPersonInput> ().enabled = true;
 		eSystem.GetComponent<EventSystem> ().SetSelectedGameObject (firstButton);

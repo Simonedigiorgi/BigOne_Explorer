@@ -5874,6 +5874,11 @@ Prefab:
       propertyPath: listMusicVolume.Array.size
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 114378128608898312, guid: fba1c2fb0209fcd48b23af23fcd2a028,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 224305409782826160, guid: fba1c2fb0209fcd48b23af23fcd2a028,
         type: 2}
       propertyPath: m_LocalPosition.x
@@ -6873,17 +6878,17 @@ Prefab:
         type: 2}
       propertyPath: musicButton
       value: 
-      objectReference: {fileID: 963852283}
+      objectReference: {fileID: 1041008004}
     - target: {fileID: 114664810924556866, guid: fba1c2fb0209fcd48b23af23fcd2a028,
         type: 2}
       propertyPath: SFXbutton
       value: 
-      objectReference: {fileID: 1041008004}
+      objectReference: {fileID: 963852283}
     - target: {fileID: 114664810924556866, guid: fba1c2fb0209fcd48b23af23fcd2a028,
         type: 2}
       propertyPath: SFXaudio
       value: 
-      objectReference: {fileID: 487165513}
+      objectReference: {fileID: 1551245941}
     - target: {fileID: 114664810924556866, guid: fba1c2fb0209fcd48b23af23fcd2a028,
         type: 2}
       propertyPath: mainAudio
@@ -6893,7 +6898,7 @@ Prefab:
         type: 2}
       propertyPath: musicAudio
       value: 
-      objectReference: {fileID: 1551245941}
+      objectReference: {fileID: 487165513}
     - target: {fileID: 114664810924556866, guid: fba1c2fb0209fcd48b23af23fcd2a028,
         type: 2}
       propertyPath: listMainVolume.Array.data[0]
@@ -7053,6 +7058,31 @@ Prefab:
         type: 2}
       propertyPath: enableColor.rgba
       value: 4293045033
+      objectReference: {fileID: 0}
+    - target: {fileID: 114378128608898312, guid: fba1c2fb0209fcd48b23af23fcd2a028,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114378128608898312, guid: fba1c2fb0209fcd48b23af23fcd2a028,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114378128608898312, guid: fba1c2fb0209fcd48b23af23fcd2a028,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Target
+      value: 
+      objectReference: {fileID: 523424645}
+    - target: {fileID: 114378128608898312, guid: fba1c2fb0209fcd48b23af23fcd2a028,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
+      value: SaveSettinngs
+      objectReference: {fileID: 0}
+    - target: {fileID: 114378128608898312, guid: fba1c2fb0209fcd48b23af23fcd2a028,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fba1c2fb0209fcd48b23af23fcd2a028, type: 2}

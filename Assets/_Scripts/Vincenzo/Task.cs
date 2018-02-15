@@ -19,11 +19,18 @@ public class Task : MonoBehaviour
     public int taskPriority;
     public string taskScene;
 
+
     public virtual void EnableTask()
     {
         this.currentState = TaskState.ENABLED;
         Database.currentQuest.activedTask.currentState = TaskState.ENABLED;
         QuestManager.instance.CurrentTarget = "Viaggia verso " + this.taskScene;
+
+        CompassLocation compass = GameManager.instance.gadgetManager.GetGadgetByType(GadgetManager.GadgetType.COMPASS).GetComponent<CompassLocation>();
+        Transform roverPosition = GameObject.Find("LAND ROVER").transform;
+        //compass.ChangeTargetMission(roverPosition);
+
+
     }
 
     public virtual void ReadyTask()

@@ -153,7 +153,7 @@ namespace Invector.CharacterController
                     luce.enabled = true;
                 }
             }
-        }*/
+        }
 
         public virtual void Scanner() // Richiama lo scanner
         {
@@ -189,24 +189,11 @@ namespace Invector.CharacterController
                     Debug.Log("GEIGER");
                 }
             }
-        }
+        }*/
 
         public virtual void Menu() // Richiama il menu
         {
-            if (isGrounded && !actions)
-            {
-                if (isMenu)
-                {
-                    isMenu = false;
-                    Debug.Log("EXITMenu");
-
-                }
-                else if (!isMenu)
-                {
-                    isMenu = true;
-                    Debug.Log("ENTERMenu");
-                }
-            }
+            
         }
 
         /// <summary>

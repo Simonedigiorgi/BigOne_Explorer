@@ -10,8 +10,26 @@ public class TaskTalk : Task
     public int currentDialogue = 0;
     public GadgetManager.GadgetType[] gadgetsReward;
 
-    GadgetManager gadgetManager;
     GameObject player;
+
+    public override void ReadyTask()
+    {
+        base.ReadyTask();
+
+        Npc[] npcs = FindObjectsOfType<Npc>();
+        Npc npc = null;
+
+        for(int i = 0; i < npcs.Length; i++)
+        {
+            if(npcs[i].npc == npcAssociated)
+            {
+                npc = npcs[i];
+            }
+        }
+
+        CompassLocation compass = GameManager.instance.gadgetManager.GetGadgetByType(GadgetManager.GadgetType.COMPASS).GetComponent<CompassLocation>();
+        //compass.ChangeTargetMission(npc.transform.parent.transform);
+    }
 
     public override void ActiveTask()
     {
@@ -42,7 +60,7 @@ public class TaskTalk : Task
 
         //DialogueManager dialogueManager = FindObjectOfType<DialogueManager>();
         UIManager.instance.HideDialoguePanel();
-        gadgetManager = FindObjectOfType<GadgetManager>();
+
         if(gadgetsReward.Length > 0)
         {
             foreach (GadgetManager.GadgetType gadget in gadgetsReward)

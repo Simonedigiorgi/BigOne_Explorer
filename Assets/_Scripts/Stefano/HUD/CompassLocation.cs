@@ -9,8 +9,8 @@ public class CompassLocation : Gadget {
 	public Vector3 NorthDirection;
 	public Transform Player;
 	public Quaternion MissionDirection;
-	[Header("Pool di posizioni che potrà puntare la bussol")]
-	public List<Transform> listTarget;
+	/*[Header("Pool di posizioni che potrà puntare la bussol")]
+	public List<Transform> listTarget;*/
 	[Header("Target corrente a cui punta la bussola")]
 	public Transform missionPlace;
 	#endregion
@@ -84,7 +84,7 @@ public class CompassLocation : Gadget {
 	public void ChangeTargetMissionSequenzialy()
 	{
 
-		if(listTarget.Count > 0)
+		if(listObjects.Count > 0)
 			ChangeTargetMission (SearchObject ());
 
 	}
@@ -95,27 +95,26 @@ public class CompassLocation : Gadget {
 	private Transform SearchObject()
 	{
 
-		Transform obj = listTarget[0];
+		Transform obj = listObjects[0];
 		float distance;
-		float compareDistance = Vector3.Distance(listTarget [0].position, transform.position);
+		float compareDistance = Vector3.Distance(listObjects[0].position, transform.position);
 
-		for (int i = 0; i < listTarget.Count; i++) 
+		for (int i = 0; i < listObjects.Count; i++) 
 		{
 
-			distance = Vector3.Distance (listTarget [i].position, transform.position);
+			distance = Vector3.Distance (listObjects[i].position, transform.position);
 
 			if (distance <= compareDistance) 
 			{
 
-				obj = listTarget [i];
+				obj = listObjects[i];
 				compareDistance = distance;
-				return obj;
 
 			}
 
 		}
 
-		return null;
+		return obj;
 
 	}
 

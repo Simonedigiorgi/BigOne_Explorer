@@ -58,8 +58,8 @@ public class Geiger : Gadget
                 if (currentDistance <= vicino && Semaforo1 == false)
                 {
 
-                    audioSource.clip = Geiger_HIGH;
-                    audioSource.Play();
+                    //audioSource.clip = Geiger_HIGH;
+                    //audioSource.Play();
 
                     ChangeRippleColor(coloreVicino);
 
@@ -71,8 +71,8 @@ public class Geiger : Gadget
                 else if (currentDistance > vicino && currentDistance <= lontano && Semaforo2 == false)
                 {
 
-                    audioSource.clip = Geiger_LOW;
-                    audioSource.Play();
+                    //audioSource.clip = Geiger_LOW;
+                    //audioSource.Play();
 
                     ChangeRippleColor(coloreMedio);
 
@@ -84,7 +84,7 @@ public class Geiger : Gadget
                 else if (currentDistance > lontano && Semaforo3 == false)
                 {
 
-                    audioSource.Stop();
+                   // audioSource.Stop();
 
                     ChangeRippleColor(coloreLontano);
 
@@ -95,6 +95,10 @@ public class Geiger : Gadget
                 }
 
                 ripple.gameObject.SetActive(true);
+            }
+            else
+            {
+                ripple.gameObject.SetActive(false);
             }
 
             
@@ -109,6 +113,30 @@ public class Geiger : Gadget
             else
                 ripple.gameObject.SetActive(false);
         }
+    }
+
+    public override void SetGadget()
+    {
+        base.SetGadget();
+
+        if (listObjects.Count < 1)
+        {
+            return;
+        }
+
+        foreach (Transform interactableObject in listObjects)
+        {
+            if (isEquipped)
+            {
+                interactableObject.GetChild(0).gameObject.SetActive(true);
+            }
+            else
+            {
+                interactableObject.GetChild(0).gameObject.SetActive(false);
+            }
+        }
+
+
     }
 
     /// <summary>

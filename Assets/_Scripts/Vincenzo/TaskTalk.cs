@@ -28,7 +28,7 @@ public class TaskTalk : Task
         }
 
         CompassLocation compass = GameManager.instance.gadgetManager.GetGadgetByType(GadgetManager.GadgetType.COMPASS).GetComponent<CompassLocation>();
-        //compass.ChangeTargetMission(npc.transform.parent.transform);
+        compass.ChangeTargetMission(npc.transform.parent.transform);
     }
 
     public override void ActiveTask()
@@ -66,7 +66,7 @@ public class TaskTalk : Task
             foreach (GadgetManager.GadgetType gadget in gadgetsReward)
             {
                 Gadget gadgetToActivate = GameManager.instance.gadgetManager.gadgets.Find(x => x.gadgetType == gadget);
-                gadgetToActivate.isEnabled = true;
+                gadgetToActivate.EnableGadget();
             }
         }
         

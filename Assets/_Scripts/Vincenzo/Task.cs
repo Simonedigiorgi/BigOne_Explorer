@@ -28,7 +28,7 @@ public class Task : MonoBehaviour
 
         CompassLocation compass = GameManager.instance.gadgetManager.GetGadgetByType(GadgetManager.GadgetType.COMPASS).GetComponent<CompassLocation>();
         Transform roverPosition = GameObject.Find("LAND ROVER").transform;
-        //compass.ChangeTargetMission(roverPosition);
+        compass.ChangeTargetMission(roverPosition);
 
 
     }

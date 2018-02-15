@@ -12,7 +12,9 @@ public enum InteractableType
     SONDA,
     FOTOGRAFIA,
     SCATOLA_NERA,
-    COMPUTER
+    COMPUTER,
+    MURO,
+    COORDINATE
 }
 
 public static class Database

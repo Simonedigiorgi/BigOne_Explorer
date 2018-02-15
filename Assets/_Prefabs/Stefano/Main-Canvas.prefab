@@ -832,6 +832,8 @@ GameObject:
   - component: {fileID: 114577087783314350}
   - component: {fileID: 95542588382746620}
   - component: {fileID: 114664810924556866}
+  - component: {fileID: 114052627491192678}
+  - component: {fileID: 114675015231182198}
   m_Layer: 5
   m_Name: Main-Canvas
   m_TagString: Untagged
@@ -1079,6 +1081,57 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114052627491192678
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1848520756609138}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1505ac448bcb78041a4f06455fee526a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  listAudio:
+  - audio: {fileID: 0}
+    listImage:
+    - {fileID: 114501617675311236}
+    - {fileID: 114536695678715864}
+    - {fileID: 114151549917489094}
+    - {fileID: 114324611086165172}
+    - {fileID: 114564279347047988}
+    - {fileID: 114371083190155462}
+    - {fileID: 114812202236194690}
+    - {fileID: 114519472287579542}
+    - {fileID: 114320399677677356}
+    - {fileID: 114109785033187156}
+  - audio: {fileID: 0}
+    listImage:
+    - {fileID: 114556630365728670}
+    - {fileID: 114211502910301416}
+    - {fileID: 114929242408627660}
+    - {fileID: 114135828001860494}
+    - {fileID: 114002638448271890}
+    - {fileID: 114734466163694876}
+    - {fileID: 114745841767849254}
+    - {fileID: 114971800816291750}
+    - {fileID: 114483598106528832}
+    - {fileID: 114455592395779578}
+  - audio: {fileID: 0}
+    listImage:
+    - {fileID: 114709714999439088}
+    - {fileID: 114950395441426332}
+    - {fileID: 114192190450779374}
+    - {fileID: 114901498249337080}
+    - {fileID: 114864506733641904}
+    - {fileID: 114537967458908004}
+    - {fileID: 114258324013614292}
+    - {fileID: 114894261446047338}
+    - {fileID: 114284042716641638}
+    - {fileID: 114929896486323556}
+  slot1: {fileID: 114228765347160228}
+  slot2: {fileID: 114645504760009908}
+  slot3: {fileID: 114422628374774152}
 --- !u!114 &114076114780341384
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1205,13 +1258,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: Play
-        m_Mode: 5
+      - m_Target: {fileID: 114675015231182198}
+        m_MethodName: RiproduciSuono
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 2
           m_FloatArgument: 0
           m_StringArgument: Anim2
           m_BoolArgument: 0
@@ -1344,16 +1397,27 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: Change
+          m_StringArgument: Change2
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 0}
         m_MethodName: SetSelectedGameObject
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 1512825304112600}
+          m_ObjectArgument: {fileID: 1118805438570744}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 114675015231182198}
+        m_MethodName: RiproduciSuono
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 3
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -1966,6 +2030,28 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 114052627491192678}
+        m_MethodName: SaveSettinngs
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 114675015231182198}
+        m_MethodName: RiproduciSuono
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 2
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &114378416099808856
@@ -2032,7 +2118,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 0.466}
+  m_Color: {r: 0, g: 0, b: 0, a: 0}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -2095,7 +2181,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Navigation:
     m_Mode: 4
-    m_SelectOnUp: {fileID: 0}
+    m_SelectOnUp: {fileID: 114697620487831412}
     m_SelectOnDown: {fileID: 114482374569526662}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
@@ -2317,26 +2403,15 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: Play
-        m_Mode: 5
+      - m_Target: {fileID: 114675015231182198}
+        m_MethodName: RiproduciSuono
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 2
           m_FloatArgument: 0
           m_StringArgument: Anim2
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_MethodName: SetSelectedGameObject
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
@@ -2425,6 +2500,17 @@ MonoBehaviour:
           m_ObjectArgument: {fileID: 1881572817930996}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 114675015231182198}
+        m_MethodName: RiproduciSuono
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 2
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 1
@@ -2752,8 +2838,91 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   anim: {fileID: 95542588382746620}
-  eSystem: {fileID: 0}
   player: {fileID: 0}
+  firstButton: {fileID: 1881572817930996}
+  eSystem: {fileID: 0}
+  mainMuiscButton: {fileID: 1512825304112600}
+  SFXbutton: {fileID: 1051436090589212}
+  musicButton: {fileID: 1303411166891414}
+  disableColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  enableColor:
+    serializedVersion: 2
+    rgba: 4293045033
+  listMainVolume:
+  - {fileID: 114501617675311236}
+  - {fileID: 114536695678715864}
+  - {fileID: 114151549917489094}
+  - {fileID: 114324611086165172}
+  - {fileID: 114564279347047988}
+  - {fileID: 114371083190155462}
+  - {fileID: 114812202236194690}
+  - {fileID: 114519472287579542}
+  - {fileID: 114320399677677356}
+  - {fileID: 114109785033187156}
+  mainAudio: {fileID: 0}
+  listSFXVolume:
+  - {fileID: 114556630365728670}
+  - {fileID: 114211502910301416}
+  - {fileID: 114929242408627660}
+  - {fileID: 114135828001860494}
+  - {fileID: 114002638448271890}
+  - {fileID: 114734466163694876}
+  - {fileID: 114745841767849254}
+  - {fileID: 114971800816291750}
+  - {fileID: 114483598106528832}
+  - {fileID: 114455592395779578}
+  SFXaudio: {fileID: 0}
+  listMusicVolume:
+  - {fileID: 114709714999439088}
+  - {fileID: 114950395441426332}
+  - {fileID: 114192190450779374}
+  - {fileID: 114901498249337080}
+  - {fileID: 114864506733641904}
+  - {fileID: 114537967458908004}
+  - {fileID: 114258324013614292}
+  - {fileID: 114894261446047338}
+  - {fileID: 114284042716641638}
+  - {fileID: 114929896486323556}
+  musicAudio: {fileID: 0}
+--- !u!114 &114675015231182198
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1848520756609138}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 616889b4747c3e64086f27b63d14184a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Suoni:
+  - NomeBrano: MenuMove
+    Audio: {fileID: 8300000, guid: 054f21f3d82ac1e40ad45890a2c7690a, type: 3}
+    ID: 1
+    Descrizione: 
+    Volume: 1
+  - NomeBrano: BackMenu
+    Audio: {fileID: 8300000, guid: df5ea698b6e6e0a449037e7c96d839a8, type: 3}
+    ID: 2
+    Descrizione: 
+    Volume: 1
+  - NomeBrano: PressButton
+    Audio: {fileID: 8300000, guid: 380875b189d98104f8b513b826ca2618, type: 3}
+    ID: 3
+    Descrizione: 
+    Volume: 1
+  - NomeBrano: UpOrDownMusic
+    Audio: {fileID: 8300000, guid: d154b4c1424751e4e95625d3cfb5697b, type: 3}
+    ID: 4
+    Descrizione: 
+    Volume: 1
+  PlayList: []
+  ClusterSuoniRandom: []
+  Output: {fileID: 0}
+  Global: {fileID: 0}
+  DebugMode: 0
 --- !u!114 &114676795652774892
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3233,16 +3402,27 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: Change2
+          m_StringArgument: Change
           m_BoolArgument: 1
         m_CallState: 2
       - m_Target: {fileID: 0}
         m_MethodName: SetSelectedGameObject
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 1118805438570744}
+          m_ObjectArgument: {fileID: 1512825304112600}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 114675015231182198}
+        m_MethodName: RiproduciSuono
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 3
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 1
@@ -3289,12 +3469,23 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 114664810924556866}
-        m_MethodName: CloseMenu
+        m_MethodName: ResumeGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 114675015231182198}
+        m_MethodName: RiproduciSuono
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 2
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0

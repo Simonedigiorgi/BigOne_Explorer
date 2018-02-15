@@ -69,13 +69,14 @@ public class Musica : MonoBehaviour {
 	void Update()
 	{
 
+		/*
 		if (Output.isPlaying == false) 
 		{
 
 			RiproduciPlayList ();
 			indexPlayList++;
 
-		}
+		}*/
 
 	}
 

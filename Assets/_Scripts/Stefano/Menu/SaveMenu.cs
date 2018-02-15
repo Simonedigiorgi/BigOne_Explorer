@@ -82,6 +82,8 @@ public class SaveMenu : MonoBehaviour {
 			for (int i = 0; i < listAudio.Count; i++) 
 			{
 
+				listAudio [i].audio.volume = ES2.Load<float> ("Setting.txt?tag=" + listAudio [i].audio.name);
+
 				for (int j = 0; j < listAudio [i].listImage.Count; j++) 
 				{
 					

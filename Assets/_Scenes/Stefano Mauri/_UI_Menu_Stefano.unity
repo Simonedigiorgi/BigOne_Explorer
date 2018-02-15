@@ -547,7 +547,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 0
+  m_Volume: 1
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -2567,6 +2567,7 @@ GameObject:
   - component: {fileID: 397828554}
   - component: {fileID: 397828555}
   - component: {fileID: 397828556}
+  - component: {fileID: 397828557}
   m_Layer: 0
   m_Name: Camera
   m_TagString: Untagged
@@ -2789,6 +2790,43 @@ MonoBehaviour:
   slot1: {fileID: 207222112}
   slot2: {fileID: 2048150652}
   slot3: {fileID: 997074268}
+--- !u!114 &397828557
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 397828547}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 616889b4747c3e64086f27b63d14184a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Suoni:
+  - NomeBrano: MenuMove
+    Audio: {fileID: 8300000, guid: 054f21f3d82ac1e40ad45890a2c7690a, type: 3}
+    ID: 1
+    Descrizione: 
+    Volume: 1
+  - NomeBrano: BackMenu
+    Audio: {fileID: 8300000, guid: df5ea698b6e6e0a449037e7c96d839a8, type: 3}
+    ID: 2
+    Descrizione: 
+    Volume: 1
+  - NomeBrano: PressButton
+    Audio: {fileID: 8300000, guid: 380875b189d98104f8b513b826ca2618, type: 3}
+    ID: 3
+    Descrizione: 
+    Volume: 1
+  - NomeBrano: UpOrDownMusic
+    Audio: {fileID: 0}
+    ID: 4
+    Descrizione: 
+    Volume: 1
+  PlayList: []
+  ClusterSuoniRandom: []
+  Output: {fileID: 679072972}
+  Global: {fileID: 679072972}
+  DebugMode: 0
 --- !u!1 &404252201
 GameObject:
   m_ObjectHideFlags: 0
@@ -2829,7 +2867,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 0
+  m_Volume: 1
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -4515,9 +4553,9 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 0987eda75c23d8743bf22460968eed89, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0
+  m_Volume: 1
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -6170,6 +6208,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 397828557}
+        m_MethodName: RiproduciSuono
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 3
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1000000899
@@ -7228,6 +7277,17 @@ MonoBehaviour:
           m_ObjectArgument: {fileID: 207222109}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 397828557}
+        m_MethodName: RiproduciSuono
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 3
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 1
@@ -8756,6 +8816,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 397828557}
+        m_MethodName: RiproduciSuono
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 2
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1451971364
@@ -9558,6 +9629,17 @@ MonoBehaviour:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 397828557}
+        m_MethodName: RiproduciSuono
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 2
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -12171,6 +12253,17 @@ MonoBehaviour:
           m_ObjectArgument: {fileID: 503164418}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 397828557}
+        m_MethodName: RiproduciSuono
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 3
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0

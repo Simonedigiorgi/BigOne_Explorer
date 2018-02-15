@@ -44,6 +44,7 @@ public class MainMenu : MonoBehaviour
 
 	//Pezza
 	private float timer = 0.2f;
+	private GameObject tempESystem;
 
 	#endregion
 
@@ -52,6 +53,9 @@ public class MainMenu : MonoBehaviour
 		
 		//Controlliamo se il Joystick è stato inserito 
 		ChangeFirstSelected (firstButton, CheckJoystick ());
+
+		tempESystem = eSystem.firstSelectedGameObject;
+
 
 	}
 
@@ -68,11 +72,13 @@ public class MainMenu : MonoBehaviour
 
 				//Tolgo volume
 				DecreaseVolume (listMainVolume, mainAudio);
+				this.GetComponent<Musica> ().RiproduciSuono (4);
 
 			} else if (eSystem.currentSelectedGameObject.GetHashCode () == mainMuiscButton.GetHashCode () && InputManager.MainHorizontal () > 0) {
 				
 				//Tolgo volume
 				EncreaseVolume (listMainVolume, mainAudio);
+				this.GetComponent<Musica> ().RiproduciSuono (4);
 
 			}
 
@@ -80,11 +86,13 @@ public class MainMenu : MonoBehaviour
 
 				//Tolgo volume
 				DecreaseVolume (listSFXVolume, SFXaudio);
+				this.GetComponent<Musica> ().RiproduciSuono (4);
 
 			} else if (eSystem.currentSelectedGameObject.GetHashCode () == SFXbutton.GetHashCode () && InputManager.MainHorizontal () > 0) {
 				
 				//Tolgo volume
 				EncreaseVolume (listSFXVolume, SFXaudio);
+				this.GetComponent<Musica> ().RiproduciSuono (4);
 
 			}
 
@@ -92,11 +100,13 @@ public class MainMenu : MonoBehaviour
 
 				//Tolgo volume
 				DecreaseVolume (listMusicVolume, musicAudio);
+				this.GetComponent<Musica> ().RiproduciSuono (4);
 
 			} else if (eSystem.currentSelectedGameObject.GetHashCode () == musicButton.GetHashCode () && InputManager.MainHorizontal () > 0) {
 				
 				//Tolgo volume
 				EncreaseVolume (listMusicVolume, musicAudio);
+				this.GetComponent<Musica> ().RiproduciSuono (4);
 
 			}
 
@@ -108,6 +118,13 @@ public class MainMenu : MonoBehaviour
 
 		}
 
+		if (eSystem.currentSelectedGameObject.GetHashCode () != tempESystem.GetHashCode() && InputManager.MainVertical() != 0) 
+		{
+
+			tempESystem = eSystem.currentSelectedGameObject;
+			this.GetComponent<Musica> ().RiproduciSuono (1);
+
+		}
 
 		if (background.alpha == 1) 
 		{

@@ -34,8 +34,8 @@ public class Ossigeno : MonoBehaviour {
 
 		sliderO2.value = sliderO2.maxValue;
 		SetMaxO2 ();
-		source.clip = ossigeno1;
-		source.Play ();
+		//source.clip = ossigeno1;
+		//source.Play ();
 	
 	}
 
@@ -57,8 +57,8 @@ public class Ossigeno : MonoBehaviour {
 		if (O2 <= 50) 
 		{
 
-			source.clip = ossigeno2;
-			source.Play ();
+			//source.clip = ossigeno2;
+			//source.Play ();
 			ChangeColorOfBar ();
 
 		}

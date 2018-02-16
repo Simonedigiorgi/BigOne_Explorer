@@ -18,6 +18,11 @@ public class Ossigeno : MonoBehaviour {
 	public Color colorBar;
 	[Header("Testo della bombola di ossigeno")]
 	public Text textO2;
+	[Header("Audio per l'ossigeno")]
+	public AudioSource source;
+	public AudioClip ossigeno1;
+	public AudioClip ossigeno2;
+
 	#endregion
 
 	#region Private
@@ -29,6 +34,8 @@ public class Ossigeno : MonoBehaviour {
 
 		sliderO2.value = sliderO2.maxValue;
 		SetMaxO2 ();
+		source.clip = ossigeno1;
+		source.Play ();
 	
 	}
 
@@ -50,6 +57,8 @@ public class Ossigeno : MonoBehaviour {
 		if (O2 <= 50) 
 		{
 
+			source.clip = ossigeno2;
+			source.Play ();
 			ChangeColorOfBar ();
 
 		}

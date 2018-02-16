@@ -106,6 +106,8 @@ public class Quest : MonoBehaviour
 
             taskActived.EnableTask();
 
+            QuestManager.instance.CheckQuest();
+
         }
         else
         {

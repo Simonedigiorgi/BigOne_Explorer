@@ -133,10 +133,10 @@ public class GameManager : MonoBehaviour {
             Database.scenes.Add(dataScene);
         }
 
-        /*foreach(Database.DataScene scene in Database.scenes)
+        foreach(Database.DataScene scene in Database.scenes)
         {
             print(scene.sceneName+": "+scene.isUnlocked);
-        }*/
+        }
 
     }
 

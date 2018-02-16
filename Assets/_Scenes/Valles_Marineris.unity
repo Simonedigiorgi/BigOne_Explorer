@@ -6597,6 +6597,12 @@ MeshCollider:
   m_InflateMesh: 0
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: db6c6fdcd4d2b1348a79987ff47f549c, type: 3}
+--- !u!114 &276040390 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114495583042677024, guid: f92b2cd44c2e3204a899c701e86d32f6,
+    type: 2}
+  m_PrefabInternal: {fileID: 1798524404}
+  m_Script: {fileID: 11500000, guid: ebce6ebe160aa4de0a2ef090c6abed2e, type: 3}
 --- !u!1 &276716098
 GameObject:
   m_ObjectHideFlags: 0
@@ -7488,6 +7494,12 @@ MeshCollider:
   m_InflateMesh: 0
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: 86beece627ab8c54492892d670ee1d80, type: 3}
+--- !u!114 &323231232 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114615710023178524, guid: f92b2cd44c2e3204a899c701e86d32f6,
+    type: 2}
+  m_PrefabInternal: {fileID: 1798524404}
+  m_Script: {fileID: 11500000, guid: f54a30eeef0db41b499a20e86a9c0a79, type: 3}
 --- !u!1 &333536345 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 100000, guid: ec6c2c23873511e4aa0dd167c211c4ed, type: 3}
@@ -18024,6 +18036,10 @@ Prefab:
         type: 2}
       propertyPath: m_Enabled
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1040257277484704, guid: a360b57c23cbe654b9c768325366c379, type: 2}
+      propertyPath: m_Name
+      value: vThirdPersonCamera
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a360b57c23cbe654b9c768325366c379, type: 2}
@@ -42545,6 +42561,11 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 114270068272751764, guid: f92b2cd44c2e3204a899c701e86d32f6,
+        type: 2}
+      propertyPath: questTasks.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4025752456576900, guid: f92b2cd44c2e3204a899c701e86d32f6, type: 2}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -42577,6 +42598,21 @@ Prefab:
       propertyPath: m_RootOrder
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 114270068272751764, guid: f92b2cd44c2e3204a899c701e86d32f6,
+        type: 2}
+      propertyPath: taskActived
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 114270068272751764, guid: f92b2cd44c2e3204a899c701e86d32f6,
+        type: 2}
+      propertyPath: questTasks.Array.data[0]
+      value: 
+      objectReference: {fileID: 276040390}
+    - target: {fileID: 114270068272751764, guid: f92b2cd44c2e3204a899c701e86d32f6,
+        type: 2}
+      propertyPath: questTasks.Array.data[1]
+      value: 
+      objectReference: {fileID: 323231232}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f92b2cd44c2e3204a899c701e86d32f6, type: 2}
   m_IsPrefabParent: 0

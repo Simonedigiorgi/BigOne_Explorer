@@ -357,7 +357,7 @@ namespace Invector.CharacterController
 
         protected virtual void OnTriggerStay(Collider other)
         {
-            cc.CheckTriggers(other);
+            //cc.CheckTriggers(other);
         }
 
         protected virtual void OnTriggerExit(Collider other)

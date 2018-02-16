@@ -9,12 +9,14 @@ public enum InteractableType
     PANNELLI,
     MINERALI,
     TUBI,
-    SONDA,
+    RESTI_SONDA,
     FOTOGRAFIA,
     SCATOLA_NERA,
     COMPUTER,
     MURO,
-    COORDINATE
+    COORDINATE,
+    ANTENNA,
+    BANDIERA
 }
 
 public static class Database

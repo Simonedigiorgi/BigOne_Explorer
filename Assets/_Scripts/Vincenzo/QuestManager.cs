@@ -100,10 +100,12 @@ public class QuestManager : MonoBehaviour {
             Database.currentQuest.activedTask = Database.currentQuest.tasks[0];
             currentQuest.questTasks[0].EnableTask();
 
+            CheckQuest();
+
         }
         else
         {
-            print("Missioni completate");
+            CurrentTarget = "Missioni Completate";
         }
     }
 

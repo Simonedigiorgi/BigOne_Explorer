@@ -9,9 +9,17 @@ public class SoundJump : MonoBehaviour
 	public AudioSource source;
 	public AudioClip clipJumpUp;
 	public AudioClip clipJumpReturn;
+	public AudioClip clipArrivedRover;
 
 	private bool returnGround = false;
 	private float timer = 0f;
+
+	void Awake()
+	{
+
+		source.PlayOneShot (clipArrivedRover);
+
+	}
 
 	void Update()
 	{

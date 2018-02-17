@@ -10,6 +10,7 @@ public class SoundJump : MonoBehaviour
 	public AudioClip clipJumpUp;
 	public AudioClip clipJumpReturn;
 	public AudioClip clipArrivedRover;
+	public GameObject eSystem;
 
 	private bool returnGround = false;
 	private float timer = 0f;
@@ -24,7 +25,7 @@ public class SoundJump : MonoBehaviour
 	void Update()
 	{
 
-		if (this.GetComponent<Invector.CharacterController.vThirdPersonController> ().isGrounded == true && this.GetComponent<Invector.CharacterController.vThirdPersonInput>().jumpInput.GetButtonDown() == true ) 
+		if (this.GetComponent<Invector.CharacterController.vThirdPersonController> ().isGrounded == true && this.GetComponent<Invector.CharacterController.vThirdPersonInput>().jumpInput.GetButtonDown() == true && eSystem.activeSelf == false) 
 		{
 
 			returnGround = true;

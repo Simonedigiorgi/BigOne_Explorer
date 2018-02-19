@@ -92,7 +92,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4900920649391548}
   - component: {fileID: 65740151589823640}
-  - component: {fileID: 114615856916645522}
+  - component: {fileID: 114196062971970624}
   m_Layer: 0
   m_Name: LAND ROVER
   m_TagString: Untagged
@@ -189,8 +189,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1382271172034604}
-  m_LocalRotation: {x: 0.4174722, y: -0.57071626, z: 0.5707162, w: 0.41747224}
-  m_LocalPosition: {x: 167.9, y: 15.7, z: -176.4}
+  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 410.76, y: 2.1802523, z: 386.89}
   m_LocalScale: {x: 1, y: 0.3390802, z: 1}
   m_Children:
   - {fileID: 4213075251786674}
@@ -200,7 +200,7 @@ Transform:
   - {fileID: 4413027179226516}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 90.00001, y: 0, z: 287.63}
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 287.63}
 --- !u!23 &23129437608103352
 MeshRenderer:
   m_ObjectHideFlags: 1
@@ -420,7 +420,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 5.466612, y: 11.324962, z: 2.0629613}
   m_Center: {x: 1.052813, y: 4.4279504, z: -0.5314808}
---- !u!114 &114615856916645522
+--- !u!114 &114196062971970624
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -432,10 +432,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levelToLoad: 
-  findSpawnPoint: 1
+  findSpawnPoint: 0
   spawnPointName: 
   eSystem: {fileID: 0}
   selectedButton: {fileID: 0}
+  panel: {fileID: 0}
 --- !u!136 &136111103956704084
 CapsuleCollider:
   m_ObjectHideFlags: 1

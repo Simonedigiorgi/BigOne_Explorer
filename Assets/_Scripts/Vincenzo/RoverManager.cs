@@ -16,6 +16,7 @@ public class RoverManager : MonoBehaviour {
 	[Header("Variabili di Stefano Mauri")]
 	public EventSystem eSystem; 
 	public GameObject selectedButton;
+	public GameObject panel;
 
 	void Awake()
 	{
@@ -29,11 +30,13 @@ public class RoverManager : MonoBehaviour {
 		if (other.gameObject.tag.Equals("Player"))
         {
 
-			//player.GetComponent<Invector.CharacterController.vThirdPersonInput> ().lockInput = false;
+			player.GetComponent<Invector.CharacterController.vThirdPersonInput> ().lockInput = true;
 
 			eSystem.gameObject.SetActive (true);
+			eSystem.firstSelectedGameObject = selectedButton;
 			eSystem.SetSelectedGameObject(selectedButton);
 
+			panel.SetActive (true);
             UIManager.instance.ShowScenePanel();
             Camera.main.GetComponent<vThirdPersonCamera>().lockCamera = true; 
 
@@ -45,10 +48,9 @@ public class RoverManager : MonoBehaviour {
         if (other.gameObject.tag.Equals("Player"))
         {
 
-			//player.GetComponent<Invector.CharacterController.vThirdPersonInput> ().enabled = true;
+			player.GetComponent<Invector.CharacterController.vThirdPersonInput> ().lockInput = false;
 
-			eSystem.SetSelectedGameObject(null);
-			eSystem.gameObject.SetActive (false);
+			panel.SetActive (false);
 
             UIManager.instance.HideScenePanel();
             Camera.main.GetComponent<vThirdPersonCamera>().lockCamera = false;
@@ -56,8 +58,24 @@ public class RoverManager : MonoBehaviour {
         }
     }
 
+	public void ExitMenu()
+	{
+
+		eSystem.gameObject.SetActive (false);
+		player.GetComponent<Invector.CharacterController.vThirdPersonInput> ().lockInput = false;
+	
+
+		panel.SetActive (false);
+		UIManager.instance.HideScenePanel();
+		Camera.main.GetComponent<vThirdPersonCamera>().lockCamera = false;
+
+	}
+
     public void ChangeScene()
     {
+
+		player.GetComponent<Invector.CharacterController.vThirdPersonInput> ().lockInput = false;
+
         var spawnPointFinderObj = new GameObject("spawnPointFinder");
         var spawnPointFinder = spawnPointFinderObj.AddComponent<vFindSpawnPoint>();
         //Debug.Log(spawnPointName+" "+gameObject.name);

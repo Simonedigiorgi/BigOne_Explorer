@@ -57,8 +57,8 @@ public class TaskInteract : Task
         Database.interactableObjects.Find(x => x.interactableName == interactable.name).isInteractable = false;
         taskObjectsName.Remove(interactable.name);
         interactable.transform.GetChild(0).GetComponent<vTriggerGenericAction>().OnDoAction.RemoveListener(() => SetTaskObject(interactable));
-
         Destroy(interactable);
+        UIManager.instance.HideHelpKeyPanel();
         taskObjectsNumber++;
         QuestManager.instance.CurrentTarget = taskName + "\n" + tagTaskObjects + ": " + taskObjectsNumber + "/" + allTaskObjectsNumber;
         if(taskObjectsNumber >= allTaskObjectsNumber)
@@ -84,30 +84,6 @@ public class TaskInteract : Task
 
     }
 
-    protected virtual void ShowHelpKey()
-    {
-        if (Input.GetJoystickNames().Length > 0)
-        {
-            
-        }
-        else
-        {
-            
-        }
-    }
-
-    protected virtual void HideHelpKey()
-    {
-        if (Input.GetJoystickNames().Length > 0)
-        {
-           
-        }
-        else
-        {
-            
-        }
-    }
-
     protected virtual void SetInteractableListener(GameObject action)
     {
         action.SetActive(true);
@@ -130,7 +106,10 @@ public class TaskInteract : Task
         }
         else
         {
-            actionComponent.OnDoAction.AddListener(() => SetTaskObject(action.transform.parent.gameObject));
+            actionComponent.OnDoAction.AddListener(() =>{
+                UpdateCompassObjects(action.transform.parent.transform);
+                SetTaskObject(action.transform.parent.gameObject);
+            });
         }
 
         actionComponent.OnPlayerEnter.AddListener(() => UIManager.instance.ShowHelpKeyPanel());

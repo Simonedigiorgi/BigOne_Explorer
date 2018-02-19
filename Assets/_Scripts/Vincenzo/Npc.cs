@@ -57,6 +57,7 @@ public class Npc : MonoBehaviour {
         {
             playerTriggered = false;
             UIManager.instance.HideHelpKeyPanel();
+            UIManager.instance.HideDialoguePanel();
         }
     }
 

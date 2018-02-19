@@ -47,15 +47,7 @@ public class Npc : MonoBehaviour {
         if (other.tag == "Player" && !playerTriggered)
         {
             playerTriggered = true;
-            if (Input.GetJoystickNames().Length > 0)
-            {
-                this.transform.parent.GetChild(2).GetChild(1).gameObject.SetActive(true);
-            }
-            else
-            {
-                this.transform.parent.GetChild(2).GetChild(0).gameObject.SetActive(true);
-            }
-                
+            UIManager.instance.ShowHelpKeyPanel();
         }
     }
 
@@ -64,15 +56,7 @@ public class Npc : MonoBehaviour {
         if (other.tag == "Player" && playerTriggered)
         {
             playerTriggered = false;
-            if (Input.GetJoystickNames().Length > 0)
-            {
-                this.transform.parent.GetChild(2).GetChild(1).gameObject.SetActive(false);
-            }
-            else
-            {
-                this.transform.parent.GetChild(2).GetChild(0).gameObject.SetActive(false);
-            }
-            UIManager.instance.HideDialoguePanel();
+            UIManager.instance.HideHelpKeyPanel();
         }
     }
 

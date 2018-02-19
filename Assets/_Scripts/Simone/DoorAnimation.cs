@@ -2,46 +2,53 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DoorAnimation : MonoBehaviour {
+public class DoorAnimation : MonoBehaviour
+{
+    public enum DoorBehaviour { Outside, Inside }
+    public DoorBehaviour doorBehaviour;
 
     private AudioSource source;
 
     public AudioClip open;
     public AudioClip close;
 
-    private Animator anim;
-
-	void Start () {
-        anim = GetComponent<Animator>();
-	}
+    public Animator doorDown;
+    public Animator doorUp;
 
     public void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.tag == "Player") // + AGGIUNGERE CONDIZIONE EQUIPAGGIAMENTO
+        //source.PlayOneShot(close); // TOGLIERE IL COMMENTO
+        if (doorBehaviour == DoorBehaviour.Outside)
         {
-            //source.PlayOneShot(open); // TOGLIERE IL COMMENTO
+            if (other.gameObject.tag == "Player") // + AGGIUNGERE CONDIZIONE EQUIPAGGIAMENTO
+            {
+                doorDown.SetTrigger("DownOpen");
+                doorUp.SetTrigger("UpOpen");
+            }
+        }
 
-            anim.SetBool("LeftOpen", true);
-            anim.SetBool("RightOpen", true);
+        if (doorBehaviour == DoorBehaviour.Inside)
+        {
+            if (other.gameObject.tag == "Player")
+            {
 
-            anim.SetBool("LeftClose", false);
-            anim.SetBool("RightClose", false);
+
+                doorDown.SetTrigger("DownOpen");
+                doorUp.SetTrigger("UpOpen");
+            }
         }
     }
 
     public void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.tag == "Player") // + AGGIUNGERE CONDIZIONE EQUIPAGGIAMENTO
+        //source.PlayOneShot(open); // TOGLIERE IL COMMENTO
+        if (doorBehaviour == DoorBehaviour.Outside || doorBehaviour == DoorBehaviour.Inside)
         {
-            //source.PlayOneShot(close); // TOGLIERE IL COMMENTO
-
-            anim.SetBool("LeftOpen", false);
-            anim.SetBool("RightOpen", false);
-
-            anim.SetBool("LeftClose", true);
-            anim.SetBool("RightClose", true);
-
+            if (other.gameObject.tag == "Player")
+            {
+                doorDown.SetTrigger("DownClose");
+                doorUp.SetTrigger("UpClose");      
+            }
         }
     }
-
 }

@@ -55,27 +55,35 @@ public class HUD : MonoBehaviour {
 	void Update()
 	{
 
-		if (InputManager.StartButton () == true && player.GetComponent<Invector.CharacterController.vThirdPersonController> ().isGrounded == true && semaforo == true && InputManager.MainHorizontal() == 0 && InputManager.MainVertical() == 0 && RoverManager.enterTrigger == false) 
-		{
+        if(InputManager.StartButton() == true)
+        {
 
-			semaforo = false;
-			eSystem.gameObject.SetActive (true);
-			OpenMenu ();
-			player.GetComponent<Invector.CharacterController.vThirdPersonInput> ().enabled = false;
+            eSystem.SetSelectedGameObject(firstButton);
 
-		} 
-		else if (semaforo == false && InputManager.StartButton () == true) 
-		{
 
-			semaforo = true;
-			CloseMenu ();
-			player.GetComponent<Invector.CharacterController.vThirdPersonInput> ().enabled = true;
-			eSystem.gameObject.SetActive (false);
+		    if (player.GetComponent<Invector.CharacterController.vThirdPersonController> ().isGrounded == true && semaforo == true && InputManager.MainHorizontal() == 0 && InputManager.MainVertical() == 0 && RoverManager.enterTrigger == false) 
+		    {
 
-		}
+			    semaforo = false;
+			    eSystem.gameObject.SetActive (true);
+			    OpenMenu ();
+			    player.GetComponent<Invector.CharacterController.vThirdPersonInput> ().enabled = false;
 
-		//Pezza
-		if (timer >= 0.2f && semaforo == false) 
+		    } 
+		    else if (semaforo == false && InputManager.StartButton () == true) 
+		    {
+
+			    semaforo = true;
+			    CloseMenu ();
+			    player.GetComponent<Invector.CharacterController.vThirdPersonInput> ().enabled = true;
+			    eSystem.gameObject.SetActive (false);
+
+		    }
+
+        }
+
+        //Pezza
+        if (timer >= 0.2f && semaforo == false) 
 		{
 
 			timer = 0;

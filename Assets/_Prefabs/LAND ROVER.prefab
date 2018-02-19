@@ -27,7 +27,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!1 &1146574183962346
 GameObject:
@@ -45,7 +45,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!1 &1262575230856664
 GameObject:
@@ -63,7 +63,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!1 &1328936275978184
 GameObject:
@@ -81,7 +81,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!1 &1382271172034604
 GameObject:
@@ -98,7 +98,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!1 &1952504292746338
 GameObject:
@@ -116,7 +116,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &4161579675734184
 Transform:
@@ -189,9 +189,9 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1382271172034604}
-  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 141.61792, y: 267.44168, z: 334.51633}
-  m_LocalScale: {x: 1, y: 0.33908004, z: 1}
+  m_LocalRotation: {x: 0.4174722, y: -0.57071626, z: 0.5707162, w: 0.41747224}
+  m_LocalPosition: {x: 167.9, y: 15.7, z: -176.4}
+  m_LocalScale: {x: 1, y: 0.3390802, z: 1}
   m_Children:
   - {fileID: 4213075251786674}
   - {fileID: 4161579675734184}
@@ -200,7 +200,7 @@ Transform:
   - {fileID: 4413027179226516}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 90.00001, y: 0, z: 287.63}
 --- !u!23 &23129437608103352
 MeshRenderer:
   m_ObjectHideFlags: 1
@@ -434,6 +434,8 @@ MonoBehaviour:
   levelToLoad: 
   findSpawnPoint: 1
   spawnPointName: 
+  eSystem: {fileID: 0}
+  selectedButton: {fileID: 0}
 --- !u!136 &136111103956704084
 CapsuleCollider:
   m_ObjectHideFlags: 1

@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class RoverManager : MonoBehaviour {
 
@@ -11,12 +13,30 @@ public class RoverManager : MonoBehaviour {
     public string spawnPointName;
     private GameObject player;
 
+	[Header("Variabili di Stefano Mauri")]
+	public EventSystem eSystem; 
+	public GameObject selectedButton;
+
+	void Awake()
+	{
+
+		player = GameObject.FindGameObjectWithTag("Player");
+
+	}
+
     void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag.Equals("Player"))
+		if (other.gameObject.tag.Equals("Player"))
         {
+
+			//player.GetComponent<Invector.CharacterController.vThirdPersonInput> ().lockInput = false;
+
+			eSystem.gameObject.SetActive (true);
+			eSystem.SetSelectedGameObject(selectedButton);
+
             UIManager.instance.ShowScenePanel();
             Camera.main.GetComponent<vThirdPersonCamera>().lockCamera = true; 
+
         }
     }
 
@@ -24,8 +44,15 @@ public class RoverManager : MonoBehaviour {
     {
         if (other.gameObject.tag.Equals("Player"))
         {
+
+			//player.GetComponent<Invector.CharacterController.vThirdPersonInput> ().enabled = true;
+
+			eSystem.SetSelectedGameObject(null);
+			eSystem.gameObject.SetActive (false);
+
             UIManager.instance.HideScenePanel();
             Camera.main.GetComponent<vThirdPersonCamera>().lockCamera = false;
+
         }
     }
 
@@ -35,7 +62,7 @@ public class RoverManager : MonoBehaviour {
         var spawnPointFinder = spawnPointFinderObj.AddComponent<vFindSpawnPoint>();
         //Debug.Log(spawnPointName+" "+gameObject.name);
 
-        player = GameObject.FindGameObjectWithTag("Player");
+        //player = GameObject.FindGameObjectWithTag("Player");
         spawnPointFinder.AlighObjetToSpawnPoint(player, spawnPointName);
 
         #if UNITY_5_3_OR_NEWER

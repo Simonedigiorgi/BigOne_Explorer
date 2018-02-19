@@ -19,6 +19,8 @@ public class RoverManager : MonoBehaviour {
 	public GameObject selectedButton;
 	public GameObject panel;
 
+	public static bool enterTrigger = false;
+
 	void Awake()
 	{
 
@@ -34,6 +36,8 @@ public class RoverManager : MonoBehaviour {
     {
 		if (other.gameObject.tag.Equals("Player"))
         {
+
+			enterTrigger = true;
 
 			other.GetComponent<Invector.CharacterController.vThirdPersonInput> ().lockInput = true;
 
@@ -53,6 +57,8 @@ public class RoverManager : MonoBehaviour {
         if (other.gameObject.tag.Equals("Player"))
         {
 
+			enterTrigger = false;
+
 			other.GetComponent<Invector.CharacterController.vThirdPersonInput> ().lockInput = false;
 
 			panel.SetActive (false);
@@ -66,6 +72,8 @@ public class RoverManager : MonoBehaviour {
 	public void ExitMenu()
 	{
 
+		enterTrigger = false;
+
 		eSystem.gameObject.SetActive (false);
         vThirdPersonController.instance.GetComponent<vThirdPersonInput>().lockInput = false;
 
@@ -77,6 +85,8 @@ public class RoverManager : MonoBehaviour {
 
     public void ChangeScene()
     {
+
+		enterTrigger = false;
 
         player = vThirdPersonController.instance.gameObject;
 		player.GetComponent<vThirdPersonInput>().lockInput = false;

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Invector.CharacterController;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,9 +12,12 @@ public class TaskInteract : Task
     public int taskObjectsNumber;
     public int allTaskObjectsNumber;
 
+    protected GameObject[] taskObjects;
+
     protected virtual void InitTaskObjects()
     {
-        GameObject[] taskObjects = GameObject.FindGameObjectsWithTag(tagTaskObjects);
+        taskObjects = GameObject.FindGameObjectsWithTag(tagTaskObjects);
+
         allTaskObjectsNumber = taskObjects.Length;
         taskObjectsName = new List<string>();
 
@@ -22,12 +26,13 @@ public class TaskInteract : Task
             GameObject action = taskObjects[i].transform.GetChild(0).gameObject;
             SetInteractableListener(action);
 
-            taskObjectsName.Add(taskObjects[i].name); 
+            taskObjectsName.Add(taskObjects[i].name);
+
             Database.InteractableObject interactableObject = new Database.InteractableObject(
                 (InteractableType)Enum.Parse(typeof(InteractableType), tagTaskObjects.ToUpper()), taskObjects[i].name, true, taskScene);
             Database.interactableObjects.Add(interactableObject);
         }
-
+        
         QuestManager.instance.CurrentTarget += "\n" + tagTaskObjects + ": " + taskObjectsNumber + "/" + allTaskObjectsNumber;
     }
 
@@ -52,6 +57,7 @@ public class TaskInteract : Task
         Database.interactableObjects.Find(x => x.interactableName == interactable.name).isInteractable = false;
         taskObjectsName.Remove(interactable.name);
         interactable.transform.GetChild(0).GetComponent<vTriggerGenericAction>().OnDoAction.RemoveListener(() => SetTaskObject(interactable));
+
         Destroy(interactable);
         taskObjectsNumber++;
         QuestManager.instance.CurrentTarget = taskName + "\n" + tagTaskObjects + ": " + taskObjectsNumber + "/" + allTaskObjectsNumber;
@@ -68,10 +74,12 @@ public class TaskInteract : Task
         if(!Database.interactableObjects.Exists(x => x.type == (InteractableType)Enum.Parse(typeof(InteractableType), tagTaskObjects.ToUpper())))
         {
             this.InitTaskObjects();
+            SetCompassObjects(taskObjects);
         }
         else
         {
             LoadTaskObjects();
+            SetCompassObjects(taskObjects);
         }
 
     }
@@ -110,6 +118,7 @@ public class TaskInteract : Task
             GadgetManager gadgetManager = FindObjectOfType<GadgetManager>();
             actionComponent.OnDoAction.AddListener(() =>
             {
+                UpdateCompassObjects(action.transform.parent.transform);
                 SetTaskObject(action.transform.parent.gameObject);
                 Gadget gadget = gadgetManager.gadgets
                     .Find(x => x.gadgetType == (GadgetManager.GadgetType)Enum.Parse(typeof(GadgetManager.GadgetType), action.transform.parent.name.ToUpper()));
@@ -127,5 +136,25 @@ public class TaskInteract : Task
         //actionComponent.OnPlayerEnter.AddListener(() => ShowHelpKey(action));
         //actionComponent.OnPlayerExit.AddListener(() => HideHelpKey(action));
 
+    }
+
+    protected virtual void SetCompassObjects(GameObject[] compassObjects)
+    {
+        CompassLocation compass = GameManager.instance.gadgetManager.gadgets.Find(x => x.gadgetType == GadgetManager.GadgetType.COMPASS).GetComponent<CompassLocation>();
+
+        for (int i = 0; i < compassObjects.Length; i++)
+        {
+            compass.listObjects.Add(compassObjects[i].transform);
+        }
+
+        compass.ChangeTargetMissionSequenzialy();
+
+    }
+
+    protected virtual void UpdateCompassObjects(Transform compassObjectToDelete)
+    {
+        CompassLocation compass = GameManager.instance.gadgetManager.gadgets.Find(x => x.gadgetType == GadgetManager.GadgetType.COMPASS).GetComponent<CompassLocation>();
+        Transform objectToDestroy = compass.listObjects.Find(x => x.name == compassObjectToDelete.name);
+        compass.listObjects.Remove(objectToDestroy);
     }
 }

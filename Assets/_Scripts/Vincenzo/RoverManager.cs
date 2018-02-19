@@ -67,7 +67,7 @@ public class RoverManager : MonoBehaviour {
 	{
 
 		eSystem.gameObject.SetActive (false);
-        vThirdPersonController.instance..GetComponent<vThirdPersonInput>().lockInput = false;
+        vThirdPersonController.instance.GetComponent<vThirdPersonInput>().lockInput = false;
 
 		panel.SetActive (false);
 		UIManager.instance.HideScenePanel();

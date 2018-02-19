@@ -21,7 +21,11 @@ public class RoverManager : MonoBehaviour {
 	void Awake()
 	{
 
-		player = GameObject.FindGameObjectWithTag("Player");
+		if (gameObject.name == "LAND ROVER") 
+		{
+			eSystem = GameObject.FindGameObjectWithTag ("eSystem").GetComponent<EventSystem> ();
+			eSystem.gameObject.SetActive (false);
+		}
 
 	}
 
@@ -30,7 +34,7 @@ public class RoverManager : MonoBehaviour {
 		if (other.gameObject.tag.Equals("Player"))
         {
 
-			player.GetComponent<Invector.CharacterController.vThirdPersonInput> ().lockInput = true;
+			other.GetComponent<Invector.CharacterController.vThirdPersonInput> ().lockInput = true;
 
 			eSystem.gameObject.SetActive (true);
 			eSystem.firstSelectedGameObject = selectedButton;
@@ -48,7 +52,7 @@ public class RoverManager : MonoBehaviour {
         if (other.gameObject.tag.Equals("Player"))
         {
 
-			player.GetComponent<Invector.CharacterController.vThirdPersonInput> ().lockInput = false;
+			other.GetComponent<Invector.CharacterController.vThirdPersonInput> ().lockInput = false;
 
 			panel.SetActive (false);
 

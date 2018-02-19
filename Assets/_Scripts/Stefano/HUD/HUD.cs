@@ -55,13 +55,13 @@ public class HUD : MonoBehaviour {
 	void Update()
 	{
 
-        if(InputManager.StartButton() == true)
+        if(InputManager.StartButton() == true && RoverManager.enterTrigger == false)
         {
 
             eSystem.SetSelectedGameObject(firstButton);
 
 
-		    if (player.GetComponent<Invector.CharacterController.vThirdPersonController> ().isGrounded == true && semaforo == true && InputManager.MainHorizontal() == 0 && InputManager.MainVertical() == 0 && RoverManager.enterTrigger == false) 
+		    if (player.GetComponent<Invector.CharacterController.vThirdPersonController> ().isGrounded == true && semaforo == true && InputManager.MainHorizontal() == 0 && InputManager.MainVertical() == 0) 
 		    {
 
 			    semaforo = false;

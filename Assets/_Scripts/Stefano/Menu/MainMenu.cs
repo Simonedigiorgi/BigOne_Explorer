@@ -45,6 +45,7 @@ public class MainMenu : MonoBehaviour
 	//Pezza
 	private float timer = 0.2f;
 	private GameObject tempESystem;
+	private GameObject Player;
 
 	#endregion
 
@@ -53,6 +54,15 @@ public class MainMenu : MonoBehaviour
 		
 		//Controlliamo se il Joystick è stato inserito 
 		ChangeFirstSelected (firstButton, CheckJoystick ());
+
+		Player = GameObject.FindGameObjectWithTag ("Player");
+
+		if (Player != null) 
+		{
+
+			Player.SetActive (false);
+
+		}
 
 		tempESystem = eSystem.firstSelectedGameObject;
 
@@ -128,6 +138,13 @@ public class MainMenu : MonoBehaviour
 
 		if (background.alpha == 1) 
 		{
+
+			if (Player != null) 
+			{
+
+				Player.SetActive (true);
+
+			}
 
 			SceneManager.LoadScene ("Cratere Gale_Prova_2");
 

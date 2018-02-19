@@ -4,6 +4,7 @@ using UnityEngine;
 using Invector;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 
 public class HUD : MonoBehaviour {
 
@@ -184,6 +185,20 @@ public class HUD : MonoBehaviour {
 		player.GetComponent<Invector.CharacterController.vThirdPersonInput> ().enabled = true;
 		eSystem.GetComponent<EventSystem> ().SetSelectedGameObject (firstButton);
 		eSystem.gameObject.SetActive (false);
+
+	}
+
+	public void TurnToMainMenu()
+	{
+
+		SceneManager.LoadScene ("_UI_Menu_Stefano");
+
+	}
+
+	public void Quit()
+	{
+
+		Application.Quit ();
 
 	}
 

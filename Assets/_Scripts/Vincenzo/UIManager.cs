@@ -8,7 +8,8 @@ public class UIManager : MonoBehaviour
 
     public GameObject dialoguePanel;
     public GameObject targetText;
-    public GameObject ChangeScenePanel;
+    public GameObject changeScenePanel;
+    public GameObject helpKeyPanel;
 
     private static UIManager _instance;
     public static UIManager instance
@@ -47,13 +48,32 @@ public class UIManager : MonoBehaviour
 
     public void ShowScenePanel()
     {
-        this.ChangeScenePanel.gameObject.SetActive(true);
+        this.changeScenePanel.gameObject.SetActive(true);
     }
 
     public void HideScenePanel()
     {
-        this.ChangeScenePanel.gameObject.SetActive(false);
+        this.changeScenePanel.gameObject.SetActive(false);
     }
 
+    public void ShowHelpKeyPanel()
+    {
+        if (Input.GetJoystickNames().Length > 0)
+        {
+            helpKeyPanel.transform.GetChild(1).gameObject.SetActive(true);
+        }
+        else
+        {
+            helpKeyPanel.transform.GetChild(0).gameObject.SetActive(true);
+        }
+        helpKeyPanel.gameObject.SetActive(true);
+    }
+
+    public void HideHelpKeyPanel()
+    {
+        helpKeyPanel.transform.GetChild(0).gameObject.SetActive(false);
+        helpKeyPanel.transform.GetChild(1).gameObject.SetActive(false);
+        helpKeyPanel.gameObject.SetActive(true);
+    }
 
 }

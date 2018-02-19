@@ -84,27 +84,27 @@ public class TaskInteract : Task
 
     }
 
-    protected virtual void ShowHelpKey(GameObject actionAssociated)
+    protected virtual void ShowHelpKey()
     {
         if (Input.GetJoystickNames().Length > 0)
         {
-            actionAssociated.transform.GetChild(1).gameObject.SetActive(true);
+            
         }
         else
         {
-            actionAssociated.transform.GetChild(0).gameObject.SetActive(true);
+            
         }
     }
 
-    protected virtual void HideHelpKey(GameObject actionAssociated)
+    protected virtual void HideHelpKey()
     {
         if (Input.GetJoystickNames().Length > 0)
         {
-            actionAssociated.transform.GetChild(1).gameObject.SetActive(false);
+           
         }
         else
         {
-            actionAssociated.transform.GetChild(0).gameObject.SetActive(false);
+            
         }
     }
 
@@ -133,8 +133,8 @@ public class TaskInteract : Task
             actionComponent.OnDoAction.AddListener(() => SetTaskObject(action.transform.parent.gameObject));
         }
 
-        //actionComponent.OnPlayerEnter.AddListener(() => ShowHelpKey(action));
-        //actionComponent.OnPlayerExit.AddListener(() => HideHelpKey(action));
+        actionComponent.OnPlayerEnter.AddListener(() => UIManager.instance.ShowHelpKeyPanel());
+        actionComponent.OnPlayerExit.AddListener(() => UIManager.instance.HideHelpKeyPanel());
 
     }
 

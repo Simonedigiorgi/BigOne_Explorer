@@ -42,6 +42,8 @@ public class TaskGadget : TaskInteract {
             UpdateCompassObjects(action.transform.parent.transform.parent.transform);
             SetTaskObject(action.transform.parent.gameObject);
         });
+        actionComponent.OnPlayerEnter.AddListener(() => UIManager.instance.ShowHelpKeyPanel());
+        actionComponent.OnPlayerExit.AddListener(() => UIManager.instance.HideHelpKeyPanel());
     }
 
     protected override void SetTaskObject(GameObject interactable)

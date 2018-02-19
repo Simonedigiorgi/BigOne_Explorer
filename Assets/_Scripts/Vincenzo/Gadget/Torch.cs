@@ -21,7 +21,7 @@ public class Torch : Gadget {
 			tempSource.PlayOneShot (clip);
             GetComponent<Light>().enabled = true;
         }
-        else
+		else if(this.isEnabled == true)
         {
 			tempSource.PlayOneShot (clip);
             GetComponent<Light>().enabled = false;

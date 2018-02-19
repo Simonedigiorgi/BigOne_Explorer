@@ -2,6 +2,7 @@
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using Invector.CharacterController;
 
 public class RoverManager : MonoBehaviour {
 
@@ -66,8 +67,7 @@ public class RoverManager : MonoBehaviour {
 	{
 
 		eSystem.gameObject.SetActive (false);
-		player.GetComponent<Invector.CharacterController.vThirdPersonInput> ().lockInput = false;
-	
+        vThirdPersonController.instance..GetComponent<vThirdPersonInput>().lockInput = false;
 
 		panel.SetActive (false);
 		UIManager.instance.HideScenePanel();
@@ -78,13 +78,14 @@ public class RoverManager : MonoBehaviour {
     public void ChangeScene()
     {
 
-		player.GetComponent<Invector.CharacterController.vThirdPersonInput> ().lockInput = false;
+        player = vThirdPersonController.instance.gameObject;
+		player.GetComponent<vThirdPersonInput>().lockInput = false;
 
         var spawnPointFinderObj = new GameObject("spawnPointFinder");
         var spawnPointFinder = spawnPointFinderObj.AddComponent<vFindSpawnPoint>();
         //Debug.Log(spawnPointName+" "+gameObject.name);
 
-        //player = GameObject.FindGameObjectWithTag("Player");
+        
         spawnPointFinder.AlighObjetToSpawnPoint(player, spawnPointName);
 
         #if UNITY_5_3_OR_NEWER

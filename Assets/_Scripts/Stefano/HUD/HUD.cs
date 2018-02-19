@@ -54,7 +54,7 @@ public class HUD : MonoBehaviour {
 	void Update()
 	{
 
-		if (InputManager.StartButton () == true && player.GetComponent<Invector.CharacterController.vThirdPersonController> ().isGrounded == true && semaforo == true) 
+		if (InputManager.StartButton () == true && player.GetComponent<Invector.CharacterController.vThirdPersonController> ().isGrounded == true && semaforo == true && InputManager.MainHorizontal() == 0 && InputManager.MainVertical() == 0) 
 		{
 
 			semaforo = false;

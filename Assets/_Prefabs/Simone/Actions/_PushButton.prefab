@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 114298225413119280}
   - component: {fileID: 65506025878013124}
   - component: {fileID: 114732161308174684}
+  - component: {fileID: 114773811845449254}
   m_Layer: 0
   m_Name: _PushButton
   m_TagString: Untagged
@@ -35,7 +36,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1327317415788110}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -6.81, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -77,14 +78,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53a2f2cffbeaacb49b92a9a282dd4c19, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  openCloseEvents: 0
+  openCloseEvents: 1
   openCloseWindow: 0
   selectedToolbar: 0
   autoAction: 0
   disableCollision: 1
   disableGravity: 1
   resetPlayerSettings: 1
-  playAnimation: PushButton
+  playAnimation: Shovel
   endExitTimeAnimation: 0.8
   avatarTarget: 0
   matchTargetMask: {x: 0, y: 0, z: 0}
@@ -98,7 +99,18 @@ MonoBehaviour:
   onDoActionDelay: 0
   OnDoAction:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 114773811845449254}
+        m_MethodName: GetShovel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
   OnPlayerEnter:
@@ -116,3 +128,14 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
+--- !u!114 &114773811845449254
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1327317415788110}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 055702c00944733459a6977e45485cd0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

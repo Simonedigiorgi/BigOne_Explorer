@@ -4,34 +4,30 @@ using UnityEngine;
 
 public class Shovel : MonoBehaviour {
 
-    public GameObject poketShovel;
-    public GameObject handShovel;
+    private GameObject poketShovel;                                                 // Pala (Tasca)
+    private GameObject handShovel;                                                  // Pala (Mano)
 
-	// Use this for initialization
 	void Start () {
 
-        poketShovel.SetActive(true);
-        handShovel.SetActive(false);
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+        poketShovel = GameObject.FindGameObjectWithTag("PalaPoket");                // Trova il GameObject con la TAG "PalaPoket"
+        handShovel = GameObject.FindGameObjectWithTag("PalaHand");                  // Trova il GameObject con la TAG "PalaHand"
 
+        poketShovel.transform.GetChild(0).gameObject.SetActive(true);               // Prendi il Figlio
+        handShovel.transform.GetChild(0).gameObject.SetActive(false);               // Prendi il Figlio
+    }
+	
     public void GetShovel()
     {
-        StartCoroutine(UseShovel());
+        StartCoroutine(UseShovel());                                                // Attiva nel momento in cui il Player preme Azione sul collider dell'animazione
     }
 
-    public IEnumerator UseShovel()
+    public IEnumerator UseShovel()                                                  // Attiva e disattiva la pala tra la Tasca e la Mano
     {
-        handShovel.SetActive(true);
-        poketShovel.SetActive(false);
+        handShovel.transform.GetChild(0).gameObject.SetActive(true);
+        poketShovel.transform.GetChild(0).gameObject.SetActive(false);
         yield return new WaitForSeconds(4.4f);
-        handShovel.SetActive(false);
-        poketShovel.SetActive(true);
+        handShovel.transform.GetChild(0).gameObject.SetActive(false);
+        poketShovel.transform.GetChild(0).gameObject.SetActive(true);
     }
 
 

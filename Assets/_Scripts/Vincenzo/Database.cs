@@ -160,4 +160,12 @@ public static class Database
 		//end save
     }
 
+    public static void PrintInteractable()
+    {
+        foreach(InteractableObject o in interactableObjects)
+        {
+            Debug.Log(o.interactableName + ": " + o.isInteractable);
+        }
+    }
+
 }

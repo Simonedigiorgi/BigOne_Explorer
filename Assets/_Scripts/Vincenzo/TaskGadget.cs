@@ -10,8 +10,15 @@ public class TaskGadget : TaskInteract {
     public string tagZone;
 
     Gadget gadget;
-    GadgetManager gadgetManager;
-    GameObject[] interactableZone;
+    //GadgetManager gadgetManager;
+    List<GameObject> interactableListZone;
+
+    public override void EnableTask()
+    {
+        base.EnableTask();
+        gadget = GameManager.instance.gadgetManager.GetGadgetByType(gadgetType);
+        gadget.listObjects.Clear();
+    }
 
     public override void ReadyTask()
     {
@@ -20,17 +27,15 @@ public class TaskGadget : TaskInteract {
         CompassLocation compass = GameManager.instance.gadgetManager.gadgets.Find(x => x.gadgetType == GadgetManager.GadgetType.COMPASS).GetComponent<CompassLocation>();
         compass.listObjects.Clear();
 
-        interactableZone = GameObject.FindGameObjectsWithTag(tagZone);
-        SetCompassObjects(interactableZone);
+        GameObject[] interactableArrayZone = GameObject.FindGameObjectsWithTag(tagZone);
+        interactableListZone = new List<GameObject>(interactableArrayZone);
+        SetCompassObjects(interactableListZone);
 
-        gadgetManager = FindObjectOfType<GadgetManager>();
         gadget = GameManager.instance.gadgetManager.GetGadgetByType(gadgetType);
 
-        foreach(string objectName in taskObjectsName)
-        {
-            Transform interactableObject = GameObject.Find(objectName).transform;
-            gadget.listObjects.Add(interactableObject);
-        }
+        gadget.listObjects.Clear();
+        gadget.listObjects = new List<GameObject>(taskObjects);
+        
     }
 
     protected override void SetInteractableListener(GameObject action)
@@ -39,7 +44,6 @@ public class TaskGadget : TaskInteract {
 
         actionComponent.OnDoAction.AddListener(() =>
         {
-            UpdateCompassObjects(action.transform.parent.transform.parent.transform);
             SetTaskObject(action.transform.parent.gameObject);
         });
         actionComponent.OnPlayerEnter.AddListener(() => UIManager.instance.ShowHelpKeyPanel());
@@ -48,10 +52,33 @@ public class TaskGadget : TaskInteract {
 
     protected override void SetTaskObject(GameObject interactable)
     {
-        gadget.listObjects.Remove(interactable.transform);
-        base.SetTaskObject(interactable);   
+
+        GameObject interactableZone = interactable.transform.parent.gameObject;
+        
+
+        gadget.listObjects.Remove(interactable);
+        base.SetTaskObject(interactable);
+
+        StartCoroutine(CheckZone(interactableZone));
+        //CheckZone(interactableZone);
+        
+        
     }
 
+    IEnumerator CheckZone(GameObject interactableZone)
+    //void CheckZone(GameObject interactableZone)
+    {
+
+        yield return null;
+
+        if (interactableZone.transform.childCount <= 0)
+        {
+            UpdateCompassObjects(interactableZone);
+            Destroy(interactableZone);
+        }
+
+
+    }
 
 
 }

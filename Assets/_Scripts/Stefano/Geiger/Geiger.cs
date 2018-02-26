@@ -124,15 +124,15 @@ public class Geiger : Gadget
             return;
         }
 
-        foreach (Transform interactableObject in listObjects)
+        foreach (GameObject interactableObject in listObjects)
         {
             if (isEquipped)
             {
-                interactableObject.GetChild(0).gameObject.SetActive(true);
+                interactableObject.transform.GetChild(0).gameObject.SetActive(true);
             }
             else
             {
-                interactableObject.GetChild(0).gameObject.SetActive(false);
+                interactableObject.transform.GetChild(0).gameObject.SetActive(false);
             }
         }
 
@@ -145,14 +145,14 @@ public class Geiger : Gadget
     private void SearchObject()
 	{
 
-		Transform obj = listObjects[0];
+		GameObject obj = listObjects[0];
 		float distance;
-		float compareDistance = Vector3.Distance(listObjects [0].position, transform.position);
+		float compareDistance = Vector3.Distance(listObjects [0].transform.position, transform.position);
 
 		for (int i = 0; i < listObjects.Count; i++) 
 		{
 
-			distance = Vector3.Distance (listObjects [i].position, transform.position);
+			distance = Vector3.Distance (listObjects [i].transform.position, transform.position);
 
 			if (distance <= compareDistance) 
 			{
@@ -164,7 +164,7 @@ public class Geiger : Gadget
 
 		}
 
-		currentDistance = Vector3.Distance(obj.position,transform.position);
+		currentDistance = Vector3.Distance(obj.transform.position,transform.position);
 
 		//Debug.Log (currentDistance);
 

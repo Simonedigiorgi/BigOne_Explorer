@@ -28,7 +28,7 @@ public class TaskTalk : Task
         }
 
         CompassLocation compass = GameManager.instance.gadgetManager.GetGadgetByType(GadgetManager.GadgetType.COMPASS).GetComponent<CompassLocation>();
-        compass.ChangeTargetMission(npc.transform.parent.transform);
+        compass.ChangeTargetMission(npc.transform.parent.gameObject);
     }
 
     public override void ActiveTask()

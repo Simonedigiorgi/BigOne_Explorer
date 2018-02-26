@@ -27,8 +27,9 @@ public class Task : MonoBehaviour
         QuestManager.instance.CurrentTarget = "Viaggia verso " + this.taskScene;
 
         CompassLocation compass = GameManager.instance.gadgetManager.GetGadgetByType(GadgetManager.GadgetType.COMPASS).GetComponent<CompassLocation>();
-        Transform roverPosition = GameObject.Find("LAND ROVER").transform;
-        compass.ChangeTargetMission(roverPosition);
+        compass.listObjects.Clear();
+        GameObject rover = GameObject.Find("LAND ROVER");
+        compass.ChangeTargetMission(rover);
 
 
     }

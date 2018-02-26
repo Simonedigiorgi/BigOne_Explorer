@@ -8,7 +8,7 @@ public class Gadget : MonoBehaviour {
     public bool isEnabled;
     public bool isEquipped;
     [Header("Lista di oggetti da cercare nella scena")]
-    public List<Transform> listObjects;
+    public List<GameObject> listObjects;
 
     public virtual void EnableGadget()
     {

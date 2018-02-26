@@ -12,7 +12,7 @@ public class CompassLocation : Gadget {
 	/*[Header("Pool di posizioni che potrà puntare la bussol")]
 	public List<Transform> listTarget;*/
 	[Header("Target corrente a cui punta la bussola")]
-	public Transform missionPlace;
+	public GameObject missionPlace;
 	#endregion
 
 	void Update() 
@@ -60,7 +60,7 @@ public class CompassLocation : Gadget {
 	private void ChangeMissionDirection()
 	{
 
-		Vector3 dir = transform.position - missionPlace.position;
+		Vector3 dir = transform.position - missionPlace.transform.position;
 		MissionDirection = Quaternion.LookRotation (dir);
 		MissionDirection.z = - MissionDirection.y;
 		MissionDirection.x = 0;
@@ -71,7 +71,7 @@ public class CompassLocation : Gadget {
 	}
 
 	//Metodo per cambiare il target della missione
-	public void ChangeTargetMission(Transform newMissionPlace)
+	public void ChangeTargetMission(GameObject newMissionPlace)
 	{
 
 		missionPlace = newMissionPlace;
@@ -92,17 +92,17 @@ public class CompassLocation : Gadget {
 	/// <summary>
 	/// Oggetto da cercare calcolando la distanza
 	/// </summary>
-	private Transform SearchObject()
+	private GameObject SearchObject()
 	{
 
-		Transform obj = listObjects[0];
+		GameObject obj = listObjects[0];
 		float distance;
-		float compareDistance = Vector3.Distance(listObjects[0].position, transform.position);
+		float compareDistance = Vector3.Distance(listObjects[0].transform.position, transform.position);
 
 		for (int i = 0; i < listObjects.Count; i++) 
 		{
 
-			distance = Vector3.Distance (listObjects[i].position, transform.position);
+			distance = Vector3.Distance (listObjects[i].transform.position, transform.position);
 
 			if (distance <= compareDistance) 
 			{

@@ -1,12 +1,76 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Invector.CharacterController;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class ProvaFiglio : ProvaDotween
+public class ProvaFiglio : MonoBehaviour
 {
 
-    /*public string[] scenes;
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.tag == "Player")
+        {
+            vThirdPersonInput input = other.GetComponent<vThirdPersonInput>();
+
+            //vThirdPersonAnimator a = other.GetComponent<vThirdPersonAnimator>();
+
+            //vThirdPersonMotor m = other.GetComponent<vThirdPersonMotor>();
+            //m.ControlSpeed(0f);
+
+
+
+            vThirdPersonController.instance.lockSpeed = true;
+            //vThirdPersonController.instance.animator.SetFloat("InputMagnitude", 0f); 
+            //vThirdPersonController.instance.stopMove = true; 
+            //vThirdPersonController.instance.quickStop = true;
+            //vThirdPersonController.instance.velocity = 0f;
+            input.lockInput = true;
+
+        }
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.tag == "Player")
+        {
+
+            if(Input.GetKeyDown(KeyCode.P))
+            {
+                vThirdPersonInput input = other.GetComponent<vThirdPersonInput>();
+                vThirdPersonController.instance.lockSpeed = true;
+                //vThirdPersonController.instance.animator.SetFloat("InputMagnitude", 0f); 
+                //vThirdPersonController.instance.stopMove = true; 
+                //vThirdPersonController.instance.quickStop = true;
+                //vThirdPersonController.instance.velocity = 0f;
+                input.lockInput = true;
+            }
+
+            if (Input.GetKeyDown(KeyCode.O))
+            {
+                vThirdPersonInput input = other.GetComponent<vThirdPersonInput>();
+                vThirdPersonController.instance.lockSpeed = false;
+                //vThirdPersonController.instance.animator.SetFloat("InputMagnitude", 0f); 
+                //vThirdPersonController.instance.stopMove = true; 
+                //vThirdPersonController.instance.quickStop = true;
+                //vThirdPersonController.instance.velocity = 0f;
+                input.lockInput = false;
+            }
+
+
+            //vThirdPersonAnimator a = other.GetComponent<vThirdPersonAnimator>();
+
+            //vThirdPersonMotor m = other.GetComponent<vThirdPersonMotor>();
+            //m.ControlSpeed(0f);
+
+
+
+
+
+        }
+    }
+
+   /*public string[] scenes;
 
     void Update()
     {

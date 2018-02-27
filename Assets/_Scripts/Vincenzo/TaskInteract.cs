@@ -81,7 +81,7 @@ public class TaskInteract : Task
 
         if(!Database.interactableObjects.Exists(x => x.type == (InteractableType)Enum.Parse(typeof(InteractableType), tagTaskObjects.ToUpper())))
         {
-            this.InitTaskObjects();
+            InitTaskObjects();
             SetCompassObjects(taskObjects);
         }
         else

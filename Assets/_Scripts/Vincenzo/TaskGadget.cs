@@ -22,20 +22,52 @@ public class TaskGadget : TaskInteract {
 
     public override void ReadyTask()
     {
-        base.ReadyTask();
-
         CompassLocation compass = GameManager.instance.gadgetManager.gadgets.Find(x => x.gadgetType == GadgetManager.GadgetType.COMPASS).GetComponent<CompassLocation>();
         compass.listObjects.Clear();
 
         GameObject[] interactableArrayZone = GameObject.FindGameObjectsWithTag(tagZone);
         interactableListZone = new List<GameObject>(interactableArrayZone);
-        SetCompassObjects(interactableListZone);
+        
+        base.ReadyTask();
 
         gadget = GameManager.instance.gadgetManager.GetGadgetByType(gadgetType);
 
         gadget.listObjects.Clear();
         gadget.listObjects = new List<GameObject>(taskObjects);
-        
+
+        SetCompassObjects(interactableListZone);
+
+    }
+
+    protected override void InitTaskObjects()
+    {
+        base.InitTaskObjects();
+
+        foreach(GameObject zone in interactableListZone)
+        {
+            Database.InteractableObject interactableZoneObject = new Database.InteractableObject(
+                (InteractableType)Enum.Parse(typeof(InteractableType), tagZone.ToUpper()), zone.name, true, taskScene);
+            Database.interactableObjects.Add(interactableZoneObject);
+        }
+
+    }
+
+    protected override void LoadTaskObjects()
+    {
+
+        base.LoadTaskObjects();
+
+        interactableListZone.Clear();
+
+        foreach (Database.InteractableObject zone in Database.interactableObjects)
+        {
+            if (zone.type == (InteractableType)Enum.Parse(typeof(InteractableType), tagZone.ToUpper()) && zone.isInteractable)
+            {
+                GameObject zoneToFind = GameObject.Find(zone.interactableName).gameObject;
+                interactableListZone.Add(zoneToFind);
+            }
+        }
+
     }
 
     protected override void SetInteractableListener(GameObject action)
@@ -52,31 +84,25 @@ public class TaskGadget : TaskInteract {
 
     protected override void SetTaskObject(GameObject interactable)
     {
-
         GameObject interactableZone = interactable.transform.parent.gameObject;
         
-
         gadget.listObjects.Remove(interactable);
         base.SetTaskObject(interactable);
 
-        StartCoroutine(CheckZone(interactableZone));
-        //CheckZone(interactableZone);
-        
-        
+        StartCoroutine(CheckZone(interactableZone));    
     }
 
     IEnumerator CheckZone(GameObject interactableZone)
     //void CheckZone(GameObject interactableZone)
     {
-
         yield return null;
 
         if (interactableZone.transform.childCount <= 0)
         {
             UpdateCompassObjects(interactableZone);
+            Database.interactableObjects.Find(x => x.interactableName == interactableZone.name).isInteractable = false;
             Destroy(interactableZone);
         }
-
 
     }
 

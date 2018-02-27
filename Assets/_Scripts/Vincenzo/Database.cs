@@ -16,7 +16,9 @@ public enum InteractableType
     MURO,
     COORDINATE,
     ANTENNA,
-    BANDIERA
+    BANDIERA,
+    AREASCANNER,
+    AREAGEIGER
 }
 
 public static class Database

@@ -58,7 +58,7 @@ public class RoverManager : MonoBehaviour {
         }
     }
 
-    void OnTriggerExit(Collider other)
+    /*void OnTriggerExit(Collider other)
     {
         if (other.gameObject.tag.Equals("Player"))
         {
@@ -78,7 +78,7 @@ public class RoverManager : MonoBehaviour {
             vThirdPersonCamera.instance.lockCamera = false;
 
         }
-    }
+    }*/
 
 	public void ExitMenu()
 	{
@@ -107,6 +107,8 @@ public class RoverManager : MonoBehaviour {
 
         player = vThirdPersonController.instance.gameObject;
 		player.GetComponent<vThirdPersonInput>().lockInput = false;
+        vThirdPersonController.instance.lockSpeed = false;
+        vThirdPersonController.instance.lockRotation = false;
 
         var spawnPointFinderObj = new GameObject("spawnPointFinder");
         var spawnPointFinder = spawnPointFinderObj.AddComponent<vFindSpawnPoint>();

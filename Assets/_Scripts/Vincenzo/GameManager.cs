@@ -40,30 +40,6 @@ public class GameManager : MonoBehaviour {
             
     }
 
-    // Use this for initialization
-    void Start ()
-    {
-
-        
-
-        
-        
-		
-	}
-
-    
-
-	/*public IEnumerator InitNewGame()
-    {
-        yield return StartCoroutine(questManager.InitQuests());
-        setGame = true;
-    }
-
-    public void InitSavedGame()
-    {
-
-    }*/
-
     void OnEnable()
     {
         SceneManager.sceneLoaded += OnSceneLoaded;
@@ -81,24 +57,6 @@ public class GameManager : MonoBehaviour {
         questManager.CheckQuest();
         Database.currentScene = scene.name;
         SetObjectScene(scene);
-        //print(questManager.currentTarget);
-        /*foreach(Database.InteractableObject o in Database.interactableObjects)
-        {
-            print(o.type+" - "+o.interactableName+" - "+o.isInteractable);
-        }*/
-        /*foreach (Database.DataQuest quest in Database.quests)
-        {
-            print(quest.questName);
-            print(quest.currentState);
-            foreach (Database.DataTask task in quest.tasks)
-            {
-                    
-                print(task.taskName);
-                print(task.currentState);
-            }
-
-            print("\n");
-        }*/
         
     }
 
@@ -139,6 +97,7 @@ public class GameManager : MonoBehaviour {
         }*/
 
     }
+
 
     /*public void PrintData()
     {

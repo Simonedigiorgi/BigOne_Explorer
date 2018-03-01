@@ -37,51 +37,68 @@ public class RoverManager : MonoBehaviour {
 		if (other.gameObject.tag.Equals("Player"))
         {
 
-			enterTrigger = true;
+            enterTrigger = true;
 
-			other.GetComponent<Invector.CharacterController.vThirdPersonInput> ().lockInput = true;
+            vThirdPersonCamera.instance.lockCamera = true;
+
+            //print(vThirdPersonCamera.instance.currentStateName);
+
+            other.GetComponent<vThirdPersonInput> ().lockInput = true;
+            vThirdPersonController.instance.lockSpeed = true;
+            vThirdPersonController.instance.lockRotation = true;
 
 			eSystem.gameObject.SetActive (true);
 			eSystem.firstSelectedGameObject = selectedButton;
 			eSystem.SetSelectedGameObject(selectedButton);
 
 			panel.SetActive (true);
+
             UIManager.instance.ShowScenePanel();
-            Camera.main.GetComponent<vThirdPersonCamera>().lockCamera = true; 
 
         }
     }
 
-    void OnTriggerExit(Collider other)
+    /*void OnTriggerExit(Collider other)
     {
         if (other.gameObject.tag.Equals("Player"))
         {
 
 			enterTrigger = false;
 
-			other.GetComponent<Invector.CharacterController.vThirdPersonInput> ().lockInput = false;
+			other.GetComponent<vThirdPersonInput> ().lockInput = false;
+            vThirdPersonController.instance.lockSpeed = false;
+            vThirdPersonController.instance.lockRotation = false;
 
-			panel.SetActive (false);
+            eSystem.gameObject.SetActive(false);
+
+            panel.SetActive (false);
 
             UIManager.instance.HideScenePanel();
-            Camera.main.GetComponent<vThirdPersonCamera>().lockCamera = false;
+
+            vThirdPersonCamera.instance.lockCamera = false;
 
         }
-    }
+    }*/
 
 	public void ExitMenu()
 	{
 
-		enterTrigger = false;
+        enterTrigger = false;
 
-		eSystem.gameObject.SetActive (false);
         vThirdPersonController.instance.GetComponent<vThirdPersonInput>().lockInput = false;
+        vThirdPersonController.instance.lockSpeed = false;
+        vThirdPersonController.instance.lockRotation = false;
 
-		panel.SetActive (false);
-		UIManager.instance.HideScenePanel();
-		Camera.main.GetComponent<vThirdPersonCamera>().lockCamera = false;
+        eSystem.gameObject.SetActive(false);
 
-	}
+        panel.SetActive(false);
+
+        UIManager.instance.HideScenePanel();
+
+        vThirdPersonCamera.instance.lockCamera = false;
+        
+
+    }
 
     public void ChangeScene()
     {
@@ -90,6 +107,8 @@ public class RoverManager : MonoBehaviour {
 
         player = vThirdPersonController.instance.gameObject;
 		player.GetComponent<vThirdPersonInput>().lockInput = false;
+        vThirdPersonController.instance.lockSpeed = false;
+        vThirdPersonController.instance.lockRotation = false;
 
         var spawnPointFinderObj = new GameObject("spawnPointFinder");
         var spawnPointFinder = spawnPointFinderObj.AddComponent<vFindSpawnPoint>();

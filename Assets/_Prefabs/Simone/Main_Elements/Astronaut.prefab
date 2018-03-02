@@ -2304,7 +2304,7 @@ GameObject:
   m_IsActive: 1
 --- !u!1 &1745860730731230
 GameObject:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
@@ -3080,7 +3080,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1276046548144088}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -172.1, y: 25.35, z: -22.3}
+  m_LocalPosition: {x: 174.23, y: 14.38, z: -161.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4510803716841998}
@@ -3093,7 +3093,6 @@ Transform:
   - {fileID: 4330999704601394}
   - {fileID: 4191139834046812}
   - {fileID: 224262264640338756}
-  - {fileID: 4478149806939408}
   - {fileID: 4194727056404074}
   - {fileID: 4907495654506944}
   m_Father: {fileID: 0}
@@ -3151,7 +3150,7 @@ Transform:
   m_LocalScale: {x: 0.86320996, y: 0.86320996, z: 0.86320996}
   m_Children: []
   m_Father: {fileID: 4167839462442564}
-  m_RootOrder: 11
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4208796925909512
 Transform:
@@ -3547,11 +3546,11 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1745860730731230}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.98, z: 0}
+  m_LocalPosition: {x: 0, y: 0.089999974, z: -0.6399999}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 4167839462442564}
-  m_RootOrder: 10
+  m_Father: {fileID: 4754793168380334}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4483197285578566
 Transform:
@@ -4006,7 +4005,8 @@ Transform:
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: -0.64, z: 0.89000005}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 4478149806939408}
   m_Father: {fileID: 4451411148170398}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4224,7 +4224,7 @@ Transform:
   - {fileID: 4760599003635472}
   - {fileID: 4358142611471474}
   m_Father: {fileID: 4167839462442564}
-  m_RootOrder: 12
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4935986789116566
 Transform:
@@ -5332,8 +5332,8 @@ Light:
   m_Type: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Intensity: 2
-  m_Range: 10
-  m_SpotAngle: 90
+  m_Range: 20
+  m_SpotAngle: 120
   m_CookieSize: 10
   m_Shadows:
     m_Type: 2
@@ -5381,8 +5381,8 @@ Light:
   serializedVersion: 8
   m_Type: 2
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 1
-  m_Range: 5
+  m_Intensity: 1.5
+  m_Range: 2
   m_SpotAngle: 30
   m_CookieSize: 10
   m_Shadows:
@@ -7296,7 +7296,7 @@ MonoBehaviour:
   isEnabled: 0
   isEquipped: 0
   listObjects: []
-  updateSpeed: 2
+  updateSpeed: 1
   T_distance: 50
   beep: {fileID: 8300000, guid: cb4fd492b52842849977922acad34eee, type: 3}
   audioSource: {fileID: 0}
@@ -7334,7 +7334,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   openCloseEvents: 0
   openCloseWindow: 1
-  selectedToolbar: 3
+  selectedToolbar: 5
   maxHealth: 200
   healthRecovery: 0
   maxStamina: 300
@@ -7429,8 +7429,8 @@ MonoBehaviour:
   stepOffsetEnd: 0.45
   stepOffsetStart: 0
   stepSmooth: 4
-  slopeLimit: 60
-  slideVelocity: 4
+  slopeLimit: 50
+  slideVelocity: 5
   extraGravity: -10
   ragdollVel: -16
   isGrounded: 0
@@ -8190,7 +8190,7 @@ MonoBehaviour:
   scannerInput:
     useInput: 1
     isAxisInUse: 0
-    keyboard: Alpha1
+    keyboard: Alpha2
     keyboardAxis: 0
     joystick: RT
     joystickAxis: 1
@@ -8202,7 +8202,7 @@ MonoBehaviour:
   geigerInput:
     useInput: 1
     isAxisInUse: 0
-    keyboard: Alpha2
+    keyboard: Alpha3
     keyboardAxis: 0
     joystick: LT
     joystickAxis: 1
@@ -8214,7 +8214,7 @@ MonoBehaviour:
   compassInput:
     useInput: 1
     isAxisInUse: 0
-    keyboard: R
+    keyboard: Alpha1
     keyboardAxis: 0
     joystick: RightStickClick
     joystickAxis: 0

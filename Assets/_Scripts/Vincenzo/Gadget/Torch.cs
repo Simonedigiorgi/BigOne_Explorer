@@ -4,9 +4,14 @@ using UnityEngine;
 
 public class Torch : Gadget {
 
-    Light torch;
+    Light [] lights;
 	public AudioClip clip;
 	public AudioSource tempSource;
+
+    private void Start ()
+    {
+        lights = GetComponentsInChildren<Light>(true);
+    }
 
     public override void SetGadget()
     {
@@ -18,15 +23,15 @@ public class Torch : Gadget {
     {
         if (this.isEquipped)
         {
-			tempSource.PlayOneShot (clip);
-            GetComponent<Light>().enabled = true;
+            tempSource.PlayOneShot(clip);
+            lights[0].enabled = true;
+            lights[1].enabled = true;
         }
 		else if(this.isEnabled == true)
         {
 			tempSource.PlayOneShot (clip);
-            GetComponent<Light>().enabled = false;
+            lights[0].enabled = false;
+            lights[1].enabled = false;
         }
     }
-    
-
 }

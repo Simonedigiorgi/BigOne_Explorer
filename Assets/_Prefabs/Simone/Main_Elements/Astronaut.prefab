@@ -3080,7 +3080,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1276046548144088}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 357.781, y: 0.54, z: 392}
+  m_LocalPosition: {x: -91.32, y: 26.9, z: 106.87}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4510803716841998}
@@ -7334,11 +7334,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   openCloseEvents: 0
   openCloseWindow: 1
-  selectedToolbar: 5
-  maxHealth: 200
+  selectedToolbar: 3
+  maxHealth: 2
   healthRecovery: 0
-  maxStamina: 300
-  staminaRecovery: 1.2
+  maxStamina: 4
+  staminaRecovery: 0.2
   currentStaminaRecoveryDelay: 0
   healthRecoveryDelay: 0
   currentHealthRecoveryDelay: 0
@@ -7377,7 +7377,7 @@ MonoBehaviour:
     m_TypeName: Invector.CharacterController.OnActionHandle, Assembly-CSharp, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   debugWindow: 0
-  sprintStamina: 0
+  sprintStamina: 1
   jumpStamina: 0
   rollStamina: 0
   OnStaminaEnd:
@@ -7402,9 +7402,9 @@ MonoBehaviour:
   freeSpeed:
     rotationSpeed: 10
     walkByDefault: 0
-    walkSpeed: 2
-    runningSpeed: 3
-    sprintSpeed: 4
+    walkSpeed: 3
+    runningSpeed: 5
+    sprintSpeed: 6
     crouchSpeed: 2
   strafeSpeed:
     rotationSpeed: 10

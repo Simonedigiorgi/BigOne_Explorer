@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GrabScript : MonoBehaviour {
+public class GrabAction : vTriggerGenericAction
+{
 
     public Transform playerLeftForeArm;                                         // BRACCIO SINISTRO (mixamorig:LeftForeArm)
     public Transform playerLeftHand;                                            // MANO SINISTRA (mixamorig:LeftHand) 
@@ -11,11 +12,20 @@ public class GrabScript : MonoBehaviour {
     // Allora... ho trovato sta soluzione: L'oggetto diventa parent della manosinistra
     // dopodichè prendo il figlio del braccio sinistro per disattivarlo
 
-	void Update () {
+    protected override void Start()
+    {
+
+        base.Start();
+
+        OnDoAction.AddListener(() => Grab());
+    }
+
+    void Update () {
 
         if (isGrabbed)
         {
-            transform.GetChild(0).parent = playerLeftHand.parent.transform;
+            //transform.GetChild(0).parent = playerLeftHand.parent.transform;
+            transform.GetChild(0).parent.gameObject.SetActive(false);
             isGrabbed = false;
 
             // PER SETTARE IN MODO SPECIFICO L'AGGANCIO BISOGNA MODIFICARE LE POSIZIONI
@@ -37,8 +47,8 @@ public class GrabScript : MonoBehaviour {
         yield return new WaitForSeconds(1.6f);                              // Tempo prima di raccogliere l'oggetto                    
         isGrabbed = true;
 
-        yield return new WaitForSeconds(4.0f);
-        playerLeftForeArm.transform.GetChild(1).gameObject.SetActive(false);   // Disattiva l'oggetto
+        /*yield return new WaitForSeconds(4.0f);
+        playerLeftForeArm.transform.GetChild(1).gameObject.SetActive(false);*/   // Disattiva l'oggetto
 
         // Aggiungere la condizione (Hai collezionato l'oggetto)
 

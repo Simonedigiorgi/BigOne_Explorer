@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Gadget : MonoBehaviour {
 
@@ -9,6 +10,8 @@ public class Gadget : MonoBehaviour {
     public bool isEquipped;
     [Header("Lista di oggetti da cercare nella scena")]
     public List<GameObject> listObjects;
+    public TextAsset description;
+    public Sprite image;
 
     public virtual void EnableGadget()
     {

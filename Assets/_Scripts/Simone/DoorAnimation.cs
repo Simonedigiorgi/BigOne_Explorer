@@ -20,7 +20,9 @@ public class DoorAnimation : MonoBehaviour
         //source.PlayOneShot(close); // TOGLIERE IL COMMENTO
         if (doorBehaviour == DoorBehaviour.Outside)
         {
-            if (other.gameObject.tag == "Player") // + AGGIUNGERE CONDIZIONE EQUIPAGGIAMENTO
+            if (other.gameObject.tag == "Player" &&
+                GameManager.instance.gadgetManager.GetGadgetByType(GadgetManager.GadgetType.HELMET).isEnabled &&
+                GameManager.instance.gadgetManager.GetGadgetByType(GadgetManager.GadgetType.BACKPACK).isEnabled) 
             {
                 doorDown.SetTrigger("DownOpen");
                 doorUp.SetTrigger("UpOpen");
@@ -31,8 +33,6 @@ public class DoorAnimation : MonoBehaviour
         {
             if (other.gameObject.tag == "Player")
             {
-
-
                 doorDown.SetTrigger("DownOpen");
                 doorUp.SetTrigger("UpOpen");
             }

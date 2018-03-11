@@ -6,20 +6,6 @@ using UnityEngine;
 
 public class GadgetManager : MonoBehaviour {
 
-    /*[Header("Equipaggiamento")]
-    public bool isHelmet;
-    public bool isBackpack;
-
-    [Header("Gadget")]
-    public bool isTorch;                                                // Hai la torcia
-    public bool isCompass;                                              // Hai il compasso
-    public bool isPickaxe;                                              // Hai il piccone
-    public bool isScanner;                                              // Hai lo scanner
-    public bool isAuger;                                                // Hai la trivella
-    public bool isCamera;                                               // Hai la fotocamera
-    public bool isJetPack;                                              // Hai il Jetpack
-    public bool isGeiger;                                               // Hai il Geiger*/
-
     public enum GadgetType
     {
         HELMET,
@@ -28,7 +14,6 @@ public class GadgetManager : MonoBehaviour {
         COMPASS,
         PICKAXE,
         SCANNER,
-        //AUGER,
         CAMERA,
         JETPACK,
         GEIGER
@@ -57,6 +42,21 @@ public class GadgetManager : MonoBehaviour {
         }
 
         //PrintGadget();
+    }
+
+    public List<Gadget> GetEnabledGadgets()
+    {
+        List<Gadget> enabledGadgets = new List<Gadget>();
+
+        foreach(Gadget gadget in gadgets)
+        {
+            if(gadget.isEnabled)
+            {
+                gadgets.Add(gadget);
+            }
+        }
+
+        return enabledGadgets;
     }
 
     public Gadget GetGadgetByType(GadgetType type)

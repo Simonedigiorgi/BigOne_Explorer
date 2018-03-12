@@ -41,9 +41,11 @@ public class PickaxeAction : vTriggerGenericAction {
 
     public IEnumerator UsePickaxe()                                                  // Attiva e disattiva la pala tra la Tasca e la Mano
     {
+
         handPickaxe.transform.GetChild(0).gameObject.SetActive(true);
+        handPickaxe.transform.GetChild(0).GetComponent<Animator>().SetTrigger("PickaxeApertura");
         poketPickaxe.transform.GetChild(0).gameObject.SetActive(false);
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(2.5f);
         handPickaxe.transform.GetChild(0).gameObject.SetActive(false);
         poketPickaxe.transform.GetChild(0).gameObject.SetActive(true);
         destroyed = true;

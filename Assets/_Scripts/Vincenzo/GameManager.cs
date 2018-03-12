@@ -69,7 +69,11 @@ public class GameManager : MonoBehaviour {
                 if(interactable.sceneContainer == scene.name && !interactable.isInteractable)
                 {
                     GameObject interactableToDestroy = GameObject.Find(interactable.interactableName);
-                    Destroy(interactableToDestroy);
+                    if (interactable.isDestroyable)
+                        Destroy(interactableToDestroy);
+                    else
+                        interactableToDestroy.transform.GetChild(1).gameObject.SetActive(true);
+                        Destroy(interactableToDestroy.transform.GetChild(0).gameObject);
                 }
             }
         }

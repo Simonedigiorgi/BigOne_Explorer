@@ -5,18 +5,18 @@ using System;
 
 public enum InteractableType
 {
-    EQUIPAGGIAMENTO,
-    PANNELLI,
-    MINERALI,
-    TUBI,
-    RESTI_SONDA,
-    FOTOGRAFIA,
-    SCATOLA_NERA,
+    EQUIPMENT,
+    PANELS,
+    MINERALS,
+    TUBES,
+    PIECES,
+    PICTURE,
+    BLACKBOX,
     COMPUTER,
-    MURO,
-    COORDINATE,
+    WALL,
+    COORDINATES,
     ANTENNA,
-    BANDIERA,
+    FLAG,
     AREASCANNER,
     AREAGEIGER
 }
@@ -47,18 +47,20 @@ public static class Database
     public class InteractableObject
     {
 
-        public InteractableObject(InteractableType pInteractableType, string pInteractableName, bool pIsInteractable, string pScene)
+        public InteractableObject(InteractableType pInteractableType, string pInteractableName, bool pIsInteractable, string pScene, bool pIsDestroyable)
         {
             this.type = pInteractableType;
             this.interactableName = pInteractableName;
             this.isInteractable = pIsInteractable;
             this.sceneContainer = pScene;
+            this.isDestroyable = pIsDestroyable;
         }
 
 		//Save
         public InteractableType type;
         public string interactableName;
         public bool isInteractable;
+        public bool isDestroyable;
         public string sceneContainer;
 		//Save
     }

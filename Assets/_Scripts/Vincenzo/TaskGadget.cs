@@ -46,7 +46,7 @@ public class TaskGadget : TaskInteract {
         foreach(GameObject zone in interactableListZone)
         {
             Database.InteractableObject interactableZoneObject = new Database.InteractableObject(
-                (InteractableType)Enum.Parse(typeof(InteractableType), tagZone.ToUpper()), zone.name, true, taskScene);
+                (InteractableType)Enum.Parse(typeof(InteractableType), tagZone.ToUpper()), zone.name, true, taskScene, isDestroyable);
             Database.interactableObjects.Add(interactableZoneObject);
         }
 

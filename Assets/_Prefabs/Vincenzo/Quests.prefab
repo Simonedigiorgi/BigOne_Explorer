@@ -102,7 +102,7 @@ GameObject:
   - component: {fileID: 114480010142039632}
   m_Layer: 0
   m_Name: Recupera i resti della sonda
-  m_TagString: Untagged
+  m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1286,8 +1286,9 @@ MonoBehaviour:
   taskName: Extract the Black Box
   taskPriority: 0
   taskScene: Noctis Labyrinthus
-  tagTaskObjects: Scatola_Nera
+  tagTaskObjects: Blackbox
   taskObjects: []
+  isDestroyable: 1
 --- !u!114 &114251881472544540
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1300,11 +1301,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentState: 0
-  taskName: Place the Banner
+  taskName: Place the Flag
   taskPriority: 3
   taskScene: Olympus Mons
-  tagTaskObjects: Bandiera
+  tagTaskObjects: Flag
   taskObjects: []
+  isDestroyable: 0
 --- !u!114 &114263987824456992
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1320,8 +1322,9 @@ MonoBehaviour:
   taskName: Find a cave with low radiation
   taskPriority: 4
   taskScene: Valles_Marineris
-  tagTaskObjects: Coordinate
+  tagTaskObjects: Coordinates
   taskObjects: []
+  isDestroyable: 1
   gadgetType: 8
   tagZone: AreaGeiger
 --- !u!114 &114267627077751734
@@ -1424,8 +1427,9 @@ MonoBehaviour:
   taskName: Destroy the wall
   taskPriority: 3
   taskScene: Valles_Marineris
-  tagTaskObjects: Muro
+  tagTaskObjects: Wall
   taskObjects: []
+  isDestroyable: 1
 --- !u!114 &114323017015049202
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1510,8 +1514,9 @@ MonoBehaviour:
   taskName: Collect Minerals
   taskPriority: 2
   taskScene: Valles_Marineris
-  tagTaskObjects: Minerali
+  tagTaskObjects: Minerals
   taskObjects: []
+  isDestroyable: 1
   gadgetType: 5
   tagZone: AreaScanner
 --- !u!114 &114462144027068940
@@ -1544,8 +1549,9 @@ MonoBehaviour:
   taskName: Collect the probe pieces
   taskPriority: 2
   taskScene: Noctis Labyrinthus
-  tagTaskObjects: Resti_Sonda
+  tagTaskObjects: Pieces
   taskObjects: []
+  isDestroyable: 1
 --- !u!114 &114495583042677024
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1582,6 +1588,7 @@ MonoBehaviour:
   taskScene: Olympus Mons
   tagTaskObjects: Antenna
   taskObjects: []
+  isDestroyable: 0
 --- !u!114 &114628546372398050
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1597,8 +1604,9 @@ MonoBehaviour:
   taskName: Take your Equipment
   taskPriority: 1
   taskScene: Gale Crater
-  tagTaskObjects: Equipaggiamento
+  tagTaskObjects: Equipment
   taskObjects: []
+  isDestroyable: 1
 --- !u!114 &114635329040401186
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1614,8 +1622,9 @@ MonoBehaviour:
   taskName: Take an amazing picture
   taskPriority: 2
   taskScene: Noctis Labyrinthus
-  tagTaskObjects: Fotografia
+  tagTaskObjects: Picture
   taskObjects: []
+  isDestroyable: 1
 --- !u!114 &114676978234217774
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1696,6 +1705,7 @@ MonoBehaviour:
   taskScene: Gale Crater
   tagTaskObjects: Computer
   taskObjects: []
+  isDestroyable: 1
 --- !u!114 &114801028466272088
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1749,8 +1759,9 @@ MonoBehaviour:
   taskName: Repair the tubes
   taskPriority: 1
   taskScene: Gale Crater
-  tagTaskObjects: Tubi
+  tagTaskObjects: Tubes
   taskObjects: []
+  isDestroyable: 1
 --- !u!114 &114854423056491894
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1863,8 +1874,9 @@ MonoBehaviour:
   taskName: Clean the solar panels
   taskPriority: 2
   taskScene: Gale Crater
-  tagTaskObjects: Pannelli
+  tagTaskObjects: Panels
   taskObjects: []
+  isDestroyable: 1
 --- !u!114 &114969057245642392
 MonoBehaviour:
   m_ObjectHideFlags: 1

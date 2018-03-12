@@ -207,8 +207,10 @@ public class SavingLoading : MonoBehaviour
 			ES2.Save (Database.interactableObjects[i].isInteractable, PlayerPrefs.GetString ("Slot") + ".txt?tag=interactableObjectIsinteractable"+i);
 			//string
 			ES2.Save (Database.interactableObjects[i].sceneContainer, PlayerPrefs.GetString ("Slot") + ".txt?tag=interactableObjectSceneContainer"+i);
+            //bool
+            ES2.Save(Database.interactableObjects[i].isDestroyable, PlayerPrefs.GetString("Slot") + ".txt?tag=interactableObjectIsdestroyable" + i);
 
-		}
+        }
 
 		Debug.Log ("Interctable Objects salvati");
 
@@ -428,7 +430,8 @@ public class SavingLoading : MonoBehaviour
 				ES2.Load<InteractableType> (PlayerPrefs.GetString ("Slot") + ".txt?tag=interactableObjectType" + i),
 				ES2.Load<string> (PlayerPrefs.GetString ("Slot") + ".txt?tag=interactableObjectIntercatableName" + i),
 				ES2.Load<bool> (PlayerPrefs.GetString ("Slot") + ".txt?tag=interactableObjectIsinteractable" + i),
-				ES2.Load<string> (PlayerPrefs.GetString ("Slot") + ".txt?tag=interactableObjectSceneContainer" + i));
+                ES2.Load<string> (PlayerPrefs.GetString ("Slot") + ".txt?tag=interactableObjectSceneContainer" + i),
+                ES2.Load<bool>(PlayerPrefs.GetString("Slot") + ".txt?tag=interactableObjectIsdestroyable" + i));
 
 			Database.interactableObjects.Add (obj);
 

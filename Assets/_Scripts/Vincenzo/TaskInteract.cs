@@ -9,11 +9,13 @@ public class TaskInteract : Task
 
     //public List<String> taskObjectsName;
     public string tagTaskObjects;
+    public List<GameObject> taskObjects;
+    public bool isDestroyable;
 
     //protected GameObject[] taskObjects;
     protected int taskObjectsNumber;
     protected int allTaskObjectsNumber;
-    public List<GameObject> taskObjects;
+    
 
     protected virtual void InitTaskObjects()
     {
@@ -31,7 +33,7 @@ public class TaskInteract : Task
             //taskObjectsName.Add(taskObjects[i].name);
 
             Database.InteractableObject interactableObject = new Database.InteractableObject(
-                (InteractableType)Enum.Parse(typeof(InteractableType), tagTaskObjects.ToUpper()), taskObjects[i].name, true, taskScene);
+                (InteractableType)Enum.Parse(typeof(InteractableType), tagTaskObjects.ToUpper()), taskObjects[i].name, true, taskScene, isDestroyable);
             Database.interactableObjects.Add(interactableObject);
         }
         
@@ -59,7 +61,10 @@ public class TaskInteract : Task
         Database.interactableObjects.Find(x => x.interactableName == interactable.name).isInteractable = false;
         taskObjects.Remove(interactable);
         interactable.transform.GetChild(0).GetComponent<vTriggerGenericAction>().OnDoAction.RemoveListener(() => SetTaskObject(interactable));
-        Destroy(interactable);
+
+        if(isDestroyable)
+            Destroy(interactable);
+
         UIManager.instance.HideHelpKeyPanel();
         taskObjectsNumber++;
         QuestManager.instance.CurrentTarget = taskName + "\n" + tagTaskObjects + ": " + taskObjectsNumber + "/" + allTaskObjectsNumber;
@@ -97,7 +102,7 @@ public class TaskInteract : Task
         action.SetActive(true);
         vTriggerGenericAction actionComponent = action.GetComponent<vTriggerGenericAction>();
 
-        if (tagTaskObjects == "Equipaggiamento")
+        if (tagTaskObjects == "Equipment")
         {
             GadgetManager gadgetManager = FindObjectOfType<GadgetManager>();
             actionComponent.OnDoAction.AddListener(() =>

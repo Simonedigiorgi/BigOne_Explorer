@@ -46,14 +46,15 @@ public class MainMenu : MonoBehaviour
 	private float timer = 0.2f;
 	private GameObject tempESystem;
 	private GameObject Player;
+	private bool isGamepad = false;
 
 	#endregion
 
 	void Awake()
 	{
-		
-		//Controlliamo se il Joystick è stato inserito 
-		ChangeFirstSelected (firstButton, CheckJoystick ());
+
+		//Impostiamo il primo bottone illuminato 
+		ChangeFirstSelected (firstButton);
 
 		Player = GameObject.FindGameObjectWithTag ("Player");
 
@@ -66,87 +67,102 @@ public class MainMenu : MonoBehaviour
 
 		tempESystem = eSystem.firstSelectedGameObject;
 
+		//Avvio la coroutine per il controllo degli input
+		StartCoroutine (CheckInput ());
+
 
 	}
 
 	void Update()
 	{
 
-		//Pezza
-		if (timer >= 0.2f) 
+		if (isGamepad == true) 
 		{
 
-			timer = 0;
+			#region SettingAudio
 
-			if (eSystem.currentSelectedGameObject.GetHashCode () == mainMuiscButton.GetHashCode () && InputManager.MainHorizontal () < 0) {
+			//Controllo audio per il menu principale 
+			if (timer >= 0.2f) {
 
-				//Tolgo volume
-				DecreaseVolume (listMainVolume, mainAudio);
-				this.GetComponent<Musica> ().RiproduciSuono (4);
+				timer = 0;
 
-			} else if (eSystem.currentSelectedGameObject.GetHashCode () == mainMuiscButton.GetHashCode () && InputManager.MainHorizontal () > 0) {
-				
-				//Tolgo volume
-				EncreaseVolume (listMainVolume, mainAudio);
-				this.GetComponent<Musica> ().RiproduciSuono (4);
+				#region MainAudio
+
+				if (eSystem.currentSelectedGameObject.GetHashCode () == mainMuiscButton.GetHashCode () && InputManager.MainHorizontal () < 0) {
+
+					//Tolgo volume
+					DecreaseVolume (listMainVolume, mainAudio);
+					this.GetComponent<Musica> ().RiproduciSuono (4);
+
+				} else if (eSystem.currentSelectedGameObject.GetHashCode () == mainMuiscButton.GetHashCode () && InputManager.MainHorizontal () > 0) {
+					
+					//Tolgo volume
+					EncreaseVolume (listMainVolume, mainAudio);
+					this.GetComponent<Musica> ().RiproduciSuono (4);
+
+				}
+
+				#endregion
+
+				#region SFXaudio
+
+				if (eSystem.currentSelectedGameObject.GetHashCode () == SFXbutton.GetHashCode () && InputManager.MainHorizontal () < 0) {
+
+					//Tolgo volume
+					DecreaseVolume (listSFXVolume, SFXaudio);
+					this.GetComponent<Musica> ().RiproduciSuono (4);
+
+				} else if (eSystem.currentSelectedGameObject.GetHashCode () == SFXbutton.GetHashCode () && InputManager.MainHorizontal () > 0) {
+					
+					//Tolgo volume
+					EncreaseVolume (listSFXVolume, SFXaudio);
+					this.GetComponent<Musica> ().RiproduciSuono (4);
+
+				}
+
+				#endregion
+
+				#region MusicAudio
+
+				if (eSystem.currentSelectedGameObject.GetHashCode () == musicButton.GetHashCode () && InputManager.MainHorizontal () < 0) {
+
+					//Tolgo volume
+					DecreaseVolume (listMusicVolume, musicAudio);
+					this.GetComponent<Musica> ().RiproduciSuono (4);
+
+				} else if (eSystem.currentSelectedGameObject.GetHashCode () == musicButton.GetHashCode () && InputManager.MainHorizontal () > 0) {
+					
+					//Tolgo volume
+					EncreaseVolume (listMusicVolume, musicAudio);
+					this.GetComponent<Musica> ().RiproduciSuono (4);
+
+				}
+
+				#endregion
+
+			} else {
+
+				timer += Time.deltaTime;
 
 			}
 
-			if (eSystem.currentSelectedGameObject.GetHashCode () == SFXbutton.GetHashCode () && InputManager.MainHorizontal () < 0) {
-
-				//Tolgo volume
-				DecreaseVolume (listSFXVolume, SFXaudio);
-				this.GetComponent<Musica> ().RiproduciSuono (4);
-
-			} else if (eSystem.currentSelectedGameObject.GetHashCode () == SFXbutton.GetHashCode () && InputManager.MainHorizontal () > 0) {
-				
-				//Tolgo volume
-				EncreaseVolume (listSFXVolume, SFXaudio);
-				this.GetComponent<Musica> ().RiproduciSuono (4);
-
-			}
-
-			if (eSystem.currentSelectedGameObject.GetHashCode () == musicButton.GetHashCode () && InputManager.MainHorizontal () < 0) {
-
-				//Tolgo volume
-				DecreaseVolume (listMusicVolume, musicAudio);
-				this.GetComponent<Musica> ().RiproduciSuono (4);
-
-			} else if (eSystem.currentSelectedGameObject.GetHashCode () == musicButton.GetHashCode () && InputManager.MainHorizontal () > 0) {
-				
-				//Tolgo volume
-				EncreaseVolume (listMusicVolume, musicAudio);
-				this.GetComponent<Musica> ().RiproduciSuono (4);
-
-			}
-
-		} 
-		else 
-		{
-
-			timer += Time.deltaTime;
+			#endregion
 
 		}
 
-		if (eSystem.currentSelectedGameObject.GetHashCode () != tempESystem.GetHashCode() && InputManager.MainVertical() != 0) 
+		if (isGamepad == true) 
 		{
 
-			tempESystem = eSystem.currentSelectedGameObject;
-			this.GetComponent<Musica> ().RiproduciSuono (1);
+			#region MusicOnMenu
 
-		}
+			if (eSystem.currentSelectedGameObject.GetHashCode () != tempESystem.GetHashCode () && InputManager.MainVertical () != 0) {
 
-		if (background.alpha == 1) 
-		{
-
-			if (Player != null) 
-			{
-
-				Player.SetActive (true);
+				tempESystem = eSystem.currentSelectedGameObject;
+				this.GetComponent<Musica> ().RiproduciSuono (1);
 
 			}
 
-			SceneManager.LoadScene ("Cratere Gale_Prova_2");
+			#endregion
 
 		}
 
@@ -221,6 +237,12 @@ public class MainMenu : MonoBehaviour
 
 			Debug.Log ("Controller inserito");
 
+			//Disabilitiamo gli input da Mouse
+			Cursor.visible = false;
+			Cursor.lockState = CursorLockMode.Locked;
+
+
+
 			return true;
 
 
@@ -294,7 +316,7 @@ public class MainMenu : MonoBehaviour
 	}
 
 	/// <summary>
-	/// Changes the first selected.
+	/// Cambiare il first select dell'Event System
 	/// </summary>
 	/// <param name="button">Button.</param>
 	public void ChangeFirstSelected(GameObject button)
@@ -306,7 +328,7 @@ public class MainMenu : MonoBehaviour
 
 	#endregion
 
-	#region Generic
+	#region MenuFunction
 
 	/// <summary>
 	/// Metodo per uscire dal gioco
@@ -315,6 +337,81 @@ public class MainMenu : MonoBehaviour
 	{
 
 		Application.Quit ();
+
+	}
+
+	/// <summary>
+	/// Metodo che avvia la coroutine per cambiare scena
+	/// </summary>
+	/// <param name="nameScena">Name scena.</param>
+	public void ChangeScena(string nameScena)
+	{
+
+		StartCoroutine (FadeScena (nameScena));
+
+	}
+
+	/// <summary>
+	/// Metodo che avvia la coroutine per cambiare scena
+	/// </summary>
+	/// <param name="nameScena">Name scena.</param>
+	public void ChangeScena(int index)
+	{
+		//Converto il numero di scena in nome
+		string nameScena = SceneManager.GetSceneByBuildIndex (index).name;
+
+		StartCoroutine (FadeScena (nameScena));
+
+	}
+
+	/// <summary>
+	/// Coroutine che controlla il cambio di scena 
+	/// </summary>
+	/// <returns>The scena.</returns>
+	public IEnumerator FadeScena(string nameScena)
+	{
+
+		while(background.alpha < 1)
+		{
+
+			//Aseptto che lo schermo sia totalmente nero
+
+			yield return null;
+
+
+		}
+
+		if (Player != null) 
+		{
+
+			Player.SetActive (true);
+
+		}
+
+		SceneManager.LoadScene (nameScena);
+
+
+	}
+
+	/// <summary>
+	/// Coroutine che controlla il cambio di input del gioco
+	/// </summary>
+	/// <returns>The input.</returns>
+	public IEnumerator CheckInput()
+	{
+
+		while (true) 
+		{
+
+			//Controllo ogni quanto di tempo se il Joystick o la tastiera sono stati inseriti
+			isGamepad = CheckJoystick ();
+
+			yield return new WaitForSeconds (1f);
+
+		}
+
+		yield return null;
+
 
 	}
 

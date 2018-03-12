@@ -62,8 +62,8 @@ public class TaskInteract : Task
         taskObjects.Remove(interactable);
         interactable.transform.GetChild(0).GetComponent<vTriggerGenericAction>().OnDoAction.RemoveListener(() => SetTaskObject(interactable));
 
-        if(isDestroyable)
-            Destroy(interactable);
+        /*if(isDestroyable)
+            Destroy(interactable);*/
 
         UIManager.instance.HideHelpKeyPanel();
         taskObjectsNumber++;

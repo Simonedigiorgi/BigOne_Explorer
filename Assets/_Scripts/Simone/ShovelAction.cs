@@ -42,16 +42,16 @@ public class ShovelAction : vTriggerGenericAction {
 
     public IEnumerator UseShovel()
     {
-        Animator playerAnimator = vThirdPersonController.instance.GetComponent<Animator>();
-        int shovelState = playerAnimator.GetInteger("ShovelState");
+        /*Animator playerAnimator = vThirdPersonController.instance.GetComponent<Animator>();
+        int shovelState = playerAnimator.GetInteger("ShovelState");*/
 
-        playerAnimator.SetInteger("ShovelState", 0);
+        //playerAnimator.SetInteger("ShovelState", 0);
         handShovel.transform.GetChild(0).gameObject.SetActive(true);
         handShovel.transform.GetChild(0).GetComponent<Animator>().SetTrigger("ShovelApertura");
         poketShovel.transform.GetChild(0).gameObject.SetActive(false);
-        yield return new WaitForSeconds(8.8f);
+        yield return new WaitForSeconds(4.4f);
 
-        playerAnimator.SetInteger("ShovelState", 3);
+        //playerAnimator.SetInteger("ShovelState", 3);
         handShovel.transform.GetChild(0).GetComponent<Animator>().SetTrigger("Idle");
         handShovel.transform.GetChild(0).gameObject.SetActive(false);
         poketShovel.transform.GetChild(0).gameObject.SetActive(true);

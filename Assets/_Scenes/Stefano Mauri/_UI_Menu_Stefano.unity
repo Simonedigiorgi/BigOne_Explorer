@@ -2746,7 +2746,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   background: {fileID: 1220477717}
-  firstButton: {fileID: 1539548995}
+  firstButton: {fileID: 1000000896}
   eSystem: {fileID: 272696557}
   anim: {fileID: 397828554}
   mainMenu: {fileID: 1061227574}
@@ -2854,7 +2854,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 397828547}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 616889b4747c3e64086f27b63d14184a, type: 3}
   m_Name: 
@@ -2987,7 +2987,12 @@ MonoBehaviour:
   TestSnapShotClip: {fileID: 0}
   Source1: {fileID: 0}
   Source2: {fileID: 0}
-  systemFade: []
+  systemFade:
+  - ID: 0
+    Mixer1Volume: 0
+    Mixer2Volume: 0
+    clip: {fileID: 0}
+    TimeFade: 0
   systemClusterFade: []
   systemMixer:
   - mixer: {fileID: 0}
@@ -4999,9 +5004,9 @@ RectTransform:
   m_Father: {fileID: 1676168983}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 573.35, y: -540}
   m_SizeDelta: {x: 1146.7, y: 215}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &744396354
@@ -6702,6 +6707,17 @@ MonoBehaviour:
           m_IntArgument: 5
           m_FloatArgument: 0
           m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 397828555}
+        m_MethodName: ChangeScena
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: Cratere Gale_Prova_2
           m_BoolArgument: 0
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
@@ -8533,9 +8549,9 @@ RectTransform:
   m_Father: {fileID: 1676168983}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 573.35, y: -325}
   m_SizeDelta: {x: 1146.7, y: 215}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1298720148
@@ -9198,9 +9214,9 @@ RectTransform:
   m_Father: {fileID: 1676168983}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 573.35, y: -755}
   m_SizeDelta: {x: 1146.7, y: 215}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1370701412
@@ -9526,7 +9542,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1440291856
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10739,9 +10755,9 @@ RectTransform:
   m_Father: {fileID: 1676168983}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 573.35, y: -110}
   m_SizeDelta: {x: 1146.7, y: 215}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1544817224

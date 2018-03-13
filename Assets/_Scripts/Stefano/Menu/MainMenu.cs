@@ -54,7 +54,7 @@ public class MainMenu : MonoBehaviour
 	{
 
 		//Impostiamo il primo bottone illuminato 
-		ChangeFirstSelected (firstButton);
+		ChangeFirstSelected (firstButton,CheckJoystick());
 
 		Player = GameObject.FindGameObjectWithTag ("Player");
 
@@ -238,8 +238,8 @@ public class MainMenu : MonoBehaviour
 			Debug.Log ("Controller inserito");
 
 			//Disabilitiamo gli input da Mouse
-			Cursor.visible = false;
-			Cursor.lockState = CursorLockMode.Locked;
+			//Cursor.visible = false;
+			//Cursor.lockState = CursorLockMode.Locked;
 
 
 
@@ -371,6 +371,8 @@ public class MainMenu : MonoBehaviour
 	public IEnumerator FadeScena(string nameScena)
 	{
 
+		Debug.Log ("Avvio scena!");
+
 		while(background.alpha < 1)
 		{
 
@@ -387,6 +389,8 @@ public class MainMenu : MonoBehaviour
 			Player.SetActive (true);
 
 		}
+
+		Debug.Log ("Avvio scena!");
 
 		SceneManager.LoadScene (nameScena);
 

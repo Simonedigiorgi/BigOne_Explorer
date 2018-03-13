@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UTJ.Alembic;
+using Invector.CharacterController;
 
 public class PickaxeAction : vTriggerGenericAction {
 
@@ -41,11 +42,19 @@ public class PickaxeAction : vTriggerGenericAction {
 
     public IEnumerator UsePickaxe()                                                  // Attiva e disattiva la pala tra la Tasca e la Mano
     {
+        Animator playerAnimator = vThirdPersonController.instance.GetComponent<Animator>();
+        int pickaxeState = playerAnimator.GetInteger("PickaxeState");
+
         handPickaxe.transform.GetChild(0).gameObject.SetActive(true);
+        handPickaxe.transform.GetChild(0).GetComponent<Animator>().SetTrigger("PickaxeApertura");
         poketPickaxe.transform.GetChild(0).gameObject.SetActive(false);
-        yield return new WaitForSeconds(2f);
+
+        yield return new WaitForSeconds(4.2f);
+
+        playerAnimator.SetInteger("PickaxeState", 3);
         handPickaxe.transform.GetChild(0).gameObject.SetActive(false);
         poketPickaxe.transform.GetChild(0).gameObject.SetActive(true);
         destroyed = true;
+
     }
 }

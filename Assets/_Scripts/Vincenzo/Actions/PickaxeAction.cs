@@ -29,9 +29,15 @@ public class PickaxeAction : vTriggerGenericAction {
 
     private void Update()
     {
-        if (destroyed && alembic.currentTime <= alembic.endTime)
+        if (destroyed)
         {
-            alembic.currentTime += Time.deltaTime;
+			if(alembic.currentTime < (alembic.endTime - 0.1))
+            	alembic.currentTime += Time.deltaTime;
+			else if (alembic.currentTime >= (alembic.endTime - 0.1))
+			{
+				this.transform.parent.GetComponent<BoxCollider> ().enabled = false;
+				Destroy (this.gameObject);
+			}
         }
     }
 
@@ -46,6 +52,8 @@ public class PickaxeAction : vTriggerGenericAction {
         Animator playerAnimator = vThirdPersonController.instance.GetComponent<Animator>();
         int pickaxeState = playerAnimator.GetInteger("PickaxeState");
 
+		this.gameObject.GetComponent<BoxCollider> ().enabled = false;
+
         playerAnimator.SetInteger("PickaxeState", 0);
         handPickaxe.transform.GetChild(0).gameObject.SetActive(true);
         handPickaxe.transform.GetChild(0).GetComponent<Animator>().SetTrigger("PickaxeApertura");
@@ -57,6 +65,7 @@ public class PickaxeAction : vTriggerGenericAction {
         handPickaxe.transform.GetChild(0).gameObject.SetActive(false);
         poketPickaxe.transform.GetChild(0).gameObject.SetActive(true);
         destroyed = true;
+
 
     }
 }

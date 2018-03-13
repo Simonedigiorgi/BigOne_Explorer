@@ -5,10 +5,10 @@ using UnityEngine.SceneManagement;
 
 public class MenuManager : MonoBehaviour {
 
-    public void StartNewGame()
+	public void StartNewGame(string sceneName)
     {
         GameManager.newGame = true;
-        SceneManager.LoadScene("Cratere Gale_Prova");
+		SceneManager.LoadScene(sceneName);
     }
 
 }

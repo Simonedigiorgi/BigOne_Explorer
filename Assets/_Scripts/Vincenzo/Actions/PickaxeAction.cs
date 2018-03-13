@@ -37,6 +37,7 @@ public class PickaxeAction : vTriggerGenericAction {
 
     public void GetPickaxe()
     {
+        
         StartCoroutine(UsePickaxe());                                                // Attiva nel momento in cui il Player preme Azione sul collider dell'animazione
     }
 
@@ -45,6 +46,7 @@ public class PickaxeAction : vTriggerGenericAction {
         Animator playerAnimator = vThirdPersonController.instance.GetComponent<Animator>();
         int pickaxeState = playerAnimator.GetInteger("PickaxeState");
 
+        playerAnimator.SetInteger("PickaxeState", 0);
         handPickaxe.transform.GetChild(0).gameObject.SetActive(true);
         handPickaxe.transform.GetChild(0).GetComponent<Animator>().SetTrigger("PickaxeApertura");
         poketPickaxe.transform.GetChild(0).gameObject.SetActive(false);

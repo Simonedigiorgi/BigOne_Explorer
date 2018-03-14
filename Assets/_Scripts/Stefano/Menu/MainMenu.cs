@@ -20,7 +20,7 @@ public class MainMenu : MonoBehaviour
 	public Animator doorDown;
 
 	[Header("Marker per alzare o diminuire i volumi")]
-	public GameObject mainMuiscButton;
+	public GameObject mainMusicButton;
 	public GameObject SFXbutton;
 	public GameObject musicButton;
 
@@ -88,13 +88,13 @@ public class MainMenu : MonoBehaviour
 
 				#region MainAudio
 
-				if (eSystem.currentSelectedGameObject.GetHashCode () == mainMuiscButton.GetHashCode () && InputManager.MainHorizontal () < 0) {
+				if (eSystem.currentSelectedGameObject.GetHashCode () == mainMusicButton.GetHashCode () && InputManager.MainHorizontal () < 0) {
 
 					//Tolgo volume
 					DecreaseVolume (listMainVolume, mainAudio);
 					this.GetComponent<Musica> ().RiproduciSuono (4);
 
-				} else if (eSystem.currentSelectedGameObject.GetHashCode () == mainMuiscButton.GetHashCode () && InputManager.MainHorizontal () > 0) {
+				} else if (eSystem.currentSelectedGameObject.GetHashCode () == mainMusicButton.GetHashCode () && InputManager.MainHorizontal () > 0) {
 					
 					//Tolgo volume
 					EncreaseVolume (listMainVolume, mainAudio);
@@ -170,6 +170,126 @@ public class MainMenu : MonoBehaviour
 
 	#region Volume
 
+	#region Mouse
+
+	/// <summary>
+	/// Metodo che aumenta il volume con il mouse
+	/// </summary>
+	/// <param name="button">Button.</param>
+	public void ChangeVolumeMain(GameObject button)
+	{
+
+		string name = button.name;
+		float v = 1f;
+
+		for (int i = 0; i < listMainVolume.Count; i++) 
+		{
+
+			listMainVolume [i].color = disableColor;
+
+			if (listMainVolume [i].name == name) 
+			{
+
+				//Ciclo che attiva i colori
+				for (int j = 0; j <= i; j++) 
+				{
+
+					v += 0.1f;
+					listMainVolume [j].color = enableColor;
+
+				}
+
+			}
+
+			v -= 0.1f;
+
+		}
+
+		//Camvio effettio del volume
+		mainAudio.volume = v;
+
+	}
+
+	/// <summary>
+	/// Metodo che aumenta il volume con il mouse
+	/// </summary>
+	/// <param name="button">Button.</param>
+	public void ChangeVolumeMusic(GameObject button)
+	{
+
+		string name = button.name;
+
+		float v = 1f;
+
+		for (int i = 0; i < listMusicVolume.Count; i++) 
+		{
+
+			listMusicVolume [i].color = disableColor;
+
+			if (listMusicVolume [i].name == name) 
+			{
+
+				//Ciclo che attiva i colori
+				for (int j = 0; j <= i; j++) 
+				{
+
+					v += 0.1f;
+					listMusicVolume [j].color = enableColor;
+
+				}
+
+			}
+
+			v -= 0.1f;
+
+		}
+
+		musicAudio.volume = v;
+
+	}
+
+	/// <summary>
+	/// Metodo che aumenta il volume con il mouse
+	/// </summary>
+	/// <param name="button">Button.</param>
+	public void ChangeVolumeSFX(GameObject button)
+	{
+
+		string name = button.name;
+
+		float v = 1f;
+
+		for (int i = 0; i < listSFXVolume.Count; i++) 
+		{
+
+			listSFXVolume [i].color = disableColor;
+
+			if (listSFXVolume [i].name == name) 
+			{
+
+				//Ciclo che attiva i colori
+				for (int j = 0; j <= i; j++) 
+				{
+
+					v += 0.1f;	
+					listSFXVolume [j].color = enableColor;
+
+				}
+
+			}
+
+			v -= 0.1f;
+
+		}
+
+		SFXaudio.volume = v;
+
+	}
+
+	#endregion
+
+	#region Joystivc
+
 	/// <summary>
 	/// Metodo che aumenta il volume del gioco
 	/// </summary>
@@ -213,6 +333,8 @@ public class MainMenu : MonoBehaviour
 		}
 
 	}
+
+	#endregion
 
 	#endregion
 
@@ -308,10 +430,24 @@ public class MainMenu : MonoBehaviour
 	public void ChangeFirstSelected(GameObject button, bool isGamepad)
 	{
 
-		if (isGamepad == true)
+		if (isGamepad == true) 
+		{
+
+			mainMusicButton.GetComponent<Button>().enabled = true;
+			SFXbutton.GetComponent<Button>().enabled = true;
+			musicButton.GetComponent<Button>().enabled = true;
 			eSystem.firstSelectedGameObject = button;
-		else
+
+		} 
+		else 
+		{
+			mainMusicButton.GetComponent<Button>().enabled = false;
+			SFXbutton.GetComponent<Button>().enabled = false;
+			musicButton.GetComponent<Button>().enabled = false;
 			eSystem.firstSelectedGameObject = null;
+		}
+
+
 
 	}
 

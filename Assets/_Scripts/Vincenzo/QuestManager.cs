@@ -10,6 +10,7 @@ public class QuestManager : MonoBehaviour {
     public List<Quest> quests = new List<Quest>();
     public Quest currentQuest;
     string currentTarget;
+    public string travelTo;
 
     public string CurrentTarget
     {

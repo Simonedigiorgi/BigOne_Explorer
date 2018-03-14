@@ -24,7 +24,7 @@ public class Task : MonoBehaviour
     {
         this.currentState = TaskState.ENABLED;
         Database.currentQuest.activedTask.currentState = TaskState.ENABLED;
-        QuestManager.instance.CurrentTarget = "Viaggia verso " + this.taskScene;
+        QuestManager.instance.CurrentTarget = QuestManager.instance.travelTo + " " + this.taskScene;
 
         CompassLocation compass = GameManager.instance.gadgetManager.GetGadgetByType(GadgetManager.GadgetType.COMPASS).GetComponent<CompassLocation>();
         compass.listObjects.Clear();

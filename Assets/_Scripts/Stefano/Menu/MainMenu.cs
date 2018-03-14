@@ -346,7 +346,8 @@ public class MainMenu : MonoBehaviour
 	public bool CheckJoystick()
 	{
 
-		if (Input.GetJoystickNames().Length <= 0) 
+
+		if (Input.GetJoystickNames().Length <= 0 || Input.GetJoystickNames().GetValue(0) == "") 
 		{
 
 			Debug.Log ("Nessun controller inserito");
@@ -363,10 +364,7 @@ public class MainMenu : MonoBehaviour
 			//Cursor.visible = false;
 			//Cursor.lockState = CursorLockMode.Locked;
 
-
-
 			return true;
-
 
 		}
 
@@ -459,6 +457,17 @@ public class MainMenu : MonoBehaviour
 	{
 
 		eSystem.firstSelectedGameObject = button;
+
+	}
+
+	/// <summary>
+	/// Metodo che ad ogni cambio di schemrata seleziona cambia il bottone di riferimento del Joystick
+	/// </summary>
+	/// <param name="newButton">New button.</param>
+	public void ChangeFisrtButton(GameObject newButton)
+	{
+
+		firstButton = newButton;
 
 	}
 

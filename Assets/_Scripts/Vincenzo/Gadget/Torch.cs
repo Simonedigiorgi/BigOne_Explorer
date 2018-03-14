@@ -6,8 +6,8 @@ using UnityEngine.UI;
 public class Torch : Gadget {
 
     Light [] lights;
-	public AudioClip clip;
-	public AudioSource tempSource;
+	//public AudioClip clip;
+	//public AudioSource tempSource;
 
     private void Start ()
     {

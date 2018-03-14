@@ -1,20 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-//using UTJ.Alembic;
-using Invector.CharacterController;
+
 
 public class ShovelAction : vTriggerGenericAction {
 
     private GameObject poketShovel;                                                 // Pala (Tasca)
     private GameObject handShovel;                                                  // Pala (Mano)
-    //private AlembicStreamPlayer alembic;
-    //private bool destroyed;
 
     protected override void Start ()
     {
-        //alembic = this.transform.parent.GetComponentInChildren<AlembicStreamPlayer>();
-        //destroyed = false;
 
         base.Start();
 
@@ -27,14 +22,6 @@ public class ShovelAction : vTriggerGenericAction {
         OnDoAction.AddListener(() => GetShovel());
     }
 
-    /*private void Update()
-    {
-        if (destroyed && alembic.currentTime <= alembic.endTime)
-        {
-            alembic.currentTime += Time.deltaTime;
-        }
-    }*/
-
     public void GetShovel()
     {
         StartCoroutine(UseShovel());
@@ -42,20 +29,15 @@ public class ShovelAction : vTriggerGenericAction {
 
     public IEnumerator UseShovel()
     {
-        /*Animator playerAnimator = vThirdPersonController.instance.GetComponent<Animator>();
-        int shovelState = playerAnimator.GetInteger("ShovelState");*/
-
-        //playerAnimator.SetInteger("ShovelState", 0);
         handShovel.transform.GetChild(0).gameObject.SetActive(true);
         handShovel.transform.GetChild(0).GetComponent<Animator>().SetTrigger("ShovelApertura");
         poketShovel.transform.GetChild(0).gameObject.SetActive(false);
+
         yield return new WaitForSeconds(4.4f);
 
-        //playerAnimator.SetInteger("ShovelState", 3);
         handShovel.transform.GetChild(0).GetComponent<Animator>().SetTrigger("Idle");
         handShovel.transform.GetChild(0).gameObject.SetActive(false);
         poketShovel.transform.GetChild(0).gameObject.SetActive(true);
-        //destroyed = true;
 
 		Destroy (this.transform.parent.gameObject);
     }

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Torch : Gadget {
 
@@ -15,21 +16,25 @@ public class Torch : Gadget {
 
     public override void SetGadget()
     {
-        base.SetGadget();
-        UseGadget();
+        if (this.isEnabled)
+        {
+            this.isEquipped = !this.isEquipped;
+            UseGadget();
+        }
+        
     }
 
     protected override void UseGadget()
     {
+
         if (this.isEquipped)
         {
-            tempSource.PlayOneShot(clip);
+            //tempSource.PlayOneShot(clip);
             lights[0].enabled = true;
             lights[1].enabled = true;
         }
-		else if(this.isEnabled == true)
+        else
         {
-			tempSource.PlayOneShot (clip);
             lights[0].enabled = false;
             lights[1].enabled = false;
         }

@@ -5,8 +5,8 @@ using UnityEngine;
 public class GrabAction : vTriggerGenericAction
 {
 
-    public Transform playerLeftForeArm;                                         // BRACCIO SINISTRO (mixamorig:LeftForeArm)
-    public Transform playerLeftHand;                                            // MANO SINISTRA (mixamorig:LeftHand) 
+    //public Transform playerLeftForeArm;                                         // BRACCIO SINISTRO (mixamorig:LeftForeArm)
+    //public Transform playerLeftHand;                                            // MANO SINISTRA (mixamorig:LeftHand) 
     private bool isGrabbed;
 
     protected override void Start()
@@ -22,8 +22,9 @@ public class GrabAction : vTriggerGenericAction
         if (isGrabbed)
         {
             //transform.GetChild(0).parent = playerLeftHand.parent.transform;
-            transform.GetChild(0).parent.gameObject.SetActive(false);
-            isGrabbed = false;
+            //transform.GetChild(0).parent.gameObject.SetActive(false);
+
+            Destroy(this.transform.parent.gameObject);
 
             // PER SETTARE IN MODO SPECIFICO L'AGGANCIO BISOGNA MODIFICARE LE POSIZIONI
             /*playerLeftArm.transform.GetChild(1).position = new Vector3
@@ -36,6 +37,7 @@ public class GrabAction : vTriggerGenericAction
 
     public void Grab()
     {
+
         StartCoroutine(GrabCoroutine());
     }
 

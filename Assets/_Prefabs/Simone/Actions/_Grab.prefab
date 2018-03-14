@@ -21,9 +21,9 @@ GameObject:
   - component: {fileID: 4010932759918286}
   - component: {fileID: 114298225413119280}
   - component: {fileID: 65506025878013124}
-  - component: {fileID: 114732161308174684}
+  - component: {fileID: 114310845040364546}
   m_Layer: 0
-  m_Name: _Generic
+  m_Name: _Grab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -66,7 +66,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gizmoColor: {r: 0.47794116, g: 0.37033167, b: 0.08785683, a: 1}
---- !u!114 &114732161308174684
+--- !u!114 &114310845040364546
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -74,17 +74,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 1327317415788110}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3db5e1daeb5ea4f46ba5827ad20c823d, type: 3}
+  m_Script: {fileID: 11500000, guid: 394f14604e904e14283ee59563f01812, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  openCloseEvents: 1
+  openCloseEvents: 0
   openCloseWindow: 0
   selectedToolbar: 0
   autoAction: 0
   disableCollision: 1
   disableGravity: 1
   resetPlayerSettings: 1
-  playAnimation: PushButton
+  playAnimation: Grab
   endExitTimeAnimation: 0.8
   avatarTarget: 0
   matchTargetMask: {x: 0, y: 0, z: 0}
@@ -93,7 +93,7 @@ MonoBehaviour:
   endMatchTarget: 0
   activeFromForward: 0
   useTriggerRotation: 0
-  destroyAfter: 1
+  destroyAfter: 0
   destroyDelay: 0
   onDoActionDelay: 0
   OnDoAction:
@@ -116,3 +116,5 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
+  playerLeftForeArm: {fileID: 0}
+  playerLeftHand: {fileID: 0}

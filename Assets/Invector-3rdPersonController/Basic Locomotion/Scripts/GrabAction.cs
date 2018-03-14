@@ -25,12 +25,6 @@ public class GrabAction : vTriggerGenericAction
             transform.GetChild(0).parent.gameObject.SetActive(false);
             isGrabbed = false;
 
-            // PER SETTARE IN MODO SPECIFICO L'AGGANCIO BISOGNA MODIFICARE LE POSIZIONI
-            /*playerLeftArm.transform.GetChild(1).position = new Vector3
-               (playerLeftArm.transform.GetChild(1).position.x - 0f,
-                playerLeftArm.transform.GetChild(1).position.y - 0f,
-                playerLeftArm.transform.GetChild(1).position.z - 0f); */
-
         }
 	}
 

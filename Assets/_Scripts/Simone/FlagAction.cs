@@ -12,7 +12,7 @@ public class FlagAction : vTriggerGenericAction {
         base.Start();
 
         closeFlag = GameObject.FindGameObjectWithTag("CloseFlag");
-        //openFlag = GameObject.FindGameObjectWithTag("OpenFlag");
+        openFlag = closeFlag.transform.GetChild(1).gameObject;
 
         closeFlag.transform.GetChild(0).gameObject.SetActive(false);                // Prendi il Figlio
         closeFlag.transform.GetChild(1).gameObject.SetActive(false);                // Prendi il Figlio
@@ -20,14 +20,14 @@ public class FlagAction : vTriggerGenericAction {
         OnDoAction.AddListener(() => GetFlag());
     }
 
-    public void Update()
+    /*public void Update()
     {
         if(closeFlag.transform.GetChild(1).gameObject.activeSelf == true)
         {
             Debug.Log("Bandiera Posizionata");
             // Posiziona La bandiera nella (closeFlag.transform.GetChild(1).transform.position
         }
-    }
+    }*/
 
     public void GetFlag()
     {
@@ -42,8 +42,17 @@ public class FlagAction : vTriggerGenericAction {
 
         closeFlag.transform.GetChild(0).gameObject.SetActive(false);
         closeFlag.transform.GetChild(1).gameObject.SetActive(true);
+        this.transform.parent.GetChild(1).transform.position = 
+            new Vector3(closeFlag.transform.GetChild(1).transform.position.x + 1.8f, 
+                        closeFlag.transform.GetChild(1).transform.position.y - 1.2f, 
+                        closeFlag.transform.GetChild(1).transform.position.z);
         closeFlag.transform.DetachChildren();
+        
+        yield return new WaitForSeconds(1f);
 
-        Destroy(this.transform.parent.gameObject);
+        openFlag.SetActive(false);
+        this.transform.parent.GetChild(1).gameObject.SetActive(true);
+
+        Destroy(this.gameObject);
     }
 }

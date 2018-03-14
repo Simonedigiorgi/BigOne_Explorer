@@ -15,8 +15,19 @@ public class ProveAction : vTriggerGenericAction {
     
     public void GetProve()
     {
-        
-		Destroy (this.transform.parent.gameObject);                                        // Attiva nel momento in cui il Player preme Azione sul collider dell'animazione
+        if(QuestManager.instance.currentQuest.taskActived.GetComponent<TaskInteract>())
+        {
+            if (QuestManager.instance.currentQuest.taskActived.GetComponent<TaskInteract>().isDestroyable)
+                Destroy(this.transform.parent.gameObject);
+            else
+            {
+                this.transform.parent.GetChild(1).gameObject.SetActive(true);
+                Destroy(this.gameObject);
+            }
+                
+
+        }
+		
     }
 
 }

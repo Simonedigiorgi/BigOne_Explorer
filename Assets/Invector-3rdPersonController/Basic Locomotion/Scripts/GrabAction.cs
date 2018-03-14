@@ -9,9 +9,6 @@ public class GrabAction : vTriggerGenericAction
     public Transform playerLeftHand;                                            // MANO SINISTRA (mixamorig:LeftHand) 
     private bool isGrabbed;
 
-    // Allora... ho trovato sta soluzione: L'oggetto diventa parent della manosinistra
-    // dopodichè prendo il figlio del braccio sinistro per disattivarlo
-
     protected override void Start()
     {
 
@@ -50,9 +47,6 @@ public class GrabAction : vTriggerGenericAction
         /*yield return new WaitForSeconds(4.0f);
         playerLeftForeArm.transform.GetChild(1).gameObject.SetActive(false);*/   // Disattiva l'oggetto
 
-        // Aggiungere la condizione (Hai collezionato l'oggetto)
-
-        // NON SO COME FARE A DISTRUGGERE ST'OGGETTO DI CAZZO, AL MOMENTO RIMANE ATTIVO IN MANO
         //Destroy(playerLeftHand.transform.GetChild(1).gameObject);
 
     }

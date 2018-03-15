@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 using Invector.CharacterController;
+using UnityEngine.UI;
+using DG.Tweening;
 
 public class GenericSettings : MonoBehaviour
 {
@@ -17,14 +19,13 @@ public class GenericSettings : MonoBehaviour
 
     void Update()
     {
-        
-
         if (vThirdPersonController.instance.animator.GetFloat("VerticalVelocity") <= vThirdPersonController.instance.ragdollVel && 
-            vThirdPersonController.instance.animator.GetFloat("GroundDistance") <= 0.1f)
+            vThirdPersonController.instance.animator.GetFloat("GroundDistance") <= 0.1f && !isDead)
         {
             vThirdPersonController.instance.currentHealth = 0;
-        }
-            
+            StartCoroutine(UIManager.instance.FadeDeath());
+            isDead = true;
+        }      
     }
 
     public void LockPlayer()
@@ -42,4 +43,6 @@ public class GenericSettings : MonoBehaviour
         vThirdPersonController.instance.lockSpeed = false;
         vThirdPersonController.instance.lockRotation = false;
     }
+
+
 }

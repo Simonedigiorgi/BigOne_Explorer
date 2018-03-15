@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Invector.CharacterController;
+using DG.Tweening;
 using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour 
@@ -10,6 +12,8 @@ public class UIManager : MonoBehaviour
     public GameObject targetText;
     public GameObject changeScenePanel;
     public GameObject helpKeyPanel;
+
+    public Image fadeImage;
 
     private static UIManager _instance;
     public static UIManager instance
@@ -25,6 +29,14 @@ public class UIManager : MonoBehaviour
             return _instance;
         }
     }
+
+    /*private void Update()
+    {
+        if(vThirdPersonController.instance.currentHealth == 0)
+        {
+            StartCoroutine(FadeDeath());
+        }
+    }*/
 
     public void ShowDialoguePanel()
     {
@@ -74,6 +86,20 @@ public class UIManager : MonoBehaviour
         helpKeyPanel.transform.GetChild(0).gameObject.SetActive(false);
         helpKeyPanel.transform.GetChild(1).gameObject.SetActive(false);
         helpKeyPanel.gameObject.SetActive(true);
+    }
+
+    public IEnumerator FadeDeath()
+    {
+        fadeImage.enabled = true;
+        vThirdPersonController.instance.gameObject.GetComponent<GenericSettings>().LockPlayer();
+        yield return new WaitForSeconds(0f);
+
+        fadeImage.GetComponent<Image>().DOFade(1, 3);
+        yield return new WaitForSeconds(3.6f);
+        /*fadeImage.GetComponent<Image>().DOFade(0, 1);
+        yield return new WaitForSeconds(2);*/
+        fadeImage.enabled = false;
+        vThirdPersonController.instance.gameObject.GetComponent<GenericSettings>().UnlockPlayer();
     }
 
 }

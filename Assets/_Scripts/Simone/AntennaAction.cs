@@ -19,6 +19,8 @@ public class AntennaAction : vTriggerGenericAction {
     {
         yield return new WaitForSeconds(4.4f);
         // Attiva l'antenna
-        Destroy(gameObject);
+        //Destroy(gameObject);
+        gameObject.SetActive(false);
+        this.transform.parent.GetChild(1).gameObject.SetActive(true);
     }
 }

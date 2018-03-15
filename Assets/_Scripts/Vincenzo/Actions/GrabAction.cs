@@ -22,9 +22,10 @@ public class GrabAction : vTriggerGenericAction
         if (isGrabbed)
         {
             //transform.GetChild(0).parent = playerLeftHand.parent.transform;
-            //transform.GetChild(0).parent.gameObject.SetActive(false);
+            transform.parent.gameObject.SetActive(false);
+            
 
-            Destroy(this.transform.parent.gameObject);
+            // Destroy(this.transform.parent.gameObject);
 
         }
 	}

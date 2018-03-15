@@ -39,7 +39,10 @@ public class ShovelAction : vTriggerGenericAction {
         handShovel.transform.GetChild(0).gameObject.SetActive(false);
         poketShovel.transform.GetChild(0).gameObject.SetActive(true);
 
-		Destroy (this.transform.parent.gameObject);
+        this.transform.parent.gameObject.SetActive(false);
+        //Destroy(this.transform.parent.gameObject);
+
+
     }
 
 

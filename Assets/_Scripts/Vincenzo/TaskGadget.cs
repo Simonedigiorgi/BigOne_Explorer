@@ -97,12 +97,12 @@ public class TaskGadget : TaskInteract {
     {
         yield return null;
 
-        if (interactableZone.transform.childCount <= 0)
-        {
+        /*if (interactableZone.transform.childCount <= 0)
+        {*/
             UpdateCompassObjects(interactableZone);
             Database.interactableObjects.Find(x => x.interactableName == interactableZone.name).isInteractable = false;
-            Destroy(interactableZone);
-        }
+            //Destroy(interactableZone);
+        //}
 
     }
 

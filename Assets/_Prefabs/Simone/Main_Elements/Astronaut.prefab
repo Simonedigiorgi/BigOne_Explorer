@@ -1084,6 +1084,7 @@ GameObject:
   - component: {fileID: 114875661075945634}
   - component: {fileID: 114544557793864076}
   - component: {fileID: 114560765517316408}
+  - component: {fileID: 114743911304815116}
   m_Layer: 8
   m_Name: Astronaut
   m_TagString: Player
@@ -3317,7 +3318,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1276046548144088}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -8.387021, y: -0.041338872, z: -1.4539948}
+  m_LocalPosition: {x: -35.2, y: 124.4, z: 127}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4510803716841998}
@@ -3370,7 +3371,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1873887235732820}
   m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0.05, z: 0}
+  m_LocalPosition: {x: 0, y: 0.4, z: 0}
   m_LocalScale: {x: 1, y: 1.0000005, z: 1.0000005}
   m_Children: []
   m_Father: {fileID: 4167839462442564}
@@ -3656,7 +3657,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1971161505612110}
   m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0.05, z: 0}
+  m_LocalPosition: {x: 0, y: 0.4, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4167839462442564}
@@ -6253,7 +6254,7 @@ Light:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1745860730731230}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 8
   m_Type: 2
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -6706,7 +6707,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gadgetType: 1
-  isEnabled: 0
+  isEnabled: 1
   isEquipped: 0
   listObjects: []
   description: {fileID: 0}
@@ -7241,7 +7242,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gadgetType: 0
-  isEnabled: 0
+  isEnabled: 1
   isEquipped: 0
   listObjects: []
   description: {fileID: 0}
@@ -8007,8 +8008,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gadgetType: 7
-  isEnabled: 0
-  isEquipped: 0
+  isEnabled: 1
+  isEquipped: 1
   listObjects: []
   description: {fileID: 4900000, guid: abdf1447fbc72484e8e766de0ae993d3, type: 3}
   image: {fileID: 0}
@@ -9219,6 +9220,17 @@ MonoBehaviour:
   m_Text: 'Slot 3
 
 '
+--- !u!114 &114743911304815116
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1276046548144088}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7a93a8a513e2cd4f97f4853bdfefa8e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114751548185752964
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -18595,7 +18607,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0.4}
   m_SizeDelta: {x: 3.5, y: 3.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224912574252357434

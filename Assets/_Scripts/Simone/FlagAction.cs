@@ -20,15 +20,6 @@ public class FlagAction : vTriggerGenericAction {
         OnDoAction.AddListener(() => GetFlag());
     }
 
-    /*public void Update()
-    {
-        if(closeFlag.transform.GetChild(1).gameObject.activeSelf == true)
-        {
-            Debug.Log("Bandiera Posizionata");
-            // Posiziona La bandiera nella (closeFlag.transform.GetChild(1).transform.position
-        }
-    }*/
-
     public void GetFlag()
     {
         StartCoroutine(UseFlag());
@@ -53,6 +44,6 @@ public class FlagAction : vTriggerGenericAction {
         openFlag.SetActive(false);
         this.transform.parent.GetChild(1).gameObject.SetActive(true);
 
-        Destroy(this.gameObject);
+        this.gameObject.SetActive(false);
     }
 }

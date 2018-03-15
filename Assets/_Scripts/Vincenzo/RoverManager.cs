@@ -39,13 +39,15 @@ public class RoverManager : MonoBehaviour {
 
             enterTrigger = true;
 
-            vThirdPersonCamera.instance.lockCamera = true;
+            /*vThirdPersonCamera.instance.lockCamera = true;
 
             //print(vThirdPersonCamera.instance.currentStateName);
 
             other.GetComponent<vThirdPersonInput> ().lockInput = true;
             vThirdPersonController.instance.lockSpeed = true;
-            vThirdPersonController.instance.lockRotation = true;
+            vThirdPersonController.instance.lockRotation = true;*/
+
+            vThirdPersonController.instance.GetComponent<GenericSettings>().LockPlayer();
 
 			eSystem.gameObject.SetActive (true);
 			eSystem.firstSelectedGameObject = selectedButton;
@@ -85,9 +87,9 @@ public class RoverManager : MonoBehaviour {
 
         enterTrigger = false;
 
-        vThirdPersonController.instance.GetComponent<vThirdPersonInput>().lockInput = false;
+        /*vThirdPersonController.instance.GetComponent<vThirdPersonInput>().lockInput = false;
         vThirdPersonController.instance.lockSpeed = false;
-        vThirdPersonController.instance.lockRotation = false;
+        vThirdPersonController.instance.lockRotation = false;*/
 
         eSystem.gameObject.SetActive(false);
 
@@ -95,8 +97,9 @@ public class RoverManager : MonoBehaviour {
 
         UIManager.instance.HideScenePanel();
 
-        vThirdPersonCamera.instance.lockCamera = false;
-        
+        //vThirdPersonCamera.instance.lockCamera = false;
+        vThirdPersonController.instance.GetComponent<GenericSettings>().UnlockPlayer();
+
 
     }
 
@@ -106,9 +109,11 @@ public class RoverManager : MonoBehaviour {
 		enterTrigger = false;
 
         player = vThirdPersonController.instance.gameObject;
-		player.GetComponent<vThirdPersonInput>().lockInput = false;
+        /*player.GetComponent<vThirdPersonInput>().lockInput = false;
         vThirdPersonController.instance.lockSpeed = false;
-        vThirdPersonController.instance.lockRotation = false;
+        vThirdPersonController.instance.lockRotation = false;*/
+
+        vThirdPersonController.instance.GetComponent<GenericSettings>().UnlockPlayer();
 
         var spawnPointFinderObj = new GameObject("spawnPointFinder");
         var spawnPointFinder = spawnPointFinderObj.AddComponent<vFindSpawnPoint>();

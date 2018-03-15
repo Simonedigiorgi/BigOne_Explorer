@@ -95,7 +95,7 @@ public class UIManager : MonoBehaviour
         yield return new WaitForSeconds(0f);
 
         fadeImage.GetComponent<Image>().DOFade(1, 3);
-        yield return new WaitForSeconds(3.6f);
+        yield return new WaitForSeconds(3.95f);
         /*fadeImage.GetComponent<Image>().DOFade(0, 1);
         yield return new WaitForSeconds(2);*/
         fadeImage.enabled = false;

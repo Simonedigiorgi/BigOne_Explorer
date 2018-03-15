@@ -53,6 +53,6 @@ public class FlagAction : vTriggerGenericAction {
         openFlag.SetActive(false);
         this.transform.parent.GetChild(1).gameObject.SetActive(true);
 
-        Destroy(this.gameObject);
+        this.gameObject.SetActive(false);
     }
 }

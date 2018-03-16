@@ -10,6 +10,7 @@ public class QuestManager : MonoBehaviour {
     public List<Quest> quests = new List<Quest>();
     public Quest currentQuest;
     string currentTarget;
+    string currentTargetObjects;
     public string travelTo;
 
     public string CurrentTarget
@@ -18,7 +19,15 @@ public class QuestManager : MonoBehaviour {
         set 
         { 
             currentTarget = value; 
-            UIManager.instance.SetTartgetText(value);
+        }
+    }
+
+    public string CurrentTargetObjects
+    {
+        get { return currentTargetObjects; }
+        set
+        {
+            currentTargetObjects = value;
         }
     }
 

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class Task : MonoBehaviour 
 {
@@ -11,6 +12,7 @@ public class Task : MonoBehaviour
         ENABLED,
         READY,
         ACTIVED,
+        COMPLETING,
         COMPLETED
     }
 
@@ -25,6 +27,7 @@ public class Task : MonoBehaviour
         this.currentState = TaskState.ENABLED;
         Database.currentQuest.activedTask.currentState = TaskState.ENABLED;
         QuestManager.instance.CurrentTarget = QuestManager.instance.travelTo + " " + this.taskScene;
+        StartCoroutine(UIManager.instance.WriteTargetText());
 
         CompassLocation compass = GameManager.instance.gadgetManager.GetGadgetByType(GadgetManager.GadgetType.COMPASS).GetComponent<CompassLocation>();
         compass.listObjects.Clear();
@@ -39,6 +42,7 @@ public class Task : MonoBehaviour
         this.currentState = TaskState.READY;
         Database.currentQuest.activedTask.currentState = TaskState.READY;
         QuestManager.instance.CurrentTarget = this.taskName;
+        StartCoroutine(UIManager.instance.WriteTargetText());
     }
 
     public virtual void ActiveTask()
@@ -50,6 +54,20 @@ public class Task : MonoBehaviour
     public virtual void DoTask()
     {
 
+    }
+
+    public virtual IEnumerator CompletingTask()
+    {
+        this.currentState = TaskState.COMPLETING;
+
+        Sequence sequenceAnimation = UIManager.instance.OverlineTargetText();
+
+        sequenceAnimation.Append(UIManager.instance.FadeOutTargetText());
+
+        yield return sequenceAnimation.WaitForCompletion();
+
+        this.CompleteTask();
+        
     }
 
     public virtual void CompleteTask()

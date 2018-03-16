@@ -37,7 +37,10 @@ public class TaskInteract : Task
             Database.interactableObjects.Add(interactableObject);
         }
         
-        QuestManager.instance.CurrentTarget += "\n" + tagTaskObjects + ": " + taskObjectsNumber + "/" + allTaskObjectsNumber;
+        //QuestManager.instance.CurrentTarget += "\n" + tagTaskObjects + ": " + taskObjectsNumber + "/" + allTaskObjectsNumber;
+        QuestManager.instance.CurrentTargetObjects = tagTaskObjects + ": " + taskObjectsNumber + "/" + allTaskObjectsNumber;
+        
+
     }
 
     protected virtual void LoadTaskObjects()
@@ -53,7 +56,9 @@ public class TaskInteract : Task
                 taskObjects.Add(action.transform.parent.gameObject);
             }
         }
-        QuestManager.instance.CurrentTarget = taskName + "\n" + tagTaskObjects + ": " + taskObjectsNumber + "/" + allTaskObjectsNumber;
+
+        //QuestManager.instance.CurrentTarget = taskName + "\n" + tagTaskObjects + ": " + taskObjectsNumber + "/" + allTaskObjectsNumber;
+        QuestManager.instance.CurrentTargetObjects = tagTaskObjects + ": " + taskObjectsNumber + "/" + allTaskObjectsNumber;
     }
 
     protected virtual void SetTaskObject(GameObject interactable)

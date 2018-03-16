@@ -12,7 +12,6 @@ public class UIManager : MonoBehaviour
     public GameObject targetText;
     public GameObject changeScenePanel;
     public GameObject helpKeyPanel;
-
     public Image fadeImage;
 
     private static UIManager _instance;
@@ -30,27 +29,21 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    /*private void Update()
+    private void Start()
     {
-        if(vThirdPersonController.instance.currentHealth == 0)
-        {
-            StartCoroutine(FadeDeath());
-        }
-    }*/
+        //OverlineTargetText();
+    }
 
     public void ShowDialoguePanel()
     {
         this.dialoguePanel.GetComponentInChildren<Text>().text = "";
         this.dialoguePanel.SetActive(true);
-        //dialoguePanel.GetComponent<Image>().color = new Color(0f, 0f, 0f, 0.8f);
     }
 
     public void HideDialoguePanel()
     {
-        //dialoguePanel.GetComponent<Image>().color = new Color(0f, 0f, 0f, 0f);
         this.dialoguePanel.SetActive(false);
         this.dialoguePanel.GetComponentInChildren<Text>().text = "";
-
     }
 
     public void SetTartgetText(string targetText)
@@ -100,6 +93,48 @@ public class UIManager : MonoBehaviour
         yield return new WaitForSeconds(2);*/
         fadeImage.enabled = false;
         vThirdPersonController.instance.gameObject.GetComponent<GenericSettings>().UnlockPlayer();
+    }
+
+    public Sequence OverlineTargetText()
+    {
+        Sequence animationSequence = DOTween.Sequence();
+
+        animationSequence.Append(targetText.transform.GetChild(0).GetComponent<Image>().DOFillAmount(1, 1.5f));
+        animationSequence.Append(targetText.transform.parent.GetChild(1).GetComponent<Image>().DOFillAmount(1, .5f));
+
+        return animationSequence;
+
+    }
+
+    public Sequence FadeOutTargetText()
+    {
+        Sequence animationSequence = DOTween.Sequence();
+
+        animationSequence.Append(targetText.transform.GetChild(0).GetComponent<Image>().DOFade(0, 1f));
+        animationSequence.Join(targetText.transform.parent.GetChild(1).GetComponent<Image>().DOFade(0, 1f));
+        animationSequence.Join(targetText.GetComponent<Text>().DOFade(0, 1f));
+
+        animationSequence.Append(targetText.transform.GetChild(0).GetComponent<Image>().DOFillAmount(0, 0));
+        animationSequence.Append(targetText.transform.parent.GetChild(1).GetComponent<Image>().DOFillAmount(0, 0));
+
+        animationSequence.Append(targetText.GetComponent<Text>().DOText("", 0));
+        animationSequence.Join(targetText.GetComponent<Text>().DOFade(1, 1f));
+
+        return animationSequence;
+    }
+
+    public IEnumerator WriteTargetText()
+    {
+        Sequence animationSequence = DOTween.Sequence();
+
+        animationSequence.Append(targetText.GetComponent<Text>().DOText(QuestManager.instance.CurrentTarget, 2));
+
+        yield return animationSequence.WaitForCompletion();
+
+        if (QuestManager.instance.CurrentTargetObjects != null && QuestManager.instance.CurrentTargetObjects != "")
+        {
+            animationSequence.Append(targetText.transform.parent.GetChild(2).GetComponent<Text>().DOText(QuestManager.instance.CurrentTargetObjects, 2));
+        }
     }
 
 }

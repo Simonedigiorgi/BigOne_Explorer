@@ -44,7 +44,8 @@ public class TaskTalk : Task
     {
         if (currentDialogue >= taskDialogue.ToString().Split('\n').Length-1)
         {
-            CompleteTask();
+            UIManager.instance.HideDialoguePanel();
+            StartCoroutine(CompletingTask());
         }
         else
         {
@@ -59,7 +60,6 @@ public class TaskTalk : Task
         base.CompleteTask();
 
         //DialogueManager dialogueManager = FindObjectOfType<DialogueManager>();
-        UIManager.instance.HideDialoguePanel();
 
         if(gadgetsReward.Length > 0)
         {

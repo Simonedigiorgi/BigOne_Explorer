@@ -99,6 +99,14 @@ public class UIManager : MonoBehaviour
     {
         Sequence animationSequence = DOTween.Sequence();
 
+        if (QuestManager.instance.CurrentTargetObjects != null && QuestManager.instance.CurrentTargetObjects != "")
+        {
+            animationSequence.Append(targetText.transform.parent.GetChild(2).GetComponent<Text>().DOFade(0, 1));
+            animationSequence.Append(targetText.transform.parent.GetChild(2).GetComponent<Text>().DOText("", 0));
+            animationSequence.Join(targetText.transform.parent.GetChild(2).GetComponent<Text>().DOFade(1, 0));
+            QuestManager.instance.CurrentTargetObjects = "";
+        }
+
         animationSequence.Append(targetText.transform.GetChild(0).GetComponent<Image>().DOFillAmount(1, 1.5f));
         animationSequence.Append(targetText.transform.parent.GetChild(1).GetComponent<Image>().DOFillAmount(1, .5f));
 
@@ -119,6 +127,8 @@ public class UIManager : MonoBehaviour
 
         animationSequence.Append(targetText.GetComponent<Text>().DOText("", 0));
         animationSequence.Join(targetText.GetComponent<Text>().DOFade(1, 1f));
+        animationSequence.Join(targetText.transform.GetChild(0).GetComponent<Image>().DOFade(1, 0));
+        animationSequence.Join(targetText.transform.parent.GetChild(1).GetComponent<Image>().DOFade(1, 0));
 
         return animationSequence;
     }
@@ -135,6 +145,11 @@ public class UIManager : MonoBehaviour
         {
             animationSequence.Append(targetText.transform.parent.GetChild(2).GetComponent<Text>().DOText(QuestManager.instance.CurrentTargetObjects, 2));
         }
+    }
+
+    public void ChangeTargetObjectText()
+    {
+        targetText.transform.parent.GetChild(2).GetComponent<Text>().text = QuestManager.instance.CurrentTargetObjects;
     }
 
 }

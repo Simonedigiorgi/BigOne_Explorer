@@ -33,6 +33,10 @@ public class Npc : MonoBehaviour {
                 {
                     QuestManager.instance.currentQuest.taskActived.DoTask();
                 }
+                else if (QuestManager.instance.currentQuest.taskActived.currentState == Task.TaskState.COMPLETING)
+                {
+                    DialogueManager.instance.SetDialogue(npcDefaultDialogue, true);
+                }
             }
             else
             {

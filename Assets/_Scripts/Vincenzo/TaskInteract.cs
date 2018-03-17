@@ -72,10 +72,11 @@ public class TaskInteract : Task
 
         UIManager.instance.HideHelpKeyPanel();
         taskObjectsNumber++;
-        QuestManager.instance.CurrentTarget = taskName + "\n" + tagTaskObjects + ": " + taskObjectsNumber + "/" + allTaskObjectsNumber;
+        QuestManager.instance.CurrentTargetObjects = tagTaskObjects + ": " + taskObjectsNumber + "/" + allTaskObjectsNumber;
+        UIManager.instance.ChangeTargetObjectText();
         if(taskObjectsNumber >= allTaskObjectsNumber)
         {
-            this.CompleteTask();
+            StartCoroutine(CompletingTask());
         }
     }
 
@@ -83,6 +84,7 @@ public class TaskInteract : Task
     {
         base.EnableTask();
         this.taskObjects.Clear();
+        QuestManager.instance.CurrentTargetObjects = "";
     }
 
     public override void ReadyTask()

@@ -36,7 +36,7 @@ public class TaskTalk : Task
         base.ActiveTask();
         //DialogueManager dialogueManager = FindObjectOfType<DialogueManager>();
         DialogueManager.instance.SetDialogue(this.taskDialogue, false);
-
+        vThirdPersonController.instance.GetComponent<GenericSettings>().LockPlayer();
 
     }
 
@@ -54,7 +54,13 @@ public class TaskTalk : Task
         }
     }
 
-    public override void CompleteTask()
+	public override IEnumerator CompletingTask()
+	{
+        vThirdPersonController.instance.GetComponent<GenericSettings>().UnlockPlayer();
+        return base.CompletingTask();
+	}
+
+	public override void CompleteTask()
     {
 
         base.CompleteTask();

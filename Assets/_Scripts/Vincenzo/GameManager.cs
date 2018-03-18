@@ -7,10 +7,13 @@ public class GameManager : MonoBehaviour {
 
     public static GameManager instance;
     public static bool newGame = true;
+    public static string activeCheckPoint;
     public List<string> scenes;
 
-    QuestManager questManager;
     public GadgetManager gadgetManager;
+    public Invector.vGameController gameController;
+
+    QuestManager questManager;
 
     private void Awake()
     {
@@ -27,6 +30,8 @@ public class GameManager : MonoBehaviour {
 
         questManager = FindObjectOfType<QuestManager>();
         gadgetManager = FindObjectOfType<GadgetManager>();
+        gameController = FindObjectOfType<Invector.vGameController>();
+
         scenes = new List<string>();
 
         if (newGame)
@@ -57,7 +62,8 @@ public class GameManager : MonoBehaviour {
         questManager.CheckQuest();
         Database.currentScene = scene.name;
         SetObjectScene(scene);
-        
+        activeCheckPoint = gameController.spawnPoint.name;
+        Database.activeCheckpoint = activeCheckPoint;
     }
 
     void SetObjectScene(Scene scene)
@@ -101,6 +107,8 @@ public class GameManager : MonoBehaviour {
         }*/
 
     }
+
+
 
 
     /*public void PrintData()

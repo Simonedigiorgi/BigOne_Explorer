@@ -83,15 +83,14 @@ public class UIManager : MonoBehaviour
 
     public IEnumerator FadeDeath()
     {
-        fadeImage.enabled = true;
+        //fadeImage.enabled = true;
         vThirdPersonController.instance.gameObject.GetComponent<GenericSettings>().LockPlayer();
         yield return new WaitForSeconds(0f);
 
         fadeImage.GetComponent<Image>().DOFade(1, 3);
-        yield return new WaitForSeconds(3.95f);
-        /*fadeImage.GetComponent<Image>().DOFade(0, 1);
-        yield return new WaitForSeconds(2);*/
-        fadeImage.enabled = false;
+        yield return new WaitForSeconds(3.7f);
+        fadeImage.GetComponent<Image>().DOFade(0, 0);
+        //fadeImage.enabled = false;
         vThirdPersonController.instance.gameObject.GetComponent<GenericSettings>().UnlockPlayer();
     }
 

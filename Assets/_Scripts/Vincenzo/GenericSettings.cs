@@ -6,14 +6,6 @@ using DG.Tweening;
 
 public class GenericSettings : MonoBehaviour
 {
-    //public float damageThreshold = 3f;
-    //public float damageMultiplier = 2.85f;
-
-    vThirdPersonController vController;
-
-    /*float startYPos, endYPos;
-    bool firstCall = true;
-    bool damaged = false;*/
 
     bool isDead;
 

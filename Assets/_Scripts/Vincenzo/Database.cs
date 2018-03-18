@@ -39,7 +39,8 @@ public static class Database
 	//Save
     public static DataQuest currentQuest;
     public static string currentScene;
-	public static Transform playerPosition;
+    public static Transform playerPosition;
+	public static string activeCheckpoint;
 	//end save
 
 

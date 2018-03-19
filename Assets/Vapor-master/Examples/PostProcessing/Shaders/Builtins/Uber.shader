@@ -70,8 +70,6 @@ Shader "Hidden/PostProcessing/Uber"
 
         half4 FragUber(VaryingsDefault i) : SV_Target
         {
-			//return float4(1, 0, 0, 1);
-
             float2 uv = i.texcoord;
             half autoExposure = SAMPLE_TEXTURE2D(_AutoExposureTex, sampler_AutoExposureTex, uv).r;
             half4 color = (0.0).xxxx;
@@ -239,14 +237,7 @@ Shader "Hidden/PostProcessing/Uber"
 
     SubShader
     {
-        Cull Off 
-		ZWrite Off 
-		ZTest LEqual
-		
-		Stencil {
-            Ref 0
-            Comp Equal
-        }
+        Cull Off ZWrite Off ZTest Always
 
         Pass
         {

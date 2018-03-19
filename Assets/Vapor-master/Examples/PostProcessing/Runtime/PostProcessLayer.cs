@@ -13,7 +13,7 @@ namespace UnityEngine.Rendering.PostProcessing
 
     // TODO: XMLDoc everything (?)
     [DisallowMultipleComponent, ExecuteInEditMode, ImageEffectAllowedInSceneView]
-    [AddComponentMenu("Rendering/Post-process Layer", -1)]
+    [AddComponentMenu("Rendering/Post-process Layer", 1000)]
     [RequireComponent(typeof(Camera))]
     public sealed class PostProcessLayer : MonoBehaviour
     {
@@ -119,10 +119,14 @@ namespace UnityEngine.Rendering.PostProcessing
 
             debugLayer.OnEnable();
 
-            // Scriptable render pipelines handle their own command buffers
             if (RuntimeUtilities.scriptableRenderPipelineActive)
                 return;
 
+            InitLegacy();
+        }
+
+        void InitLegacy()
+        {
             m_LegacyCmdBufferBeforeReflections = new CommandBuffer { name = "Deferred Ambient Occlusion" };
             m_LegacyCmdBufferBeforeLighting = new CommandBuffer { name = "Deferred Ambient Occlusion" };
             m_LegacyCmdBufferOpaque = new CommandBuffer { name = "Opaque Only Post-processing" };
@@ -265,6 +269,9 @@ namespace UnityEngine.Rendering.PostProcessing
             if (RuntimeUtilities.scriptableRenderPipelineActive)
                 return;
 
+            if (m_Camera == null || m_CurrentContext == null)
+                InitLegacy();
+
             // Resets the projection matrix from previous frame in case TAA was enabled.
             // We also need to force reset the non-jittered projection matrix here as it's not done
             // when ResetProjectionMatrix() is called and will break transparent rendering if TAA
@@ -275,11 +282,11 @@ namespace UnityEngine.Rendering.PostProcessing
             if (m_Camera.stereoEnabled)
             {
                 m_Camera.ResetStereoProjectionMatrices();
-                Shader.SetGlobalFloat("rvsGlobal", XRSettings.renderViewportScale);
+                Shader.SetGlobalFloat(ShaderIDs.RenderViewportScaleFactor, XRSettings.renderViewportScale);
             }
             else
             {
-                Shader.SetGlobalFloat("rvsGlobal", 1.0f);
+                Shader.SetGlobalFloat(ShaderIDs.RenderViewportScaleFactor, 1.0f);
             }
 
             BuildCommandBuffers();
@@ -349,7 +356,7 @@ namespace UnityEngine.Rendering.PostProcessing
                 context.command = m_LegacyCmdBufferOpaque;
                 aoRenderer.Get().RenderAfterOpaque(context);
             }
-            
+
             bool isFogActive = fog.IsEnabledAndSupported(context);
             bool hasCustomOpaqueOnlyEffects = HasOpaqueOnlyEffects(context);
             int opaqueOnlyEffects = 0;
@@ -368,7 +375,7 @@ namespace UnityEngine.Rendering.PostProcessing
                 // We need to use the internal Blit method to copy the camera target or it'll fail
                 // on tiled GPU as it won't be able to resolve
                 int tempTarget0 = m_TargetPool.Get();
-                context.GetScreenSpaceTemporaryRT(cmd, tempTarget0, 24, sourceFormat);
+                context.GetScreenSpaceTemporaryRT(cmd, tempTarget0, 0, sourceFormat);
                 cmd.Blit(cameraTarget, tempTarget0);
                 context.source = tempTarget0;
 
@@ -377,7 +384,7 @@ namespace UnityEngine.Rendering.PostProcessing
                 if (opaqueOnlyEffects > 1)
                 {
                     tempTarget1 = m_TargetPool.Get();
-                    context.GetScreenSpaceTemporaryRT(cmd, tempTarget1, 24, sourceFormat);
+                    context.GetScreenSpaceTemporaryRT(cmd, tempTarget1, 0, sourceFormat);
                     context.destination = tempTarget1;
                 }
                 else context.destination = cameraTarget;
@@ -413,7 +420,7 @@ namespace UnityEngine.Rendering.PostProcessing
             // Same as before, first blit needs to use the builtin Blit command to properly handle
             // tiled GPUs
             int tempRt = m_TargetPool.Get();
-            context.GetScreenSpaceTemporaryRT(m_LegacyCmdBuffer, tempRt, 24, sourceFormat);
+            context.GetScreenSpaceTemporaryRT(m_LegacyCmdBuffer, tempRt, 0, sourceFormat, RenderTextureReadWrite.sRGB);
             m_LegacyCmdBuffer.Blit(cameraTarget, tempRt, RuntimeUtilities.copyStdMaterial, stopNaNPropagation ? 1 : 0);
             m_NaNKilled = stopNaNPropagation;
 
@@ -442,16 +449,30 @@ namespace UnityEngine.Rendering.PostProcessing
             }
         }
 
-        PostProcessBundle GetBundle<T>()
+        public PostProcessBundle GetBundle<T>()
             where T : PostProcessEffectSettings
         {
             return GetBundle(typeof(T));
         }
 
-        PostProcessBundle GetBundle(Type settingsType)
+        public PostProcessBundle GetBundle(Type settingsType)
         {
             Assert.IsTrue(m_Bundles.ContainsKey(settingsType), "Invalid type");
             return m_Bundles[settingsType];
+        }
+
+        public T GetSettings<T>()
+            where T : PostProcessEffectSettings
+        {
+            return GetBundle<T>().CastSettings<T>();
+        }
+
+        public void BakeMSVOMap(CommandBuffer cmd, Camera camera, RenderTargetIdentifier destination, RenderTargetIdentifier? depthMap, bool invert)
+        {
+            var bundle = GetBundle<AmbientOcclusion>();
+            var renderer = bundle.CastRenderer<AmbientOcclusionRenderer>().GetMultiScaleVO();
+            renderer.SetResources(m_Resources);
+            renderer.GenerateAOMap(cmd, camera, destination, depthMap, invert);
         }
 
         internal void OverrideSettings(List<PostProcessEffectSettings> baseSettings, float interpFactor)
@@ -559,6 +580,11 @@ namespace UnityEngine.Rendering.PostProcessing
                 PostProcessManager.instance.UpdateSettings(this);
                 context.command.EndSample("VolumeBlending");
                 m_TargetPool.Reset();
+
+                // TODO: fix me once VR support is in SRP
+                // Needed in SRP so that _RenderViewportScaleFactor isn't 0
+                if (RuntimeUtilities.scriptableRenderPipelineActive)
+                    Shader.SetGlobalFloat(ShaderIDs.RenderViewportScaleFactor, 1f);
             }
 
             m_SettingsUpdateNeeded = false;
@@ -607,7 +633,7 @@ namespace UnityEngine.Rendering.PostProcessing
             if (stopNaNPropagation && !m_NaNKilled)
             {
                 lastTarget = m_TargetPool.Get();
-                context.GetScreenSpaceTemporaryRT(cmd, lastTarget, 24, context.sourceFormat);
+                context.GetScreenSpaceTemporaryRT(cmd, lastTarget, 0, context.sourceFormat);
                 cmd.BlitFullscreenTriangle(context.source, lastTarget, RuntimeUtilities.copySheet, 1);
                 context.source = lastTarget;
                 m_NaNKilled = true;
@@ -632,7 +658,7 @@ namespace UnityEngine.Rendering.PostProcessing
 
                 var taaTarget = m_TargetPool.Get();
                 var finalDestination = context.destination;
-                context.GetScreenSpaceTemporaryRT(cmd, taaTarget, 24, context.sourceFormat);
+                context.GetScreenSpaceTemporaryRT(cmd, taaTarget, 0, context.sourceFormat);
                 context.destination = taaTarget;
                 temporalAntialiasing.Render(context);
                 context.source = taaTarget;
@@ -682,7 +708,7 @@ namespace UnityEngine.Rendering.PostProcessing
             var finalDestination = context.destination;
 
             var cmd = context.command;
-            context.GetScreenSpaceTemporaryRT(cmd, tempTarget, 24, context.sourceFormat);
+            context.GetScreenSpaceTemporaryRT(cmd, tempTarget, 0, context.sourceFormat);
             context.destination = tempTarget;
             RenderList(sortedBundles[evt], context, marker);
             context.source = tempTarget;
@@ -733,9 +759,9 @@ namespace UnityEngine.Rendering.PostProcessing
                 m_Targets.Add(context.destination); // Last target is always destination
 
                 // Render
-                context.GetScreenSpaceTemporaryRT(cmd, tempTarget1, 24, context.sourceFormat);
+                context.GetScreenSpaceTemporaryRT(cmd, tempTarget1, 0, context.sourceFormat);
                 if (count > 2)
-                    context.GetScreenSpaceTemporaryRT(cmd, tempTarget2, 24, context.sourceFormat);
+                    context.GetScreenSpaceTemporaryRT(cmd, tempTarget2, 0, context.sourceFormat);
 
                 for (int i = 0; i < count; i++)
                 {
@@ -759,6 +785,7 @@ namespace UnityEngine.Rendering.PostProcessing
             uberSheet.properties.Clear();
             context.uberSheet = uberSheet;
             context.autoExposureTexture = RuntimeUtilities.whiteTexture;
+            context.bloomBufferNameID = -1;
 
             var cmd = context.command;
             cmd.BeginSample("BuiltinStack");
@@ -770,7 +797,7 @@ namespace UnityEngine.Rendering.PostProcessing
             {
                 // Render to an intermediate target as this won't be the final pass
                 tempTarget = m_TargetPool.Get();
-                context.GetScreenSpaceTemporaryRT(cmd, tempTarget, 24, context.sourceFormat);
+                context.GetScreenSpaceTemporaryRT(cmd, tempTarget, 0, context.sourceFormat);
                 context.destination = tempTarget;
 
                 // Handle FXAA's keep alpha mode
@@ -821,7 +848,8 @@ namespace UnityEngine.Rendering.PostProcessing
 
             if (releaseTargetAfterUse > -1) cmd.ReleaseTemporaryRT(releaseTargetAfterUse);
             if (motionBlurTarget > -1) cmd.ReleaseTemporaryRT(motionBlurTarget);
-            if (depthOfFieldTarget > -1) cmd.ReleaseTemporaryRT(motionBlurTarget);
+            if (depthOfFieldTarget > -1) cmd.ReleaseTemporaryRT(depthOfFieldTarget);
+            if (context.bloomBufferNameID > -1) cmd.ReleaseTemporaryRT(context.bloomBufferNameID);
 
             cmd.EndSample("BuiltinStack");
 
@@ -849,7 +877,7 @@ namespace UnityEngine.Rendering.PostProcessing
 
                 if (antialiasingMode == Antialiasing.FastApproximateAntialiasing)
                 {
-                    uberSheet.EnableKeyword(fastApproximateAntialiasing.mobileOptimized
+                    uberSheet.EnableKeyword(fastApproximateAntialiasing.fastMode
                         ? "FXAA_LOW"
                         : "FXAA"
                     );
@@ -861,7 +889,7 @@ namespace UnityEngine.Rendering.PostProcessing
                 {
                     tempTarget = m_TargetPool.Get();
                     var finalDestination = context.destination;
-                    context.GetScreenSpaceTemporaryRT(context.command, tempTarget, 24, context.sourceFormat);
+                    context.GetScreenSpaceTemporaryRT(context.command, tempTarget, 0, context.sourceFormat);
                     context.destination = tempTarget;
                     subpixelMorphologicalAntialiasing.Render(context);
                     context.source = tempTarget;
@@ -901,7 +929,7 @@ namespace UnityEngine.Rendering.PostProcessing
 
             var finalDestination = context.destination;
             var tempTarget = m_TargetPool.Get();
-            context.GetScreenSpaceTemporaryRT(context.command, tempTarget, 24, context.sourceFormat);
+            context.GetScreenSpaceTemporaryRT(context.command, tempTarget, 0, context.sourceFormat);
             context.destination = tempTarget;
             effect.renderer.Render(context);
             context.source = tempTarget;

@@ -6,16 +6,16 @@ using UnityEngine.Rendering.PostProcessing;
 
 namespace UnityEditor.Rendering.PostProcessing
 {
-    class ProfileFactory
+    public class ProfileFactory
     {
         [MenuItem("Assets/Create/Post-processing Profile", priority = 201)]
         static void CreatePostProcessProfile()
         {
-            var icon = EditorGUIUtility.FindTexture("ScriptableObject Icon");
-            ProjectWindowUtil.StartNameEditingIfProjectWindowExists(0, ScriptableObject.CreateInstance<DoCreatePostProcessProfile>(), "New Post-processing Profile.asset", icon, null);
+            //var icon = EditorGUIUtility.FindTexture("ScriptableObject Icon");
+            ProjectWindowUtil.StartNameEditingIfProjectWindowExists(0, ScriptableObject.CreateInstance<DoCreatePostProcessProfile>(), "New Post-processing Profile.asset", null, null);
         }
 
-        internal static PostProcessProfile CreatePostProcessProfileAtPath(string path)
+        public static PostProcessProfile CreatePostProcessProfileAtPath(string path)
         {
             var profile = ScriptableObject.CreateInstance<PostProcessProfile>();
             profile.name = Path.GetFileName(path);
@@ -25,7 +25,7 @@ namespace UnityEditor.Rendering.PostProcessing
             return profile;
         }
 
-        internal static PostProcessProfile CreatePostProcessProfile(Scene scene, string targetName)
+        public static PostProcessProfile CreatePostProcessProfile(Scene scene, string targetName)
         {
             var path = string.Empty;
 

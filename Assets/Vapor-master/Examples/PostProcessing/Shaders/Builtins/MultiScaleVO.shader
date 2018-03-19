@@ -13,10 +13,7 @@ Shader "Hidden/PostProcessing/MultiScaleVO"
 
     SubShader
     {
-        Cull Off 
-		ZWrite Off 
-		ZTest LEqual
-
+        Cull Off ZWrite Off ZTest Always
 
         // 0 - Depth copy with procedural draw
         Pass

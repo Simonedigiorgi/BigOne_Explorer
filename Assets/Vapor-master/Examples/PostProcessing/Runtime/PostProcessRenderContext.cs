@@ -36,7 +36,7 @@ namespace UnityEngine.Rendering.PostProcessing
                     // Without it, we don't have a robust method of determining
                     // if we are in single-pass.  Users can just double the width
                     // here if they KNOW they are using single-pass.
-	                width = XRSettings.eyeTextureWidth * (m_Camera.GetComponent<SinglePassPleaseThanks>() != null ? 2 : 1);
+                    width = XRSettings.eyeTextureWidth;
                     height = XRSettings.eyeTextureHeight;
 #endif
 
@@ -81,7 +81,7 @@ namespace UnityEngine.Rendering.PostProcessing
 
         // Should we flip the last pass?
         public bool flip { get; set; }
-        
+
         // -----------------------------------------------------------------------------------------
         // The following is auto-populated by the post-processing stack
 
@@ -104,88 +104,6 @@ namespace UnityEngine.Rendering.PostProcessing
         // Current camera height in pixels
         public int height { get; private set; }
 
-        // TODO: Change w/h name to texture w/h in order to make
-        // size usages explicit
-
-#if UNITY_2017_2_OR_NEWER
-        private RenderTextureDescriptor m_sourceDescriptor;
-        private RenderTextureDescriptor GetDescriptor(int depthBufferBits = 0, RenderTextureFormat colorFormat = RenderTextureFormat.Default, RenderTextureReadWrite readWrite = RenderTextureReadWrite.Default)
-        {
-            var modifiedDesc = new RenderTextureDescriptor(m_sourceDescriptor.width, m_sourceDescriptor.height, 
-                                                                                m_sourceDescriptor.colorFormat, depthBufferBits);
-            modifiedDesc.dimension = m_sourceDescriptor.dimension;
-            modifiedDesc.volumeDepth = m_sourceDescriptor.volumeDepth;
-            modifiedDesc.vrUsage = m_sourceDescriptor.vrUsage;
-            modifiedDesc.msaaSamples = m_sourceDescriptor.msaaSamples;
-            modifiedDesc.memoryless = m_sourceDescriptor.memoryless;
-
-            modifiedDesc.useMipMap = m_sourceDescriptor.useMipMap;
-            modifiedDesc.autoGenerateMips = m_sourceDescriptor.autoGenerateMips;
-            modifiedDesc.enableRandomWrite = m_sourceDescriptor.enableRandomWrite;
-            modifiedDesc.shadowSamplingMode = m_sourceDescriptor.shadowSamplingMode;
-
-            if (colorFormat != RenderTextureFormat.Default)
-                modifiedDesc.colorFormat = colorFormat;
-            if (readWrite != RenderTextureReadWrite.Default)
-                modifiedDesc.sRGB = (readWrite != RenderTextureReadWrite.Linear);
-
-            return modifiedDesc;
-        }
-#endif
-
-        public void GetScreenSpaceTemporaryRT(CommandBuffer cmd, int nameID, 
-                                            int depthBufferBits = 0, RenderTextureFormat colorFormat = RenderTextureFormat.Default, RenderTextureReadWrite readWrite = RenderTextureReadWrite.Default,
-                                            FilterMode filter = FilterMode.Bilinear, int widthOverride = 0, int heightOverride = 0)
-        {
-#if UNITY_2017_2_OR_NEWER
-            var desc = GetDescriptor(depthBufferBits, colorFormat, readWrite);
-            if (widthOverride > 0)
-                desc.width = widthOverride;
-            if (heightOverride > 0)
-                desc.height = heightOverride;
-
-            cmd.GetTemporaryRT(nameID, desc, filter);
-#else
-
-			int actualWidth = width;
-            int actualHeight = height;
-            if (widthOverride > 0)
-                actualWidth = widthOverride;
-            if (heightOverride > 0)
-                actualHeight = heightOverride;
-
-
-
-
-			cmd.GetTemporaryRT(nameID, actualWidth, actualHeight, depthBufferBits, filter, colorFormat, readWrite);
-            // TODO: How to handle MSAA for XR in older versions?  Query cam?
-            // TODO: Pass in vrUsage into the args 
-#endif
-        }
-
-        public RenderTexture GetScreenSpaceTemporaryRT(int depthBufferBits = 0, RenderTextureFormat colorFormat = RenderTextureFormat.Default, 
-                                                        RenderTextureReadWrite readWrite = RenderTextureReadWrite.Default, int widthOverride = 0, int heightOverride = 0)
-        {
-#if UNITY_2017_2_OR_NEWER
-            var desc = GetDescriptor(depthBufferBits, colorFormat, readWrite);
-            if (widthOverride > 0)
-                desc.width = widthOverride;
-            if (heightOverride > 0)
-                desc.height = heightOverride;
-
-            return RenderTexture.GetTemporary(desc);
-#else
-            int actualWidth = width;
-	        int actualHeight = height;
-            if (widthOverride > 0)
-                actualWidth = widthOverride;
-            if (heightOverride > 0)
-                actualHeight = heightOverride;
-
-            return RenderTexture.GetTemporary(actualWidth, actualHeight, depthBufferBits, colorFormat, readWrite);
-#endif
-        }
-
         public bool stereoActive { get; private set; }
 
         // Current active rendering eye (for XR)
@@ -198,13 +116,22 @@ namespace UnityEngine.Rendering.PostProcessing
 
         // Are we currently rendering in the scene view?
         public bool isSceneView { get; internal set; }
-        
+
         // Current antialiasing method set
         public PostProcessLayer.Antialiasing antialiasing { get; internal set; }
 
         // Mostly used to grab the jitter vector and other TAA-related values when an effect needs
         // to do temporal reprojection (see: Depth of Field)
         public TemporalAntialiasing temporalAntialiasing { get; internal set; }
+
+        // Internal values used for builtin effects
+        // Beware, these may not have been set before a specific builtin effect has been executed
+        internal PropertySheet uberSheet;
+        internal Texture autoExposureTexture;
+        internal LogHistogram logHistogram;
+        internal Texture logLut;
+        internal AutoExposure autoExposure;
+        internal int bloomBufferNameID;
 
         public void Reset()
         {
@@ -229,7 +156,6 @@ namespace UnityEngine.Rendering.PostProcessing
 
             resources = null;
             propertySheets = null;
-            userData = null;
             debugLayer = null;
             isSceneView = false;
             antialiasing = PostProcessLayer.Antialiasing.None;
@@ -239,6 +165,7 @@ namespace UnityEngine.Rendering.PostProcessing
             autoExposureTexture = null;
             logLut = null;
             autoExposure = null;
+            bloomBufferNameID = -1;
 
             if (userData == null)
                 userData = new Dictionary<string, object>();
@@ -266,12 +193,81 @@ namespace UnityEngine.Rendering.PostProcessing
             debugLayer.PushDebugOverlay(cmd, source, sheet, pass);
         }
 
-        // Internal values used for builtin effects
-        // Beware, these may not have been set before a specific builtin effect has been executed
-        internal PropertySheet uberSheet;
-        internal Texture autoExposureTexture;
-        internal LogHistogram logHistogram;
-        internal Texture logLut;
-        internal AutoExposure autoExposure;
+        // TODO: Change w/h name to texture w/h in order to make
+        // size usages explicit
+#if UNITY_2017_2_OR_NEWER
+        RenderTextureDescriptor m_sourceDescriptor;
+        RenderTextureDescriptor GetDescriptor(int depthBufferBits = 0, RenderTextureFormat colorFormat = RenderTextureFormat.Default, RenderTextureReadWrite readWrite = RenderTextureReadWrite.Default)
+        {
+            var modifiedDesc = new RenderTextureDescriptor(m_sourceDescriptor.width, m_sourceDescriptor.height,
+                                                                                m_sourceDescriptor.colorFormat, depthBufferBits);
+            modifiedDesc.dimension = m_sourceDescriptor.dimension;
+            modifiedDesc.volumeDepth = m_sourceDescriptor.volumeDepth;
+            modifiedDesc.vrUsage = m_sourceDescriptor.vrUsage;
+            modifiedDesc.msaaSamples = m_sourceDescriptor.msaaSamples;
+            modifiedDesc.memoryless = m_sourceDescriptor.memoryless;
+
+            modifiedDesc.useMipMap = m_sourceDescriptor.useMipMap;
+            modifiedDesc.autoGenerateMips = m_sourceDescriptor.autoGenerateMips;
+            modifiedDesc.enableRandomWrite = m_sourceDescriptor.enableRandomWrite;
+            modifiedDesc.shadowSamplingMode = m_sourceDescriptor.shadowSamplingMode;
+
+            if (colorFormat != RenderTextureFormat.Default)
+                modifiedDesc.colorFormat = colorFormat;
+
+            modifiedDesc.sRGB = readWrite != RenderTextureReadWrite.Linear;
+
+            return modifiedDesc;
+        }
+#endif
+
+        public void GetScreenSpaceTemporaryRT(CommandBuffer cmd, int nameID,
+                                            int depthBufferBits = 0, RenderTextureFormat colorFormat = RenderTextureFormat.Default, RenderTextureReadWrite readWrite = RenderTextureReadWrite.Default,
+                                            FilterMode filter = FilterMode.Bilinear, int widthOverride = 0, int heightOverride = 0)
+        {
+#if UNITY_2017_2_OR_NEWER
+            var desc = GetDescriptor(depthBufferBits, colorFormat, readWrite);
+            if (widthOverride > 0)
+                desc.width = widthOverride;
+            if (heightOverride > 0)
+                desc.height = heightOverride;
+
+            cmd.GetTemporaryRT(nameID, desc, filter);
+#else
+            int actualWidth = width;
+            int actualHeight = height;
+            if (widthOverride > 0)
+                actualWidth = widthOverride;
+            if (heightOverride > 0)
+                actualHeight = heightOverride;
+
+            cmd.GetTemporaryRT(nameID, actualWidth, actualHeight, depthBufferBits, filter, colorFormat, readWrite);
+            // TODO: How to handle MSAA for XR in older versions?  Query cam?
+            // TODO: Pass in vrUsage into the args
+#endif
+        }
+
+        public RenderTexture GetScreenSpaceTemporaryRT(int depthBufferBits = 0, RenderTextureFormat colorFormat = RenderTextureFormat.Default,
+                                                        RenderTextureReadWrite readWrite = RenderTextureReadWrite.Default, int widthOverride = 0, int heightOverride = 0)
+        {
+#if UNITY_2017_2_OR_NEWER
+            var desc = GetDescriptor(depthBufferBits, colorFormat, readWrite);
+            if (widthOverride > 0)
+                desc.width = widthOverride;
+            if (heightOverride > 0)
+                desc.height = heightOverride;
+
+            return RenderTexture.GetTemporary(desc);
+#else
+            int actualWidth = width;
+            int actualHeight = height;
+            if (widthOverride > 0)
+                actualWidth = widthOverride;
+            if (heightOverride > 0)
+                actualHeight = heightOverride;
+
+            return RenderTexture.GetTemporary(actualWidth, actualHeight, depthBufferBits, colorFormat, readWrite);
+#endif
+        }
     }
 }

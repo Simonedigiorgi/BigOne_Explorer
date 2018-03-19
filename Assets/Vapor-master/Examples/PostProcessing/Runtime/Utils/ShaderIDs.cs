@@ -11,7 +11,7 @@ namespace UnityEngine.Rendering.PostProcessing
         internal static readonly int Sharpness                       = Shader.PropertyToID("_Sharpness");
         internal static readonly int FinalBlendParameters            = Shader.PropertyToID("_FinalBlendParameters");
         internal static readonly int HistoryTex                      = Shader.PropertyToID("_HistoryTex");
-        
+
         internal static readonly int SMAA_Flip                       = Shader.PropertyToID("_SMAA_Flip");
         internal static readonly int SMAA_Flop                       = Shader.PropertyToID("_SMAA_Flop");
 
@@ -21,7 +21,24 @@ namespace UnityEngine.Rendering.PostProcessing
         internal static readonly int OcclusionTexture2               = Shader.PropertyToID("_OcclusionTexture2");
         internal static readonly int SAOcclusionTexture              = Shader.PropertyToID("_SAOcclusionTexture");
         internal static readonly int MSVOcclusionTexture             = Shader.PropertyToID("_MSVOcclusionTexture");
-        
+        internal static readonly int DepthCopy                       = Shader.PropertyToID("DepthCopy");
+        internal static readonly int LinearDepth                     = Shader.PropertyToID("LinearDepth");
+        internal static readonly int LowDepth1                       = Shader.PropertyToID("LowDepth1");
+        internal static readonly int LowDepth2                       = Shader.PropertyToID("LowDepth2");
+        internal static readonly int LowDepth3                       = Shader.PropertyToID("LowDepth3");
+        internal static readonly int LowDepth4                       = Shader.PropertyToID("LowDepth4");
+        internal static readonly int TiledDepth1                     = Shader.PropertyToID("TiledDepth1");
+        internal static readonly int TiledDepth2                     = Shader.PropertyToID("TiledDepth2");
+        internal static readonly int TiledDepth3                     = Shader.PropertyToID("TiledDepth3");
+        internal static readonly int TiledDepth4                     = Shader.PropertyToID("TiledDepth4");
+        internal static readonly int Occlusion1                      = Shader.PropertyToID("Occlusion1");
+        internal static readonly int Occlusion2                      = Shader.PropertyToID("Occlusion2");
+        internal static readonly int Occlusion3                      = Shader.PropertyToID("Occlusion3");
+        internal static readonly int Occlusion4                      = Shader.PropertyToID("Occlusion4");
+        internal static readonly int Combined1                       = Shader.PropertyToID("Combined1");
+        internal static readonly int Combined2                       = Shader.PropertyToID("Combined2");
+        internal static readonly int Combined3                       = Shader.PropertyToID("Combined3");
+
         internal static readonly int SSRResolveTemp                  = Shader.PropertyToID("_SSRResolveTemp");
         internal static readonly int Noise                           = Shader.PropertyToID("_Noise");
         internal static readonly int Test                            = Shader.PropertyToID("_Test");
@@ -32,7 +49,7 @@ namespace UnityEngine.Rendering.PostProcessing
         internal static readonly int InverseProjectionMatrix         = Shader.PropertyToID("_InverseProjectionMatrix");
         internal static readonly int ScreenSpaceProjectionMatrix     = Shader.PropertyToID("_ScreenSpaceProjectionMatrix");
         internal static readonly int Params2                         = Shader.PropertyToID("_Params2");
-        
+
         internal static readonly int FogColor                        = Shader.PropertyToID("_FogColor");
         internal static readonly int FogParams                       = Shader.PropertyToID("_FogParams");
 
@@ -127,5 +144,7 @@ namespace UnityEngine.Rendering.PostProcessing
         internal static readonly int WaveformSource                  = Shader.PropertyToID("_WaveformSource");
         internal static readonly int WaveformBuffer                  = Shader.PropertyToID("_WaveformBuffer");
         internal static readonly int VectorscopeBuffer               = Shader.PropertyToID("_VectorscopeBuffer");
+
+        internal static readonly int RenderViewportScaleFactor       = Shader.PropertyToID("_RenderViewportScaleFactor");
     }
 }

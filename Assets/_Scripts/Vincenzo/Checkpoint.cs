@@ -10,7 +10,8 @@ public class Checkpoint : MonoBehaviour {
 	{
         if(other.tag == "Player" && !playerTriggered)
         {
-            GameManager.instance.gameController.spawnPoint = this.gameObject.transform;
+            Invector.vGameController.instance.spawnPoint = this.gameObject.transform;
+            GameManager.instance.activeCheckpoint = this.name;
             Database.activeCheckpoint = this.name;
             playerTriggered = true;
         }

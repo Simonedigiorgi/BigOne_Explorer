@@ -4,6 +4,7 @@ using UnityEngine;
 using Invector.CharacterController;
 using DG.Tweening;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class UIManager : MonoBehaviour 
 {
@@ -83,15 +84,28 @@ public class UIManager : MonoBehaviour
 
     public IEnumerator FadeDeath()
     {
-        //fadeImage.enabled = true;
-        vThirdPersonController.instance.gameObject.GetComponent<GenericSettings>().LockPlayer();
-        yield return new WaitForSeconds(0f);
+
+        vThirdPersonController.instance.animator.CrossFadeInFixedTime("Death", 0.1f);
 
         fadeImage.GetComponent<Image>().DOFade(1, 3);
-        yield return new WaitForSeconds(3.7f);
-        fadeImage.GetComponent<Image>().DOFade(0, 0);
+        yield return new WaitForSeconds(3.9f);
+        //fadeImage.GetComponent<Image>().DOFade(0, 0);
         //fadeImage.enabled = false;
-        vThirdPersonController.instance.gameObject.GetComponent<GenericSettings>().UnlockPlayer();
+
+        GenericSettings genericSettings = vThirdPersonController.instance.gameObject.GetComponent<GenericSettings>();
+        genericSettings.UnlockPlayer();
+
+        var spawnPointFinderObj = new GameObject("spawnPointFinder");
+        var spawnPointFinder = spawnPointFinderObj.AddComponent<vFindSpawnPoint>();
+
+        spawnPointFinder.AlighObjetToSpawnPoint(vThirdPersonController.instance.gameObject, Invector.vGameController.instance.spawnPoint.name);
+
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+
+        yield return new WaitForSeconds(1f);
+
+        genericSettings.IsDead = false;
+
     }
 
     public Sequence OverlineTargetText()

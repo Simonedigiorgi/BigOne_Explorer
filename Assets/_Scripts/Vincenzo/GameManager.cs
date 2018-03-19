@@ -7,13 +7,12 @@ public class GameManager : MonoBehaviour {
 
     public static GameManager instance;
     public static bool newGame = true;
-    public static string activeCheckPoint;
-    public List<string> scenes;
-
+    public string activeCheckpoint;
     public GadgetManager gadgetManager;
-    public Invector.vGameController gameController;
 
+    List<string> scenes;
     QuestManager questManager;
+    Invector.vGameController gameController;
 
     private void Awake()
     {
@@ -28,15 +27,15 @@ public class GameManager : MonoBehaviour {
 
         DontDestroyOnLoad(this);
 
-        questManager = FindObjectOfType<QuestManager>();
+        questManager = QuestManager.instance;
+
         gadgetManager = FindObjectOfType<GadgetManager>();
-        gameController = FindObjectOfType<Invector.vGameController>();
 
         scenes = new List<string>();
 
         if (newGame)
         {
-            //StartCoroutine(questManager.InitQuests());
+
             questManager.InitQuests();
             gadgetManager.InitGadgets();
             this.SetScenes();
@@ -55,15 +54,11 @@ public class GameManager : MonoBehaviour {
         SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 
-    
-
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         questManager.CheckQuest();
         Database.currentScene = scene.name;
         SetObjectScene(scene);
-        activeCheckPoint = gameController.spawnPoint.name;
-        Database.activeCheckpoint = activeCheckPoint;
     }
 
     void SetObjectScene(Scene scene)
@@ -78,8 +73,10 @@ public class GameManager : MonoBehaviour {
                     if (interactable.isDestroyable)
                         Destroy(interactableToDestroy);
                     else
+                    {
                         interactableToDestroy.transform.GetChild(1).gameObject.SetActive(true);
                         Destroy(interactableToDestroy.transform.GetChild(0).gameObject);
+                    }  
                 }
             }
         }
@@ -100,11 +97,6 @@ public class GameManager : MonoBehaviour {
             Database.DataScene dataScene = new Database.DataScene(sceneName[0], isUnlocked);
             Database.scenes.Add(dataScene);
         }
-
-        /*foreach(Database.DataScene scene in Database.scenes)
-        {
-            print(scene.sceneName+": "+scene.isUnlocked);
-        }*/
 
     }
 

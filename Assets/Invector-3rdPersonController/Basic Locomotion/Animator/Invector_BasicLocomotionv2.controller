@@ -13,121 +13,121 @@ AnimatorController:
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: InputVertical
     m_Type: 1
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: InputMagnitude
     m_Type: 1
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: TurnOnSpotDirection
     m_Type: 1
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: ActionState
     m_Type: 3
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: isDead
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: IsGrounded
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 1
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: IsCrouching
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: IsStrafing
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: GroundDistance
     m_Type: 1
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: VerticalVelocity
     m_Type: 1
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: MoveSet_ID
     m_Type: 1
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: IdleRandom
     m_Type: 3
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: IdleRandomTrigger
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: TriggerReaction
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: ReactionID
     m_Type: 3
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: HitDirection
     m_Type: 3
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: ResetState
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: PickaxeState
     m_Type: 3
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: ShovelState
     m_Type: 3
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   m_AnimatorLayers:
   - serializedVersion: 5
     m_Name: Base Layer
@@ -14450,16 +14450,16 @@ AnimatorStateMachine:
   m_EntryTransitions: []
   m_StateMachineTransitions:
     data:
-      first: {fileID: 110799002}
-      second: []
+      first: {fileID: 110708682}
+      second:
+      - {fileID: 110969572}
     data:
       first: {fileID: 110712364}
       second:
       - {fileID: 110936272}
     data:
-      first: {fileID: 110708682}
-      second:
-      - {fileID: 110969572}
+      first: {fileID: 110799002}
+      second: []
   m_StateMachineBehaviours: []
   m_AnyStatePosition: {x: 48, y: 84, z: 0}
   m_EntryPosition: {x: 50, y: 120, z: 0}
@@ -15134,21 +15134,9 @@ AnimatorStateMachine:
   m_EntryTransitions: []
   m_StateMachineTransitions:
     data:
-      first: {fileID: 1107564864407367940}
-      second:
-      - {fileID: 1109433757900563382}
-    data:
       first: {fileID: 0}
       second:
       - {fileID: 110956004}
-    data:
-      first: {fileID: 110778158}
-      second:
-      - {fileID: 110907084}
-    data:
-      first: {fileID: 110758520}
-      second:
-      - {fileID: 110976908}
     data:
       first: {fileID: 110716254}
       second:
@@ -15158,37 +15146,49 @@ AnimatorStateMachine:
       second:
       - {fileID: 110906606}
     data:
-      first: {fileID: 1107752887095888284}
+      first: {fileID: 110758520}
       second:
-      - {fileID: 1109996654891905964}
+      - {fileID: 110976908}
+    data:
+      first: {fileID: 110778158}
+      second:
+      - {fileID: 110907084}
     data:
       first: {fileID: 1107086849716170478}
       second:
       - {fileID: 1109297973779671310}
     data:
-      first: {fileID: 1107495417331592786}
+      first: {fileID: 1107203899651263882}
       second:
-      - {fileID: 1109134187823467912}
-    data:
-      first: {fileID: 1107940160876865042}
-      second:
-      - {fileID: 1109721211873901714}
-    data:
-      first: {fileID: 1107788506057076476}
-      second:
-      - {fileID: 1109742277057665280}
+      - {fileID: 1109910829669381524}
     data:
       first: {fileID: 1107335891901814980}
       second:
       - {fileID: 1109649441835666114}
     data:
-      first: {fileID: 1107203899651263882}
+      first: {fileID: 1107495417331592786}
       second:
-      - {fileID: 1109910829669381524}
+      - {fileID: 1109134187823467912}
+    data:
+      first: {fileID: 1107564864407367940}
+      second:
+      - {fileID: 1109433757900563382}
     data:
       first: {fileID: 1107666268347790008}
       second:
       - {fileID: 1109750980941033324}
+    data:
+      first: {fileID: 1107752887095888284}
+      second:
+      - {fileID: 1109996654891905964}
+    data:
+      first: {fileID: 1107788506057076476}
+      second:
+      - {fileID: 1109742277057665280}
+    data:
+      first: {fileID: 1107940160876865042}
+      second:
+      - {fileID: 1109721211873901714}
   m_StateMachineBehaviours: []
   m_AnyStatePosition: {x: 84, y: -72, z: 0}
   m_EntryPosition: {x: 84, y: -36, z: 0}
@@ -17935,7 +17935,7 @@ AnimatorState:
   m_SpeedParameterActive: 0
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: d6b4dcf647f6b144b87065ac1e950018, type: 3}
+  m_Motion: {fileID: 7400002, guid: 053f2e8fec9172c42b2c33768432e09b, type: 3}
   m_Tag: LockMovement
   m_SpeedParameter: 
   m_MirrorParameter: 

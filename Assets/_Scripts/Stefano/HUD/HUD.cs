@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Invector;
+using Invector.CharacterController;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
@@ -64,7 +64,7 @@ public class HUD : MonoBehaviour {
 
 	#endregion
 
-	void Awake()
+	void Start()
 	{
 
 		//Impostiamo il primo bottone illuminato 
@@ -72,14 +72,14 @@ public class HUD : MonoBehaviour {
 
 		checkIsGamepad = isGamepad;
 
-		Player = GameObject.FindGameObjectWithTag ("Player");
+		/*Player = GameObject.FindGameObjectWithTag ("Player");
 
 		if (Player != null) 
 		{
 
 			Player.SetActive (false);
 
-		}
+		}*/
 
 		//tempESystem = eSystem.firstSelectedGameObject;
 
@@ -98,6 +98,7 @@ public class HUD : MonoBehaviour {
 			
 			MoveOnMenu ("PasueMenu_new");
 			menuIsOpen = true;
+            vThirdPersonController.instance.GetComponent<GenericSettings>().LockPlayer();
 
 		}
 
@@ -620,6 +621,7 @@ public class HUD : MonoBehaviour {
 	{
 
 		menuIsOpen = false;
+        vThirdPersonController.instance.GetComponent<GenericSettings>().UnlockPlayer();
 
 	}
 		

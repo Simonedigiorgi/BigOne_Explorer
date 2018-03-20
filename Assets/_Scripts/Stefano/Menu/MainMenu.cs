@@ -77,13 +77,20 @@ public class MainMenu : MonoBehaviour
 		checkIsGamepad = isGamepad;
 
 		Player = GameObject.FindGameObjectWithTag ("Player");
+        QuestManager questManager = FindObjectOfType<QuestManager>();
+        GameManager gameManager = FindObjectOfType<GameManager>();
 
-		if (Player != null) 
+        if (Player != null) 
 		{
-
-			Player.SetActive (false);
+            Destroy(Player);
+            Destroy(questManager.gameObject);
+            Destroy(gameManager.gameObject);
+            Destroy(Invector.vGameController.instance.gameObject);
+			//Player.SetActive (false);
 
 		}
+
+
 
 		//tempESystem = eSystem.firstSelectedGameObject;
 

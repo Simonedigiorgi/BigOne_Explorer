@@ -173,4 +173,12 @@ public static class Database
         }
     }
 
+    public static void ResetDatabase()
+    {
+        interactableObjects.Clear();
+        gadgets.Clear();
+        quests.Clear();
+        scenes.Clear();
+    }
+
 }

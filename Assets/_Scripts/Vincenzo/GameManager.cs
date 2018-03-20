@@ -27,14 +27,16 @@ public class GameManager : MonoBehaviour {
 
         DontDestroyOnLoad(this);
 
-        questManager = QuestManager.instance;
-
+        //questManager = QuestManager.instance;
+        questManager = FindObjectOfType<QuestManager>();
         gadgetManager = FindObjectOfType<GadgetManager>();
 
         scenes = new List<string>();
 
         if (newGame)
         {
+
+            Database.ResetDatabase();
 
             questManager.InitQuests();
             gadgetManager.InitGadgets();

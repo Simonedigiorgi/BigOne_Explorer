@@ -14,13 +14,13 @@ public class Torch : Gadget {
         lights = GetComponentsInChildren<Light>(true);
     }
 
-    private void Update ()
+    /*private void Update ()
     {
         float xAngle = Camera.main.transform.rotation.eulerAngles.x;
         float yAngle = gameObject.GetComponentInParent<Transform> ().transform.eulerAngles.y;
 
         transform.rotation = Quaternion.Euler(new Vector3(xAngle, yAngle, 0f));
-    }
+    }*/
 
     public override void SetGadget()
     {

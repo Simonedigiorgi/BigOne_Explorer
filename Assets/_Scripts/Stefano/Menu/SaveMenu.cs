@@ -11,10 +11,20 @@ public class SaveMenu : MonoBehaviour {
 	[Header("Settaggi audio")]
 	public List<SettingAudio> listAudio;
 
-	[Header("Slot dati")]
-	public Text slot1;
-	public Text slot2;
-	public Text slot3;
+	[Header("Vettore d'immagine per gli slot di salvataggio")]
+	public Sprite[] illustrtions;
+
+	[Header("Viene caricata questa immagine se non c'è il salvataggio")]
+	public Sprite illustrationEmpty;
+
+	[Header("Immagini da sostituire degli slot")]
+	public Image imageSlot1;
+	public Image imageSlot2;
+	public Image imageSlot3;
+
+	public string nameSlot1;
+	public string nameSlot2;
+	public string nameSlot3;
 
 	#endregion
 
@@ -108,6 +118,7 @@ public class SaveMenu : MonoBehaviour {
 	public void LoadSlotInfo()
 	{
 
+		/*
 		if (ES2.Exists ("Slot1.txt")) {
 
 			slot1.text = ES2.Load<string> ("Slot1.txt?tag=SaveTime");
@@ -137,7 +148,94 @@ public class SaveMenu : MonoBehaviour {
 			slot3.text = "Empty";
 
 		}
+		*/
 
+		LoadSlotIllustrations ();
+
+	}
+
+	/// <summary>
+	/// Metodo che carica le illustrazioni degli slot di salvataggio
+	/// </summary>
+	private void LoadSlotIllustrations()
+	{
+
+		string scenaCurrentSlot1;
+		string scenaCurrentSlot2;
+		string scenaCurrentSlot3;
+
+		bool find1 = false;
+		bool find2 = false;
+		bool find3 = false;
+
+		if (ES2.Exists (nameSlot1 + ".txt")) 
+		{
+			scenaCurrentSlot1 = ES2.Load<string> (nameSlot1 + ".txt?tag=currentScene");
+		} 
+		else 
+		{
+
+			scenaCurrentSlot1 = "empty";
+			imageSlot1.sprite = illustrationEmpty;
+			find1 = true;
+
+		}
+
+		if (ES2.Exists (nameSlot2 + ".txt")) 
+		{
+			scenaCurrentSlot2 = ES2.Load<string> (nameSlot2 + ".txt?tag=currentScene");
+		}
+		else 
+		{
+
+			scenaCurrentSlot2 = "empty";
+			imageSlot2.sprite = illustrationEmpty;
+			find2 = true;
+
+		}
+
+		if (ES2.Exists (nameSlot3 + ".txt")) 
+		{
+
+			scenaCurrentSlot3 = ES2.Load<string> (nameSlot3 + ".txt?tag=currentScene");
+		}
+		else 
+		{
+
+			scenaCurrentSlot3 = "empty";
+			imageSlot3.sprite = illustrationEmpty;
+			find3 = true;
+
+		}
+
+		if (find1 != true && find2 != true && find3 != true) 
+		{
+			for (int i = 0; i < illustrtions.Length; i++) 
+			{
+
+				if (scenaCurrentSlot1 == illustrtions [i].name) 
+				{
+
+					imageSlot1.sprite = illustrtions [i];
+
+				}
+
+				if (scenaCurrentSlot2 == illustrtions [i].name) 
+				{
+
+					imageSlot2.sprite = illustrtions [i];
+
+				}
+
+				if (scenaCurrentSlot3 == illustrtions [i].name) 
+				{
+
+					imageSlot3.sprite = illustrtions [i];
+
+				}
+
+			}
+		}
 
 	}
 

@@ -7,7 +7,7 @@ public class Scanner : Gadget {
 
     #region Public
 	[Header("Variabile che gestisce la velocità di aggiornamento dello scanner")]
-	public float updateSpeed = 2;
+	public float updateSpeed;
     //public bool equip = false;
     public float T_distance = 50;
 	/*[Header("Lista di oggetti da cercare nella scena")]
@@ -68,10 +68,6 @@ public class Scanner : Gadget {
 
 			if (timer >= updateSpeed)
             {
-
-				//variabile di protezione
-				updateSpeed = 2f; 
-
                 if (currentDistance <= T_distance && isEquipped == false)
                 {
                    //audioSource.PlayOneShot(beep);

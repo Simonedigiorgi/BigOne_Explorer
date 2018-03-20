@@ -15,7 +15,7 @@ public class GenericSettings : MonoBehaviour
         }
     }
 
-    void Update()
+    /*void Update()
     {
         if (vThirdPersonController.instance.animator.GetFloat("VerticalVelocity") <= vThirdPersonController.instance.ragdollVel && 
             vThirdPersonController.instance.animator.GetFloat("GroundDistance") <= 0.1f && !isDead)
@@ -24,7 +24,7 @@ public class GenericSettings : MonoBehaviour
             StartCoroutine(UIManager.instance.FadeDeath());
             isDead = true;
         }      
-    }
+    }*/
 
     public void LockPlayer()
     {

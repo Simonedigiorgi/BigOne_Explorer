@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour {
 
     public static GameManager instance;
-    public static bool newGame = true;
+    public static bool newGame;
     public string activeCheckpoint;
     public GadgetManager gadgetManager;
 

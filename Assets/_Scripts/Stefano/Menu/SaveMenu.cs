@@ -208,7 +208,10 @@ public class SaveMenu : MonoBehaviour {
 
 		}
 
-		if (find1 != true && find2 != true && find3 != true) 
+        //find1 != true && find2 != true && find3 != true
+
+
+        if (true) 
 		{
 			for (int i = 0; i < illustrtions.Length; i++) 
 			{

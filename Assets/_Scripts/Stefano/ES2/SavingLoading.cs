@@ -443,6 +443,15 @@ public class SavingLoading : MonoBehaviour
 
 	}
 
-	#endregion
+    #endregion
+
+    #region Function
+
+    public void StartNewGame()
+    {
+        GameManager.newGame = true;
+    }
+
+    #endregion
 
 }

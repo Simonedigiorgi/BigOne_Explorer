@@ -27,7 +27,7 @@ public class RoverManager : MonoBehaviour {
 		{
 			eSystem = GameObject.FindGameObjectWithTag ("eSystem").GetComponent<EventSystem> ();
             //eSystem.gameObject.SetActive (false);
-            eSystem.GetComponent<StandaloneInputModule>().enabled = false;
+            //eSystem.GetComponent<StandaloneInputModule>().enabled = false;
 		}
 
 	}

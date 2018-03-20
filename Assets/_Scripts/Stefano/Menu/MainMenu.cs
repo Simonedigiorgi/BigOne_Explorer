@@ -4,11 +4,15 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
+using System;
 
 public class MainMenu : MonoBehaviour 
 {
 
 	#region Public 
+
+	[Space(10)]
+	public ScreenMenu[] menu;
 
 	public CanvasGroup background;
 
@@ -47,14 +51,30 @@ public class MainMenu : MonoBehaviour
 	private GameObject tempESystem;
 	private GameObject Player;
 	private bool isGamepad = false;
+	private bool checkIsGamepad = false;
 
 	#endregion
+
+	[Serializable]
+	public class ScreenMenu
+	{
+
+		[Header("Schermata")]
+		[Space(5)]
+
+		public GameObject screen;
+		public GameObject buttonSelect;
+		public bool isActive;
+
+	}
 
 	void Awake()
 	{
 
 		//Impostiamo il primo bottone illuminato 
-		ChangeFirstSelected (firstButton,CheckJoystick());
+		ChangeFirstSelected (CheckJoystick());
+
+		checkIsGamepad = isGamepad;
 
 		Player = GameObject.FindGameObjectWithTag ("Player");
 
@@ -65,7 +85,7 @@ public class MainMenu : MonoBehaviour
 
 		}
 
-		tempESystem = eSystem.firstSelectedGameObject;
+		//tempESystem = eSystem.firstSelectedGameObject;
 
 		//Avvio la coroutine per il controllo degli input
 		StartCoroutine (CheckInput ());
@@ -150,7 +170,7 @@ public class MainMenu : MonoBehaviour
 
 		}
 
-		if (isGamepad == true) 
+		/*if (isGamepad == true) 
 		{
 
 			#region MusicOnMenu
@@ -164,11 +184,142 @@ public class MainMenu : MonoBehaviour
 
 			#endregion
 
+		}*/
+
+		if (isGamepad == true) 
+		{
+
+			#region SettingAudio
+
+			//Controllo audio per il menu principale 
+			if (timer >= 0.08f && isGamepad == true && eSystem.currentSelectedGameObject != null) 
+			{
+
+				timer = 0;
+
+				#region MainAudio
+
+				if (eSystem.currentSelectedGameObject.GetHashCode () == mainMusicButton.GetHashCode () && InputManager.MainHorizontal () < -0.5) {
+
+					//Tolgo volume
+					DecreaseVolume (listMainVolume, mainAudio);
+					//this.GetComponent<Musica> ().RiproduciSuono (4);
+
+				} else if (eSystem.currentSelectedGameObject.GetHashCode () == mainMusicButton.GetHashCode () && InputManager.MainHorizontal () > 0.5) {
+
+					//Tolgo volume
+					EncreaseVolume (listMainVolume, mainAudio);
+					//this.GetComponent<Musica> ().RiproduciSuono (4);
+
+				}
+
+				#endregion
+
+				#region SFXaudio
+
+				if (eSystem.currentSelectedGameObject.GetHashCode () == SFXbutton.GetHashCode () && InputManager.MainHorizontal () < -0.5) {
+
+					//Tolgo volume
+					DecreaseVolume (listSFXVolume, SFXaudio);
+					//this.GetComponent<Musica> ().RiproduciSuono (4);
+
+				} else if (eSystem.currentSelectedGameObject.GetHashCode () == SFXbutton.GetHashCode () && InputManager.MainHorizontal () > 0.5) {
+
+					//Tolgo volume
+					EncreaseVolume (listSFXVolume, SFXaudio);
+					//this.GetComponent<Musica> ().RiproduciSuono (4);
+
+				}
+
+				#endregion
+
+				#region MusicAudio
+
+				if (eSystem.currentSelectedGameObject.GetHashCode () == musicButton.GetHashCode () && InputManager.MainHorizontal () < -0.5) {
+
+					//Tolgo volume
+					DecreaseVolume (listMusicVolume, musicAudio);
+					//this.GetComponent<Musica> ().RiproduciSuono (4);
+
+				} else if (eSystem.currentSelectedGameObject.GetHashCode () == musicButton.GetHashCode () && InputManager.MainHorizontal () > 0.5) {
+
+					//Tolgo volume
+					EncreaseVolume (listMusicVolume, musicAudio);
+					//this.GetComponent<Musica> ().RiproduciSuono (4);
+
+				}
+
+				#endregion
+
+				#endregion
+
+			} else {
+
+				timer += Time.deltaTime;
+
+			}
+
 		}
 
 	}
 
 	#region Volume
+
+	/// <summary>
+	/// Metodo che muta gli audio
+	/// </summary>
+	/// <param name="nameList">Name list.</param>
+	public void Mute(string nameList)
+	{
+
+		if (nameList == "Music") 
+		{
+
+			for (int i = 0; i < listMusicVolume.Count; i++)
+			{
+
+				listMusicVolume [i].color = disableColor;
+
+			}
+
+			musicAudio.volume = 0;
+
+			Debug.Log ("Music mute");
+
+		} 
+		else if (nameList == "SFX")
+		{
+
+			for (int i = 0; i < listSFXVolume.Count; i++)
+			{
+
+				listSFXVolume [i].color = disableColor;
+
+			}
+
+			SFXaudio.volume = 0;
+
+			Debug.Log ("SFX mute");
+
+		} 
+		else if (nameList == "Main") 
+		{
+
+			for (int i = 0; i < listMainVolume.Count; i++) 
+			{
+
+				listMainVolume [i].color = disableColor;
+
+			}
+
+			mainAudio.volume = 0;
+
+			Debug.Log("Mian mute");
+
+		}
+
+
+	}
 
 	#region Mouse
 
@@ -347,22 +498,43 @@ public class MainMenu : MonoBehaviour
 	{
 
 
-		if (Input.GetJoystickNames().Length <= 0 || Input.GetJoystickNames().GetValue(0) == "") 
+		bool gamepad = false;
+
+		for (int i = 0; i < Input.GetJoystickNames ().Length; i++) 
 		{
 
-			Debug.Log ("Nessun controller inserito");
+			if (Input.GetJoystickNames().GetValue(i) != "") 
+			{
+
+				gamepad = true;
+
+			}
+
+		}
+
+		if (gamepad == false) 
+		{
+
+			//Debug.Log ("Nessun controller inserito");
+			isGamepad = false;
+
+			//Riabilito gli input da Mouse
+			Cursor.visible = true;
+			Cursor.lockState = CursorLockMode.None;
 
 			return false;
 
 		} 
-		else 
+		else
 		{
 
-			Debug.Log ("Controller inserito");
+			//Debug.Log ("Controller inserito");
+			isGamepad = true;
 
 			//Disabilitiamo gli input da Mouse
-			//Cursor.visible = false;
-			//Cursor.lockState = CursorLockMode.Locked;
+			Cursor.visible = false;
+			Cursor.lockState = CursorLockMode.Locked;
+
 
 			return true;
 
@@ -461,6 +633,51 @@ public class MainMenu : MonoBehaviour
 	}
 
 	/// <summary>
+	/// Cambiare il first select dell'Event System
+	/// </summary>
+	/// <param name="button">Button.</param>
+	/// <param name="isGamepad">If set to <c>true</c> is gamepad.</param>
+	public void ChangeFirstSelected(bool isGamepad)
+	{
+
+		if (isGamepad == true) 
+		{
+
+			mainMusicButton.GetComponent<Button>().enabled = true;
+			SFXbutton.GetComponent<Button>().enabled = true;
+			musicButton.GetComponent<Button>().enabled = true;
+
+			for (int i = 0; i < menu.Length; i++) 
+			{
+
+				if (menu [i].isActive == true) 
+				{
+
+					eSystem.firstSelectedGameObject = menu[i].buttonSelect;
+					eSystem.SetSelectedGameObject (menu [i].buttonSelect);
+					return;
+
+				}
+
+			}
+
+		} 
+		else 
+		{
+
+			mainMusicButton.GetComponent<Button>().enabled = false;
+			SFXbutton.GetComponent<Button>().enabled = false;
+			musicButton.GetComponent<Button>().enabled = false;
+			eSystem.firstSelectedGameObject = null;
+			eSystem.SetSelectedGameObject (null);
+
+		}
+
+
+
+	}
+
+	/// <summary>
 	/// Metodo che ad ogni cambio di schemrata seleziona cambia il bottone di riferimento del Joystick
 	/// </summary>
 	/// <param name="newButton">New button.</param>
@@ -555,12 +772,45 @@ public class MainMenu : MonoBehaviour
 			//Controllo ogni quanto di tempo se il Joystick o la tastiera sono stati inseriti
 			isGamepad = CheckJoystick ();
 
+			if (isGamepad != checkIsGamepad) 
+			{
+				ChangeFirstSelected (isGamepad);
+				checkIsGamepad = isGamepad;
+			}
+
 			yield return new WaitForSeconds (1f);
 
 		}
 
 		yield return null;
 
+
+	}
+
+	/// <summary>
+	/// Metodo che aggiorna la scena attiva corrente nella lista menu
+	/// </summary>
+	/// <param name="nextScene">Next scene.</param>
+	public void CurrentMenu(GameObject nextScene)
+	{
+
+		for (int i = 0; i < menu.Length; i++) 
+		{
+
+			if (menu [i].screen == nextScene) 
+			{
+
+				menu [i].isActive = true;
+
+			} 
+			else 
+			{
+
+				menu [i].isActive = false;	
+
+			}
+
+		}
 
 	}
 

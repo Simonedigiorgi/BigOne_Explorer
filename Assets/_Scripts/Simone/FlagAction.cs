@@ -18,7 +18,7 @@ public class FlagAction : vTriggerGenericAction {
         openFlag = flag.transform.GetChild(1).gameObject;                           // Prendi il Figlio (1)
 
         closedFlag.gameObject.SetActive(false);                                     
-        openFlag.gameObject.SetActive(false);                                      
+        openFlag.gameObject.SetActive(false);                                         
 
         OnDoAction.AddListener(() => GetFlag());
     }

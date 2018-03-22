@@ -136,13 +136,13 @@ public class MainMenu : MonoBehaviour
 
 					//Tolgo volume
 					DecreaseVolume (listSFXVolume, SFXaudio);
-					this.GetComponent<Musica> ().RiproduciSuono (4);
+					//this.GetComponent<Musica> ().RiproduciSuono (4);
 
 				} else if (eSystem.currentSelectedGameObject.GetHashCode () == SFXbutton.GetHashCode () && InputManager.MainHorizontal () > 0) {
 					
 					//Tolgo volume
 					EncreaseVolume (listSFXVolume, SFXaudio);
-					this.GetComponent<Musica> ().RiproduciSuono (4);
+					//this.GetComponent<Musica> ().RiproduciSuono (4);
 
 				}
 
@@ -154,13 +154,13 @@ public class MainMenu : MonoBehaviour
 
 					//Tolgo volume
 					DecreaseVolume (listMusicVolume, musicAudio);
-					this.GetComponent<Musica> ().RiproduciSuono (4);
+					//this.GetComponent<Musica> ().RiproduciSuono (4);
 
 				} else if (eSystem.currentSelectedGameObject.GetHashCode () == musicButton.GetHashCode () && InputManager.MainHorizontal () > 0) {
 					
 					//Tolgo volume
 					EncreaseVolume (listMusicVolume, musicAudio);
-					this.GetComponent<Musica> ().RiproduciSuono (4);
+					//this.GetComponent<Musica> ().RiproduciSuono (4);
 
 				}
 
@@ -269,7 +269,6 @@ public class MainMenu : MonoBehaviour
 
 	}
 
-	//Aggiornata con i Mixer
 	#region Volume
 
 	/// <summary>

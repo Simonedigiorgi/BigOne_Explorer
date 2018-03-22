@@ -210,17 +210,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 397828557}
-        m_MethodName: RiproduciSuono
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 2
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 1604100568}
         m_MethodName: ChangeFisrtButton
         m_Mode: 2
@@ -250,6 +239,17 @@ MonoBehaviour:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1604100573}
+        m_MethodName: GoPlayOneShot
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 3
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -2811,13 +2811,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 804002384}
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 1604100573}
+        m_MethodName: GoPlayOneShot
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 2
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -2838,6 +2838,17 @@ MonoBehaviour:
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 1808958942}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 1604100568}
+        m_MethodName: CurrentMenu
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 2020730189}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
@@ -3975,13 +3986,13 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 397828557}
-        m_MethodName: RiproduciSuono
+      - m_Target: {fileID: 397828559}
+        m_MethodName: GoPlayOneShot
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 2
+          m_IntArgument: 1
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -4698,6 +4709,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: 1604100573}
+        m_MethodName: GoPlayOneShot
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 3
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &368573416
@@ -5213,7 +5235,6 @@ MonoBehaviour:
   nameSlot1: 
   nameSlot2: 
   nameSlot3: 
-  mixer: {fileID: 0}
 --- !u!114 &397828557
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9190,6 +9211,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1604100573}
+        m_MethodName: GoPlayOneShot
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 4
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &745907334
@@ -9614,6 +9646,17 @@ MonoBehaviour:
           m_ObjectArgument: {fileID: 804002384}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 1604100573}
+        m_MethodName: GoPlayOneShot
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 2
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 1
@@ -16898,17 +16941,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-      - m_Target: {fileID: 397828557}
-        m_MethodName: RiproduciSuono
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 3
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
       - m_Target: {fileID: 1604100568}
         m_MethodName: ChangeFisrtButton
         m_Mode: 2
@@ -16938,6 +16970,17 @@ MonoBehaviour:
           m_ObjectArgument: {fileID: 2020730189}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 1604100573}
+        m_MethodName: GoPlayOneShot
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 2
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 1
@@ -17075,7 +17118,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1412251704}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1604100573}
+        m_MethodName: GoPlayOneShot
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 2
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 0
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1412251704
@@ -19256,10 +19310,11 @@ GameObject:
   - component: {fileID: 1604100565}
   - component: {fileID: 1604100564}
   - component: {fileID: 1604100568}
-  - component: {fileID: 1604100569}
   - component: {fileID: 1604100571}
   - component: {fileID: 1604100570}
   - component: {fileID: 1604100572}
+  - component: {fileID: 1604100574}
+  - component: {fileID: 1604100573}
   m_Layer: 0
   m_Name: MainCamera
   m_TagString: MainCamera
@@ -19408,48 +19463,6 @@ MonoBehaviour:
   - {fileID: 1286948678}
   - {fileID: 1097069055}
   musicAudio: {fileID: 24100000, guid: 35c11e17753eb5b4d870d1d17eeaa5b8, type: 2}
---- !u!114 &1604100569
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1604100563}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 616889b4747c3e64086f27b63d14184a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Suoni:
-  - NomeBrano: MenuMove
-    Audio: {fileID: 8300000, guid: 054f21f3d82ac1e40ad45890a2c7690a, type: 3}
-    ID: 1
-    Descrizione: 
-    Volume: 1
-  - NomeBrano: BackMenu
-    Audio: {fileID: 8300000, guid: df5ea698b6e6e0a449037e7c96d839a8, type: 3}
-    ID: 2
-    Descrizione: 
-    Volume: 1
-  - NomeBrano: PressButton
-    Audio: {fileID: 8300000, guid: 4708b81bb0910d244ad95c6a7796ae11, type: 3}
-    ID: 3
-    Descrizione: 
-    Volume: 1
-  - NomeBrano: UpOrDownMusic
-    Audio: {fileID: 8300000, guid: d154b4c1424751e4e95625d3cfb5697b, type: 3}
-    ID: 4
-    Descrizione: 
-    Volume: 1
-  - NomeBrano: OpenDoorBase
-    Audio: {fileID: 8300000, guid: 8c29c0f3c45c912458e0fb440f6067ff, type: 3}
-    ID: 5
-    Descrizione: 
-    Volume: 1
-  PlayList: []
-  ClusterSuoniRandom: []
-  Output: {fileID: 679072972}
-  Global: {fileID: 679072972}
-  DebugMode: 0
 --- !u!95 &1604100570
 Animator:
   serializedVersion: 3
@@ -19528,7 +19541,6 @@ MonoBehaviour:
   nameSlot1: Slot1
   nameSlot2: Slot2
   nameSlot3: Slot3
-  mixer: {fileID: 24100000, guid: 35c11e17753eb5b4d870d1d17eeaa5b8, type: 2}
 --- !u!114 &1604100572
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19540,6 +19552,134 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4bc357106239dac409e9b8b51317a075, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1604100573
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1604100563}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8aec30bd4839d1f489cb8632986a0dae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  master: {fileID: 24100000, guid: 2ea3178017298bd49a30a0b3041c345b, type: 2}
+  systemSnapShot: []
+  numberSnapShot: 0
+  TestSnapShotClip: {fileID: 0}
+  Source1: {fileID: 0}
+  Source2: {fileID: 0}
+  systemFade: []
+  systemClusterFade: []
+  systemMixer: []
+  PlayList:
+  - clip: {fileID: 8300000, guid: 054f21f3d82ac1e40ad45890a2c7690a, type: 3}
+    ID: 0
+    description: 
+    volume: 1
+    output: {fileID: 679072972}
+  - clip: {fileID: 8300000, guid: df5ea698b6e6e0a449037e7c96d839a8, type: 3}
+    ID: 1
+    description: 
+    volume: 1
+    output: {fileID: 679072972}
+  - clip: {fileID: 8300000, guid: 4708b81bb0910d244ad95c6a7796ae11, type: 3}
+    ID: 2
+    description: 
+    volume: 1
+    output: {fileID: 679072972}
+  - clip: {fileID: 8300000, guid: d154b4c1424751e4e95625d3cfb5697b, type: 3}
+    ID: 3
+    description: 
+    volume: 1
+    output: {fileID: 679072972}
+  - clip: {fileID: 8300000, guid: 8c29c0f3c45c912458e0fb440f6067ff, type: 3}
+    ID: 4
+    description: 
+    volume: 1
+    output: {fileID: 679072972}
+  genericAudioSource: {fileID: 679072972}
+  allVolumePlayList: 1
+--- !u!82 &1604100574
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1604100563}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!1 &1610786762
 GameObject:
   m_ObjectHideFlags: 0
@@ -21179,6 +21319,17 @@ MonoBehaviour:
           m_ObjectArgument: {fileID: 804002384}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 1604100573}
+        m_MethodName: GoPlayOneShot
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 2
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 1
@@ -22857,17 +23008,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 397828557}
-        m_MethodName: RiproduciSuono
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 3
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 1604100568}
         m_MethodName: ChangeFisrtButton
         m_Mode: 2
@@ -22890,13 +23030,13 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1604100571}
-        m_MethodName: SaveAudio
-        m_Mode: 1
+      - m_Target: {fileID: 1604100573}
+        m_MethodName: GoPlayOneShot
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 2
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -23869,6 +24009,17 @@ MonoBehaviour:
           m_ObjectArgument: {fileID: 804002384}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 1604100573}
+        m_MethodName: GoPlayOneShot
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 2
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 1

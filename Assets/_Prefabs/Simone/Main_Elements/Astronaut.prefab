@@ -741,6 +741,7 @@ GameObject:
   - component: {fileID: 114544557793864076}
   - component: {fileID: 114560765517316408}
   - component: {fileID: 114743911304815116}
+  - component: {fileID: 81540137242125098}
   m_Layer: 8
   m_Name: Astronaut
   m_TagString: Player
@@ -2212,7 +2213,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1276046548144088}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 58.73, y: 0.54, z: -276.32}
+  m_LocalPosition: {x: -109.93809, y: 75.48, z: 11.704758}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4510803716841998}
@@ -4694,6 +4695,13 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 1
+--- !u!81 &81540137242125098
+AudioListener:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1276046548144088}
+  m_Enabled: 1
 --- !u!95 &95437143519287538
 Animator:
   serializedVersion: 3

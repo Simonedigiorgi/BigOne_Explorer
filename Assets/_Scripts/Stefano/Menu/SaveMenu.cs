@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System;
+using UnityEngine.Audio;
 
 public class SaveMenu : MonoBehaviour {
 
@@ -26,18 +27,19 @@ public class SaveMenu : MonoBehaviour {
 	public string nameSlot2;
 	public string nameSlot3;
 
+
 	#endregion
 
 	[Serializable]
 	public class SettingAudio
 	{
 
-		public AudioSource audio;
+		public AudioMixer audio;
 		public List<Image> listImage;
 
 	}
 
-	void Awake()
+	void Start()
 	{
 
 		LoadAudio ();
@@ -45,7 +47,7 @@ public class SaveMenu : MonoBehaviour {
 
 	}
 
-	public void SaveSettinngs()
+	public void SaveSettings()
 	{
 
 		SaveAudio ();
@@ -63,7 +65,10 @@ public class SaveMenu : MonoBehaviour {
 		for (int i = 0; i < listAudio.Count; i++) 
 		{
 
-			ES2.Save (listAudio [i].audio.volume, "Setting.txt?tag=" + listAudio [i].audio.name);
+			float volume;
+			listAudio [i].audio.GetFloat ("Volume", out volume);
+
+			ES2.Save (volume, "Setting.txt?tag=" + listAudio [i].audio.name);
 
 			for (int j = 0; j < listAudio [i].listImage.Count; j++) 
 			{
@@ -92,7 +97,7 @@ public class SaveMenu : MonoBehaviour {
 			for (int i = 0; i < listAudio.Count; i++) 
 			{
 
-				listAudio [i].audio.volume = ES2.Load<float> ("Setting.txt?tag=" + listAudio [i].audio.name);
+				listAudio [i].audio.SetFloat("Volume", ES2.Load<float> ("Setting.txt?tag=" + listAudio [i].audio.name));
 
 				for (int j = 0; j < listAudio [i].listImage.Count; j++) 
 				{

@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 using System;
+using UnityEngine.Audio;
 
 public class MainMenu : MonoBehaviour 
 {
@@ -33,13 +34,13 @@ public class MainMenu : MonoBehaviour
 
 	[Header("Lista MAIN VOLUME")]
 	public List<Image> listMainVolume;
-	public AudioSource mainAudio;
+	public AudioMixer mainAudio;
 	[Header("Lista SFX VOLUME")]
 	public List<Image> listSFXVolume;
-	public AudioSource SFXaudio;
+	public AudioMixer SFXaudio;
 	[Header("Lista MUSIC VOLUME")]
 	public List<Image> listMusicVolume;
-	public AudioSource musicAudio;
+	public AudioMixer musicAudio;
 
 
 	#endregion 
@@ -90,8 +91,6 @@ public class MainMenu : MonoBehaviour
 
 		}
 
-
-
 		//tempESystem = eSystem.firstSelectedGameObject;
 
 		//Avvio la coroutine per il controllo degli input
@@ -119,13 +118,13 @@ public class MainMenu : MonoBehaviour
 
 					//Tolgo volume
 					DecreaseVolume (listMainVolume, mainAudio);
-					this.GetComponent<Musica> ().RiproduciSuono (4);
+					//this.GetComponent<Musica> ().RiproduciSuono (4);
 
 				} else if (eSystem.currentSelectedGameObject.GetHashCode () == mainMusicButton.GetHashCode () && InputManager.MainHorizontal () > 0) {
 					
 					//Tolgo volume
 					EncreaseVolume (listMainVolume, mainAudio);
-					this.GetComponent<Musica> ().RiproduciSuono (4);
+					//this.GetComponent<Musica> ().RiproduciSuono (4);
 
 				}
 
@@ -270,6 +269,7 @@ public class MainMenu : MonoBehaviour
 
 	}
 
+	//Aggiornata con i Mixer
 	#region Volume
 
 	/// <summary>
@@ -289,7 +289,8 @@ public class MainMenu : MonoBehaviour
 
 			}
 
-			musicAudio.volume = 0;
+			//musicAudio.volume = 0;
+			musicAudio.SetFloat("Volume", -80f);
 
 			Debug.Log ("Music mute");
 
@@ -304,7 +305,9 @@ public class MainMenu : MonoBehaviour
 
 			}
 
-			SFXaudio.volume = 0;
+
+			//SFXaudio.volume = 0;
+			SFXaudio.SetFloat("Volume", -80f);
 
 			Debug.Log ("SFX mute");
 
@@ -319,9 +322,10 @@ public class MainMenu : MonoBehaviour
 
 			}
 
-			mainAudio.volume = 0;
+			//mainAudio.volume = 0;
+			mainAudio.SetFloat("Volume", -80f);
 
-			Debug.Log("Mian mute");
+			Debug.Log("Main mute");
 
 		}
 
@@ -338,7 +342,7 @@ public class MainMenu : MonoBehaviour
 	{
 
 		string name = button.name;
-		float v = 1f;
+		float v = 0f;
 
 		for (int i = 0; i < listMainVolume.Count; i++) 
 		{
@@ -352,20 +356,20 @@ public class MainMenu : MonoBehaviour
 				for (int j = 0; j <= i; j++) 
 				{
 
-					v += 0.1f;
+					v += 4f;
 					listMainVolume [j].color = enableColor;
 
 				}
 
 			}
 
-			v -= 0.1f;
+			v -= 4f;
 
 		}
 
-		//Camvio effettio del volume
-		mainAudio.volume = v;
-
+		//Cambio effettio del volume
+		//mainAudio.volume = v;
+		mainAudio.SetFloat("Volume", v);
 	}
 
 	/// <summary>
@@ -377,7 +381,7 @@ public class MainMenu : MonoBehaviour
 
 		string name = button.name;
 
-		float v = 1f;
+		float v = 0f;
 
 		for (int i = 0; i < listMusicVolume.Count; i++) 
 		{
@@ -391,18 +395,19 @@ public class MainMenu : MonoBehaviour
 				for (int j = 0; j <= i; j++) 
 				{
 
-					v += 0.1f;
+					v += 4f;
 					listMusicVolume [j].color = enableColor;
 
 				}
 
 			}
 
-			v -= 0.1f;
+			v -= 4f;
 
 		}
 
-		musicAudio.volume = v;
+		//musicAudio.volume = v;
+		musicAudio.SetFloat("Volume", v);
 
 	}
 
@@ -415,7 +420,7 @@ public class MainMenu : MonoBehaviour
 
 		string name = button.name;
 
-		float v = 1f;
+		float v = 0f;
 
 		for (int i = 0; i < listSFXVolume.Count; i++) 
 		{
@@ -429,30 +434,33 @@ public class MainMenu : MonoBehaviour
 				for (int j = 0; j <= i; j++) 
 				{
 
-					v += 0.1f;	
+					v += 4f;	
+
 					listSFXVolume [j].color = enableColor;
 
 				}
 
 			}
 
-			v -= 0.1f;
+			v -= 4f;
 
 		}
 
-		SFXaudio.volume = v;
-
+		//SFXaudio.volume = v;
+		SFXaudio.SetFloat("Volume", v);
 	}
 
 	#endregion
 
-	#region Joystivc
+	#region Joystic
 
 	/// <summary>
 	/// Metodo che aumenta il volume del gioco
 	/// </summary>
-	public void EncreaseVolume( List<Image> list, AudioSource audio)
+	public void EncreaseVolume( List<Image> list, AudioMixer audio)
 	{
+
+		float v = -40f;
 
 		for (int i = 0; i < list.Count; i++) 
 		{
@@ -460,7 +468,10 @@ public class MainMenu : MonoBehaviour
 			if (list [i].color == disableColor) 
 			{
 
-				audio.volume += 0.1f;
+				//audio.volume += 0.1f;
+				audio.GetFloat("Volume", out v);
+				v += 4f;
+				audio.SetFloat("Volume", v);
 				list [i].color = enableColor;
 				return;
 
@@ -473,8 +484,10 @@ public class MainMenu : MonoBehaviour
 	/// <summary>
 	/// Metodo che diminuisce il volume di gioco
 	/// </summary>
-	public void DecreaseVolume( List<Image> list, AudioSource audio)
+	public void DecreaseVolume( List<Image> list, AudioMixer audio)
 	{
+
+		float v = 0f;
 
 		for (int i = 1; i <= list.Count; i++) 
 		{
@@ -482,7 +495,10 @@ public class MainMenu : MonoBehaviour
 			if (list [list.Count-i].color == enableColor) 
 			{
 
-				audio.volume -= 0.1f;
+				//audio.volume -= 0.1f;
+				audio.GetFloat("Volume", out v);
+				v -= 4f;
+				audio.SetFloat("Volume", v);
 				list [list.Count-i].color = disableColor;
 				return;
 

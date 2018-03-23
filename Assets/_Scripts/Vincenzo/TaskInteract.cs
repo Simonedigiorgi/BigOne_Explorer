@@ -118,7 +118,7 @@ public class TaskInteract : Task
                 SetTaskObject(action.transform.parent.gameObject);
                 Gadget gadget = gadgetManager.gadgets
                     .Find(x => x.gadgetType == (GadgetManager.GadgetType)Enum.Parse(typeof(GadgetManager.GadgetType), action.transform.parent.name.ToUpper()));
-                gadget.isEnabled = true;
+                gadget.EnableGadget();
                 /*gadgetManager = FindObjectOfType<GadgetManager>();
                 GadgetManager.GadgetType gadget = (GadgetManager.GadgetType)Enum.Parse(typeof(GadgetManager.GadgetType), action.transform.parent.name.ToUpper());
                 gadgetManager.ActivateGadget(gadget, true);*/

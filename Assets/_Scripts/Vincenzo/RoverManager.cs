@@ -21,7 +21,7 @@ public class RoverManager : MonoBehaviour {
 
 	public static bool enterTrigger = false;
 
-	void Awake()
+	/*void Awake()
 	{
 		if (gameObject.name == "LAND ROVER") 
 		{
@@ -30,7 +30,7 @@ public class RoverManager : MonoBehaviour {
             //eSystem.GetComponent<StandaloneInputModule>().enabled = false;
 		}
 
-	}
+	}*/
 
     void OnTriggerEnter(Collider other)
     {

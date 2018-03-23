@@ -653,7 +653,10 @@ public class Musica2 : MonoBehaviour
 
             if (trackID < systemMixer[mixerID].listTrack.Length)
             {
-                systemMixer[mixerID].listTrack[trackID].Play();
+
+				systemMixer [mixerID].listTrack [trackID].output.volume = systemMixer [mixerID].listTrack [trackID].volume;
+				systemMixer [mixerID].listTrack [trackID].output.clip = systemMixer [mixerID].listTrack [trackID].clip;
+				systemMixer[mixerID].listTrack[trackID].output.Play();
             }
 
         }

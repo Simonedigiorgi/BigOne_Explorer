@@ -4375,6 +4375,11 @@ MonoBehaviour:
     TimeFade: 1
     NameGroup: Ambience
     AudioSnapShot: {fileID: 24500006, guid: 2959e37650b1b5349812619b631dbb8d, type: 2}
+  - ID: 0
+    TimeFade: 3
+    NameGroup: Ambience
+    AudioSnapShot: {fileID: 245180789833207898, guid: 2959e37650b1b5349812619b631dbb8d,
+      type: 2}
   numberSnapShot: 0
   TestSnapShotClip: {fileID: 8300000, guid: d733f366ed917284697d307316eb0770, type: 3}
   Source1: {fileID: 82866104129352352}
@@ -4511,6 +4516,21 @@ MonoBehaviour:
   - clip: {fileID: 8300000, guid: cb4fd492b52842849977922acad34eee, type: 3}
     ID: 14
     description: 
+    volume: 1
+    output: {fileID: 82562548306553448}
+  - clip: {fileID: 8300000, guid: 40ef9a6c6bd5a6c409ac22e89bab9f70, type: 3}
+    ID: 15
+    description: Quando prendi la scatola nera
+    volume: 1
+    output: {fileID: 82562548306553448}
+  - clip: {fileID: 8300000, guid: 4b9db760d6c6b59498fbaffdbd03927c, type: 3}
+    ID: 16
+    description: Distruzione del muro di rocce
+    volume: 1
+    output: {fileID: 82562548306553448}
+  - clip: {fileID: 8300000, guid: 019db416c0225b44f8c7f8f670173de9, type: 3}
+    ID: 17
+    description: Collezionabili
     volume: 1
     output: {fileID: 82562548306553448}
   genericAudioSource: {fileID: 82562548306553448}
@@ -5412,6 +5432,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   music: {fileID: 114316197201707396}
+  Scena1: 1
+  Scena2: 2
+  Scena3: 3
+  Scena4: 4
   mixerMusic: {fileID: 24100000, guid: 35c11e17753eb5b4d870d1d17eeaa5b8, type: 2}
   mixerMain: {fileID: 24100000, guid: 2959e37650b1b5349812619b631dbb8d, type: 2}
 --- !u!114 &114535673802283364

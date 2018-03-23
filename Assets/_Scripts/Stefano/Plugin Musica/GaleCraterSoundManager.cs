@@ -2,25 +2,70 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
+using UnityEngine.SceneManagement;
 
 public class GaleCraterSoundManager : MonoBehaviour {
 
 	public Musica2 music;
 	public static bool isRadio = false;
 	private int nStation = 0;
+
+	public int Scena1;
+	public int Scena2;
+	public int Scena3;
+	public int Scena4;
+
 	public AudioMixer mixerMusic;
 	public AudioMixer mixerMain;
 
 	void Start()
 	{
 
-		music.GoStartMusic (0, 0);
-		music.GoStartMusic (0, 1);
-		music.GoStartMusic (0, 2);
-		music.GoStartMusic (0, 3);
-		music.GoStartMusic (0, 4);
-		music.GoStartMusic (0, 5);
+		Scene currentScena = SceneManager.GetActiveScene ();
 
+
+		if (currentScena.buildIndex == Scena1)
+		{
+			
+			music.GoStartMusic (0, 0);
+			music.GoStartMusic (0, 1);
+			//Vento
+			music.GoStartMusic (0, 2);
+			music.GoStartMusic (0, 3);
+			music.GoStartMusic (0, 4);
+			music.GoStartMusic (0, 5);
+
+		}
+
+		if (currentScena.buildIndex == Scena2) 
+		{
+
+			//Vento
+			music.GoStartMusic (0, 2);
+			music.GoSnapShotFade (1);
+
+		}
+
+		if (currentScena.buildIndex == Scena3) 
+		{
+
+			//Vento
+			music.GoStartMusic (0, 2);
+			music.GoSnapShotFade (1);
+
+		}
+
+		if (currentScena.buildIndex == Scena4) 
+		{
+
+			//Vento
+			music.GoStartMusic (0, 2);
+			music.GoSnapShotFade (1);
+
+		}
+
+
+		//ERseguiamo la radio
 		mixerMusic.SetFloat("Volume", -80f);
 		music.GoClusterFade (0);
 
@@ -33,7 +78,7 @@ public class GaleCraterSoundManager : MonoBehaviour {
 		if (Input.GetKeyDown (KeyCode.O)) 
 		{
 
-			music.GoSnapShotFade (0);
+			music.GoSnapShotFade (1);
 
 		}
 
@@ -41,7 +86,7 @@ public class GaleCraterSoundManager : MonoBehaviour {
 		if (Input.GetKeyDown (KeyCode.P)) 
 		{
 
-			music.GoSnapShotFade (1);
+			music.GoSnapShotFade (2);
 
 		}
 

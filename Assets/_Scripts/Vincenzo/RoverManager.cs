@@ -50,9 +50,9 @@ public class RoverManager : MonoBehaviour {
             vThirdPersonController.instance.GetComponent<GenericSettings>().LockPlayer();
 
 			//eSystem.gameObject.SetActive (true);
-            eSystem.GetComponent<StandaloneInputModule>().enabled = true;
+            /*eSystem.GetComponent<StandaloneInputModule>().enabled = true;
             eSystem.firstSelectedGameObject = selectedButton;
-			eSystem.SetSelectedGameObject(selectedButton);
+			eSystem.SetSelectedGameObject(selectedButton);*/
 
 			panel.SetActive (true);
 
@@ -92,7 +92,7 @@ public class RoverManager : MonoBehaviour {
         vThirdPersonController.instance.lockSpeed = false;
         vThirdPersonController.instance.lockRotation = false;*/
 
-        eSystem.gameObject.SetActive(false);
+        //eSystem.gameObject.SetActive(false);
 
         panel.SetActive(false);
 

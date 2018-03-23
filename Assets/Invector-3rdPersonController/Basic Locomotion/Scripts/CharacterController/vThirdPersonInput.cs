@@ -286,7 +286,12 @@ namespace Invector.CharacterController
         protected virtual void StrafeInput()
         {
             if (strafeInput.GetButtonDown())
+            {
                 cc.Strafe();
+                // Richiamiamo la funzione dei feedback
+                cc.GetComponentInChildren<FeedbackIcons>(true).ToggleFeedbackGadget();
+            }
+                
         }
 
         protected virtual void SprintInput()

@@ -8,10 +8,10 @@ public class FeedbackIcons : MonoBehaviour
     private Animator anim;
     private bool isOpen;
 
-    public Torch torchScript;
+    /*public Torch torchScript;
     public Scanner scannerScript;
     public Geiger geigerScript;
-    public JetPack jetpackScript;
+    public JetPack jetpackScript;*/
 
     public Image torchImage;
     public Image scannerImage;
@@ -21,10 +21,27 @@ public class FeedbackIcons : MonoBehaviour
     void Start ()
     {
         anim = GetComponent<Animator>();
-        isOpen = false;
     }
 
-    void Gets()
+    public void ToggleFeedbackGadget()
+    {
+        isOpen = !isOpen;
+        anim.SetBool("isOpen", isOpen);
+    }
+
+    public void EnableFeedback(string gadgetName)
+    {
+        GameObject gadget = this.transform.GetChild(0).Find(gadgetName).gameObject;
+
+        //print(gadget.name);
+
+        for(int i = 0; i < gadget.transform.childCount; i++)
+        {
+            gadget.transform.GetChild(i).gameObject.SetActive(true);
+        }
+    }
+
+    /*void Gets()
     {
         torchScript = transform.root.gameObject.GetComponentInChildren<Torch>();
         scannerScript = transform.root.gameObject.GetComponentInChildren<Scanner>();
@@ -35,12 +52,12 @@ public class FeedbackIcons : MonoBehaviour
         scannerImage = GetComponentInChildren<Image>();
         geigerImage = GetComponentInChildren<Image>();
         jetpackImage = GetComponentInChildren<Image>();
-    }
+    }*/
 
 	// Update is called once per frame
 	void Update ()
     {
-        if (Input.GetKeyDown(KeyCode.Tab))
+        /*if (Input.GetKeyDown(KeyCode.Tab))
         {
             isOpen = !isOpen;
             anim.SetBool("isOpen", isOpen);
@@ -48,22 +65,22 @@ public class FeedbackIcons : MonoBehaviour
 
         if (torchScript.isEnabled)
         {
-            torchImage.IsActive = true;
+            torchImage.gameObject.SetActive(true);
         }
 
         if (scannerScript.isEnabled)
         {
-            scannerImage.isActive = true;
+            scannerImage.gameObject.SetActive(true);
         }
 
         if (geigerScript.isEnabled)
         {
-            geigerImage.isActive = true;
+            geigerImage.gameObject.SetActive(true);
         }
 
         if (jetpackScript.isEnabled)
         {
-            jetpackImage.isActive = true;
-        }
+            jetpackImage.gameObject.SetActive(true);
+        }*/
     }
 }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Invector.CharacterController;
 
 public class Gadget : MonoBehaviour {
 
@@ -16,6 +17,7 @@ public class Gadget : MonoBehaviour {
     public virtual void EnableGadget()
     {
         this.isEnabled = true;
+        //vThirdPersonController.instance.GetComponentInChildren<FeedbackIcons>().EnableFeedback(gameObject.name);
     }
 
     public virtual void SetGadget()

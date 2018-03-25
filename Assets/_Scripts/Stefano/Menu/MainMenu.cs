@@ -731,7 +731,19 @@ public class MainMenu : MonoBehaviour
 	public void ChangeScena(string nameScena)
 	{
 
-		StartCoroutine (FadeScena (nameScena));
+		//Se il file esiste allora carico la partita 
+		if (ES2.Exists (PlayerPrefs.GetString ("Slot") + ".txt")) 
+		{
+			
+			StartCoroutine (FadeScena (ES2.Load<string> (PlayerPrefs.GetString ("Slot") + ".txt?tag=currentScene")));
+
+		} 
+		else //vuol dire che si vuole creare una nuova partita
+		{
+
+			StartCoroutine (FadeScena (nameScena));
+
+		}
 
 	}
 
@@ -743,6 +755,43 @@ public class MainMenu : MonoBehaviour
 	{
 		//Converto il numero di scena in nome
 		string nameScena = SceneManager.GetSceneByBuildIndex (index).name;
+
+		//Se il file esiste allora carico la partita 
+		if (ES2.Exists (PlayerPrefs.GetString ("Slot") + ".txt")) 
+		{
+
+			StartCoroutine (FadeScena (ES2.Load<string> (PlayerPrefs.GetString ("Slot") + ".txt?tag=currentScene")));
+
+		} 
+		else //vuol dire che si vuole creare una nuova partita
+		{
+
+			StartCoroutine (FadeScena (nameScena));
+
+		}
+
+	}
+
+	/// <summary>
+	/// Metodo che avvia la coroutine per cambiare scena
+	/// </summary>
+	/// <param name="nameScena">Name scena.</param>
+	public void ChangeScenaForNewGame(int index)
+	{
+
+		//Converto il numero di scena in nome
+		string nameScena = SceneManager.GetSceneByBuildIndex (index).name;
+
+		StartCoroutine (FadeScena (nameScena));
+
+	}
+
+	/// <summary>
+	/// Metodo che avvia la coroutine per cambiare scena
+	/// </summary>
+	/// <param name="nameScena">Name scena.</param>
+	public void ChangeScenaForNewGame(string nameScena)
+	{
 
 		StartCoroutine (FadeScena (nameScena));
 
@@ -798,9 +847,16 @@ public class MainMenu : MonoBehaviour
 			{
 				ChangeFirstSelected (isGamepad);
 				checkIsGamepad = isGamepad;
+
+			} 
+			else 
+			{
+				
+				//ChangeFirstSelected (isGamepad);
+
 			}
 
-			yield return new WaitForSeconds (1f);
+			yield return new WaitForSeconds (0.1f);
 
 		}
 

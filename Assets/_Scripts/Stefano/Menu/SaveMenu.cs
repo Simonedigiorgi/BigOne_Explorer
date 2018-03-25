@@ -23,9 +23,9 @@ public class SaveMenu : MonoBehaviour {
 	public Image imageSlot2;
 	public Image imageSlot3;
 
-	public string nameSlot1;
-	public string nameSlot2;
-	public string nameSlot3;
+	public Text nameSlot1;
+	public Text nameSlot2;
+	public Text nameSlot3;
 
 
 	#endregion
@@ -51,6 +51,18 @@ public class SaveMenu : MonoBehaviour {
 	{
 
 		SaveAudio ();
+
+	}
+
+	/// <summary>
+	/// Metodo che permette di settare lo slot in cui effettuare il caricamento o il salvataggio
+	/// </summary>
+	/// <param name="slotName">Slot name.</param>
+	public void SetSlot(Text slotName)
+	{
+
+		PlayerPrefs.SetString ("Slot", slotName.text);
+		Debug.Log (PlayerPrefs.GetString ("Slot"));
 
 	}
 
@@ -97,7 +109,7 @@ public class SaveMenu : MonoBehaviour {
 			for (int i = 0; i < listAudio.Count; i++) 
 			{
 
-				if (listAudio [i].audio.name == "Music" && GaleCraterSoundManager.isRadio == true) 
+				if (listAudio [i].audio.name == "Music" && SoundManager.isRadio == true) 
 				{
 					listAudio [i].audio.SetFloat ("Volume", ES2.Load<float> ("Setting.txt?tag=" + listAudio [i].audio.name));
 				} 
@@ -183,7 +195,7 @@ public class SaveMenu : MonoBehaviour {
 
 		if (ES2.Exists (nameSlot1 + ".txt")) 
 		{
-			scenaCurrentSlot1 = ES2.Load<string> (nameSlot1 + ".txt?tag=currentScene");
+			scenaCurrentSlot1 = ES2.Load<string> (nameSlot1.text + ".txt?tag=currentScene");
 		} 
 		else 
 		{
@@ -196,7 +208,7 @@ public class SaveMenu : MonoBehaviour {
 
 		if (ES2.Exists (nameSlot2 + ".txt")) 
 		{
-			scenaCurrentSlot2 = ES2.Load<string> (nameSlot2 + ".txt?tag=currentScene");
+			scenaCurrentSlot2 = ES2.Load<string> (nameSlot2.text + ".txt?tag=currentScene");
 		}
 		else 
 		{
@@ -210,7 +222,7 @@ public class SaveMenu : MonoBehaviour {
 		if (ES2.Exists (nameSlot3 + ".txt")) 
 		{
 
-			scenaCurrentSlot3 = ES2.Load<string> (nameSlot3 + ".txt?tag=currentScene");
+			scenaCurrentSlot3 = ES2.Load<string> (nameSlot3.text + ".txt?tag=currentScene");
 		}
 		else 
 		{
@@ -256,5 +268,6 @@ public class SaveMenu : MonoBehaviour {
 	}
 
 	#endregion
+
 
 }

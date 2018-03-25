@@ -627,8 +627,28 @@ public class Musica2 : MonoBehaviour
 
         if (ID < PlayList.Length)
         {
-			
-            genericOutput.PlayOneShot(PlayList[ID].clip, PlayList[ID].volume);
+
+			float SFXvolume = ES2.Load<float> ("Setting.txt?tag=" + master.name);
+
+			if (SFXvolume == -80) {
+
+				genericOutput.PlayOneShot (PlayList [ID].clip, 0f);
+
+			} 
+			else if (SFXvolume == 0) 
+			{
+
+				genericOutput.PlayOneShot (PlayList [ID].clip, PlayList [ID].volume);
+
+			}
+			else 
+			{
+
+				float currentVolume =  1.0f + ((SFXvolume / 4)/10);
+
+				genericOutput.PlayOneShot (PlayList [ID].clip, currentVolume);
+
+			}
 
         }
         else

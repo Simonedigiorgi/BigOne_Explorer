@@ -76,6 +76,13 @@ public static class InputManager
 
 	}
 
+	public static bool SelectButton()
+	{
+
+		return Input.GetButtonDown ("Select");
+
+	}
+
 	#endregion
 
 	#region Arrow

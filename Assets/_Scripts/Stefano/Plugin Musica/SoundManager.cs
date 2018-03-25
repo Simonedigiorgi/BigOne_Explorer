@@ -4,12 +4,13 @@ using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.SceneManagement;
 
-public class GaleCraterSoundManager : MonoBehaviour {
+public class SoundManager : MonoBehaviour {
 
 	public Musica2 music;
 	public static bool isRadio = false;
 	private int nStation = 0;
 
+	public int Scena0;
 	public int Scena1;
 	public int Scena2;
 	public int Scena3;
@@ -21,8 +22,18 @@ public class GaleCraterSoundManager : MonoBehaviour {
 	void Start()
 	{
 
+		Debug.Log (gameObject.name);
+
 		Scene currentScena = SceneManager.GetActiveScene ();
 
+
+		if (currentScena.buildIndex == Scena0) 
+		{
+
+			//Vento
+			music.GoStartMusic (0,0);
+
+		}
 
 		if (currentScena.buildIndex == Scena1)
 		{
@@ -65,9 +76,12 @@ public class GaleCraterSoundManager : MonoBehaviour {
 		}
 
 
-		//ERseguiamo la radio
-		mixerMusic.SetFloat("Volume", -80f);
-		music.GoClusterFade (0);
+		if (currentScena.buildIndex != Scena0)
+		{
+			//Eseguiamo la radio
+			mixerMusic.SetFloat ("Volume", -80f);
+			music.GoClusterFade (0);
+		}
 
 	}
 
@@ -90,65 +104,53 @@ public class GaleCraterSoundManager : MonoBehaviour {
 
 		}
 
-		if (Input.GetKeyDown (KeyCode.U)) 
+		/*
+		if ((Input.GetKeyDown (KeyCode.U) || InputManager.SelectButton() )&& SceneManager.GetActiveScene().buildIndex != Scena0 ) 
 		{
 
-			music.GoPlayOneShot (2);
-
-			if (isRadio == false) 
-			{
-				
-				isRadio = true;
-				//mixerMusic.SetFloat("Volume", ES2.Load<float> ("Setting.txt?tag="+mixerMusic.name));
-				mixerMain.SetFloat("Volume", -80f);
-				mixerMusic.SetFloat("Volume", 0f);
-
-			} 
-			else 
-			{
-
-				isRadio = false;
-				//mixerMain.SetFloat("Volume", ES2.Load<float> ("Setting.txt?tag="+mixerMain.name));
-				Debug.Log (ES2.Load<float> ("Setting.txt?tag=" + mixerMain.name));
-				mixerMusic.SetFloat("Volume", -80f);
-				mixerMain.SetFloat("Volume",  0f);
-
-			}
-
-		}
-
-		/*if (Input.GetKeyDown (KeyCode.RightArrow)) 
-		{
-
-			nStation++;
-
-			if (nStation == 2) 
-			{
-
-				nStation = 0;
-
-			}
-
-
-
-			if (nStation == 1) 
-			{
-				
-				music.GoClusterFade (1);
-
-			}
-
-			if (nStation == 0) 
-			{
-
-				music.GoClusterFade (0);
-
-			}
-
+			SetRadio ();
 
 		}*/
 			
 
 	}
+
+	#region Radio
+
+	/// <summary>
+	/// Metodo che si occupa di attivare o disattivare la radio 
+	/// </summary>
+	private void SetRadio ()
+	{
+
+		music.GoPlayOneShot (2);
+
+		if (isRadio == false) 
+		{
+
+			isRadio = true;
+			mixerMusic.SetFloat("Volume", ES2.Load<float> ("Setting.txt?tag="+mixerMusic.name));
+			//mixerMain.SetFloat("Volume", -80f);
+			mixerMusic.SetFloat("Volume", 0f);
+
+			Debug.Log ("Radio attiva");
+
+		} 
+		else 
+		{
+
+			isRadio = false;
+			mixerMain.SetFloat("Volume", ES2.Load<float> ("Setting.txt?tag="+mixerMain.name));
+			Debug.Log (ES2.Load<float> ("Setting.txt?tag=" + mixerMain.name));
+			//mixerMusic.SetFloat("Volume", -80f);
+			mixerMain.SetFloat("Volume",  0f);
+
+			Debug.Log ("Radio disattiva");
+
+		}
+
+	}
+
+	#endregion
 
 }

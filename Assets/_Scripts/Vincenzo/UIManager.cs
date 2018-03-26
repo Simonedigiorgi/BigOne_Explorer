@@ -14,6 +14,7 @@ public class UIManager : MonoBehaviour
     public GameObject changeScenePanel;
     public GameObject helpKeyPanel;
     public Image fadeImage;
+    public float yOffsetHelpKey;
 
     private static UIManager _instance;
     public static UIManager instance
@@ -30,9 +31,14 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    private void Start()
+    private void Update()
     {
-        //OverlineTargetText();
+        /*if(helpKeyPanel.gameObject.activeSelf)
+        {
+            Vector3 relativePos = vThirdPersonCamera.instance.transform.position;
+            relativePos.y = helpKeyPanel.transform.position.y;
+            helpKeyPanel.transform.LookAt(relativePos);
+        }*/
     }
 
     public void ShowDialoguePanel()
@@ -79,6 +85,27 @@ public class UIManager : MonoBehaviour
     {
         helpKeyPanel.transform.GetChild(0).gameObject.SetActive(false);
         helpKeyPanel.transform.GetChild(1).gameObject.SetActive(false);
+        helpKeyPanel.gameObject.SetActive(false);
+    }
+
+    public void ShowCanvasHelpKey(Transform triggerObjectTransform)
+    {
+        /*helpKeyPanel.transform.position = new Vector3(triggerObjectTransform.position.x,
+            triggerObjectTransform.position.y + triggerObjectTransform.gameObject.GetComponent<Collider>().bounds.size.y + ((helpKeyPanel.GetComponent<RectTransform>().rect.height / 2) / 100), 
+            triggerObjectTransform.position.z);*/
+        helpKeyPanel.transform.position = new Vector3(triggerObjectTransform.position.x,
+            triggerObjectTransform.position.y + yOffsetHelpKey,
+            triggerObjectTransform.position.z);
+
+        if (Input.GetJoystickNames().Length > 0)
+        {
+            helpKeyPanel.transform.GetChild(1).gameObject.SetActive(true);
+        }
+        else
+        {
+            helpKeyPanel.transform.GetChild(0).gameObject.SetActive(true);
+        }
+
         helpKeyPanel.gameObject.SetActive(true);
     }
 

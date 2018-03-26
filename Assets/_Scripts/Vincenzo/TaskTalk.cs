@@ -11,13 +11,14 @@ public class TaskTalk : Task
     public GadgetManager.GadgetType[] gadgetsReward;
 
     GameObject player;
+    Npc npc;
 
     public override void ReadyTask()
     {
         base.ReadyTask();
 
         Npc[] npcs = FindObjectsOfType<Npc>();
-        Npc npc = null;
+        
 
         for(int i = 0; i < npcs.Length; i++)
         {
@@ -34,6 +35,7 @@ public class TaskTalk : Task
     public override void ActiveTask()
     {
         base.ActiveTask();
+
         //DialogueManager dialogueManager = FindObjectOfType<DialogueManager>();
         DialogueManager.instance.SetDialogue(this.taskDialogue, false);
         vThirdPersonController.instance.GetComponent<GenericSettings>().LockPlayer();
@@ -57,6 +59,7 @@ public class TaskTalk : Task
 	public override IEnumerator CompletingTask()
 	{
         vThirdPersonController.instance.GetComponent<GenericSettings>().UnlockPlayer();
+        npc.transform.parent.gameObject.GetComponent<Animator>().SetBool("isTalking", false);
         return base.CompletingTask();
 	}
 

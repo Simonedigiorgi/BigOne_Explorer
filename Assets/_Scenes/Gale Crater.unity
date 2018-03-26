@@ -8508,6 +8508,8 @@ GameObject:
   - component: {fileID: 488582419}
   - component: {fileID: 488582418}
   - component: {fileID: 488582417}
+  - component: {fileID: 488582421}
+  - component: {fileID: 488582420}
   m_Layer: 0
   m_Name: Torch
   m_TagString: Equipment
@@ -8522,7 +8524,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 488582415}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -22.85, y: -0.76, z: 16.55}
+  m_LocalPosition: {x: -22.85, y: -0.7, z: 16.55}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 30208245}
@@ -8580,6 +8582,29 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 488582415}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!65 &488582420
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 488582415}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3, y: 1, z: 3}
+  m_Center: {x: -0.000011444092, y: 0, z: 0.000030517578}
+--- !u!114 &488582421
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 488582415}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1c6c129a6b44c84fa2b7784dda51dce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &500519076
 Prefab:
   m_ObjectHideFlags: 0
@@ -11064,6 +11089,8 @@ GameObject:
   - component: {fileID: 695981641}
   - component: {fileID: 695981640}
   - component: {fileID: 695981639}
+  - component: {fileID: 695981643}
+  - component: {fileID: 695981642}
   m_Layer: 0
   m_Name: Compass
   m_TagString: Equipment
@@ -11078,7 +11105,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 695981637}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -15.724, y: -0.758, z: -17.057}
+  m_LocalPosition: {x: -15.724, y: -0.7, z: -17.057}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 755008136}
@@ -11136,6 +11163,29 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 695981637}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!65 &695981642
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 695981637}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3, y: 1, z: 3}
+  m_Center: {x: -0.000011444092, y: 0, z: 0.000030517578}
+--- !u!114 &695981643
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 695981637}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1c6c129a6b44c84fa2b7784dda51dce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &697387414
 Prefab:
   m_ObjectHideFlags: 0
@@ -17184,7 +17234,7 @@ Prefab:
     - target: {fileID: 224269344852078862, guid: 76161378f782c437989b5095892d24b4,
         type: 2}
       propertyPath: m_SizeDelta.y
-      value: 18.735363
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224119642639795628, guid: 76161378f782c437989b5095892d24b4,
         type: 2}
@@ -17194,7 +17244,7 @@ Prefab:
     - target: {fileID: 224119642639795628, guid: 76161378f782c437989b5095892d24b4,
         type: 2}
       propertyPath: m_SizeDelta.y
-      value: 18.735363
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 76161378f782c437989b5095892d24b4, type: 2}
@@ -18869,6 +18919,8 @@ GameObject:
   - component: {fileID: 1162936293}
   - component: {fileID: 1162936292}
   - component: {fileID: 1162936291}
+  - component: {fileID: 1162936295}
+  - component: {fileID: 1162936294}
   m_Layer: 0
   m_Name: Helmet
   m_TagString: Equipment
@@ -18883,7 +18935,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1162936289}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 13.365, y: -0.701, z: -11.999}
+  m_LocalPosition: {x: 13.365, y: -0.7, z: -11.999}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 110052990}
@@ -18941,6 +18993,29 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1162936289}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!65 &1162936294
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1162936289}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3, y: 1, z: 3}
+  m_Center: {x: -0.000011444092, y: 0, z: 0.000030517578}
+--- !u!114 &1162936295
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1162936289}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1c6c129a6b44c84fa2b7784dda51dce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1164354139 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 100000, guid: 1a2212f889db4f947a8a06607c4ed8ed, type: 3}
@@ -26185,6 +26260,8 @@ GameObject:
   - component: {fileID: 1507405853}
   - component: {fileID: 1507405852}
   - component: {fileID: 1507405851}
+  - component: {fileID: 1507405855}
+  - component: {fileID: 1507405854}
   m_Layer: 0
   m_Name: Backpack
   m_TagString: Equipment
@@ -26199,7 +26276,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1507405849}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -4.549, y: -0.74, z: -1.928}
+  m_LocalPosition: {x: -4.549, y: -0.7, z: -1.928}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1413010411}
@@ -26257,6 +26334,29 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1507405849}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!65 &1507405854
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1507405849}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3, y: 1, z: 3}
+  m_Center: {x: -0.000011444092, y: 0, z: 0.000030517578}
+--- !u!114 &1507405855
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1507405849}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1c6c129a6b44c84fa2b7784dda51dce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1512297513
 GameObject:
   m_ObjectHideFlags: 0
@@ -36399,6 +36499,8 @@ GameObject:
   - component: {fileID: 1981628694}
   - component: {fileID: 1981628693}
   - component: {fileID: 1981628692}
+  - component: {fileID: 1981628696}
+  - component: {fileID: 1981628695}
   m_Layer: 0
   m_Name: Pickaxe
   m_TagString: Equipment
@@ -36413,7 +36515,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1981628690}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 17.427, y: -0.737, z: 15.355}
+  m_LocalPosition: {x: 17.427, y: -0.7, z: 15.355}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1672882795}
@@ -36471,6 +36573,29 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1981628690}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!65 &1981628695
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1981628690}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3, y: 1, z: 3}
+  m_Center: {x: -0.000011444092, y: 0, z: 0.000030517578}
+--- !u!114 &1981628696
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1981628690}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1c6c129a6b44c84fa2b7784dda51dce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1982354116
 GameObject:
   m_ObjectHideFlags: 0

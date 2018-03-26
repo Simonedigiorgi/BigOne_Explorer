@@ -19,7 +19,7 @@ public class Npc : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-        if((Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.Joystick1Button2)) && playerTriggered)
+        if((Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.JoystickButton2)) && playerTriggered)
         {
             UIManager.instance.ShowDialoguePanel();
             if (QuestManager.instance.currentQuest.taskActived.GetComponent<TaskTalk>() &&
@@ -27,6 +27,7 @@ public class Npc : MonoBehaviour {
             {
                 if (QuestManager.instance.currentQuest.taskActived.currentState == Task.TaskState.READY)
                 {
+                    this.transform.parent.GetComponent<Animator>().SetBool("isTalking", true);
                     QuestManager.instance.currentQuest.taskActived.ActiveTask();
                 }
                 else if (QuestManager.instance.currentQuest.taskActived.currentState == Task.TaskState.ACTIVED)
@@ -52,6 +53,7 @@ public class Npc : MonoBehaviour {
         {
             playerTriggered = true;
             UIManager.instance.ShowHelpKeyPanel();
+            //UIManager.instance.ShowCanvasHelpKey(this.transform.parent);
         }
     }
 

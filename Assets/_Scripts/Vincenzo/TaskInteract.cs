@@ -134,6 +134,7 @@ public class TaskInteract : Task
         }
 
         actionComponent.OnPlayerEnter.AddListener(() => UIManager.instance.ShowHelpKeyPanel());
+        //actionComponent.OnPlayerEnter.AddListener(() => UIManager.instance.ShowCanvasHelpKey(action.transform.parent));
         actionComponent.OnPlayerExit.AddListener(() => UIManager.instance.HideHelpKeyPanel());
 
     }

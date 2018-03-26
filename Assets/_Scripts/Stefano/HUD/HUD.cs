@@ -31,6 +31,9 @@ public class HUD : MonoBehaviour {
 	public Color32 disableColor;
 	public Color32 enableColor;
 
+	[Header("Colore dei bottoni disabilitati nel rover menu")]
+	public Color32 disableColorRoverMenu;
+
 	[Header("Lista MAIN VOLUME")]
 	public List<Image> listMainVolume;
 	public AudioMixer mainAudio;
@@ -66,8 +69,12 @@ public class HUD : MonoBehaviour {
 	public class ButtonsRover
 	{
 
+		[Space(10)]
 		public Button button;
+		public Text textButton;
 		public string targetScene;
+		public GameObject warningImage1;
+		public GameObject warningImage2;
 
 	}
 
@@ -79,11 +86,14 @@ public class HUD : MonoBehaviour {
 	private bool checkIsGamepad = false;
 	private bool menuIsOpen = false;
 	private bool roverMenuIsOpen  = false;
+	private static string newSceneUnlock = "";
 
 	#endregion
 
 	void Start()
 	{
+
+		newSceneUnlock = "Valles Marineris";
 
 		//Impostiamo il primo bottone illuminato 
 		ChangeFirstSelected (CheckJoystick());
@@ -193,6 +203,26 @@ public class HUD : MonoBehaviour {
 			}
 
 			#endregion
+
+		}
+
+		//Disabilito i punti esclamativi
+		if (newSceneUnlock != "" && roverMenuIsOpen == true) 
+		{
+
+			for (int i = 0; i < buttonsRover.Length; i++) 
+			{
+
+				/*if (buttonsRover [i].targetScene == newSceneUnlock && buttonsRover[i].button.name == eSystem.currentSelectedGameObject.name) 
+				{
+
+					newSceneUnlock = "";
+					buttonsRover [i].warningImage1.SetActive (false);
+					buttonsRover [i].warningImage2.SetActive (false);
+
+				}*/
+
+			}
 
 		}
 
@@ -717,8 +747,25 @@ public class HUD : MonoBehaviour {
 				//Se trovo la scena di riferimento al bottone lo setto al valore di locking della scena stessa
 				if (buttonsRover [j].targetScene == Database.scenes [i].sceneName) 
 				{
-
+					
 					buttonsRover [j].button.enabled = Database.scenes [i].isUnlocked;
+
+					if(Database.scenes [i].isUnlocked == false)
+					{
+
+						buttonsRover [j].textButton.color = disableColorRoverMenu;
+
+					}
+
+					//controllo se è una scena sbloccata nuova
+					if (newSceneUnlock == buttonsRover [j].targetScene) 
+					{
+						
+						buttonsRover [j].warningImage1.SetActive (true);
+						buttonsRover [j].warningImage2.SetActive (true);
+
+					}
+
 					Debug.Log (buttonsRover [j].targetScene + " = " +Database.scenes [i].isUnlocked);
 
 				}
@@ -753,6 +800,13 @@ public class HUD : MonoBehaviour {
 		//vThirdPersonCamera.instance.lockCamera = false;
 		vThirdPersonController.instance.GetComponent<GenericSettings>().UnlockPlayer();
 
+
+	}
+
+	public static void SetNewSceneUnlock(string nameScene)
+	{
+
+		newSceneUnlock = nameScene;
 
 	}
 

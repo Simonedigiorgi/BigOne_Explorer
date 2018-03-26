@@ -7,7 +7,6 @@ using UnityEngine.UI;
 public class SavingLoading : MonoBehaviour 
 {
 
-
 	#region Private 
 
 	private int number = 0;

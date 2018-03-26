@@ -33,16 +33,19 @@ public class RoverManager : MonoBehaviour
 
 	#endregion
 
-	/*void Awake()
+	void Awake()
 	{
-		if (gameObject.name == "LAND ROVER") 
+		/*if (gameObject.name == "LAND ROVER") 
 		{
 			eSystem = GameObject.FindGameObjectWithTag ("eSystem").GetComponent<EventSystem> ();
             //eSystem.gameObject.SetActive (false);
             //eSystem.GetComponent<StandaloneInputModule>().enabled = false;
-		}
+		}*/
 
-	}*/
+		hud = GameObject.Find ("PauseMenu").GetComponent<HUD> ();
+		eSystem = GameObject.FindGameObjectWithTag ("eSystem").GetComponent<EventSystem> ();
+
+	}
 
     void OnTriggerEnter(Collider other)
     {

@@ -1,19 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using UnityEngine;
 
 public class GrabAction : vTriggerGenericAction
 {
-
-    //public Transform playerLeftForeArm;                                         // BRACCIO SINISTRO (mixamorig:LeftForeArm)
-    //public Transform playerLeftHand;                                            // MANO SINISTRA (mixamorig:LeftHand) 
     private bool isGrabbed;
 
     protected override void Start()
     {
-
         base.Start();
-
         OnDoAction.AddListener(() => Grab());
     }
 
@@ -21,12 +17,7 @@ public class GrabAction : vTriggerGenericAction
 
         if (isGrabbed)
         {
-            //transform.GetChild(0).parent = playerLeftHand.parent.transform;
-            transform.parent.gameObject.SetActive(false);
-            
-
             // Destroy(this.transform.parent.gameObject);
-
         }
 	}
 
@@ -38,13 +29,13 @@ public class GrabAction : vTriggerGenericAction
 
     private IEnumerator GrabCoroutine()
     {
-        yield return new WaitForSeconds(1.6f);                              // Tempo prima di raccogliere l'oggetto                    
         isGrabbed = true;
+        yield return new WaitForSeconds(2);                              // Tempo prima di raccogliere l'oggetto 
+        transform.parent.gameObject.transform.DOScale(0, 1);
+        yield return new WaitForSeconds(1f);
+        transform.parent.gameObject.SetActive(false);
 
-        /*yield return new WaitForSeconds(4.0f);
-        playerLeftForeArm.transform.GetChild(1).gameObject.SetActive(false);*/   // Disattiva l'oggetto
 
-        //Destroy(playerLeftHand.transform.GetChild(1).gameObject);
 
     }
 }

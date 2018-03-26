@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using UnityEngine;
 
 
@@ -33,14 +34,21 @@ public class ShovelAction : vTriggerGenericAction {
         handShovel.transform.GetChild(0).GetComponent<Animator>().SetTrigger("ShovelApertura");
         poketShovel.transform.GetChild(0).gameObject.SetActive(false);
 
-        yield return new WaitForSeconds(4.4f);
+        yield return new WaitForSeconds(1);
+
+        if (transform.parent.gameObject.CompareTag("Panels"))
+        {
+            transform.parent.DOMoveY(-10, 10);
+        }
+
+        yield return new WaitForSeconds(3.4f);
 
         handShovel.transform.GetChild(0).GetComponent<Animator>().SetTrigger("Idle");
         handShovel.transform.GetChild(0).gameObject.SetActive(false);
         poketShovel.transform.GetChild(0).gameObject.SetActive(true);
 
-        //this.transform.parent.gameObject.SetActive(false);
         Destroy(this.transform.parent.gameObject);
+
 
 
     }

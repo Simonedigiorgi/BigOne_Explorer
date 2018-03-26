@@ -4,7 +4,8 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using Invector.CharacterController;
 
-public class RoverManager : MonoBehaviour {
+public class RoverManager : MonoBehaviour 
+{
 
     [Tooltip("Write the name of the level you want to load")]
     public string levelToLoad;
@@ -15,6 +16,7 @@ public class RoverManager : MonoBehaviour {
     private GameObject player;
 
 	[Header("Variabili di Stefano Mauri")]
+	public HUD hud; 
 	public EventSystem eSystem; 
 	public GameObject selectedButton;
 	public GameObject panel;
@@ -39,6 +41,15 @@ public class RoverManager : MonoBehaviour {
 
             enterTrigger = true;
 
+			//Attivo il menu del rover
+			hud.MoveOnMenu ("RoverMenu");
+			//Blocchiamo il menu di pausa
+			hud.SetRoverMenu();
+			//Controlliamo quali bottoni sono attivi
+			hud.CheckAtiveScenes();
+			//Imposto l'eventsystem sul bottone exit del menu di pausa
+			hud.ChangeFirstSelected (hud.menu [hud.menu.Length - 1].buttonSelect);
+
             /*vThirdPersonCamera.instance.lockCamera = true;
 
             //print(vThirdPersonCamera.instance.currentStateName);
@@ -54,9 +65,11 @@ public class RoverManager : MonoBehaviour {
             eSystem.firstSelectedGameObject = selectedButton;
 			eSystem.SetSelectedGameObject(selectedButton);*/
 
-			panel.SetActive (true);
+			//panel.SetActive (true);
 
-            UIManager.instance.ShowScenePanel();
+
+
+            //UIManager.instance.ShowScenePanel();
 
         }
     }
@@ -94,9 +107,15 @@ public class RoverManager : MonoBehaviour {
 
         //eSystem.gameObject.SetActive(false);
 
-        panel.SetActive(false);
+		//Disabilitiamo il menu del rover
+		hud.MoveOnMenu ("RoverMenu_Return");
 
-        UIManager.instance.HideScenePanel();
+		//Diamo la possibilità al giocatore di utilizzare il menu di pausa
+		hud.SetRoverMenu ();
+
+        //panel.SetActive(false);
+
+        //UIManager.instance.HideScenePanel();
 
         //vThirdPersonCamera.instance.lockCamera = false;
         vThirdPersonController.instance.GetComponent<GenericSettings>().UnlockPlayer();
@@ -129,7 +148,6 @@ public class RoverManager : MonoBehaviour {
         		Application.LoadLevel(levelToLoad);
         #endif
     }
-
-    
+		
 
 }

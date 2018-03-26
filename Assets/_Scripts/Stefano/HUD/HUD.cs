@@ -16,6 +16,10 @@ public class HUD : MonoBehaviour {
 	public ScreenMenu[] menu;
 
 	[Space(10)]
+	[Header("Lista bottoni del rover")]
+	public ButtonsRover[] buttonsRover;
+
+	[Space(10)]
 	public EventSystem eSystem;
 	public Animator animPauseMenu;
 
@@ -55,6 +59,15 @@ public class HUD : MonoBehaviour {
 
 	}
 
+	[Serializable]
+	public class ButtonsRover
+	{
+
+		public Button button;
+		public string targetScene;
+
+	}
+
 	#region Private 
 
 	private float timer = 0.2f;
@@ -62,6 +75,7 @@ public class HUD : MonoBehaviour {
 	private bool isGamepad = false;
 	private bool checkIsGamepad = false;
 	private bool menuIsOpen = false;
+	private bool roverMenuIsOpen  = false;
 
 	#endregion
 
@@ -94,16 +108,17 @@ public class HUD : MonoBehaviour {
 	{
 
 		//Se il tasto start viene premeuto avviamo il menu 
-		if (InputManager.StartButton () == true && menuIsOpen == false) 
+		if (InputManager.StartButton () == true && menuIsOpen == false && roverMenuIsOpen == false) 
 		{
 			
 			MoveOnMenu ("PasueMenu_new");
 			menuIsOpen = true;
+			ChangeFirstSelected (menu [0].buttonSelect);
             vThirdPersonController.instance.GetComponent<GenericSettings>().LockPlayer();
 
 		}
 
-		if (isGamepad == true && menuIsOpen == true) 
+		if (isGamepad == true && menuIsOpen == true && roverMenuIsOpen == false) 
 		{
 
 			#region SettingAudio
@@ -516,6 +531,23 @@ public class HUD : MonoBehaviour {
 
 	}
 
+	/// <summary>
+	/// Metodo da eseguire nel trigger del rover per capire se il menu è attivo oppure no
+	/// </summary>
+	public void SetRoverMenu()
+	{
+		if (roverMenuIsOpen == false) 
+		{
+			roverMenuIsOpen = true;
+		} 
+		else 
+		{
+
+			roverMenuIsOpen = false;
+
+		}
+	}
+
 	#endregion
 
 	#region MenuFunction
@@ -545,6 +577,24 @@ public class HUD : MonoBehaviour {
 
 			if (isGamepad != checkIsGamepad) 
 			{
+
+				//Controllo se stiamo aprendo il menu di pausa
+				if (menuIsOpen == true && roverMenuIsOpen == false) 
+				{
+
+					//Dico che stiamo aprendo il menu di pausa ordinario
+					menu [0].isActive = true;
+					menu [menu.Length - 1].isActive = false;
+
+				} 
+				else 
+				{
+					//Dico di che stiamo aprendo il menu di rover
+					menu [menu.Length - 1].isActive = true;
+					menu [0].isActive = false;
+
+				}
+
 				ChangeFirstSelected (isGamepad);
 				checkIsGamepad = isGamepad;
 			}
@@ -646,6 +696,36 @@ public class HUD : MonoBehaviour {
 
 	}
 		
+	#endregion
+
+	#region MenuRover
+
+	/// <summary>
+	/// Controllo le scene che sono raggiungibili
+	/// </summary>
+	public void CheckAtiveScenes()
+	{
+
+		for (int i = 0; i < Database.scenes.Count; i++) 
+		{
+
+			for (int j = 0; j < buttonsRover.Length; j++) 
+			{
+				//Se trovo la scena di riferimento al bottone lo setto al valore di locking della scena stessa
+				if (buttonsRover [j].targetScene == Database.scenes [i].sceneName) 
+				{
+
+					buttonsRover [j].button.enabled = Database.scenes [i].isUnlocked;
+					Debug.Log (buttonsRover [j].targetScene + " = " +Database.scenes [i].isUnlocked);
+
+				}
+
+			}
+
+		}
+
+	}
+
 	#endregion
 
 	#region Old

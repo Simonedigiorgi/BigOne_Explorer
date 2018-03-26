@@ -44,6 +44,9 @@ public class HUD : MonoBehaviour {
 	[Header("Oggetto che contiene questo menu")]
 	public GameObject pauseMenu;
 
+	[Header("Panel per il fade")]
+	public CanvasGroup panelFade;
+
 	#endregion 
 
 	[Serializable]
@@ -723,6 +726,33 @@ public class HUD : MonoBehaviour {
 			}
 
 		}
+
+	}
+
+	public void ExitRoverMenu()
+	{
+
+		RoverManager.enterTrigger = false;
+
+		/*vThirdPersonController.instance.GetComponent<vThirdPersonInput>().lockInput = false;
+        vThirdPersonController.instance.lockSpeed = false;
+        vThirdPersonController.instance.lockRotation = false;*/
+
+		//eSystem.gameObject.SetActive(false);
+
+		//Disabilitiamo il menu del rover
+		MoveOnMenu ("RoverMenu_Return");
+
+		//Diamo la possibilità al giocatore di utilizzare il menu di pausa
+		SetRoverMenu ();
+
+		//panel.SetActive(false);
+
+		//UIManager.instance.HideScenePanel();
+
+		//vThirdPersonCamera.instance.lockCamera = false;
+		vThirdPersonController.instance.GetComponent<GenericSettings>().UnlockPlayer();
+
 
 	}
 

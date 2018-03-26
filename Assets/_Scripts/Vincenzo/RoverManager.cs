@@ -1,19 +1,23 @@
-﻿using UnityEngine;
-using UnityEngine.SceneManagement;
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using Invector.CharacterController;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
-using Invector.CharacterController;
+using UnityEngine.SceneManagement;
+using System;
+
 
 public class RoverManager : MonoBehaviour 
 {
 
-    [Tooltip("Write the name of the level you want to load")]
+    /*[Tooltip("Write the name of the level you want to load")]
     public string levelToLoad;
     [Tooltip("True if you need to spawn the character into a transform location on the scene to load")]
     public bool findSpawnPoint = true;
     [Tooltip("Assign here the spawnPoint name of the scene that you will load")]
     public string spawnPointName;
-    private GameObject player;
+    private GameObject player;*/
 
 	[Header("Variabili di Stefano Mauri")]
 	public HUD hud; 
@@ -22,6 +26,12 @@ public class RoverManager : MonoBehaviour
 	public GameObject panel;
 
 	public static bool enterTrigger = false;
+
+	#region Private
+
+	private bool isInFade = false;
+
+	#endregion
 
 	/*void Awake()
 	{
@@ -39,6 +49,7 @@ public class RoverManager : MonoBehaviour
 		if (other.gameObject.tag.Equals("Player"))
         {
 
+			isInFade = false;
             enterTrigger = true;
 
 			//Attivo il menu del rover
@@ -96,58 +107,70 @@ public class RoverManager : MonoBehaviour
         }
     }*/
 
-	public void ExitMenu()
-	{
 
-        enterTrigger = false;
-
-        /*vThirdPersonController.instance.GetComponent<vThirdPersonInput>().lockInput = false;
-        vThirdPersonController.instance.lockSpeed = false;
-        vThirdPersonController.instance.lockRotation = false;*/
-
-        //eSystem.gameObject.SetActive(false);
-
-		//Disabilitiamo il menu del rover
-		hud.MoveOnMenu ("RoverMenu_Return");
-
-		//Diamo la possibilità al giocatore di utilizzare il menu di pausa
-		hud.SetRoverMenu ();
-
-        //panel.SetActive(false);
-
-        //UIManager.instance.HideScenePanel();
-
-        //vThirdPersonCamera.instance.lockCamera = false;
-        vThirdPersonController.instance.GetComponent<GenericSettings>().UnlockPlayer();
-
-
-    }
-
-    public void ChangeScene()
+    /*public void ChangeScene()
     {
 
-		enterTrigger = false;
+		//enterTrigger = false;
 
-        player = vThirdPersonController.instance.gameObject;
-        /*player.GetComponent<vThirdPersonInput>().lockInput = false;
+        //player = vThirdPersonController.instance.gameObject;
+        player.GetComponent<vThirdPersonInput>().lockInput = false;
         vThirdPersonController.instance.lockSpeed = false;
-        vThirdPersonController.instance.lockRotation = false;*/
+        vThirdPersonController.instance.lockRotation = false;
 
-        vThirdPersonController.instance.GetComponent<GenericSettings>().UnlockPlayer();
+        //vThirdPersonController.instance.GetComponent<GenericSettings>().UnlockPlayer();
 
-        var spawnPointFinderObj = new GameObject("spawnPointFinder");
-        var spawnPointFinder = spawnPointFinderObj.AddComponent<vFindSpawnPoint>();
+        //var spawnPointFinderObj = new GameObject("spawnPointFinder");
+        //var spawnPointFinder = spawnPointFinderObj.AddComponent<vFindSpawnPoint>();
         //Debug.Log(spawnPointName+" "+gameObject.name);
 
         
-        spawnPointFinder.AlighObjetToSpawnPoint(player, spawnPointName);
+        //spawnPointFinder.AlighObjetToSpawnPoint(player, spawnPointName);
+
+		//hud.MoveOnMenu ("FadeDark");
+		//isInFade = true;
+
 
         #if UNITY_5_3_OR_NEWER
         SceneManager.LoadScene(levelToLoad);
         #else
         		Application.LoadLevel(levelToLoad);
         #endif
-    }
+   }*/
+
+	private IEnumerator WaitChangeScene()
+	{
+
+		while (true) 
+		{
+
+
+			Debug.Log (hud.panelFade.alpha);
+
+			if (hud.panelFade.alpha >= 1) 
+			{
+
+				Debug.Log ("Entrato");
+
+				#if UNITY_5_3_OR_NEWER
+				//SceneManager.LoadScene(levelToLoad);
+				#else
+				Application.LoadLevel(levelToLoad);
+				#endif
+
+				yield return null;
+
+			}
+
+			yield return null;
+
+		}
+
+		Debug.Log ("uscito");
+
+		yield return null;
+
+	}
 		
 
 }

@@ -38,12 +38,12 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 1753218108}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
+  m_IndirectSpecularColor: {r: 0.6436644, g: 0.41449746, b: 0.19444087, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 11
-  m_GIWorkflowMode: 1
+  m_GIWorkflowMode: 0
   m_GISettings:
     serializedVersion: 2
     m_BounceScale: 1
@@ -59,7 +59,7 @@ LightmapSettings:
     m_BakeResolution: 10
     m_TextureWidth: 64
     m_TextureHeight: 1024
-    m_AO: 1
+    m_AO: 0
     m_AOMaxDistance: 1
     m_CompAOExponent: 1
     m_CompAOExponentDirect: 0
@@ -754,16 +754,6 @@ Prefab:
       propertyPath: m_LocalScale.x
       value: 1.5
       objectReference: {fileID: 0}
-    - target: {fileID: 114310845040364546, guid: a33793d6d07ad3c4d887ac81bc8a591f,
-        type: 2}
-      propertyPath: disableCollision
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 114310845040364546, guid: a33793d6d07ad3c4d887ac81bc8a591f,
-        type: 2}
-      propertyPath: disableGravity
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a33793d6d07ad3c4d887ac81bc8a591f, type: 2}
   m_IsPrefabParent: 0
@@ -1081,7 +1071,7 @@ Light:
   serializedVersion: 8
   m_Type: 2
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 1.81
+  m_Intensity: 0.75
   m_Range: 7.28
   m_SpotAngle: 30
   m_CookieSize: 10
@@ -1100,7 +1090,7 @@ Light:
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_Lightmapping: 4
+  m_Lightmapping: 1
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
   m_FalloffTable:
@@ -1830,7 +1820,7 @@ Light:
   serializedVersion: 8
   m_Type: 2
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 2.04
+  m_Intensity: 0.75
   m_Range: 3
   m_SpotAngle: 100
   m_CookieSize: 10
@@ -1849,7 +1839,7 @@ Light:
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_Lightmapping: 4
+  m_Lightmapping: 1
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
   m_FalloffTable:
@@ -1949,21 +1939,6 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1733366810033680, guid: c8336834cbc63424db0ce40d21cd3569, type: 2}
       propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 114623296015996822, guid: c8336834cbc63424db0ce40d21cd3569,
-        type: 2}
-      propertyPath: disableCollision
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 114623296015996822, guid: c8336834cbc63424db0ce40d21cd3569,
-        type: 2}
-      propertyPath: disableGravity
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 114623296015996822, guid: c8336834cbc63424db0ce40d21cd3569,
-        type: 2}
-      propertyPath: resetPlayerSettings
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -2579,16 +2554,6 @@ Prefab:
         type: 2}
       propertyPath: openCloseEvents
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114310845040364546, guid: a33793d6d07ad3c4d887ac81bc8a591f,
-        type: 2}
-      propertyPath: disableCollision
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 114310845040364546, guid: a33793d6d07ad3c4d887ac81bc8a591f,
-        type: 2}
-      propertyPath: disableGravity
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a33793d6d07ad3c4d887ac81bc8a591f, type: 2}
@@ -3418,7 +3383,7 @@ Light:
   serializedVersion: 8
   m_Type: 2
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 2.04
+  m_Intensity: 0.75
   m_Range: 3
   m_SpotAngle: 100
   m_CookieSize: 10
@@ -3437,7 +3402,7 @@ Light:
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_Lightmapping: 4
+  m_Lightmapping: 1
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
   m_FalloffTable:
@@ -3794,7 +3759,7 @@ Light:
   serializedVersion: 8
   m_Type: 2
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 2.04
+  m_Intensity: 0.75
   m_Range: 3
   m_SpotAngle: 100
   m_CookieSize: 10
@@ -3813,7 +3778,7 @@ Light:
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_Lightmapping: 4
+  m_Lightmapping: 1
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
   m_FalloffTable:
@@ -5176,7 +5141,7 @@ Light:
   serializedVersion: 8
   m_Type: 2
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 1
+  m_Intensity: 0.75
   m_Range: 10
   m_SpotAngle: 100
   m_CookieSize: 10
@@ -5195,7 +5160,7 @@ Light:
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_Lightmapping: 4
+  m_Lightmapping: 1
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
   m_FalloffTable:
@@ -6721,7 +6686,7 @@ Light:
   serializedVersion: 8
   m_Type: 2
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 2.04
+  m_Intensity: 0.75
   m_Range: 3
   m_SpotAngle: 100
   m_CookieSize: 10
@@ -6740,7 +6705,7 @@ Light:
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_Lightmapping: 4
+  m_Lightmapping: 1
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
   m_FalloffTable:
@@ -6983,7 +6948,7 @@ Light:
   serializedVersion: 8
   m_Type: 2
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 2.04
+  m_Intensity: 0.75
   m_Range: 3
   m_SpotAngle: 100
   m_CookieSize: 10
@@ -7002,7 +6967,7 @@ Light:
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_Lightmapping: 4
+  m_Lightmapping: 1
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
   m_FalloffTable:
@@ -9520,7 +9485,7 @@ Light:
   serializedVersion: 8
   m_Type: 2
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 2.04
+  m_Intensity: 0.75
   m_Range: 3
   m_SpotAngle: 100
   m_CookieSize: 10
@@ -9539,7 +9504,7 @@ Light:
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_Lightmapping: 4
+  m_Lightmapping: 1
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
   m_FalloffTable:
@@ -9619,21 +9584,6 @@ Prefab:
     - target: {fileID: 1327317415788110, guid: 7d8c6d0b20d480240aa0b93a9a9337f4, type: 2}
       propertyPath: m_StaticEditorFlags
       value: 4294967295
-      objectReference: {fileID: 0}
-    - target: {fileID: 114170374026689250, guid: 7d8c6d0b20d480240aa0b93a9a9337f4,
-        type: 2}
-      propertyPath: disableCollision
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 114170374026689250, guid: 7d8c6d0b20d480240aa0b93a9a9337f4,
-        type: 2}
-      propertyPath: disableGravity
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 114170374026689250, guid: 7d8c6d0b20d480240aa0b93a9a9337f4,
-        type: 2}
-      propertyPath: resetPlayerSettings
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7d8c6d0b20d480240aa0b93a9a9337f4, type: 2}
@@ -11414,7 +11364,7 @@ Light:
   serializedVersion: 8
   m_Type: 2
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 2.04
+  m_Intensity: 0.75
   m_Range: 3
   m_SpotAngle: 100
   m_CookieSize: 10
@@ -11433,7 +11383,7 @@ Light:
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_Lightmapping: 4
+  m_Lightmapping: 1
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
   m_FalloffTable:
@@ -12282,16 +12232,6 @@ Prefab:
     - target: {fileID: 4010932759918286, guid: a33793d6d07ad3c4d887ac81bc8a591f, type: 2}
       propertyPath: m_LocalScale.x
       value: 1.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 114310845040364546, guid: a33793d6d07ad3c4d887ac81bc8a591f,
-        type: 2}
-      propertyPath: disableCollision
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 114310845040364546, guid: a33793d6d07ad3c4d887ac81bc8a591f,
-        type: 2}
-      propertyPath: disableGravity
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a33793d6d07ad3c4d887ac81bc8a591f, type: 2}
@@ -14789,106 +14729,6 @@ Prefab:
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: 0527e72bab0481445b8b1b0af4932161, type: 3}
   m_PrefabInternal: {fileID: 912955442}
---- !u!1001 &918641171
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 224393548776148122, guid: 1fcf95e841682cf4282dbccd449a9a18,
-        type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 224393548776148122, guid: 1fcf95e841682cf4282dbccd449a9a18,
-        type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 224393548776148122, guid: 1fcf95e841682cf4282dbccd449a9a18,
-        type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 118.61682
-      objectReference: {fileID: 0}
-    - target: {fileID: 224393548776148122, guid: 1fcf95e841682cf4282dbccd449a9a18,
-        type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0.038414337
-      objectReference: {fileID: 0}
-    - target: {fileID: 224393548776148122, guid: 1fcf95e841682cf4282dbccd449a9a18,
-        type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0.6321929
-      objectReference: {fileID: 0}
-    - target: {fileID: 224393548776148122, guid: 1fcf95e841682cf4282dbccd449a9a18,
-        type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0.03140796
-      objectReference: {fileID: 0}
-    - target: {fileID: 224393548776148122, guid: 1fcf95e841682cf4282dbccd449a9a18,
-        type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 0.7732206
-      objectReference: {fileID: 0}
-    - target: {fileID: 224393548776148122, guid: 1fcf95e841682cf4282dbccd449a9a18,
-        type: 2}
-      propertyPath: m_RootOrder
-      value: 26
-      objectReference: {fileID: 0}
-    - target: {fileID: 224393548776148122, guid: 1fcf95e841682cf4282dbccd449a9a18,
-        type: 2}
-      propertyPath: m_AnchoredPosition.x
-      value: -406.97495
-      objectReference: {fileID: 0}
-    - target: {fileID: 224393548776148122, guid: 1fcf95e841682cf4282dbccd449a9a18,
-        type: 2}
-      propertyPath: m_AnchoredPosition.y
-      value: 116.85846
-      objectReference: {fileID: 0}
-    - target: {fileID: 224393548776148122, guid: 1fcf95e841682cf4282dbccd449a9a18,
-        type: 2}
-      propertyPath: m_SizeDelta.x
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 224393548776148122, guid: 1fcf95e841682cf4282dbccd449a9a18,
-        type: 2}
-      propertyPath: m_SizeDelta.y
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 224393548776148122, guid: 1fcf95e841682cf4282dbccd449a9a18,
-        type: 2}
-      propertyPath: m_AnchorMin.x
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 224393548776148122, guid: 1fcf95e841682cf4282dbccd449a9a18,
-        type: 2}
-      propertyPath: m_AnchorMin.y
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 224393548776148122, guid: 1fcf95e841682cf4282dbccd449a9a18,
-        type: 2}
-      propertyPath: m_AnchorMax.x
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 224393548776148122, guid: 1fcf95e841682cf4282dbccd449a9a18,
-        type: 2}
-      propertyPath: m_AnchorMax.y
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 224393548776148122, guid: 1fcf95e841682cf4282dbccd449a9a18,
-        type: 2}
-      propertyPath: m_Pivot.x
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 224393548776148122, guid: 1fcf95e841682cf4282dbccd449a9a18,
-        type: 2}
-      propertyPath: m_Pivot.y
-      value: 0.5
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: 1fcf95e841682cf4282dbccd449a9a18, type: 2}
-  m_IsPrefabParent: 0
 --- !u!1 &921016973 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 100004, guid: b13724f28bef57a4c8d7ecace166fe7c, type: 3}
@@ -15419,7 +15259,7 @@ Light:
   serializedVersion: 8
   m_Type: 2
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 1
+  m_Intensity: 0.75
   m_Range: 10
   m_SpotAngle: 100
   m_CookieSize: 10
@@ -15438,7 +15278,7 @@ Light:
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_Lightmapping: 4
+  m_Lightmapping: 1
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
   m_FalloffTable:
@@ -17229,7 +17069,7 @@ Prefab:
     - target: {fileID: 224269344852078862, guid: 76161378f782c437989b5095892d24b4,
         type: 2}
       propertyPath: m_SizeDelta.y
-      value: 0
+      value: 18.716982
       objectReference: {fileID: 0}
     - target: {fileID: 224119642639795628, guid: 76161378f782c437989b5095892d24b4,
         type: 2}
@@ -17239,7 +17079,7 @@ Prefab:
     - target: {fileID: 224119642639795628, guid: 76161378f782c437989b5095892d24b4,
         type: 2}
       propertyPath: m_SizeDelta.y
-      value: 0
+      value: 18.716982
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 76161378f782c437989b5095892d24b4, type: 2}
@@ -20507,8 +20347,14 @@ Prefab:
     - target: {fileID: 114085604203688748, guid: a360b57c23cbe654b9c768325366c379,
         type: 2}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114085604203688748, guid: a360b57c23cbe654b9c768325366c379,
+        type: 2}
+      propertyPath: profile
+      value: 
+      objectReference: {fileID: 11400000, guid: 7ace347799c2e4140bbaf271b7fd90cd,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a360b57c23cbe654b9c768325366c379, type: 2}
   m_IsPrefabParent: 0
@@ -21486,7 +21332,7 @@ Light:
   serializedVersion: 8
   m_Type: 2
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 2.04
+  m_Intensity: 0.75
   m_Range: 3
   m_SpotAngle: 100
   m_CookieSize: 10
@@ -21505,7 +21351,7 @@ Light:
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_Lightmapping: 4
+  m_Lightmapping: 1
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
   m_FalloffTable:
@@ -22091,21 +21937,6 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1733366810033680, guid: c8336834cbc63424db0ce40d21cd3569, type: 2}
       propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 114623296015996822, guid: c8336834cbc63424db0ce40d21cd3569,
-        type: 2}
-      propertyPath: disableCollision
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 114623296015996822, guid: c8336834cbc63424db0ce40d21cd3569,
-        type: 2}
-      propertyPath: disableGravity
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 114623296015996822, guid: c8336834cbc63424db0ce40d21cd3569,
-        type: 2}
-      propertyPath: resetPlayerSettings
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -24301,7 +24132,7 @@ Light:
   serializedVersion: 8
   m_Type: 2
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 1.48
+  m_Intensity: 0.75
   m_Range: 10
   m_SpotAngle: 100
   m_CookieSize: 10
@@ -24320,7 +24151,7 @@ Light:
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_Lightmapping: 4
+  m_Lightmapping: 1
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
   m_FalloffTable:
@@ -24400,16 +24231,6 @@ Prefab:
     - target: {fileID: 4010932759918286, guid: a33793d6d07ad3c4d887ac81bc8a591f, type: 2}
       propertyPath: m_LocalScale.x
       value: 1.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 114310845040364546, guid: a33793d6d07ad3c4d887ac81bc8a591f,
-        type: 2}
-      propertyPath: disableCollision
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 114310845040364546, guid: a33793d6d07ad3c4d887ac81bc8a591f,
-        type: 2}
-      propertyPath: disableGravity
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a33793d6d07ad3c4d887ac81bc8a591f, type: 2}
@@ -24748,7 +24569,7 @@ Light:
   serializedVersion: 8
   m_Type: 2
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 2.04
+  m_Intensity: 0.75
   m_Range: 3
   m_SpotAngle: 100
   m_CookieSize: 10
@@ -24767,7 +24588,7 @@ Light:
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_Lightmapping: 4
+  m_Lightmapping: 1
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
   m_FalloffTable:
@@ -26199,7 +26020,7 @@ Light:
   serializedVersion: 8
   m_Type: 2
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 2.04
+  m_Intensity: 0.75
   m_Range: 3
   m_SpotAngle: 100
   m_CookieSize: 10
@@ -26218,7 +26039,7 @@ Light:
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_Lightmapping: 4
+  m_Lightmapping: 1
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
   m_FalloffTable:
@@ -28695,7 +28516,7 @@ Light:
   serializedVersion: 8
   m_Type: 2
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 1.48
+  m_Intensity: 0.75
   m_Range: 10
   m_SpotAngle: 100
   m_CookieSize: 10
@@ -28714,7 +28535,7 @@ Light:
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_Lightmapping: 4
+  m_Lightmapping: 1
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
   m_FalloffTable:
@@ -29694,16 +29515,6 @@ Prefab:
       propertyPath: m_LocalScale.x
       value: 1.5
       objectReference: {fileID: 0}
-    - target: {fileID: 114310845040364546, guid: a33793d6d07ad3c4d887ac81bc8a591f,
-        type: 2}
-      propertyPath: disableCollision
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 114310845040364546, guid: a33793d6d07ad3c4d887ac81bc8a591f,
-        type: 2}
-      propertyPath: disableGravity
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a33793d6d07ad3c4d887ac81bc8a591f, type: 2}
   m_IsPrefabParent: 0
@@ -29935,21 +29746,6 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1733366810033680, guid: c8336834cbc63424db0ce40d21cd3569, type: 2}
       propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 114623296015996822, guid: c8336834cbc63424db0ce40d21cd3569,
-        type: 2}
-      propertyPath: disableCollision
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 114623296015996822, guid: c8336834cbc63424db0ce40d21cd3569,
-        type: 2}
-      propertyPath: disableGravity
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 114623296015996822, guid: c8336834cbc63424db0ce40d21cd3569,
-        type: 2}
-      propertyPath: resetPlayerSettings
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -30812,7 +30608,7 @@ Light:
   serializedVersion: 8
   m_Type: 2
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 1.48
+  m_Intensity: 0.75
   m_Range: 10
   m_SpotAngle: 100
   m_CookieSize: 10
@@ -30831,7 +30627,7 @@ Light:
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_Lightmapping: 4
+  m_Lightmapping: 1
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
   m_FalloffTable:
@@ -30895,7 +30691,7 @@ Light:
   serializedVersion: 8
   m_Type: 2
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 1.48
+  m_Intensity: 0.75
   m_Range: 10
   m_SpotAngle: 100
   m_CookieSize: 10
@@ -30914,7 +30710,7 @@ Light:
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_Lightmapping: 4
+  m_Lightmapping: 1
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
   m_FalloffTable:
@@ -31386,21 +31182,6 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1733366810033680, guid: c8336834cbc63424db0ce40d21cd3569, type: 2}
       propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 114623296015996822, guid: c8336834cbc63424db0ce40d21cd3569,
-        type: 2}
-      propertyPath: disableCollision
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 114623296015996822, guid: c8336834cbc63424db0ce40d21cd3569,
-        type: 2}
-      propertyPath: disableGravity
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 114623296015996822, guid: c8336834cbc63424db0ce40d21cd3569,
-        type: 2}
-      propertyPath: resetPlayerSettings
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -34835,7 +34616,7 @@ Light:
   serializedVersion: 8
   m_Type: 2
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 1.48
+  m_Intensity: 0.75
   m_Range: 10
   m_SpotAngle: 100
   m_CookieSize: 10
@@ -34854,7 +34635,7 @@ Light:
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_Lightmapping: 4
+  m_Lightmapping: 1
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
   m_FalloffTable:
@@ -35263,7 +35044,7 @@ Light:
   serializedVersion: 8
   m_Type: 2
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 2.04
+  m_Intensity: 0.75
   m_Range: 3
   m_SpotAngle: 100
   m_CookieSize: 10
@@ -35282,7 +35063,7 @@ Light:
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_Lightmapping: 4
+  m_Lightmapping: 1
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
   m_FalloffTable:
@@ -35918,7 +35699,7 @@ Light:
   serializedVersion: 8
   m_Type: 2
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 2.04
+  m_Intensity: 0.75
   m_Range: 3
   m_SpotAngle: 100
   m_CookieSize: 10
@@ -35937,7 +35718,7 @@ Light:
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_Lightmapping: 4
+  m_Lightmapping: 1
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
   m_FalloffTable:
@@ -36777,7 +36558,7 @@ Light:
   serializedVersion: 8
   m_Type: 2
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 1
+  m_Intensity: 0.75
   m_Range: 10
   m_SpotAngle: 100
   m_CookieSize: 10
@@ -36796,7 +36577,7 @@ Light:
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_Lightmapping: 4
+  m_Lightmapping: 1
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
   m_FalloffTable:
@@ -38394,7 +38175,7 @@ Light:
   serializedVersion: 8
   m_Type: 2
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 1.48
+  m_Intensity: 0.75
   m_Range: 10
   m_SpotAngle: 100
   m_CookieSize: 10
@@ -38413,7 +38194,7 @@ Light:
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_Lightmapping: 4
+  m_Lightmapping: 1
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
   m_FalloffTable:
@@ -38473,7 +38254,7 @@ Light:
   serializedVersion: 8
   m_Type: 2
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 2.04
+  m_Intensity: 0.75
   m_Range: 3
   m_SpotAngle: 100
   m_CookieSize: 10
@@ -38492,7 +38273,7 @@ Light:
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_Lightmapping: 4
+  m_Lightmapping: 1
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
   m_FalloffTable:
@@ -39115,7 +38896,7 @@ Light:
   serializedVersion: 8
   m_Type: 2
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 2
+  m_Intensity: 1.75
   m_Range: 10
   m_SpotAngle: 100
   m_CookieSize: 10
@@ -39134,7 +38915,7 @@ Light:
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_Lightmapping: 4
+  m_Lightmapping: 1
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
   m_FalloffTable:

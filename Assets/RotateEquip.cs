@@ -12,11 +12,11 @@ public class RotateEquip : MonoBehaviour {
         if (hasTrigger)
             transform.Rotate(Vector3.up * 20 * Time.deltaTime);
 
-        if(transform.GetChild(0).GetComponent<GrabAction>().isGrabbed == true)
+        /*if(transform.GetChild(0).GetComponent<GrabAction>().isGrabbed == true)
         {
             transform.Rotate(Vector3.up * 150 * Time.deltaTime);
             StartCoroutine(Disappear());
-        }
+        }*/
 	}
 
     private void OnTriggerEnter(Collider other)
@@ -30,11 +30,11 @@ public class RotateEquip : MonoBehaviour {
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.CompareTag("Player") && transform.GetChild(0).GetComponent<GrabAction>().isGrabbed == false) // && QUEST EQUIPAGGIAMENTO ENABLED
+        /*if (other.gameObject.CompareTag("Player") && transform.GetChild(0).GetComponent<GrabAction>().isGrabbed == false) // && QUEST EQUIPAGGIAMENTO ENABLED
         {
             transform.DOMoveY(0.5f, 0.3f);
             hasTrigger = false;
-        }
+        }*/
     }
 
     public IEnumerator Disappear()

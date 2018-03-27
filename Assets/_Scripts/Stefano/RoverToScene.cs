@@ -32,14 +32,8 @@ public class RoverToScene : MonoBehaviour {
 		var spawnPointFinder = spawnPointFinderObj.AddComponent<vFindSpawnPoint>();
 		//Debug.Log(spawnPointName+" "+gameObject.name);
 
-
 		spawnPointFinder.AlighObjetToSpawnPoint(player, spawnPointName);
 
-
-		#if UNITY_5_3_OR_NEWER
-        SceneManager.LoadScene(levelToLoad);
-        #else
-        		Application.LoadLevel(levelToLoad);
-        #endif
-	}
+        FindObjectOfType<ProgressSceneLoader>().LoadScene(levelToLoad);
+    }
 }

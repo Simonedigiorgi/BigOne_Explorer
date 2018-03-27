@@ -42,7 +42,6 @@ public class MainMenu : MonoBehaviour
 	public List<Image> listMusicVolume;
 	public AudioMixer musicAudio;
 
-
 	#endregion 
 
 	#region Private 
@@ -794,8 +793,8 @@ public class MainMenu : MonoBehaviour
 	/// <param name="nameScena">Name scena.</param>
 	public void ChangeScenaForNewGame(string nameScena)
 	{
-
-		StartCoroutine (FadeScena (nameScena));
+        
+        StartCoroutine (FadeScena (nameScena));
 
 	}
 
@@ -814,9 +813,9 @@ public class MainMenu : MonoBehaviour
 			//Aseptto che lo schermo sia totalmente nero
 
 			yield return null;
+            
 
-
-		}
+        }
 
 		if (Player != null) 
 		{
@@ -827,10 +826,13 @@ public class MainMenu : MonoBehaviour
 
 		Debug.Log ("Avvio scena!");
 
-		SceneManager.LoadScene (nameScena);
+        //gameObject.SetActive(false);
+        yield return new WaitForSeconds(1);
+        FindObjectOfType<ProgressSceneLoader>().LoadScene(nameScena);
+        //SceneManager.LoadScene (nameScena);
 
 
-	}
+    }
 
 	/// <summary>
 	/// Coroutine che controlla il cambio di input del gioco

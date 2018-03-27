@@ -43,8 +43,6 @@ public class CompassLocation : Gadget {
 
             if (missionPlace)
                 ChangeMissionDirection();
-            else
-                print("No Target");
         }
     }
 

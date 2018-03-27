@@ -17,7 +17,6 @@ public class ProgressSceneLoader : MonoBehaviour
     private void Awake()
     {
         canvas = GetComponentInChildren<Canvas>(true);
-        DontDestroyOnLoad(gameObject);
     }
 
     public void LoadScene(string sceneName)

@@ -52,8 +52,8 @@ public class Npc : MonoBehaviour {
         if (other.tag == "Player" && !playerTriggered)
         {
             playerTriggered = true;
-            UIManager.instance.ShowHelpKeyPanel();
-            //UIManager.instance.ShowCanvasHelpKey(this.transform.parent);
+            //UIManager.instance.ShowHelpKeyPanel();
+            UIManager.instance.ShowCanvasHelpKey(this.transform.parent);
         }
     }
 
@@ -62,7 +62,7 @@ public class Npc : MonoBehaviour {
         if (other.tag == "Player" && playerTriggered)
         {
             playerTriggered = false;
-            UIManager.instance.HideHelpKeyPanel();
+            UIManager.instance.HideHelpKey();
             UIManager.instance.HideDialoguePanel();
         }
     }

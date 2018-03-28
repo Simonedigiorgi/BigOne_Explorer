@@ -78,9 +78,9 @@ public class TaskGadget : TaskInteract {
         {
             SetTaskObject(action.transform.parent.gameObject);
         });
-        actionComponent.OnPlayerEnter.AddListener(() => UIManager.instance.ShowHelpKeyPanel());
-        //actionComponent.OnPlayerEnter.AddListener(() => UIManager.instance.ShowCanvasHelpKey(action.transform.parent));
-        actionComponent.OnPlayerExit.AddListener(() => UIManager.instance.HideHelpKeyPanel());
+        //actionComponent.OnPlayerEnter.AddListener(() => UIManager.instance.ShowHelpKeyPanel());
+        actionComponent.OnPlayerEnter.AddListener(() => UIManager.instance.ShowCanvasHelpKey(action.transform.parent));
+        actionComponent.OnPlayerExit.AddListener(() => UIManager.instance.HideHelpKey());
     }
 
     protected override void SetTaskObject(GameObject interactable)

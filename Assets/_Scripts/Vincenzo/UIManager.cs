@@ -33,12 +33,12 @@ public class UIManager : MonoBehaviour
 
     private void Update()
     {
-        /*if(helpKeyPanel.gameObject.activeSelf)
+        if(helpKeyPanel.gameObject.activeSelf)
         {
             Vector3 relativePos = vThirdPersonCamera.instance.transform.position;
             relativePos.y = helpKeyPanel.transform.position.y;
             helpKeyPanel.transform.LookAt(relativePos);
-        }*/
+        }
     }
 
     public void ShowDialoguePanel()
@@ -68,45 +68,80 @@ public class UIManager : MonoBehaviour
         this.changeScenePanel.gameObject.SetActive(false);
     }
 
-    public void ShowHelpKeyPanel()
+    /*public void ShowHelpKeyPanel()
     {
+        helpKeyPanel.gameObject.SetActive(true);
         if (Input.GetJoystickNames().Length > 0)
         {
             helpKeyPanel.transform.GetChild(1).gameObject.SetActive(true);
         }
         else
         {
-            helpKeyPanel.transform.GetChild(0).gameObject.SetActive(true);
+            helpKeyPanel.transform.GetChild(0).GetComponent<Image>().DOFade(1, 0.4f);
+            helpKeyPanel.transform.GetChild(0).GetComponent<RectTransform>().DOScale(2f, 0.6f);
+            helpKeyPanel.transform.GetChild(0).GetComponent<RectTransform>().DOLocalMoveY(16, 0.4f);
         }
-        helpKeyPanel.gameObject.SetActive(true);
-    }
-
-    public void HideHelpKeyPanel()
-    {
-        helpKeyPanel.transform.GetChild(0).gameObject.SetActive(false);
-        helpKeyPanel.transform.GetChild(1).gameObject.SetActive(false);
-        helpKeyPanel.gameObject.SetActive(false);
-    }
+        
+    }*/
 
     public void ShowCanvasHelpKey(Transform triggerObjectTransform)
     {
+        helpKeyPanel.gameObject.SetActive(true);
         /*helpKeyPanel.transform.position = new Vector3(triggerObjectTransform.position.x,
             triggerObjectTransform.position.y + triggerObjectTransform.gameObject.GetComponent<Collider>().bounds.size.y + ((helpKeyPanel.GetComponent<RectTransform>().rect.height / 2) / 100), 
             triggerObjectTransform.position.z);*/
-        helpKeyPanel.transform.position = new Vector3(triggerObjectTransform.position.x,
-            triggerObjectTransform.position.y + yOffsetHelpKey,
-            triggerObjectTransform.position.z);
-
-        if (Input.GetJoystickNames().Length > 0)
+        if(triggerObjectTransform.gameObject.CompareTag("Panels") || triggerObjectTransform.gameObject.CompareTag("Wall"))
         {
-            helpKeyPanel.transform.GetChild(1).gameObject.SetActive(true);
+            helpKeyPanel.transform.position = new Vector3(vThirdPersonController.instance.transform.position.x,
+            vThirdPersonController.instance.transform.position.y + vThirdPersonController.instance.transform.GetComponent<Collider>().bounds.size.y + yOffsetHelpKey,
+            vThirdPersonController.instance.transform.position.z);
         }
         else
         {
-            helpKeyPanel.transform.GetChild(0).gameObject.SetActive(true);
+            helpKeyPanel.transform.position = new Vector3(triggerObjectTransform.position.x,
+            triggerObjectTransform.position.y + triggerObjectTransform.gameObject.GetComponent<Collider>().bounds.size.y,
+            triggerObjectTransform.position.z);
+        }
+        
+
+        if (Input.GetJoystickNames().Length > 0)
+        {
+            helpKeyPanel.transform.GetChild(1).GetComponent<Image>().DOFade(1, 0.4f);
+            helpKeyPanel.transform.GetChild(1).GetComponent<RectTransform>().DOScale(0.8f, 0.6f);
+            helpKeyPanel.transform.GetChild(1).GetComponent<RectTransform>().DOLocalMoveY(16, 0.4f);
+        }
+        else
+        {
+            helpKeyPanel.transform.GetChild(0).GetComponent<Image>().DOFade(1, 0.4f);
+            helpKeyPanel.transform.GetChild(0).GetComponent<RectTransform>().DOScale(1f, 0.6f);
+            helpKeyPanel.transform.GetChild(0).GetComponent<RectTransform>().DOLocalMoveY(16, 0.4f);
+        }
+    }
+
+    public void HideHelpKey()
+    {
+        Sequence sequenceAnimation = DOTween.Sequence();
+
+        if (Input.GetJoystickNames().Length > 0)
+        {
+            sequenceAnimation.Append(helpKeyPanel.transform.GetChild(1).GetComponent<Image>().DOFade(0, 0.4f));
+            sequenceAnimation.Join(helpKeyPanel.transform.GetChild(1).GetComponent<RectTransform>().DOScale(0.6f, 0.4f));
+            sequenceAnimation.Join(helpKeyPanel.transform.GetChild(1).GetComponent<RectTransform>().DOLocalMoveY(-16, 0.4f));
+        }
+        else
+        {
+            sequenceAnimation.Append(helpKeyPanel.transform.GetChild(0).GetComponent<Image>().DOFade(0, 0.4f));
+            sequenceAnimation.Join(helpKeyPanel.transform.GetChild(0).GetComponent<RectTransform>().DOScale(0.6f, 0.4f));
+            sequenceAnimation.Join(helpKeyPanel.transform.GetChild(0).GetComponent<RectTransform>().DOLocalMoveY(-16, 0.4f));
         }
 
-        helpKeyPanel.gameObject.SetActive(true);
+        StartCoroutine(HideHelpKeyPanel(sequenceAnimation));
+    }
+
+    IEnumerator HideHelpKeyPanel(Sequence sequenceAnimation)
+    {
+        yield return sequenceAnimation.WaitForCompletion();
+        helpKeyPanel.gameObject.SetActive(false);
     }
 
     public IEnumerator FadeDeath()

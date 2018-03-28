@@ -70,7 +70,7 @@ public class TaskInteract : Task
         /*if(isDestroyable)
             Destroy(interactable);*/
 
-        UIManager.instance.HideHelpKeyPanel();
+        UIManager.instance.HideHelpKey();
         taskObjectsNumber++;
         QuestManager.instance.CurrentTargetObjects = tagTaskObjects + ": " + taskObjectsNumber + "/" + allTaskObjectsNumber;
         UIManager.instance.ChangeTargetObjectText();
@@ -133,9 +133,9 @@ public class TaskInteract : Task
             });
         }
 
-        actionComponent.OnPlayerEnter.AddListener(() => UIManager.instance.ShowHelpKeyPanel());
-        //actionComponent.OnPlayerEnter.AddListener(() => UIManager.instance.ShowCanvasHelpKey(action.transform.parent));
-        actionComponent.OnPlayerExit.AddListener(() => UIManager.instance.HideHelpKeyPanel());
+        //actionComponent.OnPlayerEnter.AddListener(() => UIManager.instance.ShowHelpKeyPanel());
+        actionComponent.OnPlayerEnter.AddListener(() => UIManager.instance.ShowCanvasHelpKey(action.transform.parent));
+        actionComponent.OnPlayerExit.AddListener(() => UIManager.instance.HideHelpKey());
 
     }
 

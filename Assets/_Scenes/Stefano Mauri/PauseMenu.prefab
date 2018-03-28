@@ -2385,7 +2385,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   reverbZoneMixCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -5183,7 +5183,12 @@ MonoBehaviour:
   TestSnapShotClip: {fileID: 8300000, guid: d733f366ed917284697d307316eb0770, type: 3}
   Source1: {fileID: 82866104129352352}
   Source2: {fileID: 82551878174108356}
-  systemFade: []
+  systemFade:
+  - ID: 0
+    Mixer1Volume: 0
+    Mixer2Volume: 0
+    clip: {fileID: 8300000, guid: 26b83b34cf9b6454182473e48862a68c, type: 3}
+    TimeFade: 3
   systemClusterFade:
   - clusterName: Stazione1
     ID: 0

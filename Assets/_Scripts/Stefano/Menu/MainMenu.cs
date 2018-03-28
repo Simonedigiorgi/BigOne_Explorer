@@ -694,7 +694,24 @@ public class MainMenu : MonoBehaviour
 	public void ChangeFirstSelected(GameObject button)
 	{
 
-		eSystem.firstSelectedGameObject = button;
+		if (isGamepad == true) 
+		{
+
+			for (int i = 0; i < menu.Length; i++) {
+
+				if (menu [i].screen.activeSelf == true) {
+
+					eSystem.firstSelectedGameObject = null;
+					eSystem.SetSelectedGameObject (null);
+
+					eSystem.firstSelectedGameObject = button;
+					eSystem.SetSelectedGameObject (button);
+					return;
+
+				}
+
+			}
+		}
 
 	}
 
@@ -750,9 +767,12 @@ public class MainMenu : MonoBehaviour
 	public void ChangeFisrtButton(GameObject newButton)
 	{
 
+
 		firstButton = newButton;
 
 	}
+
+
 
 	#endregion
 

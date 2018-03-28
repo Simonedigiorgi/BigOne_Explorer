@@ -513,7 +513,7 @@ public class HUD : MonoBehaviour {
 
 					eSystem.firstSelectedGameObject = menu[i].buttonSelect;
 					eSystem.SetSelectedGameObject (menu [i].buttonSelect);
-					return;
+					//return;
 
 				}
 
@@ -622,7 +622,7 @@ public class HUD : MonoBehaviour {
 				} 
 				else 
 				{
-					//Dico di che stiamo aprendo il menu di rover
+					//Dico che stiamo aprendo il menu di rover
 					menu [menu.Length - 1].isActive = true;
 					menu [0].isActive = false;
 
@@ -630,6 +630,16 @@ public class HUD : MonoBehaviour {
 
 				ChangeFirstSelected (isGamepad);
 				checkIsGamepad = isGamepad;
+			} 
+			else 
+			{
+
+				if (eSystem.currentSelectedGameObject == false) {
+
+					ChangeFirstSelected (isGamepad);
+
+				}
+
 			}
 
 			yield return new WaitForSeconds (1f);

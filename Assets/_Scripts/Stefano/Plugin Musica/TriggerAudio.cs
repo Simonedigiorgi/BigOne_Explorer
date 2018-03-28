@@ -37,13 +37,12 @@ public class TriggerAudio : MonoBehaviour {
 		if(other.tag == "Player")
 		{
 			
-			Debug.Log(name + "Attivo");
-
 
 			if(isEnter == false)
 			{
 
 				isEnter = true;
+				Debug.Log(name + "Entrato");
 
 				if (pairTrigger != null) 
 				{
@@ -64,6 +63,7 @@ public class TriggerAudio : MonoBehaviour {
 			{
 
 				isEnter = false;
+				Debug.Log(name + "Uscito");
 
 				if (pairTrigger != null) 
 				{

@@ -41,7 +41,7 @@ public class Quest : MonoBehaviour
             
         }
 
-
+        UIManager.instance.ChangeQuestText();
         //yield return null;
     }
 
@@ -66,6 +66,7 @@ public class Quest : MonoBehaviour
     {
         this.currentState = QuestState.ENABLED;
         Database.quests[Database.currentQuest.questPriority].currentState = QuestState.ENABLED;
+        UIManager.instance.ChangeQuestText();
     }
 
     public void CompleteQuest()

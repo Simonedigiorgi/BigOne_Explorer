@@ -8,14 +8,44 @@ using UnityEngine.SceneManagement;
 
 public class UIManager : MonoBehaviour 
 {
+    /// <summary>
+    /// 
+    /// Public members that set the animation's speed of the target text  
+    /// 
+    /// </summary>
+    [Header("Speed animation text")]
+    public float overlineSpeed;
+    public float checkSpeed;
+    public float fadeSpeed;
+    public float colorSpeed;
+    public float writeSpeed;
+    public Color colorCheckedText;
 
-    public GameObject dialoguePanel;
-    public GameObject targetText;
-    public GameObject changeScenePanel;
-    public GameObject helpKeyPanel;
-    public Image fadeImage;
+    /// <summary>
+    /// 
+    /// Public member that sets the y position of the help key canvas
+    /// 
+    /// </summary>
+    [Header("HelpKey Y Offset")]
     public float yOffsetHelpKey;
 
+    /// <summary>
+    /// 
+    /// Public member that identify the ui's game object
+    /// 
+    /// </summary>
+    [Header("UI Panel Objects")]
+    public GameObject dialoguePanel;
+    public GameObject targetText;
+    public GameObject questText;
+    public GameObject helpKeyPanel;
+    public Image fadeImage;
+    
+    /// <summary>
+    /// 
+    /// The instance of the ui manager
+    /// 
+    /// </summary>
     private static UIManager _instance;
     public static UIManager instance
     {
@@ -33,6 +63,13 @@ public class UIManager : MonoBehaviour
 
     private void Update()
     {
+
+        if(Input.GetKeyDown(KeyCode.M))
+        {
+            targetText.GetComponent<Text>().DOColor(colorCheckedText, colorSpeed);
+            //targetText.GetComponent<Outline>().DOColor(Color.white, colorSpeed);
+        }
+
         if(helpKeyPanel.gameObject.activeSelf)
         {
             Vector3 relativePos = vThirdPersonCamera.instance.transform.position;
@@ -41,55 +78,51 @@ public class UIManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// 
+    /// Function that shows the dialogue panel
+    /// 
+    /// </summary>
     public void ShowDialoguePanel()
     {
         this.dialoguePanel.GetComponentInChildren<Text>().text = "";
         this.dialoguePanel.SetActive(true);
     }
 
+    /// <summary>
+    /// 
+    /// Function that hides the dialogue panel
+    /// 
+    /// </summary>
     public void HideDialoguePanel()
     {
         this.dialoguePanel.SetActive(false);
         this.dialoguePanel.GetComponentInChildren<Text>().text = "";
     }
 
+
+
+    /// <summary>
+    /// 
+    /// Function that sets the target's text
+    /// 
+    /// </summary>
+    /// <param name="targetText">string that represents the target text to show</param>
     public void SetTartgetText(string targetText)
     {
         this.targetText.GetComponent<Text>().text = targetText;
     }
 
-    public void ShowScenePanel()
-    {
-        this.changeScenePanel.gameObject.SetActive(true);
-    }
-
-    public void HideScenePanel()
-    {
-        this.changeScenePanel.gameObject.SetActive(false);
-    }
-
-    /*public void ShowHelpKeyPanel()
-    {
-        helpKeyPanel.gameObject.SetActive(true);
-        if (Input.GetJoystickNames().Length > 0)
-        {
-            helpKeyPanel.transform.GetChild(1).gameObject.SetActive(true);
-        }
-        else
-        {
-            helpKeyPanel.transform.GetChild(0).GetComponent<Image>().DOFade(1, 0.4f);
-            helpKeyPanel.transform.GetChild(0).GetComponent<RectTransform>().DOScale(2f, 0.6f);
-            helpKeyPanel.transform.GetChild(0).GetComponent<RectTransform>().DOLocalMoveY(16, 0.4f);
-        }
-        
-    }*/
-
+    /// <summary>
+    /// 
+    /// Function that shows and repositions the help key canvas 
+    /// 
+    /// </summary>
+    /// <param name="triggerObjectTransform">transform of the object where will be positioned the help key canvas</param>
     public void ShowCanvasHelpKey(Transform triggerObjectTransform)
     {
         helpKeyPanel.gameObject.SetActive(true);
-        /*helpKeyPanel.transform.position = new Vector3(triggerObjectTransform.position.x,
-            triggerObjectTransform.position.y + triggerObjectTransform.gameObject.GetComponent<Collider>().bounds.size.y + ((helpKeyPanel.GetComponent<RectTransform>().rect.height / 2) / 100), 
-            triggerObjectTransform.position.z);*/
+
         if(triggerObjectTransform.gameObject.CompareTag("Panels") || triggerObjectTransform.gameObject.CompareTag("Wall"))
         {
             helpKeyPanel.transform.position = new Vector3(vThirdPersonController.instance.transform.position.x,
@@ -103,7 +136,6 @@ public class UIManager : MonoBehaviour
             triggerObjectTransform.position.z);
         }
         
-
         if (Input.GetJoystickNames().Length > 0)
         {
             helpKeyPanel.transform.GetChild(1).GetComponent<Image>().DOFade(1, 0.4f);
@@ -118,6 +150,11 @@ public class UIManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// 
+    /// Function that animates the help key canvas
+    /// 
+    /// </summary>
     public void HideHelpKey()
     {
         Sequence sequenceAnimation = DOTween.Sequence();
@@ -176,14 +213,14 @@ public class UIManager : MonoBehaviour
 
         if (QuestManager.instance.CurrentTargetObjects != null && QuestManager.instance.CurrentTargetObjects != "")
         {
-            animationSequence.Append(targetText.transform.parent.GetChild(2).GetComponent<Text>().DOFade(0, 1));
+            animationSequence.Append(targetText.transform.parent.GetChild(2).GetComponent<Text>().DOFade(0, fadeSpeed));
             animationSequence.Append(targetText.transform.parent.GetChild(2).GetComponent<Text>().DOText("", 0));
             animationSequence.Join(targetText.transform.parent.GetChild(2).GetComponent<Text>().DOFade(1, 0));
             QuestManager.instance.CurrentTargetObjects = "";
         }
 
-        animationSequence.Append(targetText.transform.GetChild(0).GetComponent<Image>().DOFillAmount(1, 1.5f));
-        animationSequence.Append(targetText.transform.parent.GetChild(1).GetComponent<Image>().DOFillAmount(1, .5f));
+        animationSequence.Join(targetText.transform.GetChild(0).GetComponent<Image>().DOFillAmount(1, overlineSpeed));
+        animationSequence.Append(targetText.transform.parent.GetChild(1).GetComponent<Image>().DOFillAmount(1, checkSpeed));
 
         return animationSequence;
 
@@ -193,15 +230,15 @@ public class UIManager : MonoBehaviour
     {
         Sequence animationSequence = DOTween.Sequence();
 
-        animationSequence.Append(targetText.transform.GetChild(0).GetComponent<Image>().DOFade(0, 1f));
-        animationSequence.Join(targetText.transform.parent.GetChild(1).GetComponent<Image>().DOFade(0, 1f));
-        animationSequence.Join(targetText.GetComponent<Text>().DOFade(0, 1f));
+        animationSequence.Append(targetText.transform.GetChild(0).GetComponent<Image>().DOFade(0, fadeSpeed));
+        animationSequence.Join(targetText.transform.parent.GetChild(1).GetComponent<Image>().DOFade(0, fadeSpeed));
+        animationSequence.Join(targetText.GetComponent<Text>().DOFade(0, fadeSpeed));
 
         animationSequence.Append(targetText.transform.GetChild(0).GetComponent<Image>().DOFillAmount(0, 0));
         animationSequence.Append(targetText.transform.parent.GetChild(1).GetComponent<Image>().DOFillAmount(0, 0));
 
         animationSequence.Append(targetText.GetComponent<Text>().DOText("", 0));
-        animationSequence.Join(targetText.GetComponent<Text>().DOFade(1, 1f));
+        animationSequence.Join(targetText.GetComponent<Text>().DOFade(1, fadeSpeed));
         animationSequence.Join(targetText.transform.GetChild(0).GetComponent<Image>().DOFade(1, 0));
         animationSequence.Join(targetText.transform.parent.GetChild(1).GetComponent<Image>().DOFade(1, 0));
 
@@ -212,19 +249,24 @@ public class UIManager : MonoBehaviour
     {
         Sequence animationSequence = DOTween.Sequence();
 
-        animationSequence.Append(targetText.GetComponent<Text>().DOText(QuestManager.instance.CurrentTarget, 2));
+        animationSequence.Append(targetText.GetComponent<Text>().DOText(QuestManager.instance.CurrentTarget, writeSpeed));
 
         yield return animationSequence.WaitForCompletion();
 
         if (QuestManager.instance.CurrentTargetObjects != null && QuestManager.instance.CurrentTargetObjects != "")
         {
-            animationSequence.Append(targetText.transform.parent.GetChild(2).GetComponent<Text>().DOText(QuestManager.instance.CurrentTargetObjects, 2));
+            animationSequence.Append(targetText.transform.parent.GetChild(2).GetComponent<Text>().DOText(QuestManager.instance.CurrentTargetObjects, writeSpeed));
         }
     }
 
     public void ChangeTargetObjectText()
     {
         targetText.transform.parent.GetChild(2).GetComponent<Text>().text = QuestManager.instance.CurrentTargetObjects;
+    }
+
+    public void ChangeQuestText()
+    {
+        questText.GetComponent<Text>().text = QuestManager.instance.currentQuest.questName;
     }
 
 }

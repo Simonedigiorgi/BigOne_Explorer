@@ -111,61 +111,71 @@ public class MainMenu : MonoBehaviour
 
 				timer = 0;
 
-				#region MainAudio
+				if(eSystem.currentSelectedGameObject != null)
+				{
 
-				if (eSystem.currentSelectedGameObject.GetHashCode () == mainMusicButton.GetHashCode () && InputManager.MainHorizontal () < 0) {
+					#region MainAudio
 
-					//Tolgo volume
-					DecreaseVolume (listMainVolume, mainAudio);
-					//this.GetComponent<Musica> ().RiproduciSuono (4);
+				
 
-				} else if (eSystem.currentSelectedGameObject.GetHashCode () == mainMusicButton.GetHashCode () && InputManager.MainHorizontal () > 0) {
-					
-					//Tolgo volume
-					EncreaseVolume (listMainVolume, mainAudio);
-					//this.GetComponent<Musica> ().RiproduciSuono (4);
+					if (eSystem.currentSelectedGameObject.GetHashCode () == mainMusicButton.GetHashCode () && InputManager.MainHorizontal () < 0) {
+
+						//Tolgo volume
+						DecreaseVolume (listMainVolume, mainAudio);
+						//this.GetComponent<Musica> ().RiproduciSuono (4);
+
+					} else if (eSystem.currentSelectedGameObject.GetHashCode () == mainMusicButton.GetHashCode () && InputManager.MainHorizontal () > 0) {
+						
+						//Tolgo volume
+						EncreaseVolume (listMainVolume, mainAudio);
+						//this.GetComponent<Musica> ().RiproduciSuono (4);
+
+					}
+							
+
+					#endregion
+
+					#region SFXaudio
+
+					if (eSystem.currentSelectedGameObject.GetHashCode () == SFXbutton.GetHashCode () && InputManager.MainHorizontal () < 0) {
+
+						//Tolgo volume
+						DecreaseVolume (listSFXVolume, SFXaudio);
+						//this.GetComponent<Musica> ().RiproduciSuono (4);
+
+					} else if (eSystem.currentSelectedGameObject.GetHashCode () == SFXbutton.GetHashCode () && InputManager.MainHorizontal () > 0) {
+						
+						//Tolgo volume
+						EncreaseVolume (listSFXVolume, SFXaudio);
+						//this.GetComponent<Musica> ().RiproduciSuono (4);
+
+					}
+
+					#endregion
+
+					#region MusicAudio
+
+					if (eSystem.currentSelectedGameObject.GetHashCode () == musicButton.GetHashCode () && InputManager.MainHorizontal () < 0) {
+
+						//Tolgo volume
+						DecreaseVolume (listMusicVolume, musicAudio);
+						//this.GetComponent<Musica> ().RiproduciSuono (4);
+
+					} else if (eSystem.currentSelectedGameObject.GetHashCode () == musicButton.GetHashCode () && InputManager.MainHorizontal () > 0) {
+						
+						//Tolgo volume
+						EncreaseVolume (listMusicVolume, musicAudio);
+						//this.GetComponent<Musica> ().RiproduciSuono (4);
+
+					}
+
+					#endregion
 
 				}
 
-				#endregion
-
-				#region SFXaudio
-
-				if (eSystem.currentSelectedGameObject.GetHashCode () == SFXbutton.GetHashCode () && InputManager.MainHorizontal () < 0) {
-
-					//Tolgo volume
-					DecreaseVolume (listSFXVolume, SFXaudio);
-					//this.GetComponent<Musica> ().RiproduciSuono (4);
-
-				} else if (eSystem.currentSelectedGameObject.GetHashCode () == SFXbutton.GetHashCode () && InputManager.MainHorizontal () > 0) {
-					
-					//Tolgo volume
-					EncreaseVolume (listSFXVolume, SFXaudio);
-					//this.GetComponent<Musica> ().RiproduciSuono (4);
-
-				}
-
-				#endregion
-
-				#region MusicAudio
-
-				if (eSystem.currentSelectedGameObject.GetHashCode () == musicButton.GetHashCode () && InputManager.MainHorizontal () < 0) {
-
-					//Tolgo volume
-					DecreaseVolume (listMusicVolume, musicAudio);
-					//this.GetComponent<Musica> ().RiproduciSuono (4);
-
-				} else if (eSystem.currentSelectedGameObject.GetHashCode () == musicButton.GetHashCode () && InputManager.MainHorizontal () > 0) {
-					
-					//Tolgo volume
-					EncreaseVolume (listMusicVolume, musicAudio);
-					//this.GetComponent<Musica> ().RiproduciSuono (4);
-
-				}
-
-				#endregion
-
-			} else {
+			}
+			else
+			{
 
 				timer += Time.deltaTime;
 
@@ -468,12 +478,26 @@ public class MainMenu : MonoBehaviour
 			if (list [i].color == disableColor) 
 			{
 
-				//audio.volume += 0.1f;
-				audio.GetFloat("Volume", out v);
-				v += 4f;
-				audio.SetFloat("Volume", v);
-				list [i].color = enableColor;
-				return;
+				if (i == 0) 
+				{
+
+					//audio.volume += 0.1f;
+					audio.GetFloat ("Volume", out v);
+					v += 44f;
+					audio.SetFloat ("Volume", v);
+					list [i].color = enableColor;
+					return;
+
+				} 
+				else {
+					//audio.volume += 0.1f;
+					audio.GetFloat ("Volume", out v);
+					v += 4f;
+					audio.SetFloat ("Volume", v);
+					list [i].color = enableColor;
+					return;
+
+				}
 
 			}
 
@@ -495,12 +519,31 @@ public class MainMenu : MonoBehaviour
 			if (list [list.Count-i].color == enableColor) 
 			{
 
-				//audio.volume -= 0.1f;
-				audio.GetFloat("Volume", out v);
-				v -= 4f;
-				audio.SetFloat("Volume", v);
-				list [list.Count-i].color = disableColor;
-				return;
+				//Debug.Log (i);
+
+				if (i == 10) 
+				{
+					
+					//audio.volume -= 0.1f;
+					audio.GetFloat ("Volume", out v);
+					v -= 44f;
+					audio.SetFloat ("Volume", v);
+					list [list.Count - i].color = disableColor;
+					return;
+
+				}
+				else
+				{
+
+					//audio.volume -= 0.1f;
+					audio.GetFloat ("Volume", out v);
+					v -= 4f;
+					audio.SetFloat ("Volume", v);
+					list [list.Count - i].color = disableColor;
+					return;
+
+
+				}
 
 			}
 

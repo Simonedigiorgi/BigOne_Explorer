@@ -10,6 +10,7 @@ public class GrabAction : vTriggerGenericAction
         base.Start();
         OnDoAction.AddListener(() => Grab());
         OnPlayerEnter.AddListener(() => RotateEquip());
+        OnPlayerExit.AddListener(() => transform.parent.DOMoveY(0.5f, 0.3f));
     }
 
     public void Grab()
@@ -19,9 +20,8 @@ public class GrabAction : vTriggerGenericAction
 
     void RotateEquip()
     {
-        Sequence sequenceGrab = DOTween.Sequence();
+        transform.parent.DOMoveY(1f, 0.3f);
         transform.parent.Rotate(Vector3.up * 20 * Time.deltaTime);
-        
     }
 
     IEnumerator GrabCoroutine()

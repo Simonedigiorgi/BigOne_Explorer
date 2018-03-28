@@ -898,7 +898,12 @@ public class MainMenu : MonoBehaviour
 			} 
 			else 
 			{
-				
+
+				if (eSystem.currentSelectedGameObject == false) {
+
+					ChangeFirstSelected (isGamepad);
+
+				}
 				//ChangeFirstSelected (isGamepad);
 
 			}

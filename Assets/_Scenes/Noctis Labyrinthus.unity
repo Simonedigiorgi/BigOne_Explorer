@@ -73,7 +73,7 @@ LightmapSettings:
     m_FinalGatherFiltering: 1
     m_FinalGatherRayCount: 256
     m_ReflectionCompression: 2
-    m_MixedBakeMode: 2
+    m_MixedBakeMode: 0
     m_BakeBackend: 0
     m_PVRSampling: 1
     m_PVRDirectSampleCount: 32
@@ -90,7 +90,7 @@ LightmapSettings:
     m_PVRFilteringAtrousPositionSigma: 1
   m_LightingDataAsset: {fileID: 112001012, guid: 8ec96b783755699498c10e28e6366ade,
     type: 2}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -15978,8 +15978,8 @@ Light:
   m_Enabled: 1
   serializedVersion: 8
   m_Type: 1
-  m_Color: {r: 0.9485294, g: 0.68609655, b: 0.5161116, a: 1}
-  m_Intensity: 1.7
+  m_Color: {r: 1, g: 0.9920893, b: 0.71323526, a: 1}
+  m_Intensity: 1.1
   m_Range: 10
   m_SpotAngle: 30
   m_CookieSize: 10
@@ -36546,8 +36546,8 @@ MonoBehaviour:
   NoisePower: 2.5
   NoiseTexture: {fileID: 2800000, guid: cdf53ac2282bb2843aa39f4960585a89, type: 3}
   SpotCookie: {fileID: 2800000, guid: 67a6def6238ca2b4da47519fe8f68660, type: 3}
-  GlobalResolutionMult: 1
-  DepthResolutionMult: 1
+  GlobalResolutionMult: 1.2
+  DepthResolutionMult: 1.2
   ShadersHaveVaporIntegrated: 1
   DisplayInSceneView: 0
 --- !u!1 &1497504864 stripped

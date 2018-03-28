@@ -429,12 +429,26 @@ public class HUD : MonoBehaviour {
 			if (list [i].color == disableColor) 
 			{
 
-				//audio.volume += 0.1f;
-				audio.GetFloat("Volume", out v);
-				v += 4f;
-				audio.SetFloat("Volume", v);
-				list [i].color = enableColor;
-				return;
+				if (i == 0) 
+				{
+
+					//audio.volume += 0.1f;
+					audio.GetFloat ("Volume", out v);
+					v += 44f;
+					audio.SetFloat ("Volume", v);
+					list [i].color = enableColor;
+					return;
+
+				} 
+				else {
+					//audio.volume += 0.1f;
+					audio.GetFloat ("Volume", out v);
+					v += 4f;
+					audio.SetFloat ("Volume", v);
+					list [i].color = enableColor;
+					return;
+
+				}
 
 			}
 
@@ -456,17 +470,35 @@ public class HUD : MonoBehaviour {
 			if (list [list.Count-i].color == enableColor) 
 			{
 
-				//audio.volume -= 0.1f;
-				audio.GetFloat("Volume", out v);
-				v -= 4f;
-				audio.SetFloat("Volume", v);
-				list [list.Count-i].color = disableColor;
-				return;
+				//Debug.Log (i);
+
+				if (i == 10) 
+				{
+
+					//audio.volume -= 0.1f;
+					audio.GetFloat ("Volume", out v);
+					v -= 44f;
+					audio.SetFloat ("Volume", v);
+					list [list.Count - i].color = disableColor;
+					return;
+
+				}
+				else
+				{
+
+					//audio.volume -= 0.1f;
+					audio.GetFloat ("Volume", out v);
+					v -= 4f;
+					audio.SetFloat ("Volume", v);
+					list [list.Count - i].color = disableColor;
+					return;
+
+
+				}
 
 			}
 
 		}
-
 	}
 
 

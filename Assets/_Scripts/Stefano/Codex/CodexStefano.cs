@@ -115,14 +115,48 @@ namespace Sirenix.OdinInspector.Demos
 
 		}
 
+		/// <summary>
+		/// Classe che definisce una missione
+		/// </summary>
+		[Serializable]
+		public class CodexMission
+		{
+
+			[FoldoutGroup("$name")]
+			[Header("Nome della Missione")]
+
+			public string name; 
+
+			[FoldoutGroup("$name")]
+			[Header("Descrizione della Missione")]
+			[TextArea]
+
+			public string description;
+
+			[FoldoutGroup("$name")]
+			[Header("Immagine della Missione")]
+			public Sprite photo;
+
+			[FoldoutGroup("$name")]
+			[Space(10)]
+			[Header("variabile che indica se queste informazioni sono disponibili")]
+			public bool isAvaiable;
+
+
+		}
+
 		#endregion
 
 		#region Public
 
 		[Header("Lista delle informazioni del Codex")]
 		public CodexGadget[] listGadget;
+		[Space(10)]
 		public CodexCharacter[] listCharacter;
+		[Space(10)]
 		public CodexPlace[] listPlace;
+		[Space(10)]
+		public CodexMission[] listMission;
 
 		[Header("Variabili dedicate alla grafica del Codex")]
 		public Text nameCategory;
@@ -145,8 +179,9 @@ namespace Sirenix.OdinInspector.Demos
 
 		private HUD hud; 
 
-		public bool isPressedLT = false;
-		public bool isPressedRT = false;
+		//Variabili per la gestione del cambio di categorie
+		private bool isPressedLT = false;
+		private bool isPressedRT = false;
 
 		#endregion
 
@@ -270,6 +305,21 @@ namespace Sirenix.OdinInspector.Demos
 				}
 
 			} 
+			else if (currentCategory == 3) 
+			{
+
+				if (currentSchede == listMission.Length - 1) 
+				{
+					currentSchede = listMission.Length - 1;
+				}
+				else
+				{
+
+					currentSchede++;
+
+				}
+
+			} 
 
 			#endregion
 
@@ -290,6 +340,12 @@ namespace Sirenix.OdinInspector.Demos
 			{
 
 				GetCodexPlacetData (listPlace [currentSchede]);
+
+			} 
+			else if (currentCategory == 3) 
+			{
+
+				GetCodexMissionData ( listMission[currentSchede]);
 
 			}
 
@@ -335,6 +391,12 @@ namespace Sirenix.OdinInspector.Demos
 				
 				GetCodexPlacetData (listPlace [currentSchede]);
 
+			} 
+			else if (currentCategory == 3) 
+			{
+
+				GetCodexMissionData (listMission [currentSchede]);
+
 			}
 
 			Debug.Log ("Previous scheda");
@@ -348,10 +410,10 @@ namespace Sirenix.OdinInspector.Demos
 		{
 
 			#region OutOfTherRange
-			if (currentCategory == 2) 
+			if (currentCategory == 3) 
 			{
 
-				currentCategory = 2;
+				currentCategory = 3;
 
 			} 
 			else 
@@ -413,7 +475,7 @@ namespace Sirenix.OdinInspector.Demos
 			if (listGadget [0].gadgetObj != null) 
 			{
 
-				Instantiate (listGadget [0].gadgetObj, obj.transform);
+				//Instantiate (listGadget [0].gadgetObj, obj.transform);
 				//obj = listGadget [0].gadgetObj;
 
 			}
@@ -434,10 +496,23 @@ namespace Sirenix.OdinInspector.Demos
 			if (listCharacter [0].charcterObj != null) 
 			{
 
-				Instantiate (listCharacter [0].charcterObj, obj.transform);
+				//Instantiate (listCharacter [0].charcterObj, obj.transform);
 				//obj = listCharacter [0].charcterObj.GetComponent<Mesh>();
 
 			}
+
+		}
+
+		/// <summary>
+		/// Metodo che passando la classe, ti restituisce i valori a schermo
+		/// </summary>
+		public void GetCodexMissionData(CodexMission cm)
+		{
+
+			//Stampo i valori a schermo 
+			name.text = cm.name;
+			description.text = cm.description;
+			photo.sprite = cm.photo;
 
 		}
 
@@ -473,13 +548,14 @@ namespace Sirenix.OdinInspector.Demos
 				if (listGadget [0].gadgetObj != null) 
 				{
 
-					Instantiate (listGadget [0].gadgetObj, obj.transform);
+					//Instantiate (listGadget [0].gadgetObj, obj.transform);
 					//obj = listGadget [0].gadgetObj;
 
 				}
 
 
-			} else if (currentCategory == 1) 
+			}
+			else if (currentCategory == 1) 
 			{
 
 				nameCategory.text = "Personaggi";
@@ -489,16 +565,17 @@ namespace Sirenix.OdinInspector.Demos
 				description.text = listCharacter [0].description;
 				photo.sprite = listCharacter [0].photo;
 
-				if (listCharacter [0].charcterObj != null) 
-				{
+				if (listCharacter [0].charcterObj != null) {
 
-					Instantiate (listCharacter [0].charcterObj, obj.transform);
+					//Instantiate (listCharacter [0].charcterObj, obj.transform);
 					//obj = listCharacter [0].charcterObj.GetComponent<Mesh>();
 
 				}
 
 
-			} else if (currentCategory == 2) {
+			} 
+			else if (currentCategory == 2) 
+			{
 
 				nameCategory.text = "Luoghi";
 
@@ -507,6 +584,17 @@ namespace Sirenix.OdinInspector.Demos
 				description.text = listPlace [0].description;
 				photo.sprite = listPlace [0].photo;
 
+
+			}
+			else if (currentCategory == 3) 
+			{
+
+				nameCategory.text = "Missione";
+
+				//Stampo i valori a schermo 
+				name.text = listMission [0].name;
+				description.text = listMission [0].description;
+				photo.sprite = listMission [0].photo;
 
 			}
 

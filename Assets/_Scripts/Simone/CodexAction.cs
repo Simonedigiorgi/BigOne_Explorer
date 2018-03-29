@@ -4,14 +4,13 @@ using UnityEngine;
 
 public class CodexAction : vTriggerGenericAction {
 
-    public GameObject codex;
-    [SerializeField] private bool isCodex;                                                          // Il Codex è attivo?
+    private GameObject codex;
+    [SerializeField] private bool isCodex;
 
 	protected override void Start () {
 
         base.Start();
         OnDoAction.AddListener(() => GetCodex());
-
     }
 	
     public void GetCodex()

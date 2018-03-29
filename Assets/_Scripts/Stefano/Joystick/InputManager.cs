@@ -37,6 +37,20 @@ public static class InputManager
 
 	}
 
+	public static float RTbutton()
+	{
+
+		return Input.GetAxis ("RT");
+
+	}
+
+	public static float LTbutton()
+	{
+
+		return Input.GetAxis ("LT");
+
+	}
+
 	#endregion
 
 	#region Buttons
@@ -82,6 +96,22 @@ public static class InputManager
 		return Input.GetButtonDown ("Select");
 
 	}
+
+
+	public static bool RBbutton()
+	{
+
+		return Input.GetButtonDown ("RB");
+
+	}
+
+	public static bool LBbutton()
+	{
+
+		return Input.GetButtonDown ("LB");
+
+	}
+		
 
 	#endregion
 

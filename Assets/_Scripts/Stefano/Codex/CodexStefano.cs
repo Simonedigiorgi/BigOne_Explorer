@@ -5,6 +5,7 @@ using Sirenix;
 using UnityEngine.UI;
 using System;
 
+
 namespace Sirenix.OdinInspector.Demos
 {
 	
@@ -128,6 +129,7 @@ namespace Sirenix.OdinInspector.Demos
 		public Text name;
 		public Text description; 
 		public Image photo;
+		public GameObject obj;
 
 		#endregion
 
@@ -142,6 +144,9 @@ namespace Sirenix.OdinInspector.Demos
 		private bool isOpen = false;
 
 		private HUD hud; 
+
+		public bool isPressedLT = false;
+		public bool isPressedRT = false;
 
 		#endregion
 
@@ -158,8 +163,56 @@ namespace Sirenix.OdinInspector.Demos
 		void Update()
 		{
 
-			//Gestione dei comandi per il cambio di scheda da Joystick
 
+			Debug.Log (InputManager.RTbutton());
+			Debug.Log (InputManager.LTbutton());
+
+			//Gestione dei comandi per il cambio di scheda da Joystick
+			if (InputManager.RBbutton ()) 
+			{
+
+				NextSchede ();
+
+			}
+
+			if (InputManager.LBbutton ()) 
+			{
+
+				PreviousSchede ();
+
+			}
+
+			if (InputManager.RTbutton () == 1 && isPressedRT == false && isPressedLT == false) 
+			{
+
+				Debug.Log ("Premuto RT");
+
+				isPressedRT = true;
+				isPressedLT = true;
+				NextCategory ();
+
+			}
+
+
+			if (InputManager.LTbutton () == 1 && isPressedLT == false && isPressedRT == false) 
+			{
+
+				Debug.Log ("Premuto LT");
+				Debug.Log (InputManager.LTbutton ());
+
+				isPressedLT = true;
+				isPressedRT = true;
+				PreviousCategory ();
+
+			}
+
+			if (InputManager.LTbutton () == 0 && InputManager.RTbutton() == 0 && isPressedLT == true && isPressedRT == true) 
+			{
+
+				isPressedRT = false;
+				isPressedLT = false;
+
+			}
 
 		}
 
@@ -357,6 +410,14 @@ namespace Sirenix.OdinInspector.Demos
 			description.text = cg.description;
 			photo.sprite = cg.photo;
 
+			if (listGadget [0].gadgetObj != null) 
+			{
+
+				Instantiate (listGadget [0].gadgetObj, obj.transform);
+				//obj = listGadget [0].gadgetObj;
+
+			}
+
 		}
 
 		/// <summary>
@@ -369,6 +430,14 @@ namespace Sirenix.OdinInspector.Demos
 			name.text = ch.name;
 			description.text = ch.description;
 			photo.sprite = ch.photo;
+
+			if (listCharacter [0].charcterObj != null) 
+			{
+
+				Instantiate (listCharacter [0].charcterObj, obj.transform);
+				//obj = listCharacter [0].charcterObj.GetComponent<Mesh>();
+
+			}
 
 		}
 
@@ -401,6 +470,15 @@ namespace Sirenix.OdinInspector.Demos
 				description.text = listGadget [0].description;
 				photo.sprite = listGadget [0].photo;
 
+				if (listGadget [0].gadgetObj != null) 
+				{
+
+					Instantiate (listGadget [0].gadgetObj, obj.transform);
+					//obj = listGadget [0].gadgetObj;
+
+				}
+
+
 			} else if (currentCategory == 1) 
 			{
 
@@ -411,6 +489,15 @@ namespace Sirenix.OdinInspector.Demos
 				description.text = listCharacter [0].description;
 				photo.sprite = listCharacter [0].photo;
 
+				if (listCharacter [0].charcterObj != null) 
+				{
+
+					Instantiate (listCharacter [0].charcterObj, obj.transform);
+					//obj = listCharacter [0].charcterObj.GetComponent<Mesh>();
+
+				}
+
+
 			} else if (currentCategory == 2) {
 
 				nameCategory.text = "Luoghi";
@@ -419,6 +506,7 @@ namespace Sirenix.OdinInspector.Demos
 				name.text = listPlace [0].name;
 				description.text = listPlace [0].description;
 				photo.sprite = listPlace [0].photo;
+
 
 			}
 
@@ -436,6 +524,16 @@ namespace Sirenix.OdinInspector.Demos
 			name.text = listGadget[0].name;
 			description.text = listGadget[0].description;
 			photo.sprite = listGadget[0].photo;
+
+			if (listGadget [0].gadgetObj != null) 
+			{
+
+				Instantiate (listGadget [0].gadgetObj, obj.transform);
+				//obj = listCharacter [0].charcterObj.GetComponent<Mesh>();
+
+			}
+
+		
 
 		}
 

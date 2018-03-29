@@ -4,10 +4,13 @@ using UnityEngine;
 
 public class CodexAction : vTriggerGenericAction {
 
-    private GameObject codex;
+	private CodexStefano codex;
     [SerializeField] private bool isCodex;
 
-	protected override void Start () {
+	protected override void Start () 
+	{
+
+		codex = GameObject.FindGameObjectWithTag ("Codex").GetComponent<CodexStefano> ();
 
         base.Start();
         OnDoAction.AddListener(() => GetCodex());
@@ -16,6 +19,6 @@ public class CodexAction : vTriggerGenericAction {
     public void GetCodex()
     {
         isCodex = true;
-        codex.SetActive(true);
+		codex.MoveOnCodex("Open");
     }
 }

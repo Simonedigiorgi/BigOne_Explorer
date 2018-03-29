@@ -10,7 +10,7 @@ public class CodexAction : vTriggerGenericAction {
 	protected override void Start () 
 	{
 
-		codex = GameObject.FindGameObjectWithTag ("Codex").GetComponent<CodexStefano> ();
+        codex = FindObjectOfType<CodexStefano>();
 
         base.Start();
         OnDoAction.AddListener(() => GetCodex());
@@ -19,6 +19,13 @@ public class CodexAction : vTriggerGenericAction {
     public void GetCodex()
     {
         isCodex = true;
-		codex.MoveOnCodex("Open");
+
+        if (codex)
+        {
+            codex.gameObject.SetActive(true);
+            codex.MoveOnCodex("Open");
+        }
+
+
     }
 }

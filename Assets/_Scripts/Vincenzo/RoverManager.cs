@@ -43,7 +43,7 @@ public class RoverManager : MonoBehaviour
 		}*/
 
 		hud = GameObject.Find ("PauseMenu").GetComponent<HUD> ();
-		eSystem = GameObject.FindGameObjectWithTag ("eSystem").GetComponent<EventSystem> ();
+        eSystem = GameObject.FindGameObjectWithTag ("eSystem").GetComponent<EventSystem> ();
 
 	}
 
@@ -51,6 +51,8 @@ public class RoverManager : MonoBehaviour
     {
 		if (other.gameObject.tag.Equals("Player"))
         {
+
+
 
 			isInFade = false;
             enterTrigger = true;

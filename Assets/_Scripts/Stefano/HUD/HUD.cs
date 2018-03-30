@@ -832,6 +832,8 @@ public class HUD : MonoBehaviour {
 		//Disabilitiamo il menu del rover
 		MoveOnMenu ("RoverMenu_Return");
 
+        eSystem.SetSelectedGameObject(null);
+
 		//Diamo la possibilità al giocatore di utilizzare il menu di pausa
 		SetRoverMenu ();
 

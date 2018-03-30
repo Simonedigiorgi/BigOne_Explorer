@@ -25,6 +25,9 @@ public class RoverManager : MonoBehaviour
 	public GameObject selectedButton;
 	public GameObject panel;
 
+	[Header("Debug mode, da disattivare in delivery")]
+	public bool isDebug = false;
+
 	public static bool enterTrigger = false;
 
 	#region Private
@@ -61,8 +64,13 @@ public class RoverManager : MonoBehaviour
 			hud.MoveOnMenu ("RoverMenu");
 			//Blocchiamo il menu di pausa
 			hud.SetRoverMenu();
-			//Controlliamo quali bottoni sono attivi
-			hud.CheckAtiveScenes();
+
+			if (isDebug == false) 
+			{
+				//Controlliamo quali bottoni sono attivi
+				hud.CheckAtiveScenes ();
+			}
+
 			//Imposto l'eventsystem sul bottone exit del menu di pausa
 			hud.ChangeFirstSelected (hud.menu [hud.menu.Length - 1].buttonSelect);
 
@@ -82,8 +90,6 @@ public class RoverManager : MonoBehaviour
 			eSystem.SetSelectedGameObject(selectedButton);*/
 
 			//panel.SetActive (true);
-
-
 
             //UIManager.instance.ShowScenePanel();
 

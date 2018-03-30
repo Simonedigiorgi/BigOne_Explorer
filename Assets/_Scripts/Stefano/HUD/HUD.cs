@@ -120,6 +120,71 @@ public class HUD : MonoBehaviour {
 	void Update()
 	{
 
+
+		if (isGamepad == false) 
+		{
+
+			if (Input.GetKeyDown (KeyCode.Escape) == true && menuIsOpen == true && roverMenuIsOpen == false) {
+
+				bool canIclose = false;
+
+				for (int i = 0; i < menu.Length; i++) {
+
+					if (menu [i].isActive == true && menu [i].screen == menu [0].screen) {
+
+						canIclose = true;
+
+					} else if (menu [i].isActive == true) {
+
+						canIclose = false;
+
+					}
+
+				}
+
+
+				if (canIclose == true) {
+					MoveOnMenu ("ExitPauseMenu");
+					SetCloseMenu ();
+				}
+
+			}
+
+
+		}
+		else 
+		{
+
+			if (InputManager.StartButton() == true && menuIsOpen == true && roverMenuIsOpen == false) 
+			{
+
+				bool canIclose = false;
+
+				for (int i = 0; i < menu.Length; i++) {
+
+					if (menu [i].isActive == true && menu [i].screen == menu [0].screen) {
+
+						canIclose = true;
+
+					} else if (menu [i].isActive == true) {
+
+						canIclose = false;
+
+					}
+
+				}
+
+
+				if (canIclose == true) 
+				{
+					MoveOnMenu ("ExitPauseMenu");
+					SetCloseMenu ();
+				}
+
+			}
+
+		}
+
 		//Se il tasto start viene premeuto avviamo il menu 
 		if (InputManager.StartButton () == true && menuIsOpen == false && roverMenuIsOpen == false) 
 		{
@@ -811,6 +876,27 @@ public class HUD : MonoBehaviour {
 					Debug.Log (buttonsRover [j].targetScene + " = " +Database.scenes [i].isUnlocked);
 
 				}
+
+			}
+
+		}
+			
+	}
+
+	/// <summary>
+	/// Metodo che disabilitano i warning se attivi
+	/// </summary>
+	public void DisableWarningImage()
+	{
+
+		for (int i = 0; i < buttonsRover.Length; i++) 
+		{
+
+			if (buttonsRover [i].button.name == gameObject.name && buttonsRover [i].warningImage1.activeSelf == true) 
+			{
+
+				buttonsRover [i].warningImage1.SetActive (false);
+				buttonsRover [i].warningImage1.SetActive (false);
 
 			}
 

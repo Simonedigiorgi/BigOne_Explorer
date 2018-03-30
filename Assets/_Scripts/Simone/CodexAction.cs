@@ -5,6 +5,8 @@ using Invector.CharacterController;
 
 public class CodexAction : vTriggerGenericAction {
 
+    public GameObject CodexUI;
+
 	private CodexStefano codex;
     [SerializeField] private bool isCodex;
 
@@ -21,11 +23,13 @@ public class CodexAction : vTriggerGenericAction {
     {
         isCodex = true;
 
+        CodexUI.SetActive(true);
+
         HUD hud = GameObject.Find("PauseMenu").GetComponent<HUD>();
 
         if (codex)
         {
-            if (hud.GetMenuIsOpen())
+            if (hud.GetMenuIsOpen() == false)
             {
                 codex.gameObject.SetActive(true);
                 codex.MoveOnCodex("Open");

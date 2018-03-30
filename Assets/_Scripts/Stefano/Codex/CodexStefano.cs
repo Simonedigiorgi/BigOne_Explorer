@@ -198,7 +198,7 @@ public class CodexStefano : MonoBehaviour
 	{
 
 		//Assegno la referenza del mio menu di pausa
-		hud = GameObject.FindGameObjectWithTag ("PauseMenu").GetComponent<HUD> ();
+		hud = GameObject.Find ("PauseMenu").GetComponent<HUD> ();
 
 		GetFirstView ();
         ChangeCategoryUI(0);
@@ -209,13 +209,15 @@ public class CodexStefano : MonoBehaviour
 	{
 
 
-        if (hud.GetCodexMenuIsOpen())
+        if (hud.GetCodexMenuIsOpen() == false)
         {
 
-            if(Input.GetKeyDown(KeyCode.Escape))
+            //Chiudiamo il menu del Codex
+            if(Input.GetKeyDown(KeyCode.Escape) || InputManager.StartButton())
             {
 
-
+                MoveOnCodex("Close");
+                StartCoroutine(WaitAnimationCodex());
                 
             }
 
@@ -237,7 +239,7 @@ public class CodexStefano : MonoBehaviour
             }
 
 
-            if (InputManager.MainHorizontal() == 1 && isRight == false && isLeft == false)
+            if (InputManager.MainHorizontal() > 0.5)
             {
 
                 Debug.Log("Right");
@@ -249,7 +251,7 @@ public class CodexStefano : MonoBehaviour
             }
 
 
-            if (InputManager.MainHorizontal() == -1 && isLeft == false && isRight == false)
+            if (InputManager.MainHorizontal() < -0.5)
             {
 
                 Debug.Log("Left");
@@ -622,6 +624,8 @@ public class CodexStefano : MonoBehaviour
 
 		}
 
+        ChangeCategoryUI(currentCategory);
+
 	}
 
 	/// <summary>
@@ -728,6 +732,17 @@ public class CodexStefano : MonoBehaviour
 
         hud.SetCodexMenuIsOpen(true);
         vThirdPersonController.instance.GetComponent<GenericSettings>().UnlockPlayer();
+
+    }
+
+    public IEnumerator WaitAnimationCodex()
+    {
+
+        yield return new WaitForSeconds(1.5f);
+
+        SetCloseCodex();
+
+        Debug.Log("Codex chiuso");
 
     }
 

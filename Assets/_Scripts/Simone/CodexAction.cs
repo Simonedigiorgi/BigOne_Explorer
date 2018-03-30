@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Invector.CharacterController;
 
 public class CodexAction : vTriggerGenericAction {
 
@@ -20,10 +21,14 @@ public class CodexAction : vTriggerGenericAction {
     {
         isCodex = true;
 
+        HUD hud = GameObject.Find("PauseMenu").GetComponent<HUD>();
+
         if (codex)
         {
             codex.gameObject.SetActive(true);
             codex.MoveOnCodex("Open");
+            hud.setMenuIsOpen(true);
+            vThirdPersonController.instance.GetComponent<GenericSettings>().LockPlayer();
         }
 
 

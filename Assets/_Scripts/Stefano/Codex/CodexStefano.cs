@@ -6,8 +6,9 @@ using Sirenix;
 using Sirenix.Utilities;
 using UnityEngine.UI;
 using System;
+using Invector.CharacterController;
 
-	
+
 public class CodexStefano : MonoBehaviour 
 {
 
@@ -159,11 +160,15 @@ public class CodexStefano : MonoBehaviour
 	public CodexMission[] listMission;
 
 	[Header("Variabili dedicate alla grafica del Codex")]
-	public Text nameCategory;
 	public Text name;
 	public Text description; 
 	public Image photo;
 	public GameObject obj;
+    [Space(20)]
+    public Text[] category;
+    [Space(20)]
+    public Color32 enableColor;
+    public Color32 disableColor;
 
 	[Space(30)]
 	[Header("Sezione per l'animazione del Codex")]
@@ -184,8 +189,8 @@ public class CodexStefano : MonoBehaviour
 	private HUD hud; 
 
 	//Variabili per la gestione del cambio di categorie
-	private bool isPressedLT = false;
-	private bool isPressedRT = false;
+	private bool isLeft = false;
+	private bool isRight = false;
 
 	#endregion
 
@@ -193,9 +198,10 @@ public class CodexStefano : MonoBehaviour
 	{
 
 		//Assegno la referenza del mio menu di pausa
-		//hud = GameObject.FindGameObjectWithTag ("PauseMenu").GetComponent<HUD> ();
+		hud = GameObject.FindGameObjectWithTag ("PauseMenu").GetComponent<HUD> ();
 
 		GetFirstView ();
+        ChangeCategoryUI(0);
 
 	}
 
@@ -210,46 +216,49 @@ public class CodexStefano : MonoBehaviour
 		if (InputManager.RBbutton ()) 
 		{
 
-			NextSchede ();
+			//NextSchede ();
+            NextCategory();
 
 		}
 
 		if (InputManager.LBbutton ()) 
 		{
 
-			PreviousSchede ();
+            //PreviousSchede ();
+            PreviousCategory();
 
 		}
 
-		if (InputManager.RTbutton () == 1 && isPressedRT == false && isPressedLT == false) 
+		
+         if (InputManager.MainHorizontal () == 1 && isRight == false && isLeft == false) 
 		{
 
-			Debug.Log ("Premuto RT");
+			Debug.Log ("Right");
 
-			isPressedRT = true;
-			isPressedLT = true;
-			NextCategory ();
+			isRight = true;
+			isLeft = true;
+		
 
 		}
 
 
-		if (InputManager.LTbutton () == 1 && isPressedLT == false && isPressedRT == false) 
+		if (InputManager.MainHorizontal () == -1 && isLeft == false && isRight == false) 
 		{
 
-			Debug.Log ("Premuto LT");
+			Debug.Log ("Left");
 			Debug.Log (InputManager.LTbutton ());
 
-			isPressedLT = true;
-			isPressedRT = true;
-			PreviousCategory ();
+			isLeft = true;
+			isRight = true;
+		
 
 		}
 
-		if (InputManager.LTbutton () == 0 && InputManager.RTbutton() == 0 && isPressedLT == true && isPressedRT == true) 
+		if (InputManager.MainHorizontal () == 0 && InputManager.RTbutton() == 0 && isLeft == true && isRight == true) 
 		{
 
-			isPressedRT = false;
-			isPressedLT = false;
+			isRight = false;
+			isLeft = false;
 
 		}
 
@@ -406,7 +415,8 @@ public class CodexStefano : MonoBehaviour
 		Debug.Log ("Previous scheda");
 
 	}
-		
+	
+
 	/// <summary>
 	/// Metodoo che passa alla categoria successiva
 	/// </summary>
@@ -428,11 +438,15 @@ public class CodexStefano : MonoBehaviour
 		}
 		#endregion
 
-		ChangeCategory ();
+		ChangeCategory (currentCategory);
 
 		Debug.Log ("Next categoria");
 
 	}
+
+
+
+ 
 
 	/// <summary>
 	/// Metodo che passa alla categoria precedente
@@ -455,11 +469,13 @@ public class CodexStefano : MonoBehaviour
 		}
 		#endregion
 
-		ChangeCategory ();
+		ChangeCategory (currentCategory);
 
 		Debug.Log ("Previous categoria");
 
 	}
+
+ 
 
 	#endregion
 
@@ -536,13 +552,13 @@ public class CodexStefano : MonoBehaviour
 	/// <summary>
 	/// Metodo che definisce azioni quando avviene il cambio di categoria
 	/// </summary>
-	public void ChangeCategory()
+	public void ChangeCategory(int category)
 	{
+
+        currentCategory = category;
 
 		if (currentCategory == 0) 
 		{
-
-			nameCategory.text = "Gadget";
 
 			//Stampo i valori a schermo 
 			name.text = listGadget [0].name;
@@ -562,8 +578,6 @@ public class CodexStefano : MonoBehaviour
 		else if (currentCategory == 1) 
 		{
 
-			nameCategory.text = "Personaggi";
-
 			//Stampo i valori a schermo 
 			name.text = listCharacter [0].name;
 			description.text = listCharacter [0].description;
@@ -581,7 +595,6 @@ public class CodexStefano : MonoBehaviour
 		else if (currentCategory == 2) 
 		{
 
-			nameCategory.text = "Luoghi";
 
 			//Stampo i valori a schermo 
 			name.text = listPlace [0].name;
@@ -592,8 +605,6 @@ public class CodexStefano : MonoBehaviour
 		}
 		else if (currentCategory == 3) 
 		{
-
-			nameCategory.text = "Missione";
 
 			//Stampo i valori a schermo 
 			name.text = listMission [0].name;
@@ -609,8 +620,6 @@ public class CodexStefano : MonoBehaviour
 	/// </summary>
 	public void GetFirstView()
 	{
-
-		nameCategory.text = "Gadget";
 
 		//Stampo i valori a schermo 
 		name.text = listGadget[0].name;
@@ -643,6 +652,77 @@ public class CodexStefano : MonoBehaviour
 
 	}
 
-	#endregion
+    #endregion
+
+    #region CodexCanvas
+
+    /// <summary>
+    /// Metodo che gestice le categorie della UI a livello grafico
+    /// </summary>
+    public void ChangeCategoryUI(GameObject obj)
+    {
+
+        for(int i=0; i<category.Length; i++)
+        {
+
+            if (obj.name == category[i].name)
+            {
+
+                //category[i].enabled = true;
+                category[i].color = enableColor;
+
+            }
+            else
+            {
+
+                //category[i].enabled = true;
+                category[i].color = disableColor;
+
+            }
+
+
+        }
+
+    }
+
+    /// <summary>
+    /// Metodo che gestice le categorie della UI a livello grafico
+    /// </summary>
+    public void ChangeCategoryUI(int currentCategory)
+    {
+
+        for (int i = 0; i < category.Length; i++)
+        {
+
+            if (currentCategory == i )
+            {
+
+                //category[i].enabled = true;
+                category[i].color = enableColor;
+
+            }
+            else
+            {
+
+                //category[i].enabled = false;
+                category[i].color = disableColor;
+
+            }
+
+
+        }
+
+    }
+
+    public void SetCloseMenu()
+    {
+
+        hud.setMenuIsOpen(false);
+        vThirdPersonController.instance.GetComponent<GenericSettings>().UnlockPlayer();
+
+    }
+
+    #endregion
+
 }
 

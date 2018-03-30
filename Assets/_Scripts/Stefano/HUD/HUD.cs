@@ -85,6 +85,7 @@ public class HUD : MonoBehaviour {
 	private bool isGamepad = false;
 	private bool checkIsGamepad = false;
 	private bool menuIsOpen = false;
+    private bool codexMenuIsOpen = false;
 	private bool roverMenuIsOpen  = false;
 	private static string newSceneUnlock = "";
 
@@ -120,177 +121,200 @@ public class HUD : MonoBehaviour {
 	void Update()
 	{
 
+        if (codexMenuIsOpen == false)
+        {
 
-		if (isGamepad == false) 
-		{
+            if (isGamepad == false)
+            {
 
-			if (Input.GetKeyDown (KeyCode.Escape) == true && menuIsOpen == true && roverMenuIsOpen == false) {
+                if (Input.GetKeyDown(KeyCode.Escape) == true && menuIsOpen == true && roverMenuIsOpen == false)
+                {
 
-				bool canIclose = false;
+                    bool canIclose = false;
 
-				for (int i = 0; i < menu.Length; i++) {
+                    for (int i = 0; i < menu.Length; i++)
+                    {
 
-					if (menu [i].isActive == true && menu [i].screen == menu [0].screen) {
+                        if (menu[i].isActive == true && menu[i].screen == menu[0].screen)
+                        {
 
-						canIclose = true;
+                            canIclose = true;
 
-					} else if (menu [i].isActive == true) {
+                        }
+                        else if (menu[i].isActive == true)
+                        {
 
-						canIclose = false;
+                            canIclose = false;
 
-					}
+                        }
 
-				}
+                    }
 
 
-				if (canIclose == true) {
-					MoveOnMenu ("ExitPauseMenu");
-					SetCloseMenu ();
-				}
+                    if (canIclose == true)
+                    {
+                        MoveOnMenu("ExitPauseMenu");
+                        SetCloseMenu();
+                    }
 
-			}
+                }
 
 
-		}
-		else 
-		{
+            }
+            else
+            {
 
-			if (InputManager.StartButton() == true && menuIsOpen == true && roverMenuIsOpen == false) 
-			{
+                if (InputManager.StartButton() == true && menuIsOpen == true && roverMenuIsOpen == false)
+                {
 
-				bool canIclose = false;
+                    bool canIclose = false;
 
-				for (int i = 0; i < menu.Length; i++) {
+                    for (int i = 0; i < menu.Length; i++)
+                    {
 
-					if (menu [i].isActive == true && menu [i].screen == menu [0].screen) {
+                        if (menu[i].isActive == true && menu[i].screen == menu[0].screen)
+                        {
 
-						canIclose = true;
+                            canIclose = true;
 
-					} else if (menu [i].isActive == true) {
+                        }
+                        else if (menu[i].isActive == true)
+                        {
 
-						canIclose = false;
+                            canIclose = false;
 
-					}
+                        }
 
-				}
+                    }
 
 
-				if (canIclose == true) 
-				{
-					MoveOnMenu ("ExitPauseMenu");
-					SetCloseMenu ();
-				}
+                    if (canIclose == true)
+                    {
+                        MoveOnMenu("ExitPauseMenu");
+                        SetCloseMenu();
+                    }
 
-			}
+                }
 
-		}
+            }
 
-		//Se il tasto start viene premeuto avviamo il menu 
-		if (InputManager.StartButton () == true && menuIsOpen == false && roverMenuIsOpen == false) 
-		{
-			
-			MoveOnMenu ("PasueMenu_new");
-			menuIsOpen = true;
-			ChangeFirstSelected (menu [0].buttonSelect);
-            vThirdPersonController.instance.GetComponent<GenericSettings>().LockPlayer();
+            //Se il tasto start viene premeuto avviamo il menu 
+            if (InputManager.StartButton() == true && menuIsOpen == false && roverMenuIsOpen == false)
+            {
 
-		}
+                MoveOnMenu("PasueMenu_new");
+                menuIsOpen = true;
+                ChangeFirstSelected(menu[0].buttonSelect);
+                vThirdPersonController.instance.GetComponent<GenericSettings>().LockPlayer();
 
-		if (isGamepad == true && menuIsOpen == true && roverMenuIsOpen == false) 
-		{
+            }
 
-			#region SettingAudio
+            if (isGamepad == true && menuIsOpen == true && roverMenuIsOpen == false)
+            {
 
-			//Controllo audio per il menu principale 
-			if (timer >= 0.08f && isGamepad == true && eSystem.currentSelectedGameObject != null) 
-			{
+                #region SettingAudio
 
-				timer = 0;
+                //Controllo audio per il menu principale 
+                if (timer >= 0.08f && isGamepad == true && eSystem.currentSelectedGameObject != null)
+                {
 
-				#region MainAudio
+                    timer = 0;
 
-				if (eSystem.currentSelectedGameObject.GetHashCode () == mainMusicButton.GetHashCode () && InputManager.MainHorizontal () < -0.5) {
+                    #region MainAudio
 
-					//Tolgo volume
-					DecreaseVolume (listMainVolume, mainAudio);
-					//this.GetComponent<Musica> ().RiproduciSuono (4);
+                    if (eSystem.currentSelectedGameObject.GetHashCode() == mainMusicButton.GetHashCode() && InputManager.MainHorizontal() < -0.5)
+                    {
 
-				} else if (eSystem.currentSelectedGameObject.GetHashCode () == mainMusicButton.GetHashCode () && InputManager.MainHorizontal () > 0.5) {
+                        //Tolgo volume
+                        DecreaseVolume(listMainVolume, mainAudio);
+                        //this.GetComponent<Musica> ().RiproduciSuono (4);
 
-					//Tolgo volume
-					EncreaseVolume (listMainVolume, mainAudio);
-					//this.GetComponent<Musica> ().RiproduciSuono (4);
+                    }
+                    else if (eSystem.currentSelectedGameObject.GetHashCode() == mainMusicButton.GetHashCode() && InputManager.MainHorizontal() > 0.5)
+                    {
 
-				}
+                        //Tolgo volume
+                        EncreaseVolume(listMainVolume, mainAudio);
+                        //this.GetComponent<Musica> ().RiproduciSuono (4);
 
-				#endregion
+                    }
 
-				#region SFXaudio
+                    #endregion
 
-				if (eSystem.currentSelectedGameObject.GetHashCode () == SFXbutton.GetHashCode () && InputManager.MainHorizontal () < -0.5) {
+                    #region SFXaudio
 
-					//Tolgo volume
-					DecreaseVolume (listSFXVolume, SFXaudio);
-					//this.GetComponent<Musica> ().RiproduciSuono (4);
+                    if (eSystem.currentSelectedGameObject.GetHashCode() == SFXbutton.GetHashCode() && InputManager.MainHorizontal() < -0.5)
+                    {
 
-				} else if (eSystem.currentSelectedGameObject.GetHashCode () == SFXbutton.GetHashCode () && InputManager.MainHorizontal () > 0.5) {
+                        //Tolgo volume
+                        DecreaseVolume(listSFXVolume, SFXaudio);
+                        //this.GetComponent<Musica> ().RiproduciSuono (4);
 
-					//Tolgo volume
-					EncreaseVolume (listSFXVolume, SFXaudio);
-					//this.GetComponent<Musica> ().RiproduciSuono (4);
+                    }
+                    else if (eSystem.currentSelectedGameObject.GetHashCode() == SFXbutton.GetHashCode() && InputManager.MainHorizontal() > 0.5)
+                    {
 
-				}
+                        //Tolgo volume
+                        EncreaseVolume(listSFXVolume, SFXaudio);
+                        //this.GetComponent<Musica> ().RiproduciSuono (4);
 
-				#endregion
+                    }
 
-				#region MusicAudio
+                    #endregion
 
-				if (eSystem.currentSelectedGameObject.GetHashCode () == musicButton.GetHashCode () && InputManager.MainHorizontal () < -0.5) {
+                    #region MusicAudio
 
-					//Tolgo volume
-					DecreaseVolume (listMusicVolume, musicAudio);
-					//this.GetComponent<Musica> ().RiproduciSuono (4);
+                    if (eSystem.currentSelectedGameObject.GetHashCode() == musicButton.GetHashCode() && InputManager.MainHorizontal() < -0.5)
+                    {
 
-				} else if (eSystem.currentSelectedGameObject.GetHashCode () == musicButton.GetHashCode () && InputManager.MainHorizontal () > 0.5) {
+                        //Tolgo volume
+                        DecreaseVolume(listMusicVolume, musicAudio);
+                        //this.GetComponent<Musica> ().RiproduciSuono (4);
 
-					//Tolgo volume
-					EncreaseVolume (listMusicVolume, musicAudio);
-					//this.GetComponent<Musica> ().RiproduciSuono (4);
+                    }
+                    else if (eSystem.currentSelectedGameObject.GetHashCode() == musicButton.GetHashCode() && InputManager.MainHorizontal() > 0.5)
+                    {
 
-				}
+                        //Tolgo volume
+                        EncreaseVolume(listMusicVolume, musicAudio);
+                        //this.GetComponent<Musica> ().RiproduciSuono (4);
 
-				#endregion
+                    }
 
-			} else {
+                    #endregion
 
-				timer += Time.deltaTime;
+                }
+                else
+                {
 
-			}
+                    timer += Time.deltaTime;
 
-			#endregion
+                }
 
-		}
+                #endregion
 
-		//Disabilito i punti esclamativi
-		if (newSceneUnlock != "" && roverMenuIsOpen == true) 
-		{
+            }
 
-			for (int i = 0; i < buttonsRover.Length; i++) 
-			{
+            //Disabilito i punti esclamativi
+            if (newSceneUnlock != "" && roverMenuIsOpen == true)
+            {
 
-				/*if (buttonsRover [i].targetScene == newSceneUnlock && buttonsRover[i].button.name == eSystem.currentSelectedGameObject.name) 
-				{
+                for (int i = 0; i < buttonsRover.Length; i++)
+                {
 
-					newSceneUnlock = "";
-					buttonsRover [i].warningImage1.SetActive (false);
-					buttonsRover [i].warningImage2.SetActive (false);
+                    /*if (buttonsRover [i].targetScene == newSceneUnlock && buttonsRover[i].button.name == eSystem.currentSelectedGameObject.name) 
+				    {
 
-				}*/
+					    newSceneUnlock = "";
+					    buttonsRover [i].warningImage1.SetActive (false);
+					    buttonsRover [i].warningImage2.SetActive (false);
 
-			}
+				    }*/
 
-		}
+                }
 
+            }
+        }
 	}
 
 	#region Volume
@@ -835,15 +859,36 @@ public class HUD : MonoBehaviour {
         vThirdPersonController.instance.GetComponent<GenericSettings>().UnlockPlayer();
 
 	}
-		
-	#endregion
 
-	#region MenuRover
+    public void SetCodexMenuIsOpen(bool value)
+    {
 
-	/// <summary>
-	/// Controllo le scene che sono raggiungibili
-	/// </summary>
-	public void CheckAtiveScenes()
+        codexMenuIsOpen = value;
+
+    }
+
+    public bool GetCodexMenuIsOpen()
+    {
+
+        return codexMenuIsOpen;
+
+    }
+
+    public bool GetMenuIsOpen()
+    {
+
+        return menuIsOpen;
+
+    }
+
+    #endregion
+
+    #region MenuRover
+
+    /// <summary>
+    /// Controllo le scene che sono raggiungibili
+    /// </summary>
+    public void CheckAtiveScenes()
 	{
 
 		for (int i = 0; i < Database.scenes.Count; i++) 

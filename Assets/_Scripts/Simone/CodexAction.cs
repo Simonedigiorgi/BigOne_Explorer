@@ -25,10 +25,13 @@ public class CodexAction : vTriggerGenericAction {
 
         if (codex)
         {
-            codex.gameObject.SetActive(true);
-            codex.MoveOnCodex("Open");
-            hud.setMenuIsOpen(true);
-            vThirdPersonController.instance.GetComponent<GenericSettings>().LockPlayer();
+            if (hud.GetMenuIsOpen())
+            {
+                codex.gameObject.SetActive(true);
+                codex.MoveOnCodex("Open");
+                hud.SetCodexMenuIsOpen(false);
+                vThirdPersonController.instance.GetComponent<GenericSettings>().LockPlayer();
+            }
         }
 
 

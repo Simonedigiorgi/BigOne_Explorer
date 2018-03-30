@@ -209,58 +209,67 @@ public class CodexStefano : MonoBehaviour
 	{
 
 
-		Debug.Log (InputManager.RTbutton());
-		Debug.Log (InputManager.LTbutton());
+        if (hud.GetCodexMenuIsOpen())
+        {
 
-		//Gestione dei comandi per il cambio di scheda da Joystick
-		if (InputManager.RBbutton ()) 
-		{
-
-			//NextSchede ();
-            NextCategory();
-
-		}
-
-		if (InputManager.LBbutton ()) 
-		{
-
-            //PreviousSchede ();
-            PreviousCategory();
-
-		}
-
-		
-         if (InputManager.MainHorizontal () == 1 && isRight == false && isLeft == false) 
-		{
-
-			Debug.Log ("Right");
-
-			isRight = true;
-			isLeft = true;
-		
-
-		}
+            if(Input.GetKeyDown(KeyCode.Escape))
+            {
 
 
-		if (InputManager.MainHorizontal () == -1 && isLeft == false && isRight == false) 
-		{
+                
+            }
 
-			Debug.Log ("Left");
-			Debug.Log (InputManager.LTbutton ());
+            //Gestione dei comandi per il cambio di scheda da Joystick
+            if (InputManager.RBbutton())
+            {
 
-			isLeft = true;
-			isRight = true;
-		
+                //NextSchede ();
+                NextCategory();
 
-		}
+            }
 
-		if (InputManager.MainHorizontal () == 0 && InputManager.RTbutton() == 0 && isLeft == true && isRight == true) 
-		{
+            if (InputManager.LBbutton())
+            {
 
-			isRight = false;
-			isLeft = false;
+                //PreviousSchede ();
+                PreviousCategory();
 
-		}
+            }
+
+
+            if (InputManager.MainHorizontal() == 1 && isRight == false && isLeft == false)
+            {
+
+                Debug.Log("Right");
+
+                isRight = true;
+                isLeft = true;
+
+
+            }
+
+
+            if (InputManager.MainHorizontal() == -1 && isLeft == false && isRight == false)
+            {
+
+                Debug.Log("Left");
+                Debug.Log(InputManager.LTbutton());
+
+                isLeft = true;
+                isRight = true;
+
+
+            }
+
+            if (InputManager.MainHorizontal() == 0 && InputManager.RTbutton() == 0 && isLeft == true && isRight == true)
+            {
+
+                isRight = false;
+                isLeft = false;
+
+            }
+
+        }
 
 	}
 
@@ -714,10 +723,10 @@ public class CodexStefano : MonoBehaviour
 
     }
 
-    public void SetCloseMenu()
+    public void SetCloseCodex()
     {
 
-        hud.setMenuIsOpen(false);
+        hud.SetCodexMenuIsOpen(true);
         vThirdPersonController.instance.GetComponent<GenericSettings>().UnlockPlayer();
 
     }

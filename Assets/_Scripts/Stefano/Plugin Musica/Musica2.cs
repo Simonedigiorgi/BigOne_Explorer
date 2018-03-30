@@ -705,7 +705,9 @@ public class Musica2 : MonoBehaviour
 
                 if (trackID < systemMixer[i].listTrack.Length)
                 {
-                    systemMixer[i].listTrack[trackID].Play();
+					systemMixer [i].listTrack [trackID].output.volume = systemMixer [i].listTrack [trackID].volume;
+					systemMixer [i].listTrack [trackID].output.clip = systemMixer [i].listTrack [trackID].clip;
+					systemMixer[i].listTrack[trackID].output.Play();
                 }
 
                 break;
@@ -731,7 +733,8 @@ public class Musica2 : MonoBehaviour
 
             if (trackID < systemMixer[mixerID].listTrack.Length)
             {
-                systemMixer[mixerID].listTrack[trackID].Stop();
+
+				systemMixer[mixerID].listTrack[trackID].output.Stop();
             }
 
         }
@@ -760,7 +763,7 @@ public class Musica2 : MonoBehaviour
 
                 if (trackID < systemMixer[i].listTrack.Length)
                 {
-                    systemMixer[i].listTrack[trackID].Stop();
+					systemMixer[i].listTrack[trackID].output.Stop();
                 }
 
                 break;

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class TriggerAudio : MonoBehaviour {
 
@@ -51,10 +52,22 @@ public class TriggerAudio : MonoBehaviour {
 
 				}
 
-				for(int i=0; i< listSnapShotEnter.Length; i++)
+				if (SceneManager.GetActiveScene ().buildIndex == 1 && PlayerPrefs.GetInt ("isFirstTime") == 0) 
+				{
+					for (int i = 0; i < listSnapShotEnter.Length; i++) {
+
+						music.GoSnapShotFade (listSnapshotExit [i]);
+
+					}
+				}
+				else 
 				{
 
-					music.GoSnapShotFade(listSnapShotEnter[i]);
+					for (int i = 0; i < listSnapShotEnter.Length; i++) {
+
+						music.GoSnapShotFade (listSnapShotEnter [i]);
+
+					}
 
 				}
 

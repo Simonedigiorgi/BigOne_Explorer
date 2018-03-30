@@ -19,8 +19,18 @@ public class SoundManager : MonoBehaviour {
 	public AudioMixer mixerMusic;
 	public AudioMixer mixerMain;
 
+	[Header("Variabile da utilizzare in case di Debug, togliere in delivery")]
+	public bool isDebug = false;
+
 	void Start()
 	{
+
+		if (isDebug == true) 
+		{
+
+			PlayerPrefs.SetInt ("isFirstTime", 0);
+
+		}
 
 		Debug.Log (gameObject.name);
 
@@ -37,14 +47,29 @@ public class SoundManager : MonoBehaviour {
 
 		if (currentScena.buildIndex == Scena1)
 		{
-			
-			music.GoStartMusic (0, 0);
-			music.GoStartMusic (0, 1);
+
+			//Controlliamo se è una nuova partita
+			if (PlayerPrefs.GetInt ("isFirstTime") == 0)
+			{
+
+				PlayerPrefs.SetInt ("isFirstTime", 1);
+				music.GoSnapShotFade (0);
+
+			} 
+			else 
+			{
+
+				music.GoSnapShotFade (1);
+
+			}
+
+			//music.GoStartMusic (0, 0);
+			//music.GoStartMusic (0, 1);
 			//Vento
-			music.GoStartMusic (0, 2);
-			music.GoStartMusic (0, 3);
-			music.GoStartMusic (0, 4);
-			music.GoStartMusic (0, 5);
+			//music.GoStartMusic (0, 2);
+			//music.GoStartMusic (0, 3);
+			//music.GoStartMusic (0, 4);
+			//music.GoStartMusic (0, 5);
 
 		}
 

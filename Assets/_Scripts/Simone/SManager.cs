@@ -6,15 +6,15 @@ using UnityEngine.SceneManagement;
 using UnityEngine.Rendering.PostProcessing;
 using UnityEngine.PostProcessing;
 using UnityEngine.Rendering;
+using Sirenix.OdinInspector;
 using DG.Tweening;
 
 public class SManager : MonoBehaviour {
 
-    // Ho messo l'opacità dei colori dei testi a 0 solo per renderli meno invasivi
     private PostProcessingBehaviour behaviour;
 
-    public PostProcessingProfile mid;
-    public PostProcessingProfile sunset;
+    [BoxGroup("PostProcessing Profiles")] public PostProcessingProfile mid;
+    [BoxGroup("PostProcessing Profiles")] public PostProcessingProfile sunset;
 
     private Text sceneText;
     private Text temperatureText;

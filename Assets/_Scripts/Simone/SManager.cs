@@ -80,7 +80,7 @@ public class SManager : MonoBehaviour {
     {
         // INFO MISSION
 
-        if (quest.transform.GetChild(0).transform.GetChild(2).GetComponent<TaskInteract>().currentState == Task.TaskState.ENABLED && !mission1)
+        if (quest.transform.GetChild(0).transform.GetChild(2).GetComponent<TaskInteract>().currentState == Task.TaskState.READY && !mission1)
         {
             mission1 = true;
             StartCoroutine(MissionInfo("Clear the Solar Panels"));

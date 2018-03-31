@@ -31,7 +31,8 @@ public class SManager : MonoBehaviour {
     // Missions
 
     private Text missionTitleText;
-    private bool mission1;
+    private Text descriptionText;
+    private bool mission1, mission2, mission3;
 
     private int temperatureValue;
 
@@ -45,15 +46,22 @@ public class SManager : MonoBehaviour {
 
         temperatureValue = Random.Range(-60, 20);
 
+        // GET SCENE INFO
+
         sceneText = transform.GetChild(0).transform.GetChild(0).GetComponent<Text>();
         temperatureText = transform.GetChild(0).transform.GetChild(1).GetComponent<Text>();
         dayText = transform.GetChild(0).transform.GetChild(2).GetComponent<Text>();
 
+        // GET SOL INFO
+
         solText = transform.GetChild(1).transform.GetChild(0).GetComponent<Text>();
 
-        missionTitleText = transform.GetChild(2).transform.GetChild(0).GetComponent<Text>();
+        // GET MISSION INFO
 
-        // INFO SCENA
+        missionTitleText = transform.GetChild(2).transform.GetChild(0).GetComponent<Text>();
+        descriptionText = transform.GetChild(2).transform.GetChild(1).GetComponent<Text>();
+
+        // FADE COMPONENTS
 
         sceneText.DOFade(0, 0);
         temperatureText.DOFade(0, 0);
@@ -62,6 +70,7 @@ public class SManager : MonoBehaviour {
         solText.DOFade(0, 0);
 
         missionTitleText.DOFade(0, 0);
+        descriptionText.DOFade(0, 0);
 
         if (sceneName == "Gale Crater")
             StartCoroutine(LandInfo("Gale Crater"));
@@ -80,10 +89,25 @@ public class SManager : MonoBehaviour {
     {
         // INFO MISSION
 
-        if (quest.transform.GetChild(0).transform.GetChild(2).GetComponent<TaskInteract>().currentState == Task.TaskState.READY && !mission1)
+        // QUEST1 (QUEST1)
+        if (quest.transform.GetChild(0).GetComponent<Quest>().currentState == Quest.QuestState.ENABLED && !mission1)
         {
+            StartCoroutine(MissionInfo("Welcome on board", "Move the player using 'WASD' or your left analogic stick", 16));
             mission1 = true;
-            StartCoroutine(MissionInfo("Clear the Solar Panels"));
+        }
+
+        // USA LA PALA SUI PANNELLI (QUEST1)
+        else if (quest.transform.GetChild(0).transform.GetChild(2).GetComponent<TaskInteract>().currentState == Task.TaskState.READY && !mission2)
+        {
+            StartCoroutine(MissionInfo("Clear the Solar Panels", "Use the Action Button 'E' or 'X' to use you shovel", 5));
+            mission2 = true;
+        }
+
+        // VAI ALLA VALLE MARINERIS (QUEST2)
+        else if (quest.transform.GetChild(1).transform.GetChild(1).GetComponent<TaskTravel>().currentState == Task.TaskState.ENABLED && !mission3)
+        {
+            StartCoroutine(MissionInfo("exploring mars", "use the land rover to reach different locations on mars", 5));
+            mission3 = true;
         }
 
         #region SOL
@@ -160,15 +184,24 @@ public class SManager : MonoBehaviour {
         dayText.DOFade(0, 4);
     }
 
-    public IEnumerator MissionInfo(string missionEnabled)
+    public IEnumerator MissionInfo(string missionEnabled, string descriptionInfo, int seconds)
     {
         missionTitleText.text = missionEnabled;
+        descriptionText.text = descriptionInfo;
 
-        yield return new WaitForSeconds(2.5f);
-        missionTitleText.DOFade(1, 4);
+        yield return new WaitForSeconds(seconds);
+        missionTitleText.GetComponent<Animation>().Play("MoveLeft");
+        missionTitleText.DOFade(1, 0.5f);
 
-        yield return new WaitForSeconds(5);
-        missionTitleText.DOFade(0, 4);
+        yield return new WaitForSeconds(1f);
+        descriptionText.GetComponent<Animation>().Play("MoveUp");
+        descriptionText.DOFade(1, 1);
+
+        yield return new WaitForSeconds(10);
+        missionTitleText.GetComponent<Animation>().Play("MoveRight");
+        descriptionText.GetComponent<Animation>().Play("MoveDown");
+        missionTitleText.DOFade(0, 1);
+        descriptionText.DOFade(0, 0.5f);
     }
 
     public IEnumerator SolInfo(string solNumber)

@@ -167,8 +167,12 @@ public class SManager : MonoBehaviour {
         #endregion
     }
 
+    // START SCENE
+
     public IEnumerator LandInfo(string name)
     {
+        // TEMPERATURE
+
         if(temperatureValue >= -30)
         {
             behaviour.profile = sunset;

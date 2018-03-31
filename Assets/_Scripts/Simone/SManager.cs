@@ -42,6 +42,11 @@ public class SManager : MonoBehaviour {
 
     void Start()
     {
+        foreach(Transform child in transform)
+        {
+            child.gameObject.SetActive(true);
+        }
+
         behaviour = FindObjectOfType<vThirdPersonCamera>().GetComponent<PostProcessingBehaviour>();
         quest = GameObject.Find("Quests");
 

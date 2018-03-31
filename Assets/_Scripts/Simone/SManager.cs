@@ -34,6 +34,10 @@ public class SManager : MonoBehaviour {
     private Text descriptionText;
     private bool mission1, mission2, mission3;
 
+    // Icons
+
+    private Image firstIconImage;
+
     private int temperatureValue;
 
     void Start()
@@ -60,6 +64,10 @@ public class SManager : MonoBehaviour {
 
         missionTitleText = transform.GetChild(2).transform.GetChild(0).GetComponent<Text>();
         descriptionText = transform.GetChild(2).transform.GetChild(1).GetComponent<Text>();
+
+        // GET ICONS INFO
+
+        firstIconImage = transform.GetChild(3).transform.GetChild(0).GetComponent<Image>();
 
         // FADE COMPONENTS
 
@@ -178,7 +186,11 @@ public class SManager : MonoBehaviour {
         yield return new WaitForSeconds(1);
         dayText.DOFade(1, 2);
 
+        yield return new WaitForSeconds(0.5f);
+        firstIconImage.GetComponent<Animation>().Play("RotateY");
+
         yield return new WaitForSeconds(6);
+        firstIconImage.GetComponent<Animation>().Play("RotateYBack");
         sceneText.DOFade(0, 4);
         temperatureText.DOFade(0, 4);
         dayText.DOFade(0, 4);

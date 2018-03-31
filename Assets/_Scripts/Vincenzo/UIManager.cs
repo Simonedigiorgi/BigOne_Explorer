@@ -87,6 +87,10 @@ public class UIManager : MonoBehaviour
     {
         this.dialoguePanel.GetComponentInChildren<Text>().text = "";
         this.dialoguePanel.SetActive(true);
+
+        // ANIMATION
+
+        dialoguePanel.GetComponent<Animation>().Play("MoveUp_Dialogue");
     }
 
     /// <summary>
@@ -98,6 +102,10 @@ public class UIManager : MonoBehaviour
     {
         this.dialoguePanel.SetActive(false);
         this.dialoguePanel.GetComponentInChildren<Text>().text = "";
+
+        // ANIMATION
+
+        dialoguePanel.GetComponent<Animation>().Play("MoveDown_Dialogue");
     }
 
 

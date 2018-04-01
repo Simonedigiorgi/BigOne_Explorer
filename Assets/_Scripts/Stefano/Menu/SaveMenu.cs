@@ -34,7 +34,8 @@ public class SaveMenu : MonoBehaviour {
 	public class SettingAudio
 	{
 
-		public AudioMixer audio;
+		public AudioMixer audioMain;
+		public AudioMixer audioSecondary;
 		public List<Image> listImage;
 
 	}
@@ -78,14 +79,14 @@ public class SaveMenu : MonoBehaviour {
 		{
 
 			float volume;
-			listAudio [i].audio.GetFloat ("Volume", out volume);
+			listAudio [i].audioMain.GetFloat ("Volume", out volume);
 
-			ES2.Save (volume, "Setting.txt?tag=" + listAudio [i].audio.name);
+			ES2.Save (volume, "Setting.txt?tag=" + listAudio [i].audioMain.name);
 
 			for (int j = 0; j < listAudio [i].listImage.Count; j++) 
 			{
 
-				ES2.Save<Color32> (listAudio [i].listImage [j].color, "Setting.txt?tag=" + listAudio [i].audio.name + listAudio [i].listImage [j].name);
+				ES2.Save<Color32> (listAudio [i].listImage [j].color, "Setting.txt?tag=" + listAudio [i].audioMain.name + listAudio [i].listImage [j].name);
 
 			}
 
@@ -109,20 +110,29 @@ public class SaveMenu : MonoBehaviour {
 			for (int i = 0; i < listAudio.Count; i++) 
 			{
 
-				if (listAudio [i].audio.name == "Music" && SoundManager.isRadio == true) 
+				if (listAudio [i].audioMain.name == "Music" && SoundManager.isRadio == true) 
 				{
-					listAudio [i].audio.SetFloat ("Volume", ES2.Load<float> ("Setting.txt?tag=" + listAudio [i].audio.name));
+					listAudio [i].audioMain.SetFloat ("Volume", ES2.Load<float> ("Setting.txt?tag=" + listAudio [i].audioMain.name));
 				} 
 
-				if (listAudio [i].audio.name != "Music") 
+				if (listAudio [i].audioMain.name != "Music") 
 				{
-					listAudio [i].audio.SetFloat ("Volume", ES2.Load<float> ("Setting.txt?tag=" + listAudio [i].audio.name));
+					listAudio [i].audioMain.SetFloat ("Volume", ES2.Load<float> ("Setting.txt?tag=" + listAudio [i].audioMain.name));
+
+					//Controllo se questo mixer ha una dipendenza di un altro mixer 
+					if (listAudio [i].audioSecondary != null) 
+					{
+
+						listAudio [i].audioSecondary.SetFloat ("Volume", ES2.Load<float> ("Setting.txt?tag=" + listAudio [i].audioMain.name));
+
+					}
+
 				}
 
 				for (int j = 0; j < listAudio [i].listImage.Count; j++) 
 				{
 					
-					listAudio [i].listImage [j].color = ES2.Load<Color32> ("Setting.txt?tag=" + listAudio [i].audio.name + listAudio [i].listImage [j].name);
+					listAudio [i].listImage [j].color = ES2.Load<Color32> ("Setting.txt?tag=" + listAudio [i].audioMain.name + listAudio [i].listImage [j].name);
 
 				}
 

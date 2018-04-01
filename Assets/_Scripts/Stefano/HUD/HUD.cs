@@ -43,6 +43,7 @@ public class HUD : MonoBehaviour {
 	[Header("Lista MAIN VOLUME")]
 	public List<Image> listMainVolume;
 	public AudioMixer mainAudio;
+	public AudioMixer invectorAudio;
 	[Header("Lista SFX VOLUME")]
 	public List<Image> listSFXVolume;
 	public AudioMixer SFXaudio;
@@ -57,6 +58,8 @@ public class HUD : MonoBehaviour {
 	public CanvasGroup panelFade;
 
 	#endregion 
+
+	#region Class
 
 	[Serializable]
 	public class ScreenMenu
@@ -83,6 +86,8 @@ public class HUD : MonoBehaviour {
 		public GameObject warningImage2;
 
 	}
+
+	#endregion
 
 	#region Private 
 
@@ -407,6 +412,7 @@ public class HUD : MonoBehaviour {
 
 			//mainAudio.volume = 0;
 			mainAudio.SetFloat("Volume", -80f);
+			invectorAudio.SetFloat ("Volume", -80f);
 
 			Debug.Log("Main mute");
 
@@ -453,6 +459,7 @@ public class HUD : MonoBehaviour {
 		//Cambio effettio del volume
 		//mainAudio.volume = v;
 		mainAudio.SetFloat("Volume", v);
+		invectorAudio.SetFloat ("Volume", v);
 
 	}
 
@@ -561,6 +568,14 @@ public class HUD : MonoBehaviour {
 					audio.GetFloat ("Volume", out v);
 					v += 44f;
 					audio.SetFloat ("Volume", v);
+
+					if (audio.name == "mainVolume") 
+					{
+
+						invectorAudio.SetFloat ("Volume", v);
+
+					}
+
 					list [i].color = enableColor;
 					return;
 
@@ -570,6 +585,14 @@ public class HUD : MonoBehaviour {
 					audio.GetFloat ("Volume", out v);
 					v += 4f;
 					audio.SetFloat ("Volume", v);
+
+					if (audio.name == "mainVolume") 
+					{
+
+						invectorAudio.SetFloat ("Volume", v);
+
+					}
+
 					list [i].color = enableColor;
 					return;
 
@@ -604,6 +627,14 @@ public class HUD : MonoBehaviour {
 					audio.GetFloat ("Volume", out v);
 					v -= 44f;
 					audio.SetFloat ("Volume", v);
+
+					if (audio.name == "mainVolume") 
+					{
+
+						invectorAudio.SetFloat ("Volume", v);
+
+					}
+
 					list [list.Count - i].color = disableColor;
 					return;
 
@@ -615,6 +646,14 @@ public class HUD : MonoBehaviour {
 					audio.GetFloat ("Volume", out v);
 					v -= 4f;
 					audio.SetFloat ("Volume", v);
+
+					if (audio.name == "mainVolume") 
+					{
+
+						invectorAudio.SetFloat ("Volume", v);
+
+					}
+
 					list [list.Count - i].color = disableColor;
 					return;
 

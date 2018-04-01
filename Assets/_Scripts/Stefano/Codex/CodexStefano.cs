@@ -209,7 +209,7 @@ public class CodexStefano : MonoBehaviour
 	{
 
 
-        if (hud.GetCodexMenuIsOpen() == false)
+        if (hud.GetCodexMenuIsOpen() == true)
         {
 
             //Chiudiamo il menu del Codex
@@ -243,6 +243,7 @@ public class CodexStefano : MonoBehaviour
             {
 
                 Debug.Log("Right");
+				NextSchede ();
 
                 isRight = true;
                 isLeft = true;
@@ -255,7 +256,7 @@ public class CodexStefano : MonoBehaviour
             {
 
                 Debug.Log("Left");
-                Debug.Log(InputManager.LTbutton());
+				PreviousSchede ();
 
                 isLeft = true;
                 isRight = true;
@@ -730,7 +731,7 @@ public class CodexStefano : MonoBehaviour
     public void SetCloseCodex()
     {
 
-        hud.SetCodexMenuIsOpen(true);
+        hud.SetCodexMenuIsOpen(false);
         vThirdPersonController.instance.GetComponent<GenericSettings>().UnlockPlayer();
 
     }

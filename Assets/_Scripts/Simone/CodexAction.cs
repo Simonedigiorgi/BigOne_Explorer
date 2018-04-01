@@ -7,13 +7,11 @@ public class CodexAction : vTriggerGenericAction {
 
     public GameObject CodexUI;
 
-	private CodexStefano codex;
+	public CodexStefano codex;
     [SerializeField] private bool isCodex;
 
 	protected override void Start () 
 	{
-
-        codex = FindObjectOfType<CodexStefano>();
 
         base.Start();
         OnDoAction.AddListener(() => GetCodex());
@@ -27,15 +25,13 @@ public class CodexAction : vTriggerGenericAction {
 
         HUD hud = GameObject.Find("PauseMenu").GetComponent<HUD>();
 
-        if (codex)
+		if (hud.GetMenuIsOpen() == false )
         {
-            if (hud.GetMenuIsOpen() == false)
-            {
-                codex.gameObject.SetActive(true);
-                codex.MoveOnCodex("Open");
-                hud.SetCodexMenuIsOpen(false);
-                vThirdPersonController.instance.GetComponent<GenericSettings>().LockPlayer();
-            }
+
+			CodexUI.gameObject.SetActive(true);
+			codex.MoveOnCodex("Open");
+            hud.SetCodexMenuIsOpen(true);
+            vThirdPersonController.instance.GetComponent<GenericSettings>().LockPlayer();
         }
 
 

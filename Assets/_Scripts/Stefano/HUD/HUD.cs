@@ -125,47 +125,40 @@ public class HUD : MonoBehaviour {
 	}
 
 	void Update()
-	{
-        // ANIMAZIONI LOCATIONS
-
-        if(eSystem.currentSelectedGameObject.name == "Cratere Gale")
-        {
-            galeMarker.transform.localScale = new Vector3(1.6f, 1.6f, 1);
-        }
-        else
-        {
-            galeMarker.transform.localScale = new Vector3(1f, 1f, 1);
-        }
-
-        if (eSystem.currentSelectedGameObject.name == "Noctis Labyrinthus")
-        {
-            noctisMarker.transform.localScale = new Vector3(1.6f, 1.6f, 1);
-        }
-        else
-        {
-            noctisMarker.transform.localScale = new Vector3(1f, 1f, 1);
-        }
-
-        if (eSystem.currentSelectedGameObject.name == "Olympus Mons")
-        {
-            olympusMarker.transform.localScale = new Vector3(1.6f, 1.6f, 1);
-        }
-        else
-        {
-            olympusMarker.transform.localScale = new Vector3(1f, 1f, 1);
-        }
-
-        if (eSystem.currentSelectedGameObject.name == "Valles Marineris")
-        {
-            vallesMarker.transform.localScale = new Vector3(1.6f, 1.6f, 1);
-        }
-        else
-        {
-            vallesMarker.transform.localScale = new Vector3(1f, 1f, 1);
-        }
+	{  
 
         if (codexMenuIsOpen == false)
         {
+
+			// ANIMAZIONI LOCATIONS DEL ROVER
+			if (roverMenuIsOpen == true) 
+			{
+
+				if (eSystem.currentSelectedGameObject.name == "Cratere Gale") {
+					galeMarker.transform.localScale = new Vector3 (1.6f, 1.6f, 1);
+				} else {
+					galeMarker.transform.localScale = new Vector3 (1f, 1f, 1);
+				}
+
+				if (eSystem.currentSelectedGameObject.name == "Noctis Labyrinthus") {
+					noctisMarker.transform.localScale = new Vector3 (1.6f, 1.6f, 1);
+				} else {
+					noctisMarker.transform.localScale = new Vector3 (1f, 1f, 1);
+				}
+
+				if (eSystem.currentSelectedGameObject.name == "Olympus Mons") {
+					olympusMarker.transform.localScale = new Vector3 (1.6f, 1.6f, 1);
+				} else {
+					olympusMarker.transform.localScale = new Vector3 (1f, 1f, 1);
+				}
+
+				if (eSystem.currentSelectedGameObject.name == "Valles Marineris") {
+					vallesMarker.transform.localScale = new Vector3 (1.6f, 1.6f, 1);
+				} else {
+					vallesMarker.transform.localScale = new Vector3 (1f, 1f, 1);
+				}
+
+			}
 
             if (isGamepad == false)
             {

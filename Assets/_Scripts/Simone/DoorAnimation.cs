@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class DoorAnimation : MonoBehaviour
 {
@@ -22,7 +23,17 @@ public class DoorAnimation : MonoBehaviour
 	void Awake()
 	{
 
-		music = GameObject.Find ("_AUDIO").GetComponent<Musica2>();
+		if (SceneManager.GetActiveScene ().buildIndex != 0) 
+		{
+			
+			music = GameObject.Find ("_AUDIO").GetComponent<Musica2> ();
+		} 
+		else 
+		{
+
+			music = GameObject.Find ("MainCamera").GetComponent<Musica2> ();
+
+		}
 
 	}
 

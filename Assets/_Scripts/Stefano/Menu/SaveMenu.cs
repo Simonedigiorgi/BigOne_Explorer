@@ -143,7 +143,9 @@ public class SaveMenu : MonoBehaviour {
 
 		} else {
 
-			Debug.Log ("Il file non esiste");
+			Debug.Log ("Il file non esiste, lo creo");
+
+			SaveAudio ();
 
 			for (int i = 0; i < listAudio.Count; i++) 
 			{

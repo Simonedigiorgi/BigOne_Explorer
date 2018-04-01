@@ -27,6 +27,9 @@ public class SaveMenu : MonoBehaviour {
 	public Text nameSlot2;
 	public Text nameSlot3;
 
+	[Header("Variabili in caso di mancanza del file di salvataggio")]
+	public Color enableColor; 
+
 
 	#endregion
 
@@ -141,6 +144,38 @@ public class SaveMenu : MonoBehaviour {
 		} else {
 
 			Debug.Log ("Il file non esiste");
+
+			for (int i = 0; i < listAudio.Count; i++) 
+			{
+
+				if (listAudio [i].audioMain.name == "Music" && SoundManager.isRadio == true) 
+				{
+					listAudio [i].audioMain.SetFloat ("Volume", -20f);
+				} 
+
+				if (listAudio [i].audioMain.name != "Music") 
+				{
+					listAudio [i].audioMain.SetFloat ("Volume",-20f);
+
+					//Controllo se questo mixer ha una dipendenza di un altro mixer 
+					if (listAudio [i].audioSecondary != null) 
+					{
+
+						listAudio [i].audioSecondary.SetFloat ("Volume",-20f);
+
+					}
+
+				}
+
+				//Setto il volume visivo a metà
+				for (int j = 0; j < 5; j++) 
+				{
+
+					listAudio [i].listImage [j].color = enableColor ;
+
+				}
+
+			}
 
 		}
 

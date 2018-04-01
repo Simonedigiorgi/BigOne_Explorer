@@ -5727,7 +5727,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   listAudio:
-  - audio: {fileID: 24100000, guid: 2959e37650b1b5349812619b631dbb8d, type: 2}
+  - audioMain: {fileID: 24100000, guid: 2959e37650b1b5349812619b631dbb8d, type: 2}
+    audioSecondary: {fileID: 24100000, guid: a63f18b704a1b874a8dad30baf0939e6, type: 2}
     listImage:
     - {fileID: 114684462745883654}
     - {fileID: 114959354023197764}
@@ -5739,7 +5740,8 @@ MonoBehaviour:
     - {fileID: 114535673802283364}
     - {fileID: 114884798350354198}
     - {fileID: 114590253558116174}
-  - audio: {fileID: 24100000, guid: 35c11e17753eb5b4d870d1d17eeaa5b8, type: 2}
+  - audioMain: {fileID: 24100000, guid: 35c11e17753eb5b4d870d1d17eeaa5b8, type: 2}
+    audioSecondary: {fileID: 0}
     listImage:
     - {fileID: 114052779108117256}
     - {fileID: 114264277296235684}
@@ -5751,7 +5753,8 @@ MonoBehaviour:
     - {fileID: 114963971487723620}
     - {fileID: 114140893356651352}
     - {fileID: 114913472346902546}
-  - audio: {fileID: 24100000, guid: 2ea3178017298bd49a30a0b3041c345b, type: 2}
+  - audioMain: {fileID: 24100000, guid: 2ea3178017298bd49a30a0b3041c345b, type: 2}
+    audioSecondary: {fileID: 0}
     listImage:
     - {fileID: 114666780067523734}
     - {fileID: 114676362175004402}
@@ -5776,6 +5779,7 @@ MonoBehaviour:
   nameSlot1: {fileID: 0}
   nameSlot2: {fileID: 0}
   nameSlot3: {fileID: 0}
+  enableColor: {r: 0.16078432, g: 0.67058825, b: 0.8862745, a: 1}
 --- !u!114 &114321268710569700
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5944,6 +5948,7 @@ MonoBehaviour:
   - {fileID: 114884798350354198}
   - {fileID: 114590253558116174}
   mainAudio: {fileID: 24100000, guid: 2959e37650b1b5349812619b631dbb8d, type: 2}
+  invectorAudio: {fileID: 24100000, guid: a63f18b704a1b874a8dad30baf0939e6, type: 2}
   listSFXVolume:
   - {fileID: 114666780067523734}
   - {fileID: 114676362175004402}

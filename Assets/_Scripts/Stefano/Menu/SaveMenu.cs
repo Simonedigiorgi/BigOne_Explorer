@@ -4,34 +4,61 @@ using UnityEngine;
 using UnityEngine.UI;
 using System;
 using UnityEngine.Audio;
+using Sirenix;
+using Sirenix.OdinInspector;
 
 public class SaveMenu : MonoBehaviour {
 
 	#region Public 
 
+	[FoldoutGroup("Salvataggio Audio"), Space(10)]
 	[Header("Settaggi audio")]
 	public List<SettingAudio> listAudio;
 
+	#region Salvataggio menu
+
+	[FoldoutGroup("Salvataggio menu"), Space(10)]
 	[Header("Vettore d'immagine per gli slot di salvataggio")]
 	public Sprite[] illustrtions;
 
+	[FoldoutGroup("Salvataggio menu")]
 	[Header("Viene caricata questa immagine se non c'è il salvataggio")]
 	public Sprite illustrationEmpty;
 
+	[FoldoutGroup("Salvataggio menu")]
 	[Header("Immagini da sostituire degli slot")]
 	public Image imageSlot1;
+	[FoldoutGroup("Salvataggio menu")]
 	public Image imageSlot2;
+	[FoldoutGroup("Salvataggio menu")]
 	public Image imageSlot3;
 
+	[FoldoutGroup("Salvataggio menu")]
+	[Header("Riferimenti per il nome degli slot")]
 	public Text nameSlot1;
+	[FoldoutGroup("Salvataggio menu")]
 	public Text nameSlot2;
+	[FoldoutGroup("Salvataggio menu")]
 	public Text nameSlot3;
 
+	[FoldoutGroup("Salvataggio menu")]
+	[Header("Riferimenti per la data degli slot")]
+	public Text dateSlot1;
+	[FoldoutGroup("Salvataggio menu")]
+	public Text dateSlot2;
+	[FoldoutGroup("Salvataggio menu")]
+	public Text dateSlot3;
+
+	#endregion
+
+	[FoldoutGroup("Variabili no save data")]
 	[Header("Variabili in caso di mancanza del file di salvataggio")]
 	public Color enableColor; 
 
 
 	#endregion
+
+	#region Class
 
 	[Serializable]
 	public class SettingAudio
@@ -43,6 +70,8 @@ public class SaveMenu : MonoBehaviour {
 
 	}
 
+	#endregion
+
 	void Start()
 	{
 
@@ -51,12 +80,7 @@ public class SaveMenu : MonoBehaviour {
 
 	}
 
-	public void SaveSettings()
-	{
-
-		SaveAudio ();
-
-	}
+	#region Setting save data 
 
 	/// <summary>
 	/// Metodo che permette di settare lo slot in cui effettuare il caricamento o il salvataggio
@@ -70,7 +94,16 @@ public class SaveMenu : MonoBehaviour {
 
 	}
 
+	#endregion
+
 	#region Save
+
+	public void SaveSettings()
+	{
+
+		SaveAudio ();
+
+	}
 
 	/// <summary>
 	/// Metodo che salva i volumi 
@@ -182,45 +215,56 @@ public class SaveMenu : MonoBehaviour {
 		}
 
 	}
-
-
+		
 	/// <summary>
 	/// Metodo che carica le informazioni degli slot
 	/// </summary>
 	public void LoadSlotInfo()
 	{
 
-		/*
-		if (ES2.Exists ("Slot1.txt")) {
 
-			slot1.text = ES2.Load<string> ("Slot1.txt?tag=SaveTime");
+		if (ES2.Exists (nameSlot1.text + ".txt")) 
+		{
 
-		} else {
+			DateTime date = DateTime.Parse (ES2.Load<string> ( nameSlot1.text + ".txt?tag=SaveTime"));
+			dateSlot1.text = date.ToLocalTime ().ToString();
 
-			slot1.text = "Empty";
+		} 
+		else 
+		{
 
-		}
-
-		if (ES2.Exists ("Slot2.txt")) {
-
-			slot2.text = ES2.Load<string> ("Slot2.txt?tag=SaveTime");
-
-		} else {
-
-			slot2.text = "Empty";
+			dateSlot1.text = "";
 
 		}
 
-		if (ES2.Exists ("Slot3.txt")) {
+		if (ES2.Exists (nameSlot2.text + ".txt")) 
+		{
 
-			slot3.text = ES2.Load<string> ("Slot3.txt?tag=SaveTime");
+			DateTime date = DateTime.Parse (ES2.Load<string> (nameSlot2.text + ".txt?tag=SaveTime"));
+			dateSlot2.text = date.ToLocalTime ().ToString();
 
-		} else {
+		} 
+		else 
+		{
 
-			slot3.text = "Empty";
+			dateSlot2.text = "";
 
 		}
-		*/
+
+		if (ES2.Exists (nameSlot3.text + ".txt")) 
+		{
+
+			DateTime date = DateTime.Parse (ES2.Load<string> ( nameSlot3.text + ".txt?tag=SaveTime"));
+			dateSlot3.text = date.ToLocalTime ().ToString();
+
+		} 
+		else 
+		{
+
+			dateSlot3.text = "";
+
+		}
+
 
 		LoadSlotIllustrations ();
 

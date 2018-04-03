@@ -213,7 +213,7 @@ public class CodexStefano : MonoBehaviour
         {
 
             //Chiudiamo il menu del Codex
-            if(Input.GetKeyDown(KeyCode.Escape) || InputManager.StartButton())
+			if(Input.GetKeyDown(KeyCode.Escape) || InputManager.StartButton() || InputManager.BBotton())
             {
 
                 MoveOnCodex("Close");

@@ -21,6 +21,8 @@ public class UIManager : MonoBehaviour
     public float writeSpeed;
     public Color colorCheckedText;
 
+    private bool moveUp;
+
     /// <summary>
     /// 
     /// Public member that sets the y position of the help key canvas
@@ -86,11 +88,13 @@ public class UIManager : MonoBehaviour
     public void ShowDialoguePanel()
     {
         this.dialoguePanel.GetComponentInChildren<Text>().text = "";
-        this.dialoguePanel.SetActive(true);
 
         // ANIMATION
 
-        dialoguePanel.GetComponent<Animation>().Play("MoveUp_Dialogue");
+        if (!moveUp)
+            dialoguePanel.GetComponent<Animation>().Play("MoveUp_Dialogue");
+
+        moveUp = true;
     }
 
     /// <summary>
@@ -100,12 +104,15 @@ public class UIManager : MonoBehaviour
     /// </summary>
     public void HideDialoguePanel()
     {
-        this.dialoguePanel.SetActive(false);
         this.dialoguePanel.GetComponentInChildren<Text>().text = "";
 
         // ANIMATION
 
-        dialoguePanel.GetComponent<Animation>().Play("MoveDown_Dialogue");
+        if (moveUp)
+            dialoguePanel.GetComponent<Animation>().Play("MoveDown_Dialogue");
+
+        moveUp = false;
+
     }
 
 

@@ -223,7 +223,7 @@ public class SaveMenu : MonoBehaviour {
 	{
 
 
-		if (ES2.Exists (nameSlot1.text + ".txt")) 
+		if (ES2.Exists (nameSlot1.text + ".txt") && ES2.Exists(nameSlot1.text + ".txt?tag=SaveTime") == true) 
 		{
 
 			DateTime date = DateTime.Parse (ES2.Load<string> ( nameSlot1.text + ".txt?tag=SaveTime"));
@@ -237,7 +237,7 @@ public class SaveMenu : MonoBehaviour {
 
 		}
 
-		if (ES2.Exists (nameSlot2.text + ".txt")) 
+		if (ES2.Exists (nameSlot2.text + ".txt") && ES2.Exists(nameSlot2.text + ".txt?tag=SaveTime") == true) 
 		{
 
 			DateTime date = DateTime.Parse (ES2.Load<string> (nameSlot2.text + ".txt?tag=SaveTime"));
@@ -251,7 +251,7 @@ public class SaveMenu : MonoBehaviour {
 
 		}
 
-		if (ES2.Exists (nameSlot3.text + ".txt")) 
+		if (ES2.Exists (nameSlot3.text + ".txt") && ES2.Exists(nameSlot3.text + ".txt?tag=SaveTime") == true) 
 		{
 
 			DateTime date = DateTime.Parse (ES2.Load<string> ( nameSlot3.text + ".txt?tag=SaveTime"));

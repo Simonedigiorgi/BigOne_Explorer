@@ -57,6 +57,9 @@ public class HUD : MonoBehaviour {
 	[Header("Panel per il fade")]
 	public CanvasGroup panelFade;
 
+	[Header("Variabile per il salvataggio simulato")]
+	public float saveTime;
+
 	#endregion 
 
 	#region Class
@@ -680,6 +683,34 @@ public class HUD : MonoBehaviour {
 
 		animPauseMenu.Play (value);
 
+	}
+
+	//Corotuine per emulare il salvataggio
+	public void AnimationSavingData()
+	{
+
+		StartCoroutine (SavingDataEmulator());
+	
+	}
+
+	private IEnumerator SavingDataEmulator()
+	{
+
+		//Non permetto di premere pulsanti 
+		eSystem.SetSelectedGameObject(null);
+
+		MoveOnMenu ("SavingIn");
+
+		float timer = 0f;
+
+		yield return new WaitForSeconds (saveTime);
+
+		//Torniamo alla schermata della scelta degli slot
+		MoveOnMenu ("GoChose_Return");
+		//Rimetto il puntatore al bottone corretto
+		ChangeFirstSelected (isGamepad);
+
+		yield return null;
 	}
 
 	#endregion

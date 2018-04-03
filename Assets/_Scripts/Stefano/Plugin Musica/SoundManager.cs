@@ -17,7 +17,6 @@ public class SoundManager : MonoBehaviour {
 	public int Scena4;
 
 	public AudioMixer mixerMusic;
-	public AudioMixer mixerMain;
 
 	[Header("Variabile da utilizzare in case di Debug, togliere in delivery")]
 	public bool isDebug = false;
@@ -105,7 +104,7 @@ public class SoundManager : MonoBehaviour {
 		{
 			//Eseguiamo la radio
 			mixerMusic.SetFloat ("Volume", -80f);
-			music.GoClusterFade (0);
+			music.GoRandomClusterFade (0);
 		}
 
 	}
@@ -129,13 +128,20 @@ public class SoundManager : MonoBehaviour {
 
 		}
 
-		/*
-		if ((Input.GetKeyDown (KeyCode.U) || InputManager.SelectButton() )&& SceneManager.GetActiveScene().buildIndex != Scena0 ) 
+
+		if ((Input.GetKeyDown (KeyCode.U) || InputManager.UPArrow() )&& SceneManager.GetActiveScene().buildIndex != Scena0 ) 
 		{
 
 			SetRadio ();
 
-		}*/
+		}
+
+		if (Input.GetKeyDown (KeyCode.P)) 
+		{
+
+			music.GoChangeMusicClusterFade (0);
+
+		}
 			
 
 	}
@@ -155,8 +161,6 @@ public class SoundManager : MonoBehaviour {
 
 			isRadio = true;
 			mixerMusic.SetFloat("Volume", ES2.Load<float> ("Setting.txt?tag="+mixerMusic.name));
-			//mixerMain.SetFloat("Volume", -80f);
-			mixerMusic.SetFloat("Volume", 0f);
 
 			Debug.Log ("Radio attiva");
 
@@ -165,10 +169,7 @@ public class SoundManager : MonoBehaviour {
 		{
 
 			isRadio = false;
-			mixerMain.SetFloat("Volume", ES2.Load<float> ("Setting.txt?tag="+mixerMain.name));
-			Debug.Log (ES2.Load<float> ("Setting.txt?tag=" + mixerMain.name));
-			//mixerMusic.SetFloat("Volume", -80f);
-			mixerMain.SetFloat("Volume",  0f);
+			mixerMusic.SetFloat("Volume", -80f);
 
 			Debug.Log ("Radio disattiva");
 

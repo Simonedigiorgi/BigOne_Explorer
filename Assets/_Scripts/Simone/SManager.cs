@@ -40,6 +40,11 @@ public class SManager : MonoBehaviour {
 
     private int temperatureValue;
 
+    private bool isGale;
+    private bool isValles;
+    private bool isNoctis;
+    private bool isOlympus;
+
     void Start()
     {
         foreach(Transform child in transform)
@@ -86,16 +91,29 @@ public class SManager : MonoBehaviour {
         descriptionText.DOFade(0, 0);
 
         if (sceneName == "Gale Crater")
+        {
+            isGale = true;
             StartCoroutine(LandInfo("Gale Crater"));
+        }
 
         else if (sceneName == "Noctis Labyrinthus")
+        {
+            isNoctis = true;
             StartCoroutine(LandInfo("Noctis Labyrinthus"));
+        }
 
         else if (sceneName == "Olympus Mons")
+        {
+            isOlympus = true;
             StartCoroutine(LandInfo("Olympus Mons"));
+        }
 
         else if (sceneName == "Valles Marineris")
+        {
+            isValles = true;
             StartCoroutine(LandInfo("Valles Marineris"));
+        }
+
     }
 
     private void Update()
@@ -196,10 +214,81 @@ public class SManager : MonoBehaviour {
         dayText.DOFade(1, 2);
 
         yield return new WaitForSeconds(0.5f);
-        firstIconImage.GetComponent<Animation>().Play("RotateY");
+        if (isGale)
+        {
+            transform.GetChild(3).transform.GetChild(0).gameObject.SetActive(true);
+            foreach(Transform child in transform.GetChild(3).transform.GetChild(0))
+            {
+                child.GetComponent<Animation>().Play("RotateY");
+            }
+        }
+        else if (isValles)
+        {
+            transform.GetChild(3).transform.GetChild(1).gameObject.SetActive(true);
+            foreach (Transform child in transform.GetChild(3).transform.GetChild(1))
+            {
+                child.GetComponent<Animation>().Play("RotateY");
+            }
+        }
+        else if (isNoctis)
+        {
+            transform.GetChild(3).transform.GetChild(2).gameObject.SetActive(true);
+            foreach (Transform child in transform.GetChild(3).transform.GetChild(2))
+            {
+                child.GetComponent<Animation>().Play("RotateY");
+            }
+        }
+        else if (isOlympus)
+        {
+            transform.GetChild(3).transform.GetChild(3).gameObject.SetActive(true);
+            foreach (Transform child in transform.GetChild(3).transform.GetChild(3))
+            {
+                child.GetComponent<Animation>().Play("RotateY");
+            }
+        }
 
         yield return new WaitForSeconds(6);
-        firstIconImage.GetComponent<Animation>().Play("RotateYBack");
+        if (isGale)
+        {
+            foreach (Transform child in transform.GetChild(3).transform.GetChild(0))
+            {
+                child.GetComponent<Animation>().Play("RotateYBack");
+            }
+            yield return new WaitForSeconds(2);
+            transform.GetChild(3).transform.GetChild(0).gameObject.SetActive(false);
+            isGale = false;
+        }
+        else if (isValles)
+        {
+            foreach (Transform child in transform.GetChild(3).transform.GetChild(1))
+            {
+                child.GetComponent<Animation>().Play("RotateYBack");
+            }
+            yield return new WaitForSeconds(2);
+            transform.GetChild(3).transform.GetChild(1).gameObject.SetActive(false);
+            isValles = false;
+        }
+        else if (isNoctis)
+        {
+            foreach (Transform child in transform.GetChild(3).transform.GetChild(2))
+            {
+                child.GetComponent<Animation>().Play("RotateYBack");
+            }
+            yield return new WaitForSeconds(2);
+            transform.GetChild(3).transform.GetChild(2).gameObject.SetActive(false);
+            isNoctis = false;
+        }
+        else if (isOlympus)
+        {
+            foreach (Transform child in transform.GetChild(3).transform.GetChild(3))
+            {
+                child.GetComponent<Animation>().Play("RotateYBack");
+            }
+            yield return new WaitForSeconds(2);
+            transform.GetChild(3).transform.GetChild(3).gameObject.SetActive(false);
+            isOlympus = false;
+        }
+
         sceneText.DOFade(0, 4);
         temperatureText.DOFade(0, 4);
         dayText.DOFade(0, 4);

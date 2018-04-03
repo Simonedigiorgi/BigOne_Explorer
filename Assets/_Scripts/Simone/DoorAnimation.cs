@@ -42,7 +42,7 @@ public class DoorAnimation : MonoBehaviour
 
 		Debug.Log ("Eseguito");
 
-		if (isEnter == false) 
+		if (isEnter == false && doorDown.IsInTransition(0) == false && doorUp.IsInTransition(0) == false) 
 		{
 			isEnter = true;
 			music.GoPlayOneShot (4);

@@ -500,8 +500,11 @@ public class HUD : MonoBehaviour {
 
 		}
 
-		//musicAudio.volume = v;
-		musicAudio.SetFloat("Volume", v);
+		if (SoundManager.isRadio == true) 
+		{
+			//musicAudio.volume = v;
+			musicAudio.SetFloat ("Volume", v);
+		}
 
 	}
 

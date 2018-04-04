@@ -129,6 +129,8 @@ public class QuestManager : MonoBehaviour {
         {
             currentQuest.taskActived.EnableTask();
         }
+
+        //UIManager.instance.ChangeQuestText();
     }
 
     public List<string> GetEnabledQuests()

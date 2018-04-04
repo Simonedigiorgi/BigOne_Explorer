@@ -21,8 +21,6 @@ public class UIManager : MonoBehaviour
     public float writeSpeed;
     public Color colorCheckedText;
 
-    private bool moveUp;
-
     /// <summary>
     /// 
     /// Public member that sets the y position of the help key canvas
@@ -42,7 +40,15 @@ public class UIManager : MonoBehaviour
     public GameObject questText;
     public GameObject helpKeyPanel;
     public Image fadeImage;
-    
+    public GameObject infoPanel;
+
+    /// <summary>
+    /// 
+    /// Private mamber that checks the dialogue panel animation
+    /// 
+    /// </summary>
+    private bool moveUp;
+
     /// <summary>
     /// 
     /// The instance of the ui manager
@@ -66,11 +72,12 @@ public class UIManager : MonoBehaviour
     private void Update()
     {
 
-        if(Input.GetKeyDown(KeyCode.M))
+        /*if(Input.GetKeyDown(KeyCode.M))
         {
-            targetText.GetComponent<Text>().DOColor(colorCheckedText, colorSpeed);
-            //targetText.GetComponent<Outline>().DOColor(Color.white, colorSpeed);
-        }
+            Sequence sequenceAnimation = OverlineTargetText();
+
+            sequenceAnimation.Append(FadeOutTargetText());
+        }*/
 
         if(helpKeyPanel.gameObject.activeSelf)
         {
@@ -190,12 +197,27 @@ public class UIManager : MonoBehaviour
         StartCoroutine(HideHelpKeyPanel(sequenceAnimation));
     }
 
+    /// <summary>
+    /// Function that Hides the help key panel.
+    /// 
+    /// </summary>
+    /// 
+    /// <returns>The end of the help key panel animation.</returns>
+    /// 
+    /// <param name="sequenceAnimation">The hide help key sequence animation.</param>
     IEnumerator HideHelpKeyPanel(Sequence sequenceAnimation)
     {
         yield return sequenceAnimation.WaitForCompletion();
         helpKeyPanel.gameObject.SetActive(false);
     }
 
+    /// <summary>
+    /// 
+    /// Function that manages the fade in and the fade out when the player dead.
+    /// 
+    /// </summary>
+    /// 
+    /// <returns>The death.</returns>
     public IEnumerator FadeDeath()
     {
 
@@ -222,44 +244,65 @@ public class UIManager : MonoBehaviour
 
     }
 
+    /// <summary>
+    /// 
+    /// Function that overlines the target text.
+    /// 
+    /// </summary>
+    /// 
+    /// <returns>The sequence animation of the target text.</returns>
     public Sequence OverlineTargetText()
     {
         Sequence animationSequence = DOTween.Sequence();
 
         if (QuestManager.instance.CurrentTargetObjects != null && QuestManager.instance.CurrentTargetObjects != "")
         {
-            animationSequence.Append(targetText.transform.parent.GetChild(2).GetComponent<Text>().DOFade(0, fadeSpeed));
-            animationSequence.Append(targetText.transform.parent.GetChild(2).GetComponent<Text>().DOText("", 0));
-            animationSequence.Join(targetText.transform.parent.GetChild(2).GetComponent<Text>().DOFade(1, 0));
+            animationSequence.Append(targetText.transform.parent.GetChild(3).GetComponent<Text>().DOFade(0, fadeSpeed));
+            animationSequence.Append(targetText.transform.parent.GetChild(3).GetComponent<Text>().DOText("", 0));
+            animationSequence.Join(targetText.transform.parent.GetChild(3).GetComponent<Text>().DOFade(1, 0));
             QuestManager.instance.CurrentTargetObjects = "";
         }
 
-        animationSequence.Join(targetText.transform.GetChild(0).GetComponent<Image>().DOFillAmount(1, overlineSpeed));
-        animationSequence.Append(targetText.transform.parent.GetChild(1).GetComponent<Image>().DOFillAmount(1, checkSpeed));
-
+        animationSequence.Join(targetText.transform.parent.GetChild(2).GetComponent<Image>().DOFillAmount(1, checkSpeed));
+        animationSequence.Append(targetText.transform.GetChild(0).GetComponent<Image>().DOFillAmount(1, overlineSpeed));
+        
         return animationSequence;
 
     }
 
+    /// <summary>
+    /// 
+    /// Function that fades out the target text.
+    /// 
+    /// </summary>
+    /// 
+    /// <returns>The animation's sequence.</returns>
     public Sequence FadeOutTargetText()
     {
         Sequence animationSequence = DOTween.Sequence();
 
         animationSequence.Append(targetText.transform.GetChild(0).GetComponent<Image>().DOFade(0, fadeSpeed));
-        animationSequence.Join(targetText.transform.parent.GetChild(1).GetComponent<Image>().DOFade(0, fadeSpeed));
+        animationSequence.Join(targetText.transform.parent.GetChild(2).GetComponent<Image>().DOFade(0, fadeSpeed));
         animationSequence.Join(targetText.GetComponent<Text>().DOFade(0, fadeSpeed));
 
         animationSequence.Append(targetText.transform.GetChild(0).GetComponent<Image>().DOFillAmount(0, 0));
-        animationSequence.Append(targetText.transform.parent.GetChild(1).GetComponent<Image>().DOFillAmount(0, 0));
+        animationSequence.Append(targetText.transform.parent.GetChild(2).GetComponent<Image>().DOFillAmount(0, 0));
 
         animationSequence.Append(targetText.GetComponent<Text>().DOText("", 0));
         animationSequence.Join(targetText.GetComponent<Text>().DOFade(1, fadeSpeed));
         animationSequence.Join(targetText.transform.GetChild(0).GetComponent<Image>().DOFade(1, 0));
-        animationSequence.Join(targetText.transform.parent.GetChild(1).GetComponent<Image>().DOFade(1, 0));
+        animationSequence.Join(targetText.transform.parent.GetChild(2).GetComponent<Image>().DOFade(1, 0));
 
         return animationSequence;
     }
 
+    /// <summary>
+    /// 
+    /// Function that sets the target text with write animation.
+    /// 
+    /// </summary>
+    /// 
+    /// <returns>The end of the target text animation.</returns>
     public IEnumerator WriteTargetText()
     {
         Sequence animationSequence = DOTween.Sequence();
@@ -270,18 +313,80 @@ public class UIManager : MonoBehaviour
 
         if (QuestManager.instance.CurrentTargetObjects != null && QuestManager.instance.CurrentTargetObjects != "")
         {
-            animationSequence.Append(targetText.transform.parent.GetChild(2).GetComponent<Text>().DOText(QuestManager.instance.CurrentTargetObjects, writeSpeed));
+            animationSequence.Append(targetText.transform.parent.GetChild(3).GetComponent<Text>().DOText(QuestManager.instance.CurrentTargetObjects, writeSpeed));
         }
     }
 
+    /// <summary>
+    /// 
+    /// Funtion that updates the target object text.
+    /// 
+    /// </summary>
     public void ChangeTargetObjectText()
     {
-        targetText.transform.parent.GetChild(2).GetComponent<Text>().text = QuestManager.instance.CurrentTargetObjects;
+        targetText.transform.parent.GetChild(3).GetComponent<Text>().text = QuestManager.instance.CurrentTargetObjects;
     }
 
+    /// <summary>
+    /// 
+    /// Function that updates the quest text.
+    /// 
+    /// </summary>
     public void ChangeQuestText()
     {
         questText.GetComponent<Text>().text = QuestManager.instance.currentQuest.questName;
+    }
+
+    /// <summary>
+    /// 
+    /// Function that shows the info panel.
+    /// 
+    /// </summary>
+    public void ShowInfoPanel(Sprite image, string title, string description)
+    {
+        vThirdPersonController.instance.GetComponent<GenericSettings>().LockPlayer();
+
+        infoPanel.SetActive(true);
+        infoPanel.transform.GetChild(0).transform.GetChild(0).GetComponent<Image>().sprite = image;
+        infoPanel.transform.GetChild(1).transform.GetChild(0).GetComponent<Text>().text = title;
+        infoPanel.transform.GetChild(1).transform.GetChild(1).GetComponent<Text>().text = description;
+
+        Sequence infoAnimation = DOTween.Sequence();
+
+        //Animation (First Y, Second X) 
+
+        infoAnimation.Append(infoPanel.GetComponent<RectTransform>().DOScaleY(1.0f, 1.0f));
+        infoAnimation.Append(infoPanel.GetComponent<RectTransform>().DOScaleX(1.0f, 1.0f));
+
+        //Animation scale complete
+
+        //infoAnimation.Append(infoPanel.GetComponent<RectTransform>().DOScale(1.0f, 1.0f));
+    }
+
+    /// <summary>
+    /// 
+    /// Function that hides the info panel.
+    /// 
+    /// </summary>
+    /// 
+    /// <returns>The end of the info panel animation.</returns>
+    public IEnumerator HideInfoPanel()
+    {
+        Sequence infoAnimation = DOTween.Sequence();
+
+        //Animation (First X, Second Y) 
+
+        infoAnimation.Append(infoPanel.GetComponent<RectTransform>().DOScaleX(0.01f, 1.0f));
+        infoAnimation.Append(infoPanel.GetComponent<RectTransform>().DOScaleY(0.01f, 1.0f));
+
+        //Animation scale complete
+        //infoAnimation.Append(infoPanel.GetComponent<RectTransform>().DOScale(0f, 1.0f));
+
+        yield return infoAnimation.WaitForCompletion();
+
+        infoPanel.SetActive(false);
+
+        vThirdPersonController.instance.GetComponent<GenericSettings>().UnlockPlayer();
     }
 
 }

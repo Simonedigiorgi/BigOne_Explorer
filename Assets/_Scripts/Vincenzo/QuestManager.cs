@@ -121,6 +121,8 @@ public class QuestManager : MonoBehaviour {
 
     public void CheckQuest()
     {
+        UIManager.instance.ChangeQuestText();
+
         if(SceneManager.GetActiveScene().name == currentQuest.taskActived.taskScene)
         {
             currentQuest.taskActived.ReadyTask();

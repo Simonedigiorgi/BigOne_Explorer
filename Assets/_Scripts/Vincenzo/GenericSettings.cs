@@ -7,6 +7,14 @@ public class GenericSettings : MonoBehaviour
     private bool isDead;
     public bool isOutside;
 
+    public Avatar avatarInside;
+    public GameObject modelInside;
+
+    public Avatar avatarOutside;
+    public GameObject modelOutside;
+
+    public GameObject currentModel;
+
     public bool IsDead
     {
         get { return isDead; }
@@ -16,6 +24,13 @@ public class GenericSettings : MonoBehaviour
         }
     }
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            ChangePlayer();
+        }
+    }
 
     /*void Update()
     {
@@ -42,6 +57,26 @@ public class GenericSettings : MonoBehaviour
         vThirdPersonController.instance.GetComponent<vThirdPersonInput>().lockInput = false;
         vThirdPersonController.instance.lockSpeed = false;
         vThirdPersonController.instance.lockRotation = false;
+    }
+
+    public void ChangePlayer()
+    {
+
+        if (currentModel == modelInside)
+        {
+            modelInside.SetActive(false);
+            this.gameObject.GetComponent<Animator>().avatar = avatarOutside;
+            modelOutside.SetActive(true);
+            currentModel = modelOutside;
+        }
+        else
+        {
+            modelOutside.SetActive(false);
+            this.gameObject.GetComponent<Animator>().avatar = avatarInside;
+            modelInside.SetActive(true);
+            currentModel = modelInside;
+        }
+
     }
 
 

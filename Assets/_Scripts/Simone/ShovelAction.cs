@@ -2,11 +2,12 @@
 using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine;
+using Invector.CharacterController;
 
 
 public class ShovelAction : vTriggerGenericAction {
 
-    private GameObject poketShovel;                                                 // Pala (Tasca)
+    private GameObject pocketShovel;                                                 // Pala (Tasca)
     private GameObject handShovel;                                                  // Pala (Mano)
 
     protected override void Start ()
@@ -14,10 +15,13 @@ public class ShovelAction : vTriggerGenericAction {
 
         base.Start();
 
-        poketShovel = GameObject.FindGameObjectWithTag("PalaPoket");                // Trova il GameObject con la TAG "PalaPoket"
-        handShovel = GameObject.FindGameObjectWithTag("PalaHand");                  // Trova il GameObject con la TAG "PalaHand"
+        //poketShovel = GameObject.FindGameObjectWithTag("PalaPoket");                // Trova il GameObject con la TAG "PalaPoket"
+        //handShovel = GameObject.FindGameObjectWithTag("PalaHand");                  // Trova il GameObject con la TAG "PalaHand"
 
-        poketShovel.transform.GetChild(0).gameObject.SetActive(true);               // Prendi il Figlio
+        pocketShovel = vThirdPersonController.instance.GetComponent<GenericSettings>().pocketShovel;
+        handShovel = vThirdPersonController.instance.GetComponent<GenericSettings>().handShovel;
+
+        pocketShovel.transform.GetChild(0).gameObject.SetActive(true);               // Prendi il Figlio
         handShovel.transform.GetChild(0).gameObject.SetActive(false);               // Prendi il Figlio
 
         OnDoAction.AddListener(() => GetShovel());
@@ -32,7 +36,7 @@ public class ShovelAction : vTriggerGenericAction {
     {
         handShovel.transform.GetChild(0).gameObject.SetActive(true);
         handShovel.transform.GetChild(0).GetComponent<Animator>().SetTrigger("ShovelApertura");
-        poketShovel.transform.GetChild(0).gameObject.SetActive(false);
+        pocketShovel.transform.GetChild(0).gameObject.SetActive(false);
 
         yield return new WaitForSeconds(1);
 
@@ -45,11 +49,9 @@ public class ShovelAction : vTriggerGenericAction {
 
         handShovel.transform.GetChild(0).GetComponent<Animator>().SetTrigger("Idle");
         handShovel.transform.GetChild(0).gameObject.SetActive(false);
-        poketShovel.transform.GetChild(0).gameObject.SetActive(true);
+        pocketShovel.transform.GetChild(0).gameObject.SetActive(true);
 
         Destroy(this.transform.parent.gameObject);
-
-
 
     }
 

@@ -15,6 +15,9 @@ public class GenericSettings : MonoBehaviour
 
     public GameObject currentModel;
 
+    public GameObject pocketShovel;
+    public GameObject handShovel;
+
     public bool IsDead
     {
         get { return isDead; }

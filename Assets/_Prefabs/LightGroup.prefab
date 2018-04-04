@@ -20,7 +20,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4392638275946268}
   - component: {fileID: 108237271638658488}
-  - component: {fileID: 114657735375597294}
   - component: {fileID: 114896773648437416}
   - component: {fileID: 123307738184611710}
   m_Layer: 0
@@ -54,7 +53,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4899704638545402}
   - component: {fileID: 108566537705355264}
-  - component: {fileID: 114147509607876678}
   - component: {fileID: 114204686987158488}
   - component: {fileID: 123452094678196058}
   m_Layer: 0
@@ -73,7 +71,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4736856584846300}
   - component: {fileID: 108559662038894516}
-  - component: {fileID: 114323541901757098}
   - component: {fileID: 114426589404699986}
   - component: {fileID: 123059718151319860}
   m_Layer: 0
@@ -105,13 +102,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1542418192616074}
-  m_LocalRotation: {x: 0.21109335, y: -0.14613499, z: 0.96491724, w: -0.05494518}
+  m_LocalRotation: {x: 0.25663185, y: 0.24767895, z: -0.29718807, w: 0.8857057}
   m_LocalPosition: {x: 0, y: 500, z: 0}
-  m_LocalScale: {x: 1, y: 1.0000001, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4082470214481998}
   m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 165, y: -154, z: 10}
+  m_LocalEulerAnglesHint: {x: 37, y: 21, z: -30}
 --- !u!4 &4736856584846300
 Transform:
   m_ObjectHideFlags: 1
@@ -148,7 +145,7 @@ Light:
   serializedVersion: 8
   m_Type: 1
   m_Color: {r: 1, g: 0.64705884, b: 0, a: 1}
-  m_Intensity: 1
+  m_Intensity: 1.2
   m_Range: 10
   m_SpotAngle: 30
   m_CookieSize: 10
@@ -198,7 +195,7 @@ Light:
   serializedVersion: 8
   m_Type: 1
   m_Color: {r: 1, g: 0.9920893, b: 0.71323526, a: 1}
-  m_Intensity: 1.1
+  m_Intensity: 1.2
   m_Range: 10
   m_SpotAngle: 30
   m_CookieSize: 10
@@ -288,31 +285,6 @@ Light:
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
---- !u!114 &114147509607876678
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1796702725652226}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dafc90245bfe9e2408e358f71deace2a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  SampleCount: 8
-  ScatteringCoef: 0
-  ExtinctionCoef: 0.1
-  SkyboxExtinctionCoef: 0.483
-  MieG: 0.862
-  HeightFog: 1
-  HeightScale: 0.297
-  GroundLevel: 0
-  Noise: 1
-  NoiseScale: 0.015
-  NoiseIntensity: 1.51
-  NoiseIntensityOffset: 0.3
-  NoiseVelocity: {x: 2.9, y: 4.56}
-  MaxRayLength: 400
 --- !u!114 &114204686987158488
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -327,31 +299,6 @@ MonoBehaviour:
   FogScatterIntensity: 0
   ShadowBlur: 2
   SpotBaseSize: 0.3
---- !u!114 &114323541901757098
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1937643437821202}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dafc90245bfe9e2408e358f71deace2a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  SampleCount: 8
-  ScatteringCoef: 0
-  ExtinctionCoef: 0.1
-  SkyboxExtinctionCoef: 0.483
-  MieG: 0.862
-  HeightFog: 1
-  HeightScale: 0.297
-  GroundLevel: 0
-  Noise: 1
-  NoiseScale: 0.015
-  NoiseIntensity: 1.51
-  NoiseIntensityOffset: 0.3
-  NoiseVelocity: {x: 2.9, y: 4.56}
-  MaxRayLength: 400
 --- !u!114 &114426589404699986
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -366,31 +313,6 @@ MonoBehaviour:
   FogScatterIntensity: 0
   ShadowBlur: 2
   SpotBaseSize: 0.3
---- !u!114 &114657735375597294
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1542418192616074}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dafc90245bfe9e2408e358f71deace2a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  SampleCount: 8
-  ScatteringCoef: 0
-  ExtinctionCoef: 0.1
-  SkyboxExtinctionCoef: 0.483
-  MieG: 0.862
-  HeightFog: 1
-  HeightScale: 0.297
-  GroundLevel: 0
-  Noise: 1
-  NoiseScale: 0.015
-  NoiseIntensity: 1.51
-  NoiseIntensityOffset: 0.3
-  NoiseVelocity: {x: 2.9, y: 4.56}
-  MaxRayLength: 400
 --- !u!114 &114896773648437416
 MonoBehaviour:
   m_ObjectHideFlags: 1

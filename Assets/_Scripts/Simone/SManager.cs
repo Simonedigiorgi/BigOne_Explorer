@@ -14,8 +14,14 @@ public class SManager : MonoBehaviour {
     private PostProcessingBehaviour behaviour;
     private GameObject quest;
 
-    [BoxGroup("PostProcessing Profiles")] public PostProcessingProfile mid;
-    [BoxGroup("PostProcessing Profiles")] public PostProcessingProfile sunset;
+    [BoxGroup("PostProcessing Profiles for Gale")] public PostProcessingProfile insideBase;
+    [BoxGroup("PostProcessing Profiles for Gale")] public PostProcessingProfile outsideBase;
+
+    [BoxGroup("PostProcessing Profiles for Other Scenes")] public PostProcessingProfile mid;
+    [BoxGroup("PostProcessing Profiles for Other Scenes")] public PostProcessingProfile sunset;
+
+    [BoxGroup("Trigger Collider (Gale Crater)")] public BoxCollider outsideTrigger; // Posizione Cratere (X 62, Y 1, Z -280) Rotation (Y -50)
+    [BoxGroup("Trigger Collider (Gale Crater)")] public BoxCollider insideTrigger; // Posizione Cratere (x 60, Y 1, Z -278,56) Rotation (Y -50)
 
     // Scena
 
@@ -44,6 +50,8 @@ public class SManager : MonoBehaviour {
     private bool isValles;
     private bool isNoctis;
     private bool isOlympus;
+
+    private bool isGaleLoaded;                                                                      // Bool per il cambio Post-Processing
 
     void Start()
     {
@@ -90,13 +98,22 @@ public class SManager : MonoBehaviour {
         missionTitleText.DOFade(0, 0);
         descriptionText.DOFade(0, 0);
 
+        // CRATERE GALE
+
         if (sceneName == "Gale Crater")
         {
             isGale = true;
+            isGaleLoaded = true;
             StartCoroutine(LandInfo("Gale Crater"));
         }
+        else
+        {
+            isGaleLoaded = false;
+        }
 
-        else if (sceneName == "Noctis Labyrinthus")
+        // ALTRE SCENE
+
+        if (sceneName == "Noctis Labyrinthus")
         {
             isNoctis = true;
             StartCoroutine(LandInfo("Noctis Labyrinthus"));
@@ -113,7 +130,6 @@ public class SManager : MonoBehaviour {
             isValles = true;
             StartCoroutine(LandInfo("Valles Marineris"));
         }
-
     }
 
     private void Update()
@@ -191,15 +207,31 @@ public class SManager : MonoBehaviour {
     {
         // TEMPERATURE
 
-        if(temperatureValue >= -30)
+        if (isGaleLoaded && FindObjectOfType<GenericSettings>().isOutside == false)
         {
-            behaviour.profile = sunset;
-            dayText.text = "Time of Day: Sunset";
+            dayText.text = "Time of Day: ?";
+            behaviour.profile = insideBase;
+            Debug.Log("The Player is Inside the base");
         }
-        else
+        else if(isGaleLoaded && FindObjectOfType<GenericSettings>().isOutside == true)
         {
-            behaviour.profile = mid;
-            dayText.text = "Time of Day: Midday";
+            dayText.text = "Time of Day: ?";
+            behaviour.profile = outsideBase;
+            Debug.Log("The Player is Outside the base");
+        }
+
+        if(isGaleLoaded == false)
+        {
+            if (temperatureValue >= -30)
+            {
+                behaviour.profile = sunset;
+                dayText.text = "Time of Day: Sunset";
+            }
+            else
+            {
+                behaviour.profile = mid;
+                dayText.text = "Time of Day: Midday";
+            }
         }
 
         yield return new WaitForSeconds(2.5f);
@@ -213,6 +245,7 @@ public class SManager : MonoBehaviour {
         yield return new WaitForSeconds(1);
         dayText.DOFade(1, 2);
 
+        #region Icon Animations
         yield return new WaitForSeconds(0.5f);
         if (isGale)
         {
@@ -288,6 +321,7 @@ public class SManager : MonoBehaviour {
             transform.GetChild(3).transform.GetChild(3).gameObject.SetActive(false);
             isOlympus = false;
         }
+        #endregion
 
         sceneText.DOFade(0, 4);
         temperatureText.DOFade(0, 4);

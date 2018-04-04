@@ -5,6 +5,7 @@ public class GenericSettings : MonoBehaviour
 {
 
     private bool isDead;
+    public bool isOutside;
 
     public bool IsDead
     {
@@ -14,6 +15,7 @@ public class GenericSettings : MonoBehaviour
             isDead = value;
         }
     }
+
 
     /*void Update()
     {

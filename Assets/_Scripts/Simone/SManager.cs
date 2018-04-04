@@ -3,16 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
-using UnityEngine.Rendering.PostProcessing;
 using UnityEngine.PostProcessing;
-using UnityEngine.Rendering;
 using Sirenix.OdinInspector;
 using DG.Tweening;
 
 public class SManager : MonoBehaviour {
 
-    private PostProcessingBehaviour behaviour;
-    private GameObject quest;
+    private PostProcessingBehaviour behaviour;                                                      // Profilo del Post-Processing (vThirdController)
+    private GameObject quest;                                                                       // Cerca il Gameobject "Quest"
 
     [BoxGroup("PostProcessing Profiles for Gale")] public PostProcessingProfile insideBase;
     [BoxGroup("PostProcessing Profiles for Gale")] public PostProcessingProfile outsideBase;
@@ -31,7 +29,9 @@ public class SManager : MonoBehaviour {
 
     // Sol
 
-    private Text solText;
+    private Image fadeSol;
+    private Text solLeft;
+    private Text solCenter;
     private bool quest1, quest2, quest3, quest4, quest5, quest6, quest7, quest8;
 
     // Missions
@@ -40,16 +40,12 @@ public class SManager : MonoBehaviour {
     private Text descriptionText;
     private bool mission1, mission2, mission3;
 
-    // Icons
+    private int temperatureValue;                                                                   
 
-    private Image firstIconImage;
-
-    private int temperatureValue;
-
-    private bool isGale;
-    private bool isValles;
-    private bool isNoctis;
-    private bool isOlympus;
+    private bool isGale;                                                                            // Bool per le Animazioni delle Icone
+    private bool isValles;                                                                          // Bool per le Animazioni delle Icone
+    private bool isNoctis;                                                                          // Bool per le Animazioni delle Icone                                                                
+    private bool isOlympus;                                                                         // Bool per le Animazioni delle Icone
 
     private bool isGaleLoaded;                                                                      // Bool per il cambio Post-Processing
 
@@ -76,16 +72,14 @@ public class SManager : MonoBehaviour {
 
         // GET SOL INFO
 
-        solText = transform.GetChild(1).transform.GetChild(0).GetComponent<Text>();
+        fadeSol = transform.GetChild(1).transform.GetChild(0).GetComponent<Image>();
+        solLeft = transform.GetChild(1).transform.GetChild(1).GetComponent<Text>();
+        solCenter = transform.GetChild(1).transform.GetChild(2).GetComponent<Text>();
 
         // GET MISSION INFO
 
         missionTitleText = transform.GetChild(2).transform.GetChild(0).GetComponent<Text>();
         descriptionText = transform.GetChild(2).transform.GetChild(1).GetComponent<Text>();
-
-        // GET ICONS INFO
-
-        firstIconImage = transform.GetChild(3).transform.GetChild(0).GetComponent<Image>();
 
         // FADE COMPONENTS
 
@@ -93,7 +87,8 @@ public class SManager : MonoBehaviour {
         temperatureText.DOFade(0, 0);
         dayText.DOFade(0, 0);
 
-        solText.DOFade(0, 0);
+        solLeft.DOFade(0, 0);
+        solCenter.DOFade(0, 0);
 
         missionTitleText.DOFade(0, 0);
         descriptionText.DOFade(0, 0);
@@ -161,42 +156,7 @@ public class SManager : MonoBehaviour {
         if (quest.transform.GetChild(0).GetComponent<Quest>().currentState == Quest.QuestState.ENABLED && !quest1)
         {
             quest1 = true;
-            StartCoroutine(SolInfo("Sol 1"));
-        }
-        else if (quest.transform.GetChild(1).GetComponent<Quest>().currentState == Quest.QuestState.ENABLED && !quest2)
-        {
-            quest2 = true;
-            StartCoroutine(SolInfo("Sol 6"));
-        }
-        else if (quest.transform.GetChild(2).GetComponent<Quest>().currentState == Quest.QuestState.ENABLED && !quest3)
-        {
-            quest3 = true;
-            StartCoroutine(SolInfo("Sol 15"));
-        }
-        else if (quest.transform.GetChild(3).GetComponent<Quest>().currentState == Quest.QuestState.ENABLED && !quest4)
-        {
-            quest4 = true;
-            StartCoroutine(SolInfo("Sol 21"));
-        }
-        else if (quest.transform.GetChild(4).GetComponent<Quest>().currentState == Quest.QuestState.ENABLED && !quest5)
-        {
-            quest5 = true;
-            StartCoroutine(SolInfo("Sol 28"));
-        }
-        else if (quest.transform.GetChild(5).GetComponent<Quest>().currentState == Quest.QuestState.ENABLED && !quest6)
-        {
-            quest6 = true;
-            StartCoroutine(SolInfo("Sol 34"));
-        }
-        else if (quest.transform.GetChild(6).GetComponent<Quest>().currentState == Quest.QuestState.ENABLED && !quest7)
-        {
-            quest7 = true;
-            StartCoroutine(SolInfo("Sol 41"));
-        }
-        else if (quest.transform.GetChild(7).GetComponent<Quest>().currentState == Quest.QuestState.ENABLED && !quest8)
-        {
-            quest8 = true;
-            StartCoroutine(SolInfo("Sol 49"));
+            StartCoroutine(SolLeftInfo());
         }
         #endregion
     }
@@ -205,19 +165,16 @@ public class SManager : MonoBehaviour {
 
     public IEnumerator LandInfo(string name)
     {
-        // TEMPERATURE
-
+        #region Temperature
         if (isGaleLoaded && FindObjectOfType<GenericSettings>().isOutside == false)
         {
             dayText.text = "Time of Day: ?";
             behaviour.profile = insideBase;
-            Debug.Log("The Player is Inside the base");
         }
         else if(isGaleLoaded && FindObjectOfType<GenericSettings>().isOutside == true)
         {
             dayText.text = "Time of Day: ?";
             behaviour.profile = outsideBase;
-            Debug.Log("The Player is Outside the base");
         }
 
         if(isGaleLoaded == false)
@@ -233,6 +190,7 @@ public class SManager : MonoBehaviour {
                 dayText.text = "Time of Day: Midday";
             }
         }
+        #endregion
 
         yield return new WaitForSeconds(2.5f);
         sceneText.text = name;
@@ -245,7 +203,7 @@ public class SManager : MonoBehaviour {
         yield return new WaitForSeconds(1);
         dayText.DOFade(1, 2);
 
-        #region Icon Animations
+        #region Icon Animations  // SONO STATE DISABILITATE LE "IMAGES" DI TUTTI GLI OGGETTI TRANNE I "COLLECTABLES"
         yield return new WaitForSeconds(0.5f);
         if (isGale)
         {
@@ -348,14 +306,32 @@ public class SManager : MonoBehaviour {
         descriptionText.DOFade(0, 0.5f);
     }
 
-    public IEnumerator SolInfo(string solNumber)
+    public IEnumerator SolLeftInfo()
     {
-        solText.text = solNumber;
+        solLeft.text = "Sol 1";
 
         yield return new WaitForSeconds(8f);
-        solText.DOFade(1, 4);
+        solLeft.DOFade(1, 4);
 
         yield return new WaitForSeconds(4f);
-        solText.DOFade(0, 4);
+        solLeft.DOFade(0, 4);
+    }
+
+    // CHIAMARE QUESTA NEL MANAGER DELLE QUEST
+    public IEnumerator SolInfo(string name)
+    {
+        FindObjectOfType<GenericSettings>().LockPlayer();
+        yield return new WaitForSeconds(1f);
+
+        fadeSol.DOFade(1, 2);
+        solCenter.text = name;
+
+        yield return new WaitForSeconds(3f);
+        solCenter.DOFade(1, 4);
+
+        yield return new WaitForSeconds(4f);
+        FindObjectOfType<GenericSettings>().UnlockPlayer();
+        solCenter.DOFade(0, 2);
+        fadeSol.DOFade(0, 4);
     }
 }

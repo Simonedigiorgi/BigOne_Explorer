@@ -12,11 +12,11 @@ public class SManager : MonoBehaviour {
     private PostProcessingBehaviour behaviour;                                                      // Profilo del Post-Processing (vThirdController)
     private GameObject quest;                                                                       // Cerca il Gameobject "Quest"
 
-    [BoxGroup("PostProcessing Profiles for Gale")] public PostProcessingProfile insideBase;
-    [BoxGroup("PostProcessing Profiles for Gale")] public PostProcessingProfile outsideBase;
+    [BoxGroup("PostProcessing Profiles for Gale")] public PostProcessingProfile insideBase;         // Post-Processing esclusivi per il Cratere Gale
+    [BoxGroup("PostProcessing Profiles for Gale")] public PostProcessingProfile outsideBase;        // Post-Processing esclusivi per il Cratere Gale
 
-    [BoxGroup("PostProcessing Profiles for Other Scenes")] public PostProcessingProfile mid;
-    [BoxGroup("PostProcessing Profiles for Other Scenes")] public PostProcessingProfile sunset;
+    [BoxGroup("PostProcessing Profiles for Other Scenes")] public PostProcessingProfile mid;        // Post-Processing delle altre scene
+    [BoxGroup("PostProcessing Profiles for Other Scenes")] public PostProcessingProfile sunset;     // Post-Processing delle altre scene
 
     [BoxGroup("Trigger Collider (Gale Crater)")] public BoxCollider outsideTrigger; // Posizione Cratere (X 62, Y 1, Z -280) Rotation (Y -50)
     [BoxGroup("Trigger Collider (Gale Crater)")] public BoxCollider insideTrigger; // Posizione Cratere (x 60, Y 1, Z -278,56) Rotation (Y -50)
@@ -40,7 +40,8 @@ public class SManager : MonoBehaviour {
     private Text descriptionText;
     private bool mission1, mission2, mission3;
 
-    private int temperatureValue;                                                                   
+    private int temperatureValue;                                                                   // Random delle Temperature 
+    private int dialogueValue;                                                                      // Random dei Dialoghi 
 
     private bool isGale;                                                                            // Bool per le Animazioni delle Icone
     private bool isValles;                                                                          // Bool per le Animazioni delle Icone
@@ -49,8 +50,15 @@ public class SManager : MonoBehaviour {
 
     private bool isGaleLoaded;                                                                      // Bool per il cambio Post-Processing
 
+    // Ingame Dialogues
+
+    private RectTransform dialogueBox;
+    private Text dialogueText;
+
     void Start()
     {
+        // Attiva tutti i figli di SManager Canvas
+
         foreach(Transform child in transform)
         {
             child.gameObject.SetActive(true);
@@ -63,6 +71,7 @@ public class SManager : MonoBehaviour {
         string sceneName = currentScene.name;
 
         temperatureValue = Random.Range(-60, 20);
+        dialogueValue = Random.Range(0, 11);
 
         // GET SCENE INFO
 
@@ -80,6 +89,11 @@ public class SManager : MonoBehaviour {
 
         missionTitleText = transform.GetChild(2).transform.GetChild(0).GetComponent<Text>();
         descriptionText = transform.GetChild(2).transform.GetChild(1).GetComponent<Text>();
+
+        // GET DIALOGUES INFO
+
+        dialogueBox = transform.GetChild(4).transform.GetChild(0).GetComponent<RectTransform>();
+        dialogueText = transform.GetChild(4).transform.GetChild(0).GetChild(3).GetComponent<Text>();
 
         // FADE COMPONENTS
 
@@ -112,18 +126,21 @@ public class SManager : MonoBehaviour {
         {
             isNoctis = true;
             StartCoroutine(LandInfo("Noctis Labyrinthus"));
+            StartCoroutine(DialoguesInfo());
         }
 
         else if (sceneName == "Olympus Mons")
         {
             isOlympus = true;
             StartCoroutine(LandInfo("Olympus Mons"));
+            StartCoroutine(DialoguesInfo());
         }
 
         else if (sceneName == "Valles Marineris")
         {
             isValles = true;
             StartCoroutine(LandInfo("Valles Marineris"));
+            StartCoroutine(DialoguesInfo());
         }
     }
 
@@ -286,6 +303,7 @@ public class SManager : MonoBehaviour {
         dayText.DOFade(0, 4);
     }
 
+    #region Mission Coroutine
     public IEnumerator MissionInfo(string missionEnabled, string descriptionInfo, int seconds)
     {
         missionTitleText.text = missionEnabled;
@@ -305,7 +323,53 @@ public class SManager : MonoBehaviour {
         missionTitleText.DOFade(0, 1);
         descriptionText.DOFade(0, 0.5f);
     }
+    #endregion
 
+    #region Dialogues Coroutine
+    public IEnumerator DialoguesInfo()
+    {
+        yield return new WaitForSeconds(25);
+        dialogueBox.GetComponent<Animation>().Play("D_MoveUp");
+
+        if (dialogueValue == 0)
+            dialogueText.text = "Say something smart 0";
+
+        else if(dialogueValue == 1)
+            dialogueText.text = "Say something smart 1";
+
+        else if (dialogueValue == 2)
+            dialogueText.text = "Say something smart 2";
+
+        else if (dialogueValue == 3)
+            dialogueText.text = "Say something smart 3";
+
+        else if (dialogueValue == 4)
+            dialogueText.text = "Say something smart 4";
+
+        else if (dialogueValue == 5)
+            dialogueText.text = "Say something smart 5";
+
+        else if (dialogueValue == 6)
+            dialogueText.text = "Say something smart 6";
+
+        else if (dialogueValue == 7)
+            dialogueText.text = "Say something smart 7";
+
+        else if (dialogueValue == 8)
+            dialogueText.text = "Say something smart 8";
+
+        else if (dialogueValue == 9)
+            dialogueText.text = "Say something smart 9";
+
+        else if (dialogueValue == 10)
+            dialogueText.text = "Say something smart 10";
+
+        yield return new WaitForSeconds(10);
+        dialogueBox.GetComponent<Animation>().Play("D_MoveDown");
+    }
+    #endregion
+
+    #region Sol Coroutines
     public IEnumerator SolLeftInfo()
     {
         solLeft.text = "Sol 1";
@@ -334,4 +398,5 @@ public class SManager : MonoBehaviour {
         solCenter.DOFade(0, 2);
         fadeSol.DOFade(0, 4);
     }
+    #endregion
 }

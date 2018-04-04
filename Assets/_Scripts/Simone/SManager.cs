@@ -9,14 +9,18 @@ using DG.Tweening;
 
 public class SManager : MonoBehaviour {
 
-    private PostProcessingBehaviour behaviour;                                                      // Profilo del Post-Processing (vThirdController)
-    private GameObject quest;                                                                       // Cerca il Gameobject "Quest"
+    private PostProcessingBehaviour behaviour;                                                              // Profilo del Post-Processing (vThirdController)
+    private GameObject quest;                                                                               // Cerca il Gameobject "Quest"
 
-    [BoxGroup("PostProcessing Profiles for Gale")] public PostProcessingProfile insideBase;         // Post-Processing esclusivi per il Cratere Gale
-    [BoxGroup("PostProcessing Profiles for Gale")] public PostProcessingProfile outsideBase;        // Post-Processing esclusivi per il Cratere Gale
+    [BoxGroup("PostProcessing Profiles for Gale")] public PostProcessingProfile insideBase;                 // Post-Processing esclusivi per il Cratere Gale
+    [BoxGroup("PostProcessing Profiles for Gale")] public PostProcessingProfile outsideBase;                // Post-Processing esclusivi per il Cratere Gale
 
-    [BoxGroup("PostProcessing Profiles for Other Scenes")] public PostProcessingProfile mid;        // Post-Processing delle altre scene
-    [BoxGroup("PostProcessing Profiles for Other Scenes")] public PostProcessingProfile sunset;     // Post-Processing delle altre scene
+    [BoxGroup("PostProcessing Profiles for Other Scenes")] public PostProcessingProfile crater;             // Post-Processing delle altre scene
+    [BoxGroup("PostProcessing Profiles for Other Scenes")] public PostProcessingProfile labyrinthus;        // Post-Processing delle altre scene
+    [BoxGroup("PostProcessing Profiles for Other Scenes")] public PostProcessingProfile marineris;          // Post-Processing delle altre scene
+    [BoxGroup("PostProcessing Profiles for Other Scenes")] public PostProcessingProfile olympus;            // Post-Processing delle altre scene
+
+    [BoxGroup("Directional Light")] public GameObject lightGroup;                                           // LightGroup Gameobject
 
     [BoxGroup("Trigger Collider (Gale Crater)")] public BoxCollider outsideTrigger; // Posizione Cratere (X 62, Y 1, Z -280) Rotation (Y -50)
     [BoxGroup("Trigger Collider (Gale Crater)")] public BoxCollider insideTrigger; // Posizione Cratere (x 60, Y 1, Z -278,56) Rotation (Y -50)
@@ -124,6 +128,7 @@ public class SManager : MonoBehaviour {
 
         if (sceneName == "Noctis Labyrinthus")
         {
+            behaviour.profile = labyrinthus;
             isNoctis = true;
             StartCoroutine(LandInfo("Noctis Labyrinthus"));
             StartCoroutine(DialoguesInfo());
@@ -131,6 +136,7 @@ public class SManager : MonoBehaviour {
 
         else if (sceneName == "Olympus Mons")
         {
+            behaviour.profile = olympus;
             isOlympus = true;
             StartCoroutine(LandInfo("Olympus Mons"));
             StartCoroutine(DialoguesInfo());
@@ -138,6 +144,7 @@ public class SManager : MonoBehaviour {
 
         else if (sceneName == "Valles Marineris")
         {
+            behaviour.profile = marineris;
             isValles = true;
             StartCoroutine(LandInfo("Valles Marineris"));
             StartCoroutine(DialoguesInfo());
@@ -182,29 +189,77 @@ public class SManager : MonoBehaviour {
 
     public IEnumerator LandInfo(string name)
     {
-        #region Temperature
-        if (isGaleLoaded && FindObjectOfType<GenericSettings>().isOutside == false)
+        #region Temperature/Light/Post-Processing
+        if (isGaleLoaded == true)
         {
-            dayText.text = "Time of Day: ?";
-            behaviour.profile = insideBase;
-        }
-        else if(isGaleLoaded && FindObjectOfType<GenericSettings>().isOutside == true)
-        {
-            dayText.text = "Time of Day: ?";
-            behaviour.profile = outsideBase;
+            if (FindObjectOfType<GenericSettings>().isOutside == false)
+            {
+                dayText.text = "Time of Day: Inside the base";
+                behaviour.profile = crater;
+            }
+            else if (FindObjectOfType<GenericSettings>().isOutside == true)
+            {
+                dayText.text = "Time of Day: Outside the base";
+                behaviour.profile = crater;
+            }
+
+            if (temperatureValue >= -60 && temperatureValue < -30)
+            {
+                dayText.text = "Time of Day: Sunset";
+                lightGroup.transform.GetChild(0).gameObject.SetActive(true);
+                RenderSettings.sun = lightGroup.transform.GetChild(0).GetComponent<Light>();
+
+                lightGroup.transform.GetChild(1).gameObject.SetActive(false);
+                lightGroup.transform.GetChild(2).gameObject.SetActive(false);
+            }
+            else if (temperatureValue >= -30 && temperatureValue < 0)
+            {
+                dayText.text = "Time of Day: Midday";
+                lightGroup.transform.GetChild(1).gameObject.SetActive(true);
+                RenderSettings.sun = lightGroup.transform.GetChild(1).GetComponent<Light>();
+
+                lightGroup.transform.GetChild(0).gameObject.SetActive(false);
+                lightGroup.transform.GetChild(2).gameObject.SetActive(false);
+            }
+            else
+            {
+                dayText.text = "Time of Day: Twilight";
+                lightGroup.transform.GetChild(2).gameObject.SetActive(true);
+                RenderSettings.sun = lightGroup.transform.GetChild(2).GetComponent<Light>();
+
+                lightGroup.transform.GetChild(0).gameObject.SetActive(false);
+                lightGroup.transform.GetChild(1).gameObject.SetActive(false);
+            }
         }
 
         if(isGaleLoaded == false)
         {
-            if (temperatureValue >= -30)
+            if (temperatureValue >= -60 && temperatureValue < -30)
             {
-                behaviour.profile = sunset;
                 dayText.text = "Time of Day: Sunset";
+                lightGroup.transform.GetChild(0).gameObject.SetActive(true);
+                RenderSettings.sun = lightGroup.transform.GetChild(0).GetComponent<Light>();
+
+                lightGroup.transform.GetChild(1).gameObject.SetActive(false);
+                lightGroup.transform.GetChild(2).gameObject.SetActive(false);
+            }
+            else if(temperatureValue >= -30 && temperatureValue < 0)
+            {
+                dayText.text = "Time of Day: Midday";
+                lightGroup.transform.GetChild(1).gameObject.SetActive(true);
+                RenderSettings.sun = lightGroup.transform.GetChild(1).GetComponent<Light>();
+
+                lightGroup.transform.GetChild(0).gameObject.SetActive(false);
+                lightGroup.transform.GetChild(2).gameObject.SetActive(false);
             }
             else
             {
-                behaviour.profile = mid;
-                dayText.text = "Time of Day: Midday";
+                dayText.text = "Time of Day: Twilight";
+                lightGroup.transform.GetChild(2).gameObject.SetActive(true);
+                RenderSettings.sun = lightGroup.transform.GetChild(2).GetComponent<Light>();
+
+                lightGroup.transform.GetChild(0).gameObject.SetActive(false);
+                lightGroup.transform.GetChild(1).gameObject.SetActive(false);
             }
         }
         #endregion

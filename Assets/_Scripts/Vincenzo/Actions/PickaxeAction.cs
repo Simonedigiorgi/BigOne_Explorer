@@ -60,7 +60,7 @@ public class PickaxeAction : vTriggerGenericAction {
         handPickaxe.transform.GetChild(0).GetComponent<Animator>().SetTrigger("PickaxeApertura");
         poketPickaxe.transform.GetChild(0).gameObject.SetActive(false);
 
-        yield return new WaitForSeconds(8f);
+        yield return new WaitForSeconds(4.6f);
 
         playerAnimator.SetInteger("PickaxeState", 3);
         handPickaxe.transform.GetChild(0).gameObject.SetActive(false);

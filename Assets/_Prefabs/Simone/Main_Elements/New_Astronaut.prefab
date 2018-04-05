@@ -82,6 +82,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4212121926915294}
   - component: {fileID: 137993960691015438}
+  - component: {fileID: 114653051859650562}
   m_Layer: 0
   m_Name: Helmet
   m_TagString: Untagged
@@ -4885,7 +4886,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1262237382474364}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 59.668, y: -0.00000023841858, z: -277.948}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4591325776022578}
@@ -7147,6 +7148,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gadgets: []
+--- !u!114 &114653051859650562
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1014308700010478}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93903846b3de547baa8beceb58dbbded, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gadgetType: 0
+  isEnabled: 0
+  isEquipped: 0
+  listObjects: []
+  description: {fileID: 0}
+  image: {fileID: 0}
 --- !u!114 &114687300987710722
 MonoBehaviour:
   m_ObjectHideFlags: 1

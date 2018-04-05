@@ -75,7 +75,7 @@ public class SManager : MonoBehaviour {
         string sceneName = currentScene.name;
 
         temperatureValue = Random.Range(-60, 20);
-        dialogueValue = Random.Range(0, 11);
+        dialogueValue = Random.Range(0, 10);
 
         // GET SCENE INFO
 
@@ -387,39 +387,36 @@ public class SManager : MonoBehaviour {
         dialogueBox.GetComponent<Animation>().Play("D_MoveUp");
 
         if (dialogueValue == 0)
-            dialogueText.text = "Say something smart 0";
+            dialogueText.text = "Marika: *ktztzt * Ehy John, did you know that first recordings of Mars date back to the Ancient Egyptians? They called the planet Her Desher, meaning The Red One. Ancient Greeks nominated it Ares, Romans Mars. In the Eastern Asian cultures it was referred to as the Fire Star while in the Hindu religion it is known as the deity Mangala ";
 
-        else if(dialogueValue == 1)
-            dialogueText.text = "Say something smart 1";
+        else if (dialogueValue == 1)
+            dialogueText.text = "Marika: *ktztzt * Ehy John, did you know that Mars was first observed via telescope by Galileo Galilei in 1609? However, to discover its two moons, Phobos and Deimos, nominated after the sons of the Greek God of War Ares, we had to wait until 1877 when the astronomer Asaph Hall found them. ";
 
         else if (dialogueValue == 2)
-            dialogueText.text = "Say something smart 2";
+            dialogueText.text = "Marika: *ktztzt * Ehy John, did you know that the Mars symbol, is the circle with a small arrow pointing out from behind heading to the top right? It is a stylized representation of a shield and spear used by the Roman God Mars. ";
 
         else if (dialogueValue == 3)
-            dialogueText.text = "Say something smart 3";
+            dialogueText.text = "Alexander: *ktztzt * Hello my friend, I just wanted to talk to you about Mars, for I think you have noticed it's quite a dust ball. Within hours, due to the wind and other phenomenons, a storm can form and within day it can become a massive, planet-spanning cell that leaves the air fogged with dust for weeks! ";
 
         else if (dialogueValue == 4)
-            dialogueText.text = "Say something smart 4";
+            dialogueText.text = "Alexander: *ktztzt * Hello my friend, just wanted to share a thought. On Earth there are areas of Mars called 'Spiders', they are terrain formations created every Martian Spring as the terrain erodes during the change of ice caps from ice to vapor. So mind your steps as you might, well, step, on a small spider ahah! ";
 
         else if (dialogueValue == 5)
-            dialogueText.text = "Say something smart 5";
+            dialogueText.text = "Alexander: *ktztzt * Hello my friend,  there's a thing I'd like to talk about. Did you know that Mars has seasons as well as the Earth? However, each season on the Red Planet lasts twice as long as that on Earth. Here it's almost always very cold for humans, basically just like my hometown. ";
 
         else if (dialogueValue == 6)
-            dialogueText.text = "Say something smart 6";
+            dialogueText.text = "Alexander: *ktztzt * Hello my friend, I just wanted to tell you how lucky we are. Did you know that until 2016 the Mars missions success rate were no better than 66%? Now we are here! Thinking of the progress we have made in the last decades makes Alexander wander what will come next. ";
 
         else if (dialogueValue == 7)
-            dialogueText.text = "Say something smart 7";
+            dialogueText.text = "Emma: *ktztzt * Hello darling! Mind a bit of chatter, it gets pretty lonely while working. Have you ever heard of Solar Conjunctions? A Solar conjunction is the period when Earth and Mars are obscured from each other by the Sun itself. When this happens, the communication between spacecraft on Mars and the Earth drastically reduces and a lot of data is lost. This happens regularly every two years for about two weeks. ";
 
         else if (dialogueValue == 8)
-            dialogueText.text = "Say something smart 8";
+            dialogueText.text = "Emma: *ktztzt * Hello dear! Just a thought that I wanted to share. Did you know that the first spacecraft to Mars was sent from Earth back in 1960? Unfortunately, the mission failed, but the attempt allowed us to learn a lot and from our mistakes we made what we are doing today possible! ";
 
         else if (dialogueValue == 9)
-            dialogueText.text = "Say something smart 9";
+            dialogueText.text = "Emma: *ktztzt * Hello my dear, mind a second? I was just wondering how incredible is the fact that how even just the prototyping of technology for a Mars mission has influenced the life on Earth. Think of the development of satellites that has aided the life on Earth greatly. That's just an example! ";
 
-        else if (dialogueValue == 10)
-            dialogueText.text = "Say something smart 10";
-
-        yield return new WaitForSeconds(10);
+        yield return new WaitForSeconds(15);
         dialogueBox.GetComponent<Animation>().Play("D_MoveDown");
     }
     #endregion

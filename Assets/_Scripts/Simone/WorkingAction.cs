@@ -18,6 +18,7 @@ public class WorkingAction : vTriggerGenericAction {
     public IEnumerator UseWorking()
     {
         yield return new WaitForSeconds(4.4f);
-        gameObject.SetActive(false);
+        //gameObject.SetActive(false);
+        Destroy(gameObject);
     }
 }

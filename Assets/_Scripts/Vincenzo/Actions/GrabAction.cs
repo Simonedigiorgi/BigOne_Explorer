@@ -40,7 +40,9 @@ public class GrabAction : vTriggerGenericAction
         {
             sequenceGrab.Append(transform.parent.DOScale(0, 2f));
         }
+
         yield return sequenceGrab.WaitForCompletion();
+
         Destroy(transform.parent.gameObject);
     }
 

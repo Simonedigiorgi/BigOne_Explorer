@@ -135,11 +135,12 @@ public class SoundManager : MonoBehaviour {
 	void Update()
 	{
 
+
 		if(SceneManager.GetActiveScene().buildIndex != Scena0 && activeTimer == false && managerHUD.GetMenuIsOpen() == false && managerHUD.GetCodexMenuIsOpen() == false && managerHUD.GetMenuRoverIsOpen() == false)
 		{
 
 			//Accendo o spengo la radio
-			if (Input.GetKeyDown (KeyCode.U) || InputManager.UPArrow()) 
+			if (Input.GetKeyDown (KeyCode.UpArrow) || InputManager.UPArrow()) 
 			{
 
 				activeTimer = true;
@@ -148,7 +149,7 @@ public class SoundManager : MonoBehaviour {
 			}
 
 			//Andiamo alla canzone successiva 
-			if (InputManager.RIGHTArrow () == true && isRadio == true && activeTimer == false)
+			if ((InputManager.RIGHTArrow () == true || Input.GetKeyDown(KeyCode.RightArrow) == true) && isRadio == true && activeTimer == false)
 			{
 
 				activeTimer = true;
@@ -159,7 +160,7 @@ public class SoundManager : MonoBehaviour {
 			}
 
 			//Andiamo alla canzone precedente 
-			if (InputManager.LEFTArrow () == true && isRadio == true && activeTimer == false) 
+			if ((InputManager.LEFTArrow () == true || Input.GetKeyDown(KeyCode.LeftArrow) == true) && isRadio == true && activeTimer == false) 
 			{
 
 				activeTimer = true;

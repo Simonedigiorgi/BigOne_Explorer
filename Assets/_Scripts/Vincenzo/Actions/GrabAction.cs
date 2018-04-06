@@ -31,15 +31,8 @@ public class GrabAction : vTriggerGenericAction
     {
         Sequence sequenceGrab = DOTween.Sequence();
 
-        if (this.transform.parent.CompareTag("Equipment"))
-        {
-            sequenceGrab.Append(transform.parent.DORotate(Vector3.up * 200, 2f));
-            sequenceGrab.Join(transform.parent.DOScale(0, 2f));
-        }
-        else
-        {
-            sequenceGrab.Append(transform.parent.DOScale(0, 2f));
-        }
+        sequenceGrab.Append(transform.parent.DORotate(Vector3.up * 200, 2f));
+        sequenceGrab.Join(transform.parent.DOScale(0, 2f));
 
         yield return sequenceGrab.WaitForCompletion();
 

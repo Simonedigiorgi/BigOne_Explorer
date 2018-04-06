@@ -31,7 +31,18 @@ public class SoundManager : MonoBehaviour {
 	private float timerCommand = 0;
 	private bool activeTimer = false;
 
+	private int overTwoSong = 0;
+
+	private HUD managerHUD;
+
 	#endregion
+
+	void Awake()
+	{
+
+		managerHUD = GameObject.Find ("PauseMenu").GetComponent<HUD>();
+
+	}
 
 	void Start()
 	{
@@ -124,54 +135,43 @@ public class SoundManager : MonoBehaviour {
 	void Update()
 	{
 
-		//Ovattato
-		if (Input.GetKeyDown (KeyCode.O)) 
+		if(SceneManager.GetActiveScene().buildIndex != Scena0 && activeTimer == false && managerHUD.GetMenuIsOpen() == false && managerHUD.GetCodexMenuIsOpen() == false && managerHUD.GetMenuRoverIsOpen() == false)
 		{
 
-			music.GoSnapShotFade (1);
+			//Accendo o spengo la radio
+			if (Input.GetKeyDown (KeyCode.U) || InputManager.UPArrow()) 
+			{
+
+				activeTimer = true;
+				SetRadio ();
+
+			}
+
+			//Andiamo alla canzone successiva 
+			if (InputManager.RIGHTArrow () == true && isRadio == true && activeTimer == false)
+			{
+
+				activeTimer = true;
+				NextMusic ();
+				managerHUD.MoveOnMenu ("MusicNext");
+				managerHUD.ChangeTextSong (music.InfoClusterFadeNameSongInPlay (0));
+
+			}
+
+			//Andiamo alla canzone precedente 
+			if (InputManager.LEFTArrow () == true && isRadio == true && activeTimer == false) 
+			{
+
+				activeTimer = true;
+				PreviousMusic ();
+				managerHUD.MoveOnMenu ("MusicPrevious");
+				managerHUD.ChangeTextSong (music.InfoClusterFadeNameSongInPlay (0));
+
+			}
 
 		}
 
-		//Non ovattato
-		if (Input.GetKeyDown (KeyCode.P)) 
-		{
-
-			music.GoSnapShotFade (2);
-
-		}
-
-
-		if ((Input.GetKeyDown (KeyCode.U) || InputManager.UPArrow() ) && SceneManager.GetActiveScene().buildIndex != Scena0 && activeTimer == false) 
-		{
-
-			activeTimer = true;
-			SetRadio ();
-
-		}
-
-		if (Input.GetKeyDown (KeyCode.P)) 
-		{
-
-			music.GoNextMusicClusterFade (0);
-
-		}
-
-		if (InputManager.RIGHTArrow () == true && isRadio == true && activeTimer == false)
-		{
-
-			activeTimer = true;
-			NextMusic ();
-
-		}
-
-		if (InputManager.LEFTArrow () == true && isRadio == true && activeTimer == false) 
-		{
-
-			activeTimer = true;
-			PreviousMusic ();
-
-		}
-
+		//Diamo dei dealy ai comandi 
 		if (activeTimer == true) 
 		{
 
@@ -186,7 +186,6 @@ public class SoundManager : MonoBehaviour {
 			}
 
 		}
-			
 
 	}
 
@@ -207,6 +206,8 @@ public class SoundManager : MonoBehaviour {
 			//mixerMusic.SetFloat("Volume", ES2.Load<float> ("Setting.txt?tag="+mixerMusic.name));
 			mixerMusic.SetFloat("Volume", 0f);
 
+			managerHUD.MoveOnMenu ("MusicStart");
+
 			Debug.Log ("Radio attiva");
 
 		} 
@@ -215,6 +216,8 @@ public class SoundManager : MonoBehaviour {
 
 			isRadio = false;
 			mixerMusic.SetFloat("Volume", -80f);
+
+			managerHUD.MoveOnMenu ("MusicStop");
 
 			Debug.Log ("Radio disattiva");
 

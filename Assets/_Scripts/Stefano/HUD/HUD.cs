@@ -60,6 +60,9 @@ public class HUD : MonoBehaviour {
 	[Header("Variabile per il salvataggio simulato")]
 	public float saveTime;
 
+	[Header("Variabili per la Radio/MP3")]
+	public Text songText;
+
 	#endregion 
 
 	#region Class
@@ -1091,6 +1094,27 @@ public class HUD : MonoBehaviour {
 	{
 
 		newSceneUnlock = nameScene;
+
+	}
+		
+	public bool GetMenuRoverIsOpen()
+	{
+
+		return roverMenuIsOpen;
+
+	}
+
+	#endregion
+
+	#region Radio
+
+	/// <summary>
+	/// Metodo che cambia il nome del testo della canzone corrente 
+	/// </summary>
+	public void ChangeTextSong(string newSong)
+	{
+
+		songText.text = newSong;
 
 	}
 

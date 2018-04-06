@@ -901,6 +901,27 @@ public class Musica2 : MonoBehaviour
 
     #endregion
 
+	#region Information Music
+
+	public string InfoClusterFadeNameSongInPlay(int IDcluster)
+	{
+
+		for (int i = 0; i < systemClusterFade [IDcluster].clusterFade.Length; i++) 
+		{
+
+			if (systemClusterFade [IDcluster].clusterFade [i].isInPlay == true) 
+			{
+
+				return systemClusterFade [IDcluster].clusterFade [i].clip.name;
+
+			}
+
+		}
+
+		return null;
+	}
+
+	#endregion
 
     #region Audio Mixer
 

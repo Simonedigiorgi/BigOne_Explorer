@@ -29,19 +29,19 @@ public class GrabAction : vTriggerGenericAction
 
     IEnumerator GrabCoroutine()
     {
+        Sequence sequenceGrab = DOTween.Sequence();
+
         if (this.transform.parent.CompareTag("Equipment"))
         {
-            Sequence sequenceGrab = DOTween.Sequence();
-
             sequenceGrab.Append(transform.parent.DORotate(Vector3.up * 200, 2f));
             sequenceGrab.Join(transform.parent.DOScale(0, 2f));
-
-            yield return sequenceGrab.WaitForCompletion();
-
-            Destroy(transform.parent.gameObject);
         }
         else
-            Destroy(transform.parent.gameObject);
+        {
+            sequenceGrab.Append(transform.parent.DOScale(0, 2f));
+        }
+        yield return sequenceGrab.WaitForCompletion();
+        Destroy(transform.parent.gameObject);
     }
 
 }

@@ -147,7 +147,8 @@ public class UIManager : MonoBehaviour
 
         if(triggerObjectTransform.gameObject.CompareTag("Panels") || 
            triggerObjectTransform.gameObject.CompareTag("Wall") || 
-           triggerObjectTransform.gameObject.CompareTag("Tubes"))
+           triggerObjectTransform.gameObject.CompareTag("Tubes") ||
+           triggerObjectTransform.gameObject.CompareTag("Picture"))
         {
             helpKeyPanel.transform.position = new Vector3(vThirdPersonController.instance.transform.position.x,
             vThirdPersonController.instance.transform.position.y + vThirdPersonController.instance.transform.GetComponent<Collider>().bounds.size.y + yOffsetHelpKey,

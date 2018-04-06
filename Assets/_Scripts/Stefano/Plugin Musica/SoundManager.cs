@@ -144,6 +144,7 @@ public class SoundManager : MonoBehaviour {
 			{
 
 				activeTimer = true;
+				managerHUD.ChangeTextSong (music.InfoClusterFadeNameSongInPlay (0));
 				SetRadio ();
 
 			}

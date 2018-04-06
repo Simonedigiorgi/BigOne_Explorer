@@ -336,6 +336,8 @@ public class Musica2 : MonoBehaviour
 		public int NumberLoop = 1;
 		[TabGroup("New Group", "Trigger")]
 		public bool forceNext = false;
+		[TabGroup("New Group", "Trigger")]
+		public bool forcePrevious = false;
 
 	}
 
@@ -836,7 +838,7 @@ public class Musica2 : MonoBehaviour
 
 	}
 
-	public void GoChangeMusicClusterFade(int IDcluster)
+	public void GoNextMusicClusterFade(int IDcluster)
 	{
 
 		for (int i = 0; i < systemClusterFade [IDcluster].clusterFade.Length; i++) 
@@ -845,8 +847,28 @@ public class Musica2 : MonoBehaviour
 			if (systemClusterFade [IDcluster].clusterFade [i].isInPlay == true) 
 			{
 
-				Debug.Log ("Switch song: "+i);
+				//Per sicurezza
+				systemClusterFade [IDcluster].clusterFade [i].forcePrevious = false;
 				systemClusterFade [IDcluster].clusterFade [i].forceNext = true;
+
+			}
+
+		}
+
+	}
+
+	public void GoPreviousMusicClusterFade(int IDcluster)
+	{
+
+		for (int i = 0; i < systemClusterFade [IDcluster].clusterFade.Length; i++) 
+		{
+
+			if (systemClusterFade [IDcluster].clusterFade [i].isInPlay == true) 
+			{
+
+				//Per sicurezza
+				systemClusterFade [IDcluster].clusterFade [i].forceNext = false;
+				systemClusterFade [IDcluster].clusterFade [i].forcePrevious = true;
 
 			}
 
@@ -1176,8 +1198,7 @@ public class Musica2 : MonoBehaviour
 		systemClusterFade [IDcluster].clusterFade [IDfade].Mixer1Volume = 1;
 		systemClusterFade [IDcluster].clusterFade [IDfade].Mixer2Volume = 0;
 
-		if (Source1.isPlaying == true) 
-		{
+		if (Source1.isPlaying == true) {
 
 			Source2.clip = systemClusterFade [IDcluster].clusterFade [IDfade].clip;
 			Source2.Play ();
@@ -1186,8 +1207,7 @@ public class Musica2 : MonoBehaviour
 			findClusterAudioSource = true;
 			nameClusterAudioSource = Source2.name;
 
-			while (systemClusterFade [IDcluster].clusterFade [IDfade].Mixer1Volume > 0)
-			{
+			while (systemClusterFade [IDcluster].clusterFade [IDfade].Mixer1Volume > 0) {
 
 				Source1.volume -= Time.deltaTime / systemClusterFade [IDcluster].clusterFade [IDfade].TimeFade;
 				systemClusterFade [IDcluster].clusterFade [IDfade].Mixer1Volume = Source1.volume;
@@ -1212,8 +1232,7 @@ public class Musica2 : MonoBehaviour
 			findClusterAudioSource = true;
 			nameClusterAudioSource = Source1.name;
 
-			while (systemClusterFade [IDcluster].clusterFade [IDfade].Mixer1Volume > 0)
-			{
+			while (systemClusterFade [IDcluster].clusterFade [IDfade].Mixer1Volume > 0) {
 
 				Source1.volume += Time.deltaTime / systemClusterFade [IDcluster].clusterFade [IDfade].TimeFade;
 				systemClusterFade [IDcluster].clusterFade [IDfade].Mixer1Volume = Source2.volume;
@@ -1227,7 +1246,7 @@ public class Musica2 : MonoBehaviour
 
 			Source2.Stop ();
 
-		}
+		} 
 
 
 		yield return null;
@@ -1318,6 +1337,9 @@ public class Musica2 : MonoBehaviour
 		Source1.loop = false;
 		Source2.loop = false;
 
+		//Variabile che gestisce il rilevamento dell'evento 
+		bool isTriggered = false;
+
 		int Nloop = systemClusterFade [IDcluster].clusterFade [IDfade].NumberLoop;
 
 		while(findClusterAudioSource == false)
@@ -1328,16 +1350,42 @@ public class Musica2 : MonoBehaviour
 			yield return null;
 
 		}
+			
 
 		if (Source1.isPlaying == true && nameClusterAudioSource == Source1.name) {
 
-			while (Nloop > 0 || systemClusterFade [IDcluster].clusterFade [IDfade].forceNext == false) {
+			while (isTriggered == false) {
 
-				if (Source1.isPlaying == false) {
+
+				if (systemClusterFade [IDcluster].clusterFade [IDfade].forceNext == true) 
+				{
+
+					isTriggered = true;
+
+				}
+
+				if (systemClusterFade [IDcluster].clusterFade [IDfade].forcePrevious == true) 
+				{
+
+					isTriggered = true;
+
+				}
+
+
+				if (Source1.isPlaying == false) 
+				{
 
 					Nloop--;
 					Debug.Log (Nloop);
 					Source1.Play ();
+
+					if (Nloop < 0) 
+					{
+
+						isTriggered = true;
+
+					}
+
 
 				}
 
@@ -1347,13 +1395,38 @@ public class Musica2 : MonoBehaviour
 
 		} else if (Source2.isPlaying == true && nameClusterAudioSource == Source2.name) {
 
-			while (Nloop > 0 || systemClusterFade [IDcluster].clusterFade [IDfade].forceNext == false) {
+			while (isTriggered == false) {
 
-				if (Source2.isPlaying == false) {
+
+				if (systemClusterFade [IDcluster].clusterFade [IDfade].forceNext == true) 
+				{
+
+					isTriggered = true;
+
+				}
+
+				if (systemClusterFade [IDcluster].clusterFade [IDfade].forcePrevious == true) 
+				{
+
+					isTriggered = true;
+
+				}
+
+
+				if (Source1.isPlaying == false) 
+				{
 
 					Nloop--;
 					Debug.Log (Nloop);
-					Source2.Play ();
+					Source1.Play ();
+
+					if (Nloop < 0) 
+					{
+
+						isTriggered = true;
+
+					}
+
 
 				}
 
@@ -1366,43 +1439,88 @@ public class Musica2 : MonoBehaviour
 			Debug.Log ("Errore");
 
 		}
+			
 
-		//Passiammo alla prossima canzone oppure ripetiamo il ciclo
-		if (IDfade + 1 < systemClusterFade [IDcluster].clusterFade.Length) 
+		isTriggered = false;
+
+		//Controllo come si vuole scorrere il cluster
+		if (systemClusterFade [IDcluster].clusterFade [IDfade].forcePrevious == true) 
 		{
 
-			Debug.Log ("Primo");
+			//SCORRIAMO LA LISTA INDIETRO
 
-			//Dico che la canzone terminata non è più in play
-			systemClusterFade [IDcluster].clusterFade [IDfade].isInPlay = false;
-			//Resetto il forceNext
-			systemClusterFade [IDcluster].clusterFade [IDfade].forceNext = false;
+			//Controllo se siamo all'estremo della lista
+			if (IDfade - 1 >= 0) 
+			{
 
-			findClusterAudioSource = false;
-			StartCoroutine( DoClusterMixerFade (IDcluster, IDfade + 1));
-			//Dico che questa canzone è in play
-			systemClusterFade [IDcluster].clusterFade [IDfade + 1].isInPlay = true;
-			StartCoroutine( DoListenClusterTrigger (IDcluster, IDfade + 1));
+				Debug.Log ("Prossima canzone: " + (IDfade - 1));
+
+				//Resettiamo i parametri della canzone corrente
+				ResetSongOnClusterFade (IDcluster, IDfade);
+
+				findClusterAudioSource = false;
+				StartCoroutine (DoClusterMixerFade (IDcluster, IDfade - 1));
+				//Dico che questa canzone è in play
+				systemClusterFade [IDcluster].clusterFade [IDfade - 1].isInPlay = true;
+				StartCoroutine (DoListenClusterTrigger (IDcluster, IDfade - 1));
+
+			} 
+			else 
+			{
+
+				Debug.Log ("Prossima canzone: " + (systemClusterFade [IDcluster].clusterFade.Length-1));
+
+				//Resettiamo i parametri della canzone corrente
+				ResetSongOnClusterFade (IDcluster, IDfade);
+
+				findClusterAudioSource = false;
+				StartCoroutine( DoClusterMixerFade (IDcluster, systemClusterFade [IDcluster].clusterFade.Length-1));
+				//Dico che questa canzone è in play
+				systemClusterFade [IDcluster].clusterFade [systemClusterFade [IDcluster].clusterFade.Length-1].isInPlay = true;
+				StartCoroutine( DoListenClusterTrigger (IDcluster,systemClusterFade [IDcluster].clusterFade.Length-1));
+
+			}
 
 		} 
 		else 
 		{
 
-			Debug.Log ("Secondo");
+			//SCORRIAMO LA LISTA IN AVANTI
 
-			//Dico che la canzone terminata non è più in play
-			systemClusterFade [IDcluster].clusterFade [IDfade].isInPlay = false;
-			//Resetto il forceNext
-			systemClusterFade [IDcluster].clusterFade [IDfade].forceNext = false;
+			//Controllo se siamo all'estremo della lista
+			if(IDfade + 1 < systemClusterFade [IDcluster].clusterFade.Length)
+			{
 
-			findClusterAudioSource = false;
-			StartCoroutine( DoClusterMixerFade (IDcluster, 0));
-			//Dico che questa canzone è in play
-			systemClusterFade [IDcluster].clusterFade [0].isInPlay = true;
-			StartCoroutine( DoListenClusterTrigger (IDcluster,0));
+				Debug.Log ("Prossima canzone: " + (IDfade + 1));
+
+				//Resettiamo i parametri della canzone corrente
+				ResetSongOnClusterFade (IDcluster, IDfade);
+
+				findClusterAudioSource = false;
+				StartCoroutine( DoClusterMixerFade (IDcluster, IDfade + 1));
+				//Dico che questa canzone è in play
+				systemClusterFade [IDcluster].clusterFade [IDfade + 1].isInPlay = true;
+				StartCoroutine( DoListenClusterTrigger (IDcluster, IDfade + 1));
+
+			}
+			else
+			{
+
+				Debug.Log ("Prossima canzone: " + 0);
+
+				//Resettiamo i parametri della canzone corrente
+				ResetSongOnClusterFade (IDcluster, IDfade);
+
+				findClusterAudioSource = false;
+				StartCoroutine( DoClusterMixerFade (IDcluster, 0));
+				//Dico che questa canzone è in play
+				systemClusterFade [IDcluster].clusterFade [0].isInPlay = true;
+				StartCoroutine( DoListenClusterTrigger (IDcluster,0));
+
+			}
 
 		}
-
+			
 
 		yield return null;
 
@@ -1430,6 +1548,21 @@ public class Musica2 : MonoBehaviour
 
 		Debug.Log ("Il nome del cluster non esiste");
 		return -1;
+
+	}
+
+	/// <summary>
+	/// Metodo che resetta i parametri della canzone
+	/// </summary>
+	private void ResetSongOnClusterFade(int IDcluster, int IDfade)
+	{
+
+		//Dico che la canzone terminata non è più in play
+		systemClusterFade [IDcluster].clusterFade [IDfade].isInPlay = false;
+		//Resetto il forceNext
+		systemClusterFade [IDcluster].clusterFade [IDfade].forceNext = false;
+		//Resetto il focePrevious
+		systemClusterFade [IDcluster].clusterFade [IDfade].forcePrevious = false;
 
 	}
 

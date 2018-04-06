@@ -6,9 +6,9 @@ using UnityEngine.SceneManagement;
 
 public class SoundManager : MonoBehaviour {
 
+	#region Public 
 	public Musica2 music;
 	public static bool isRadio = false;
-	private int nStation = 0;
 
 	public int Scena0;
 	public int Scena1;
@@ -20,6 +20,18 @@ public class SoundManager : MonoBehaviour {
 
 	[Header("Variabile da utilizzare in case di Debug, togliere in delivery")]
 	public bool isDebug = false;
+
+	public float timerChangeMusic = 0.5f;
+
+	#endregion
+
+	#region Private 
+
+	private int nStation = 0;
+	private float timerCommand = 0;
+	private bool activeTimer = false;
+
+	#endregion
 
 	void Start()
 	{
@@ -129,9 +141,10 @@ public class SoundManager : MonoBehaviour {
 		}
 
 
-		if ((Input.GetKeyDown (KeyCode.U) || InputManager.UPArrow() )&& SceneManager.GetActiveScene().buildIndex != Scena0 ) 
+		if ((Input.GetKeyDown (KeyCode.U) || InputManager.UPArrow() ) && SceneManager.GetActiveScene().buildIndex != Scena0 && activeTimer == false) 
 		{
 
+			activeTimer = true;
 			SetRadio ();
 
 		}
@@ -139,7 +152,38 @@ public class SoundManager : MonoBehaviour {
 		if (Input.GetKeyDown (KeyCode.P)) 
 		{
 
-			music.GoChangeMusicClusterFade (0);
+			music.GoNextMusicClusterFade (0);
+
+		}
+
+		if (InputManager.RIGHTArrow () == true && isRadio == true && activeTimer == false)
+		{
+
+			activeTimer = true;
+			NextMusic ();
+
+		}
+
+		if (InputManager.LEFTArrow () == true && isRadio == true && activeTimer == false) 
+		{
+
+			activeTimer = true;
+			PreviousMusic ();
+
+		}
+
+		if (activeTimer == true) 
+		{
+
+			timerCommand += Time.deltaTime;
+
+			if(timerCommand > timerChangeMusic)
+			{
+
+				timerCommand = 0;
+				activeTimer = false;
+
+			}
 
 		}
 			
@@ -160,7 +204,8 @@ public class SoundManager : MonoBehaviour {
 		{
 
 			isRadio = true;
-			mixerMusic.SetFloat("Volume", ES2.Load<float> ("Setting.txt?tag="+mixerMusic.name));
+			//mixerMusic.SetFloat("Volume", ES2.Load<float> ("Setting.txt?tag="+mixerMusic.name));
+			mixerMusic.SetFloat("Volume", 0f);
 
 			Debug.Log ("Radio attiva");
 
@@ -174,6 +219,26 @@ public class SoundManager : MonoBehaviour {
 			Debug.Log ("Radio disattiva");
 
 		}
+
+	}
+
+	/// <summary>
+	/// Metodo che passa alla canzone successiva
+	/// </summary>
+	private void NextMusic()
+	{
+
+		music.GoNextMusicClusterFade (0);
+
+	}
+
+	/// <summary>
+	/// Metodo che passa alla canzone precedente
+	/// </summary>
+	private void PreviousMusic()
+	{
+
+		music.GoPreviousMusicClusterFade (0);
 
 	}
 

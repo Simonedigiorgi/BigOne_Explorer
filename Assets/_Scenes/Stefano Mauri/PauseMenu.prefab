@@ -2643,7 +2643,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 24300002, guid: 2ea3178017298bd49a30a0b3041c345b,
     type: 2}
-  m_audioClip: {fileID: 8300000, guid: 87ec80b68b729d54aafd96e371deea9e, type: 3}
+  m_audioClip: {fileID: 8300000, guid: e0d2c8d86b27d634682e8756092d3f36, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -5636,18 +5636,47 @@ MonoBehaviour:
       isInPlay: 0
       Mixer1Volume: 0
       Mixer2Volume: 0
-      clip: {fileID: 8300000, guid: 23d09b0ea64075b45982de6ec63a65d9, type: 3}
+      clip: {fileID: 8300000, guid: 4c6973d35123ec04d819e92cf5dd4eb4, type: 3}
       TimeFade: 0.5
-      NumberLoop: 1
+      NumberLoop: 0
       forceNext: 0
-    - ID: 0
+      forcePrevious: 0
+    - ID: 1
       isInPlay: 0
       Mixer1Volume: 0
       Mixer2Volume: 0
-      clip: {fileID: 8300000, guid: 26b83b34cf9b6454182473e48862a68c, type: 3}
+      clip: {fileID: 8300000, guid: 3c06338a0a15de8488887e3afe1e4a51, type: 3}
       TimeFade: 0.5
-      NumberLoop: 1
+      NumberLoop: 0
       forceNext: 0
+      forcePrevious: 0
+    - ID: 2
+      isInPlay: 0
+      Mixer1Volume: 0
+      Mixer2Volume: 0
+      clip: {fileID: 8300000, guid: 8207c682d134d624c811f6c1db20c572, type: 3}
+      TimeFade: 0.5
+      NumberLoop: 0
+      forceNext: 0
+      forcePrevious: 0
+    - ID: 3
+      isInPlay: 0
+      Mixer1Volume: 0
+      Mixer2Volume: 0
+      clip: {fileID: 8300000, guid: 96ff277ee5524ac4a83fa31250734dd8, type: 3}
+      TimeFade: 0.5
+      NumberLoop: 0
+      forceNext: 0
+      forcePrevious: 0
+    - ID: 4
+      isInPlay: 0
+      Mixer1Volume: 0
+      Mixer2Volume: 0
+      clip: {fileID: 8300000, guid: fd1539fb34835a645a80160e0d242f95, type: 3}
+      TimeFade: 0.5
+      NumberLoop: 0
+      forceNext: 0
+      forcePrevious: 0
   systemMixer:
   - mixer: {fileID: 24100000, guid: 2959e37650b1b5349812619b631dbb8d, type: 2}
     listTrack:
@@ -5675,24 +5704,19 @@ MonoBehaviour:
         Viene riprotto ogni n secondi '
       volume: 0.5
       output: {fileID: 82829095537583730}
-    - clip: {fileID: 8300000, guid: 87ec80b68b729d54aafd96e371deea9e, type: 3}
+    - clip: {fileID: 8300000, guid: e0d2c8d86b27d634682e8756092d3f36, type: 3}
       ID: 4
       description: 'STAZIONE GIALLA
 
         Viene riprodotto in loop con un volume basso'
       volume: 0.1
       output: {fileID: 82116342189019016}
-    - clip: {fileID: 8300000, guid: 82277af77b32d2e45a4e7f6af4f9b672, type: 3}
+    - clip: {fileID: 8300000, guid: 02c07459dfd00484688ee1ad8317c5e6, type: 3}
       ID: 5
       description: "STAZIONE MEDIDCO \nAttaccare ai macchinari stanza rossa\nLoop
         ogni quanto di tempo"
       volume: 0.1
       output: {fileID: 82856473810626126}
-    - clip: {fileID: 0}
-      ID: 0
-      description: 
-      volume: 0
-      output: {fileID: 0}
     allVolumePlayList: 1
   PlayList:
   - clip: {fileID: 8300000, guid: 054f21f3d82ac1e40ad45890a2c7690a, type: 3}
@@ -5718,7 +5742,7 @@ MonoBehaviour:
   - clip: {fileID: 8300000, guid: 8c29c0f3c45c912458e0fb440f6067ff, type: 3}
     ID: 4
     description: 
-    volume: 0.2
+    volume: 0.08
     output: {fileID: 82562548306553448}
   - clip: {fileID: 8300000, guid: 564c7932b7af2e24d8576a486760d5cb, type: 3}
     ID: 5
@@ -6928,6 +6952,7 @@ MonoBehaviour:
   Scena4: 4
   mixerMusic: {fileID: 24100000, guid: 35c11e17753eb5b4d870d1d17eeaa5b8, type: 2}
   isDebug: 1
+  timerChangeMusic: 0.5
 --- !u!114 &114535673802283364
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -10649,7 +10674,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 582.245, y: -525.55005}
+  m_AnchoredPosition: {x: 952.245, y: -711.05005}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224089598691269412
@@ -10667,7 +10692,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 582.245, y: -130.45}
+  m_AnchoredPosition: {x: 952.245, y: -315.95}
   m_SizeDelta: {x: 207.88, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224096715663448744
@@ -10685,7 +10710,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 582.245, y: -175.45}
+  m_AnchoredPosition: {x: 952.245, y: -360.95}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224102569159584520
@@ -10869,7 +10894,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 583, y: -208}
+  m_AnchoredPosition: {x: 952.25, y: -393.5}
   m_SizeDelta: {x: 370, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224157298092657148
@@ -11152,7 +11177,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 583, y: -413}
+  m_AnchoredPosition: {x: 952.25, y: -573.5}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224258132134943642
@@ -11170,7 +11195,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 582.25, y: -491.35}
+  m_AnchoredPosition: {x: 952.25, y: -676.85004}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224259857089472250
@@ -11248,7 +11273,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 582.245, y: -408.85}
+  m_AnchoredPosition: {x: 952.245, y: -594.35004}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224310389948102566
@@ -11465,7 +11490,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 582.25, y: -164.65001}
+  m_AnchoredPosition: {x: 952.25, y: -350.15002}
   m_SizeDelta: {x: 221.6, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224431659516019542
@@ -11487,7 +11512,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 582.25, y: -416.90002}
+  m_AnchoredPosition: {x: 952.25, y: -602.4}
   m_SizeDelta: {x: 234.1, y: 58.9}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224434923711530666
@@ -11755,7 +11780,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 582.25, y: -328.00003}
+  m_AnchoredPosition: {x: 952.25, y: -513.5}
   m_SizeDelta: {x: 234.1, y: 58.9}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224551887629781580
@@ -11829,7 +11854,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 583, y: -353}
+  m_AnchoredPosition: {x: 952.25, y: -513.5}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224567469607329698
@@ -11849,7 +11874,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 582.245, y: -233.8}
+  m_AnchoredPosition: {x: 952.245, y: -419.30002}
   m_SizeDelta: {x: 255.75, y: 56.7}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224577692373327172
@@ -12109,7 +12134,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 583, y: -293}
+  m_AnchoredPosition: {x: 952.25, y: -453.5}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224682981281317810
@@ -12297,7 +12322,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 582.245, y: -292.15}
+  m_AnchoredPosition: {x: 952.245, y: -477.65002}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224771544086493554
@@ -12467,7 +12492,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 582.245, y: -350.5}
+  m_AnchoredPosition: {x: 952.245, y: -536}
   m_SizeDelta: {x: 255.75, y: 56.7}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224827564985122140
@@ -12577,7 +12602,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 582.245, y: -467.2}
+  m_AnchoredPosition: {x: 952.245, y: -652.7}
   m_SizeDelta: {x: 255.75, y: 56.7}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224927463518619410
@@ -12635,7 +12660,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 582.25, y: -239.1}
+  m_AnchoredPosition: {x: 952.25, y: -424.60004}
   m_SizeDelta: {x: 234.1, y: 58.9}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224952153577738372
@@ -12775,7 +12800,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 583, y: -473}
+  m_AnchoredPosition: {x: 952.25, y: -633.5}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224985930535331150

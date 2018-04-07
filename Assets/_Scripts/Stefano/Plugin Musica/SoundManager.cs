@@ -132,6 +132,7 @@ public class SoundManager : MonoBehaviour {
 			//Eseguiamo la radio
 			mixerMusic.SetFloat ("Volume", -80f);
 			music.GoRandomClusterFade (0);
+			music.GoPauseClusterFade (0);
 		}
 
 	}

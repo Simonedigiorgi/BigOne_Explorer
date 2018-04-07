@@ -76,7 +76,7 @@ public class SaveMenu : MonoBehaviour {
 	{
 
 		LoadAudio ();
-		LoadSlotInfo ();
+		//LoadSlotInfo ();
 
 	}
 
@@ -284,7 +284,7 @@ public class SaveMenu : MonoBehaviour {
 		bool find2 = false;
 		bool find3 = false;
 
-		if (ES2.Exists (nameSlot1 + ".txt")) 
+		if (ES2.Exists (nameSlot1.text + ".txt")) 
 		{
 			scenaCurrentSlot1 = ES2.Load<string> (nameSlot1.text + ".txt?tag=currentScene");
 		} 
@@ -297,7 +297,7 @@ public class SaveMenu : MonoBehaviour {
 
 		}
 
-		if (ES2.Exists (nameSlot2 + ".txt")) 
+		if (ES2.Exists (nameSlot2.text + ".txt")) 
 		{
 			scenaCurrentSlot2 = ES2.Load<string> (nameSlot2.text + ".txt?tag=currentScene");
 		}
@@ -310,7 +310,7 @@ public class SaveMenu : MonoBehaviour {
 
 		}
 
-		if (ES2.Exists (nameSlot3 + ".txt")) 
+		if (ES2.Exists (nameSlot3.text + ".txt")) 
 		{
 
 			scenaCurrentSlot3 = ES2.Load<string> (nameSlot3.text + ".txt?tag=currentScene");

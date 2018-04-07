@@ -718,7 +718,8 @@ public class HUD : MonoBehaviour {
 		float timer = 0f;
 
 		yield return new WaitForSeconds (saveTime);
-
+		
+		gameObject.GetComponent<SaveMenu> ().LoadSlotInfo ();
 		//Torniamo alla schermata della scelta degli slot
 		MoveOnMenu ("GoChose_Return");
 		//Rimetto il puntatore al bottone corretto

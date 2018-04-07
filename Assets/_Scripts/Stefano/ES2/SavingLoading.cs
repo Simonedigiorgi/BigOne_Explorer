@@ -24,6 +24,7 @@ public class SavingLoading : MonoBehaviour
 		SaveCurrentScene ();
 		//SavePlayer ();
 		SaveCurrentQuest ();
+		SaveData ();
 
 		//Salviamo il numero di quest per il caricamento
 		ES2.Save (Database.quests.Count, PlayerPrefs.GetString ("Slot") + ".txt?tag=questNumberQuests"); 

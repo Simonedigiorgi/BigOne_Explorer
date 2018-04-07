@@ -142,8 +142,7 @@ public class HUD : MonoBehaviour {
         {
 
 			// ANIMAZIONI LOCATIONS DEL ROVER
-			if (roverMenuIsOpen == true) 
-			{
+			if (roverMenuIsOpen == true && isGamepad == true) {
 
 				if (eSystem.currentSelectedGameObject.name == "Cratere Gale") {
 					galeMarker.transform.localScale = new Vector3 (1.6f, 1.6f, 1);
@@ -168,6 +167,15 @@ public class HUD : MonoBehaviour {
 				} else {
 					vallesMarker.transform.localScale = new Vector3 (1f, 1f, 1);
 				}
+
+			} else {
+
+				//RESETTO I MARKER
+
+				galeMarker.transform.localScale = new Vector3 (1f, 1f, 1);
+				noctisMarker.transform.localScale = new Vector3 (1f, 1f, 1);
+				olympusMarker.transform.localScale = new Vector3 (1f, 1f, 1);
+				vallesMarker.transform.localScale = new Vector3 (1f, 1f, 1);
 
 			}
 
@@ -248,10 +256,10 @@ public class HUD : MonoBehaviour {
             //Se il tasto start viene premeuto avviamo il menu 
             if (InputManager.StartButton() == true && menuIsOpen == false && roverMenuIsOpen == false)
             {
-
+				
                 MoveOnMenu("PasueMenu_new");
                 menuIsOpen = true;
-                ChangeFirstSelected(menu[0].buttonSelect);
+				ChangeFirstSelected(menu[0].buttonSelect);
                 vThirdPersonController.instance.GetComponent<GenericSettings>().LockPlayer();
 
             }

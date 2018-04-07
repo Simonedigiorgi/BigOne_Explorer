@@ -208,6 +208,7 @@ public class SoundManager : MonoBehaviour {
 			//mixerMusic.SetFloat("Volume", ES2.Load<float> ("Setting.txt?tag="+mixerMusic.name));
 			mixerMusic.SetFloat("Volume", 0f);
 
+			music.GoPlayClusterFade (0);
 			managerHUD.MoveOnMenu ("MusicStart");
 
 			Debug.Log ("Radio attiva");
@@ -219,6 +220,7 @@ public class SoundManager : MonoBehaviour {
 			isRadio = false;
 			mixerMusic.SetFloat("Volume", -80f);
 
+			music.GoStopClusterFade (0);
 			managerHUD.MoveOnMenu ("MusicStop");
 
 			Debug.Log ("Radio disattiva");

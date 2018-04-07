@@ -244,6 +244,9 @@ public class Musica2 : MonoBehaviour
 	private bool findClusterAudioSource = false;
 	private string nameClusterAudioSource = "";
 
+	//ClusterFade
+	private int audioSourceStopped = 0;
+
     #endregion
 
     #region Class
@@ -876,6 +879,48 @@ public class Musica2 : MonoBehaviour
 
 	}
 
+	public void GoStopClusterFade(int IDcluster)
+	{
+
+		if (Source1.isPlaying == true) {
+
+			Source1.Stop ();
+			audioSourceStopped = 1;
+
+		} else if (Source2.isPlaying == true) {
+
+			Source2.Stop ();
+			audioSourceStopped = 2;
+
+		} else {
+
+			Debug.Log ("NESSUN PLAYER IN ESECUZIONE DEL CLUSTER FADE");
+			audioSourceStopped = 0;
+		}
+
+
+	}
+
+	public void GoPlayClusterFade (int IDcluster)
+	{
+
+		if (audioSourceStopped == 1) {
+
+			Source1.Play ();
+
+		} else if (audioSourceStopped == 2) {
+
+			Source2.Play ();
+
+		} else {
+
+			Debug.Log ("NESSUN PLAYER IN ESECUZIONE DEL CLUSTER FADE");
+			audioSourceStopped = 0;
+
+		}
+
+	}
+
     /// <summary>
     /// Gos the snap shot fade.
     /// </summary>
@@ -901,6 +946,7 @@ public class Musica2 : MonoBehaviour
 
     #endregion
 
+
 	#region Information Music
 
 	public string InfoClusterFadeNameSongInPlay(int IDcluster)
@@ -922,6 +968,7 @@ public class Musica2 : MonoBehaviour
 	}
 
 	#endregion
+
 
     #region Audio Mixer
 

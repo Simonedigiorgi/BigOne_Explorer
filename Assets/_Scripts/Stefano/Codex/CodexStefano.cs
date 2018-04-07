@@ -192,6 +192,10 @@ public class CodexStefano : MonoBehaviour
 	private bool isLeft = false;
 	private bool isRight = false;
 
+	private float timeAction = 0.2f;
+	private float timerAction = 0f;
+	private bool doAction = false;
+
 	#endregion
 
 	void Start()
@@ -222,7 +226,7 @@ public class CodexStefano : MonoBehaviour
             }
 
             //Gestione dei comandi per il cambio di scheda da Joystick
-            if (InputManager.RBbutton())
+			if (InputManager.RBbutton())
             {
 
                 //NextSchede ();
@@ -230,7 +234,7 @@ public class CodexStefano : MonoBehaviour
 
             }
 
-            if (InputManager.LBbutton())
+			if (InputManager.LBbutton())
             {
 
                 //PreviousSchede ();
@@ -239,7 +243,7 @@ public class CodexStefano : MonoBehaviour
             }
 
 
-            if (InputManager.MainHorizontal() > 0.5)
+			if (InputManager.MainHorizontal() > 0.5 && doAction == false)
             {
 
                 Debug.Log("Right");
@@ -248,11 +252,13 @@ public class CodexStefano : MonoBehaviour
                 isRight = true;
                 isLeft = true;
 
+				doAction = true;
+
 
             }
 
 
-            if (InputManager.MainHorizontal() < -0.5)
+			if (InputManager.MainHorizontal() < -0.5 && doAction == false)
             {
 
                 Debug.Log("Left");
@@ -260,6 +266,8 @@ public class CodexStefano : MonoBehaviour
 
                 isLeft = true;
                 isRight = true;
+
+				doAction = true;
 
 
             }
@@ -271,6 +279,22 @@ public class CodexStefano : MonoBehaviour
                 isLeft = false;
 
             }
+
+			//Rallentiamo gli input
+			if (doAction == true) 
+			{
+
+				timerAction += Time.deltaTime;
+
+				if (timerAction >= timeAction) 
+				{
+
+					timerAction = 0;
+					doAction = false;
+
+				}
+
+			}
 
         }
 
@@ -290,7 +314,7 @@ public class CodexStefano : MonoBehaviour
 
 			if (currentSchede == listGadget.Length -1) 
 			{
-				currentSchede = listGadget.Length -1;
+				currentSchede = 0;
 			}
 			else
 			{
@@ -305,7 +329,7 @@ public class CodexStefano : MonoBehaviour
 
 			if (currentSchede == listCharacter.Length - 1) 
 			{
-				currentSchede = listCharacter.Length - 1;
+				currentSchede = 0;
 			}
 			else
 			{
@@ -320,7 +344,7 @@ public class CodexStefano : MonoBehaviour
 
 			if (currentSchede == listPlace.Length - 1) 
 			{
-				currentSchede = listPlace.Length - 1;
+				currentSchede = 0;
 			}
 			else
 			{
@@ -335,7 +359,7 @@ public class CodexStefano : MonoBehaviour
 
 			if (currentSchede == listMission.Length - 1) 
 			{
-				currentSchede = listMission.Length - 1;
+				currentSchede = 0;
 			}
 			else
 			{
@@ -385,17 +409,66 @@ public class CodexStefano : MonoBehaviour
 	{
 
 		#region OutOfTheRange
-		//Evitiamo di andare indietro a -1
-		if (currentSchede == 0) 
+		if (currentCategory == 0) 
 		{
 
-			currentSchede = 0;
+			if (currentSchede == 0) 
+			{
+				currentSchede = listGadget.Length -1;
+			}
+			else
+			{
+
+				currentSchede--;
+
+			}
 
 		} 
-		else 
+		else if (currentCategory == 1) 
 		{
-			currentSchede--;
-		}
+
+			if (currentSchede == 0) 
+			{
+				currentSchede = listCharacter.Length - 1;
+			}
+			else
+			{
+
+				currentSchede--;
+
+			}
+
+		} 
+		else if (currentCategory == 2) 
+		{
+
+			if (currentSchede == 0 ) 
+			{
+				currentSchede = listPlace.Length - 1;
+			}
+			else
+			{
+
+				currentSchede--;
+
+			}
+
+		} 
+		else if (currentCategory == 3) 
+		{
+
+			if (currentSchede == 0 ) 
+			{
+				currentSchede = listMission.Length - 1;
+			}
+			else
+			{
+
+				currentSchede--;
+
+			}
+
+		} 
 		#endregion
 
 		//Controllo che array devo scorrere a seconda della categoria
@@ -439,7 +512,7 @@ public class CodexStefano : MonoBehaviour
 		if (currentCategory == 3) 
 		{
 
-			currentCategory = 3;
+			currentCategory = 0;
 
 		} 
 		else 
@@ -457,9 +530,6 @@ public class CodexStefano : MonoBehaviour
 	}
 
 
-
- 
-
 	/// <summary>
 	/// Metodo che passa alla categoria precedente
 	/// </summary>
@@ -470,7 +540,7 @@ public class CodexStefano : MonoBehaviour
 		if (currentCategory == 0) 
 		{
 
-			currentCategory = 0;
+			currentCategory = 3;
 
 		} 
 		else 

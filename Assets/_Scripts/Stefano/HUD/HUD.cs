@@ -350,7 +350,7 @@ public class HUD : MonoBehaviour {
 
             }
 
-            //Disabilito i punti esclamativi
+           /* //Disabilito i punti esclamativi
             if (newSceneUnlock != "" && roverMenuIsOpen == true)
             {
 
@@ -364,11 +364,11 @@ public class HUD : MonoBehaviour {
 					    buttonsRover [i].warningImage1.SetActive (false);
 					    buttonsRover [i].warningImage2.SetActive (false);
 
-				    }*/
+				    }
 
                 }
 
-            }
+            }*/
         }
 	}
 

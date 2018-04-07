@@ -40,8 +40,12 @@ public class SoundManager : MonoBehaviour {
 	void Awake()
 	{
 
-		managerHUD = GameObject.Find ("PauseMenu").GetComponent<HUD>();
+		Scene currentScena = SceneManager.GetActiveScene ();
 
+		if (currentScena.buildIndex != Scena0) 
+		{
+			managerHUD = GameObject.Find ("PauseMenu").GetComponent<HUD> ();
+		}
 	}
 
 	void Start()

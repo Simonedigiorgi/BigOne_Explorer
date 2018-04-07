@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 using Invector.CharacterController;
+using System.Collections;
+using DG.Tweening;
 
 public class GenericSettings : MonoBehaviour
 {
@@ -31,7 +33,7 @@ public class GenericSettings : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.P))
         {
-            ChangePlayer();
+            StartCoroutine(ChangePlayer());
         }
     }
 
@@ -62,8 +64,14 @@ public class GenericSettings : MonoBehaviour
         vThirdPersonController.instance.lockRotation = false;
     }
 
-    public void ChangePlayer()
+    public IEnumerator ChangePlayer()
     {
+        LockPlayer();
+
+        Sequence astronautAnimation = DOTween.Sequence();
+
+        astronautAnimation.Append(UIManager.instance.fadeImage.DOFade(1, 1f));
+        yield return astronautAnimation.WaitForCompletion();
 
         if (currentModel == modelInside)
         {
@@ -71,6 +79,10 @@ public class GenericSettings : MonoBehaviour
             this.gameObject.GetComponent<Animator>().avatar = avatarOutside;
             modelOutside.SetActive(true);
             currentModel = modelOutside;
+
+            vThirdPersonController.instance.transform.position = new Vector3(vThirdPersonController.instance.transform.position.x + 5f,
+                                                                             vThirdPersonController.instance.transform.position.y, 
+                                                                             vThirdPersonController.instance.transform.position.z);
         }
         else
         {
@@ -78,7 +90,16 @@ public class GenericSettings : MonoBehaviour
             this.gameObject.GetComponent<Animator>().avatar = avatarInside;
             modelInside.SetActive(true);
             currentModel = modelInside;
+
+            vThirdPersonController.instance.transform.position = new Vector3(vThirdPersonController.instance.transform.position.x - 5f,
+                                                                             vThirdPersonController.instance.transform.position.y,
+                                                                             vThirdPersonController.instance.transform.position.z);
         }
+
+        yield return new WaitForSeconds(0.5f);
+
+        UIManager.instance.fadeImage.DOFade(0, 1f);
+        UnlockPlayer();
 
     }
 

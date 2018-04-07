@@ -246,6 +246,7 @@ public class Musica2 : MonoBehaviour
 
 	//ClusterFade
 	private int audioSourceStopped = 0;
+	private bool pauseClusterFade = false;
 
     #endregion
 
@@ -879,18 +880,20 @@ public class Musica2 : MonoBehaviour
 
 	}
 
-	public void GoStopClusterFade(int IDcluster)
+	public void GoPauseClusterFade(int IDcluster)
 	{
 
 		if (Source1.isPlaying == true) {
 
-			Source1.Stop ();
+			Source1.Pause ();
 			audioSourceStopped = 1;
+			pauseClusterFade = true;
 
 		} else if (Source2.isPlaying == true) {
 
-			Source2.Stop ();
+			Source2.Pause ();
 			audioSourceStopped = 2;
+			pauseClusterFade = true;
 
 		} else {
 
@@ -907,10 +910,12 @@ public class Musica2 : MonoBehaviour
 		if (audioSourceStopped == 1) {
 
 			Source1.Play ();
+			pauseClusterFade = false;
 
 		} else if (audioSourceStopped == 2) {
 
 			Source2.Play ();
+			pauseClusterFade = false;
 
 		} else {
 
@@ -1440,7 +1445,7 @@ public class Musica2 : MonoBehaviour
 				}
 
 
-				if (Source1.isPlaying == false) 
+				if (Source1.isPlaying == false && pauseClusterFade == false) 
 				{
 
 					Nloop--;
@@ -1481,7 +1486,7 @@ public class Musica2 : MonoBehaviour
 				}
 
 
-				if (Source1.isPlaying == false) 
+				if (Source2.isPlaying == false && pauseClusterFade == false) 
 				{
 
 					Nloop--;

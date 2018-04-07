@@ -224,7 +224,7 @@ public class SoundManager : MonoBehaviour {
 			isRadio = false;
 			mixerMusic.SetFloat("Volume", -80f);
 
-			music.GoStopClusterFade (0);
+			music.GoPauseClusterFade (0);
 			managerHUD.MoveOnMenu ("MusicStop");
 
 			Debug.Log ("Radio disattiva");

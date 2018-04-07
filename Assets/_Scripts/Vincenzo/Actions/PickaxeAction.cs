@@ -36,8 +36,8 @@ public class PickaxeAction : vTriggerGenericAction {
 			else if (alembic.currentTime >= (alembic.endTime - 0.1))
 			{
 				this.transform.parent.GetComponent<BoxCollider> ().enabled = false;
-                //Destroy (this.gameObject);
-                this.gameObject.SetActive(false);
+                Destroy (this.gameObject);
+                //this.gameObject.SetActive(false);
 			}
         }
     }

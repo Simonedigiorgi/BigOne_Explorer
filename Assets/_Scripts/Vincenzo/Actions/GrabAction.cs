@@ -9,8 +9,11 @@ public class GrabAction : vTriggerGenericAction
     {
         base.Start();
         OnDoAction.AddListener(() => Grab());
-        OnPlayerEnter.AddListener(() => RotateEquip());
-        OnPlayerExit.AddListener(() => transform.parent.DOMoveY(0.5f, 0.3f));
+        if(this.transform.parent.CompareTag("Equipment"))
+        {
+            OnPlayerEnter.AddListener(() => RotateEquip());
+            OnPlayerExit.AddListener(() => transform.parent.DOMoveY(0.5f, 0.3f));
+        }
     }
 
     public void Grab()
@@ -32,7 +35,7 @@ public class GrabAction : vTriggerGenericAction
         sequenceGrab.Join(transform.parent.DOScale(0, 2f));
 
         yield return sequenceGrab.WaitForCompletion();
-        
+
         Destroy(transform.parent.gameObject);
     }
 

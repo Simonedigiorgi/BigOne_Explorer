@@ -14,6 +14,7 @@ public enum InteractableType
     BLACKBOX,
     COMPUTER,
     WALL,
+    ROCK,
     COORDINATES,
     ANTENNA,
     FLAG,

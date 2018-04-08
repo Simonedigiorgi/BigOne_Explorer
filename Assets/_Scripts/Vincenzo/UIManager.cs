@@ -151,7 +151,8 @@ public class UIManager : MonoBehaviour
            triggerObjectTransform.gameObject.CompareTag("Picture") ||
            triggerObjectTransform.gameObject.CompareTag("Pieces") ||
            triggerObjectTransform.gameObject.CompareTag("Flag") ||
-           triggerObjectTransform.gameObject.CompareTag("Antenna"))
+           triggerObjectTransform.gameObject.CompareTag("Antenna") ||
+           triggerObjectTransform.gameObject.CompareTag("Rock"))
         {
             helpKeyPanel.transform.position = new Vector3(vThirdPersonController.instance.transform.position.x,
             vThirdPersonController.instance.transform.position.y + vThirdPersonController.instance.transform.GetComponent<Collider>().bounds.size.y + yOffsetHelpKey,

@@ -70,6 +70,7 @@ public class QuestManager : MonoBehaviour {
 
         }
 
+        //UIManager.instance.ChangeQuestText();
         //yield return null;
     }
 

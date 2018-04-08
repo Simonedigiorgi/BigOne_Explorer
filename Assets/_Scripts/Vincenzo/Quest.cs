@@ -40,8 +40,6 @@ public class Quest : MonoBehaviour
             }
             
         }
-
-        UIManager.instance.ChangeQuestText();
         //yield return null;
     }
 

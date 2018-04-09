@@ -11,6 +11,23 @@ Prefab:
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 1847609070824202}
   m_IsPrefabParent: 1
+--- !u!1 &1058984924975220
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 224879092340774524}
+  - component: {fileID: 222684664020175524}
+  - component: {fileID: 114866629034453512}
+  m_Layer: 5
+  m_Name: Exit_information
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1091763112562256
 GameObject:
   m_ObjectHideFlags: 1
@@ -132,6 +149,23 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1294079746422860
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 224842464187117392}
+  - component: {fileID: 222143415175136604}
+  - component: {fileID: 114535175807104762}
+  m_Layer: 5
+  m_Name: Text (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1322369642236412
 GameObject:
   m_ObjectHideFlags: 1
@@ -144,6 +178,39 @@ GameObject:
   - component: {fileID: 114105790380248916}
   m_Layer: 5
   m_Name: Name
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1421123982026270
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 224446490794167280}
+  - component: {fileID: 222231513633300760}
+  - component: {fileID: 114497927228594344}
+  m_Layer: 5
+  m_Name: Image
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!1 &1440280476833006
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 224846105547806884}
+  - component: {fileID: 114151992001963498}
+  m_Layer: 5
+  m_Name: Layout-Buttons
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -272,6 +339,23 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1845067006757632
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 224589510712273922}
+  - component: {fileID: 222795955564507956}
+  - component: {fileID: 114285085278081160}
+  m_Layer: 5
+  m_Name: Text
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1847609070824202
 GameObject:
   m_ObjectHideFlags: 0
@@ -327,6 +411,23 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1901553550093802
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 224339252926879244}
+  - component: {fileID: 222492425127618396}
+  - component: {fileID: 114194109060912350}
+  m_Layer: 5
+  m_Name: Text
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!95 &95169176550919744
 Animator:
   serializedVersion: 3
@@ -355,10 +456,10 @@ MonoBehaviour:
   m_Script: {fileID: 1980459831, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1270, y: 720}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -461,6 +562,28 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &114151992001963498
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1440280476833006}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -405508275, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Padding:
+    m_Left: 0
+    m_Right: 0
+    m_Top: 0
+    m_Bottom: 0
+  m_ChildAlignment: 4
+  m_Spacing: 90.83
+  m_ChildForceExpandWidth: 0
+  m_ChildForceExpandHeight: 0
+  m_ChildControlWidth: 0
+  m_ChildControlHeight: 0
 --- !u!114 &114154760246599790
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -488,6 +611,45 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114194109060912350
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1901553550093802}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_FontData:
+    m_Font: {fileID: 12800000, guid: 218956a5c2a6e42d6a60afccf80b002b, type: 3}
+    m_FontSize: 17
+    m_FontStyle: 0
+    m_BestFit: 1
+    m_MinSize: 10
+    m_MaxSize: 40
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: 'Press ESC
+
+    or
+
+    Press START
+
+    to exit'
 --- !u!114 &114213717484424168
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -551,6 +713,39 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &114285085278081160
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1845067006757632}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_FontData:
+    m_Font: {fileID: 12800000, guid: 218956a5c2a6e42d6a60afccf80b002b, type: 3}
+    m_FontSize: 24
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 10
+    m_MaxSize: 40
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: LB
 --- !u!114 &114294208599988084
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -686,44 +881,220 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   listGadget:
-  - name: Pila
-    description: "Questa \xE8 unaa fantastica pila molto bella\n"
+  - name: Torch
+    description: A spacesuit for a mission on Mars requires a torchlight to be built
+      in, especially for the exploration of darker places like caves. The first spacesuit
+      to encounter this problem was the "Mercury IVA", the first U.S. spacesuit design
+      operated from 1959 to 1970, which included lights at the tips of the gloves
+      in order to provide visual aid. The torchlight for a future mission on Mars
+      might be built in the torso.
     photo: {fileID: 21300000, guid: ab3acaa22f3fa2d459958b7bf3f0abdb, type: 3}
     gadgetObj: {fileID: 0}
     isAvaiable: 1
-  - name: Pala
-    description: 'Questa pala scava molto bene '
+  - name: Military Pick-Axe
+    description: "Entrenching tools go back at least to the times of the Roman Legion.
+      Julius Caesar, as well as other ancient writers, documented the use of spades
+      and other digging implements as important tools of war. In 1938, the (German)
+      \"Klappspaten\" foldable spade, appeared, being the precursor of all modern
+      spades of this kind. The United States Army folding spade, or entrenching tool,
+      has evolved from a single fold spade with a straight handle, to a tri-fold design
+      with a modified \u201CD\u201D handle design with all steel construction, to
+      a similar light weight plastic and steel tri-fold design."
     photo: {fileID: 21300000, guid: 5a4177be21bad91418afa796f4fc00b9, type: 3}
     gadgetObj: {fileID: 0}
     isAvaiable: 1
+  - name: Camera
+    description: The camera allows to take pictures.
+    photo: {fileID: 0}
+    gadgetObj: {fileID: 0}
+    isAvaiable: 0
+  - name: Geiger Counter
+    description: "The Geiger counter is an instrument used for detecting and measuring
+      ionizing radiation used widely in applications such as radiation dosimetry,
+      radiological protection, experimental physics and the nuclear \r\nindustry.\r\nIt
+      detects ionizing radiation such as alpha particles, beta particles and gamma
+      rays using the ionization effect produced in a Geiger\u2013M\xFCller tube; which
+      gives its name to the instrument."
+    photo: {fileID: 0}
+    gadgetObj: {fileID: 0}
+    isAvaiable: 0
+  - name: Helmet
+    description: "he HATSMAN has an electronic 'mouth' and 'ears.' \r\nAs the integrated
+      audio system is part of the actual space suit, there are no additional parts
+      to worry about maintaining. The microphones and earphones are built into the
+      suit, which means there are no moving parts to disrupt an astronaut's movements
+      \r\nor become dislodged during activity. And the integrated audio system is
+      a universal size \u2014 no separate caps are needed for individual crew members."
+    photo: {fileID: 0}
+    gadgetObj: {fileID: 0}
+    isAvaiable: 0
+  - name: Scanner
+    description: "Scientists on Earth found strong evidence that liquid water flows
+      intermittently on present-day Mars, increasing the chances of the Red Planet
+      serving as a permanent home for humans in the future. \r\nThey discovered what
+      are thought to be large ice deposits just under the surface of Mars. Here not
+      only water can be found, but there's also the chance of finding bacteria and
+      useful minerals. \r\nThe geologist drills the surface to find water and glaciers
+      and to collect samples that are then used as research material.\r\nThe drill
+      includes a miniaturized infrared spectrometer, a device used to figure out the
+      physical and chemical properties of the drilled hole."
+    photo: {fileID: 0}
+    gadgetObj: {fileID: 0}
+    isAvaiable: 0
+  - name: Backpack
+    description: The backpack contains everything that allows the astronaut to venture
+      on the surface of Mars, a power generator and an oxygen storage.
+    photo: {fileID: 0}
+    gadgetObj: {fileID: 0}
+    isAvaiable: 0
   listCharacter:
-  - name: Mary
-    description: Una ragazza molto sola
+  - name: Engineer
+    description: "An engineer on Mars is responsible for the equipment and vehicles
+      management and maintenance. He provides knowledge and labor for the cutting-edge
+      tools that give the crew significant technological advantages in the Martian
+      environment. The engineer must know all the technical skills, which are wide
+      and varied, specific technical skills and experience in the sciences as well
+      as skills in engineering hand work. The main task for the engineer is to make
+      sure that all of the technological tools for the Mission work properly, this
+      is achieved with constant checks and a regular maintenance schedule. The engineer
+      is also responsible for the management of the technologies deployed for the
+      construction of new modules, in order to make sure \r\neveything is built correctly."
     photo: {fileID: 21300000, guid: b421bc8739c3bfe4a98b1e77829f70ca, type: 3}
     charcterObj: {fileID: 0}
     isAvaiable: 1
-  - name: Giacopo
-    description: Fratello di Mary, pure lui si sente solo
+  - name: Medic
+    description: "A medic on Mars is responsible for the psychophysical conditions
+      of the crew members. He provides medical assistance to the astronauts and carries
+      out research in the medical field to be applied both in the Martian environment
+      and on the Earth.  The medic needs to have a deep knowledge of all the branches
+      of medicine and needs to \r\nbe able to operate in any kind of circumstance.
+      The main task for the medic is to make sure that all of the crew members are
+      healthy, both physically and mentally, this is achieved through regular medical
+      checks. The medic is also responsible for the research of possible discoveries
+      in the medical field which can help humanity to find solutions to everyday problems.\r\n"
     photo: {fileID: 21300000, guid: 46e2c1bcfaefb884493d88e7816e5864, type: 3}
     charcterObj: {fileID: 0}
     isAvaiable: 1
+  - name: Botanist
+    description: "A botanist on Mars is a biologist specialized on plants. He is responsible
+      for all the cultivation based research, working on new methods to be able to
+      grow any kind of plant in the Mars environment. He is also responsible for the
+      byproducts research of any kind of cultivation which might allow to find helpful
+      discoveries for both \rthe crew and humanity."
+    photo: {fileID: 0}
+    charcterObj: {fileID: 0}
+    isAvaiable: 0
+  - name: Geologist
+    description: "A geologist on Mars is responsible for the research of the planet's
+      minerals. He is assigned to the tasks of exploration and drilling in order to
+      find materials that can be used for any kind of purpose on the Red Planet in
+      order to find new ways to be able to colonize it. \rThe geologist carries out
+      research of the excavated minerals by crushing the samples to a fine powder
+      and examining their chemical, physical and spectral properties, \ridentifying
+      any organic molecules present.\r"
+    photo: {fileID: 0}
+    charcterObj: {fileID: 0}
+    isAvaiable: 0
   listPlace:
   - name: Valles Marineris
-    description: Ci stanno i violini li
+    description: "The largest canyon in the Solar System cuts a wide swath across
+      the face of Mars. Named Valles Marineris (latin for Mariner Valleys, named after
+      the Mariner 9 Mars orbiter of 1971\u201372 which discovered it), the grand valley
+      extends over 3,000 kilometers long, spans as much as 600 kilometers across,
+      and delves as much as 8 kilometers deep. By comparison, the Earth's Grand Canyon
+      in Arizona, USA is 800 kilometers long, 30 kilometers across, and 1.8 kilometers
+      deep. \r\nThe origin of the Valles Marineris remains unknown, although a leading
+      hypothesis holds that it started as a crack billions of years ago as the planet
+      cooled. Recently, several geologic processes have been identified in the canyon. "
     photo: {fileID: 21300000, guid: c12ae905060fc354bb83f7bf14d807d4, type: 3}
     isAvaiable: 1
-  - name: Cratere Gale
-    description: "La base \xE8 situata li"
+  - name: Gale Crater
+    description: "Gale crater, named for Walter F. Gale (1865-1945), an amateur astronomer
+      from Australia, spans 154 km (96 mi) in diameter and holds a mountain, Aeolis
+      Mons (informally named \"Mount Sharp\" to pay tribute to \rgeologist Robert
+      P. Sharp) rising 18,000 ft (5,500 m) from the crater floor, higher than Mount
+      Rainier rises above Seattle. Gale is roughly the size of Connecticut and Rhode
+      Island. The crater formed when a meteor hit Mars in its early history, about
+      3.5 to 3.8 billion years ago. The meteor impact punched a hole in the terrain,
+      and the subsequent explosion ejected rocks and soil that \r\nlanded around the
+      crater. Layering in the central mound (Aeolis Mons) suggests it is the surviving
+      remnant of an extensive sequence of deposits. Some scientists believe the crater
+      filled in with sediments and, over time, the relentless Martian winds carved
+      Aeolis Mons, which today rises about 5.5 km (3.4 mi) above the floor of Gale,
+      three times higher than the Grand Canyon is deep."
     photo: {fileID: 21300000, guid: 4e3e4d8259d80b84582545f176bb49dc, type: 3}
     isAvaiable: 1
+  - name: Noctis Labyrinthus
+    description: "Noctis Labyrinthus, \"the labyrinth of the night\", is a region
+      of Mars between Valles Marineris and the Tharsis upland. It is located in the
+      Phoenicis Lacus quadrangle. The region is notable for its maze-like system of
+      deep, steep-walled valleys. The valleys and canyons of this region formed by
+      faulting and many show classic features of grabens, with the upland plain surface
+      preserved on the valley floor. In some places the valley floors are rougher,
+      \rdisturbed by landslides, and there are places where the land appears to have
+      sunk down into pit-like formations. It is thought that this faulting was triggered
+      by volcanic activity in the Tharsis region. Research described in December 2009
+      found a variety of minerals, including clays, sulfates, and hydrated silicas,
+      in some of the layers."
+    photo: {fileID: 0}
+    isAvaiable: 0
+  - name: Olympus Mons
+    description: "The largest of the volcanoes in the Tharsis Montes region, as well
+      as all known volcanoes in the solar system, is Olympus Mons (latin for Mount
+      Olympus). Olympus Mons is a shield volcano 624 km (374 mi) in diameter (approximately
+      the same size as the state of Arizona), 25 km (16 mi) high, and is rimmed by
+      a 6 km (4 mi) high scarp. A caldera 80 km (50 mi) wide is located at the summit
+      of Olympus Mons. To compare, the largest volcano on Earth is Mauna Loa. Mauna
+      Loa is a shield volcano 10 km (6.3 mi) high and 120 km (75 mi) across.\r\n"
+    photo: {fileID: 0}
+    isAvaiable: 0
+  - name: Mars
+    description: Mars is the fourth planet from the Sun and the second-smallest planet
+      in the Solar System after Mercury. In English, Mars carries a name of the Roman
+      god of war, and is often referred to as the "Red Planet" because the reddish
+      iron oxide prevalent on its surface gives it a reddish appearance that is distinctive
+      among the astronomical bodies visible to the naked eye. Mars is a terrestrial
+      planet with a thin atmosphere, having surface features reminiscent both of the
+      impact craters of the Moon and the valleys, deserts, and polar ice caps of Earth.
+    photo: {fileID: 0}
+    isAvaiable: 0
   listMission:
-  - name: Missione 1
-    description: Bella questa missione
+  - name: A New Home
+    description: This mission introduces John to what will come next...
     photo: {fileID: 21300000, guid: cfea15071ee3a4543ba205f132c5da33, type: 3}
     isAvaiable: 0
-  - name: Missione 2
-    description: Bella questa missione con tanta gente
+  - name: Exploring The Valley
+    description: After recovering his equipment and helping out Emma, John makes his
+      first trip on Bertha, the Rover, to reach the Valles Marineris, where he needs
+      to collect some minerals for Alexander.
     photo: {fileID: 21300000, guid: f75e2b1809ad796469251378de80ccb1, type: 3}
+    isAvaiable: 0
+  - name: Lost In The Labyrinth
+    description: To make a surprise gift to Emma, John travels to the Noctis Labyrinthus
+      to take a picture...
+    photo: {fileID: 0}
+    isAvaiable: 0
+  - name: Green Zone
+    description: John, after returning from his unexpected journey, travels to the
+      Valles Marineris with the Mission of finding a new place for the construction
+      of a new laboratory in the future.
+    photo: {fileID: 0}
+    isAvaiable: 0
+  - name: Do-It-Yourself
+    description: John is caught by surprise when, upon his return from the Valles
+      Marineris, he finds out the base is in meltdown and his assistance is required
+      to resolve the situation.
+    photo: {fileID: 0}
+    isAvaiable: 0
+  - name: Find The Pieces
+    description: After fixing the pipes, John is tasked with the recovery of the pieces
+      from the fallen space probe in the Noctis Labyrinthus.
+    photo: {fileID: 0}
+    isAvaiable: 0
+  - name: A Giant Step For A Man
+    description: It's time for John to make the most important step for humanity's
+      future...
+    photo: {fileID: 0}
     isAvaiable: 0
   name: {fileID: 114105790380248916}
   description: {fileID: 114862127542379872}
@@ -736,10 +1107,10 @@ MonoBehaviour:
   - {fileID: 114294208599988084}
   enableColor:
     serializedVersion: 2
-    rgba: 4278190335
+    rgba: 4278209791
   disableColor:
     serializedVersion: 2
-    rgba: 4290493371
+    rgba: 4294967295
   anim: {fileID: 95169176550919744}
 --- !u!114 &114388522879831356
 MonoBehaviour:
@@ -760,7 +1131,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: f38282065f8fe724fbf4e6b8d45411d8, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -780,15 +1151,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 0.866}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: 8023661d6c2b26242bf31eff3085a965, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -811,6 +1182,66 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &114497927228594344
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1421123982026270}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+--- !u!114 &114535175807104762
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1294079746422860}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_FontData:
+    m_Font: {fileID: 12800000, guid: 218956a5c2a6e42d6a60afccf80b002b, type: 3}
+    m_FontSize: 24
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 10
+    m_MaxSize: 40
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: RB
 --- !u!114 &114548256838279910
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -850,15 +1281,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: 9922ad8d6494ddf45b3c527ddfba24e8, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -910,15 +1341,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: 9922ad8d6494ddf45b3c527ddfba24e8, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -944,7 +1375,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: f38282065f8fe724fbf4e6b8d45411d8, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1016,15 +1447,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: 9922ad8d6494ddf45b3c527ddfba24e8, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -1076,15 +1507,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: 9922ad8d6494ddf45b3c527ddfba24e8, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -1112,7 +1543,7 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 20
+    m_FontSize: 25
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 2
@@ -1157,6 +1588,33 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: Gadgets
+--- !u!114 &114866629034453512
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1058984924975220}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_Sprite: {fileID: 21300000, guid: f38282065f8fe724fbf4e6b8d45411d8, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
 --- !u!114 &114937100466616822
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1305,6 +1763,12 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1184707888074986}
+--- !u!222 &222143415175136604
+CanvasRenderer:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1294079746422860}
 --- !u!222 &222150230523719838
 CanvasRenderer:
   m_ObjectHideFlags: 1
@@ -1323,12 +1787,24 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1657093126120584}
+--- !u!222 &222231513633300760
+CanvasRenderer:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1421123982026270}
 --- !u!222 &222317572870249852
 CanvasRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1809113671842992}
+--- !u!222 &222492425127618396
+CanvasRenderer:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1901553550093802}
 --- !u!222 &222508347011240520
 CanvasRenderer:
   m_ObjectHideFlags: 1
@@ -1371,6 +1847,12 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1149260736592068}
+--- !u!222 &222684664020175524
+CanvasRenderer:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1058984924975220}
 --- !u!222 &222705037471056962
 CanvasRenderer:
   m_ObjectHideFlags: 1
@@ -1383,6 +1865,12 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1637110263930230}
+--- !u!222 &222795955564507956
+CanvasRenderer:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1845067006757632}
 --- !u!222 &222954412973771962
 CanvasRenderer:
   m_ObjectHideFlags: 1
@@ -1434,10 +1922,10 @@ RectTransform:
   m_Father: {fileID: 224102310110228452}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0.5}
-  m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 135.35, y: -62}
-  m_SizeDelta: {x: 225.1, y: 350.8}
+  m_AnchorMin: {x: 1, y: 0.5}
+  m_AnchorMax: {x: 1, y: 0.5}
+  m_AnchoredPosition: {x: -267.38617, y: -39.872}
+  m_SizeDelta: {x: 230, y: 230}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224068824068953902
 RectTransform:
@@ -1450,12 +1938,12 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 224408124168406930}
-  m_Father: {fileID: 224793894589415938}
+  m_Father: {fileID: 224846105547806884}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -89.69, y: 239.6}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 427.29498, y: -35.85}
   m_SizeDelta: {x: 179.38, y: 57.8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224076872007678778
@@ -1464,16 +1952,17 @@ RectTransform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1569737046487264}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 224842464187117392}
   m_Father: {fileID: 224793894589415938}
-  m_RootOrder: 6
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -31.450012, y: -30.549988}
+  m_AnchoredPosition: {x: -61, y: -43}
   m_SizeDelta: {x: 59.099976, y: 59.100006}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224102310110228452
@@ -1491,8 +1980,9 @@ RectTransform:
   - {fileID: 224411635812816154}
   - {fileID: 224026044896051084}
   - {fileID: 224813951683581700}
+  - {fileID: 224446490794167280}
   m_Father: {fileID: 224793894589415938}
-  m_RootOrder: 4
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -1523,18 +2013,36 @@ RectTransform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1637110263930230}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 224474641635634458}
-  m_Father: {fileID: 224793894589415938}
+  m_Father: {fileID: 224846105547806884}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 157.08499, y: -35.85}
+  m_SizeDelta: {x: 179.38, y: 57.8}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!224 &224339252926879244
+RectTransform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1901553550093802}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 224879092340774524}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -267, y: 239.6}
-  m_SizeDelta: {x: 179.38, y: 57.8}
+  m_AnchoredPosition: {x: 0.0000019074, y: 0.000012398}
+  m_SizeDelta: {x: 83.1, y: 67.575}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224371956200321822
 RectTransform:
@@ -1549,10 +2057,10 @@ RectTransform:
   m_Father: {fileID: 224102310110228452}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 123.95, y: -104.3}
-  m_SizeDelta: {x: 247.9, y: 81.7}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: -66.9, y: -149}
+  m_SizeDelta: {x: 247.9, y: 61.1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224389036001915636
 RectTransform:
@@ -1565,12 +2073,12 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 224147832932931258}
-  m_Father: {fileID: 224793894589415938}
+  m_Father: {fileID: 224846105547806884}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 269.07, y: 238.6}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 967.715, y: -35.85}
   m_SizeDelta: {x: 179.38, y: 57.8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224408124168406930
@@ -1606,8 +2114,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 135.53, y: 218.6}
-  m_SizeDelta: {x: 366.76, y: 341}
+  m_AnchoredPosition: {x: -66.9, y: 316.4}
+  m_SizeDelta: {x: 491.7, y: 416.6}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224423779810693152
 RectTransform:
@@ -1626,6 +2134,24 @@ RectTransform:
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!224 &224446490794167280
+RectTransform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1421123982026270}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 224102310110228452}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 113.48, y: -39.872}
+  m_SizeDelta: {x: 107.63, y: 453.76}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224474641635634458
 RectTransform:
@@ -1654,14 +2180,33 @@ RectTransform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 224589510712273922}
   m_Father: {fileID: 224793894589415938}
-  m_RootOrder: 5
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 31.450012, y: -30.049988}
+  m_AnchoredPosition: {x: 225, y: -42.05}
   m_SizeDelta: {x: 59.100006, y: 59.100006}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!224 &224589510712273922
+RectTransform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1845067006757632}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 224521133815536204}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -0.000005722, y: -2.4}
+  m_SizeDelta: {x: 59.1, y: 34.8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224693238015986298
 RectTransform:
@@ -1669,7 +2214,7 @@ RectTransform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1848772244524218}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -1678,9 +2223,9 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 344.4, y: 49.299988}
-  m_SizeDelta: {x: 161.6, y: 145.6}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 217, y: -39.872}
+  m_SizeDelta: {x: 84.82001, y: 82.35}
+  m_Pivot: {x: 0.5, y: 0.49999994}
 --- !u!224 &224770248323121368
 RectTransform:
   m_ObjectHideFlags: 1
@@ -1711,12 +2256,12 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 224423779810693152}
-  m_Father: {fileID: 224793894589415938}
+  m_Father: {fileID: 224846105547806884}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 89.69, y: 239.6}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 697.505, y: -35.85}
   m_SizeDelta: {x: 179.38, y: 57.8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224793894589415938
@@ -1729,19 +2274,17 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 224328183164417374}
-  - {fileID: 224068824068953902}
-  - {fileID: 224779844139836428}
-  - {fileID: 224389036001915636}
+  - {fileID: 224846105547806884}
   - {fileID: 224102310110228452}
   - {fileID: 224521133815536204}
   - {fileID: 224076872007678778}
+  - {fileID: 224879092340774524}
   m_Father: {fileID: 224770248323121368}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -578}
+  m_AnchoredPosition: {x: 0, y: 0.000020065}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224813951683581700
@@ -1759,8 +2302,67 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -82, y: 52}
-  m_SizeDelta: {x: 144.28003, y: 140.08}
+  m_AnchoredPosition: {x: -76.1, y: -39.872}
+  m_SizeDelta: {x: 84.82, y: 82.35}
+  m_Pivot: {x: 0.5000002, y: 0.49999994}
+--- !u!224 &224842464187117392
+RectTransform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1294079746422860}
+  m_LocalRotation: {x: -0, y: -1, z: -0, w: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 224076872007678778}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -0.076, y: 0.5}
+  m_SizeDelta: {x: 58.852, y: 34.8}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!224 &224846105547806884
+RectTransform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1440280476833006}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.79999995, y: 0.79999995, z: 0.79999995}
+  m_Children:
+  - {fileID: 224328183164417374}
+  - {fileID: 224068824068953902}
+  - {fileID: 224779844139836428}
+  - {fileID: 224389036001915636}
+  m_Father: {fileID: 224793894589415938}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: 71.4, y: -42.049988}
+  m_SizeDelta: {x: 1124.8, y: 71.7}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!224 &224879092340774524
+RectTransform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1058984924975220}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 224339252926879244}
+  m_Father: {fileID: 224793894589415938}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0.5}
+  m_AnchorMax: {x: 0, y: 0.5}
+  m_AnchoredPosition: {x: 75, y: -50}
+  m_SizeDelta: {x: 83.100006, y: 83.1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!225 &225380266972812764
 CanvasGroup:

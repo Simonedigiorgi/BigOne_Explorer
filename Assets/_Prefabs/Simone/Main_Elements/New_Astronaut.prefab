@@ -83,7 +83,6 @@ GameObject:
   - component: {fileID: 4212121926915294}
   - component: {fileID: 137993960691015438}
   - component: {fileID: 114653051859650562}
-  - component: {fileID: 114651641771222634}
   m_Layer: 0
   m_Name: Helmet
   m_TagString: Untagged
@@ -4887,7 +4886,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1262237382474364}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 70.5, y: 123.34, z: 140.7}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4591325776022578}
@@ -6832,8 +6831,9 @@ MonoBehaviour:
   isEnabled: 0
   isEquipped: 0
   listObjects: []
-  description: {fileID: 4900000, guid: 35679222d6b660748a401bc8c14e957f, type: 3}
-  image: {fileID: 0}
+  description: Descrizione Bussola????
+  commands: Premere il tasto 1
+  image: {fileID: 21300000, guid: 6ea0e3de66db60b4895a5af021ec2f96, type: 3}
   NorthDirection: {x: 0, y: 0, z: 0}
   Player: {fileID: 4700752438047502}
   MissionDirection: {x: 0, y: 0, z: 0, w: 0}
@@ -6933,8 +6933,9 @@ MonoBehaviour:
   isEnabled: 0
   isEquipped: 0
   listObjects: []
-  description: {fileID: 4900000, guid: fdd058b6252ec79499c17ec32a39d4d0, type: 3}
-  image: {fileID: 0}
+  description: Descrizione geiger?????
+  commands: 
+  image: {fileID: 21300000, guid: 90327464f60331d4fa9b4dd35b38473d, type: 3}
   Geiger_LOW: {fileID: 8300000, guid: 44299bbd37bcdbe41b5aa41c31fe3e8b, type: 3}
   Geiger_HIGH: {fileID: 8300000, guid: b471421467a9e054d9d5540ee0ebffee, type: 3}
   audioSource: {fileID: 0}
@@ -6959,8 +6960,9 @@ MonoBehaviour:
   isEnabled: 0
   isEquipped: 0
   listObjects: []
-  description: {fileID: 4900000, guid: 8ff677947c06dfd42a76ffdd072a1757, type: 3}
-  image: {fileID: 0}
+  description: Descrizione della torcia????
+  commands: 
+  image: {fileID: 21300026, guid: 71ae9cf2cbddbbf46afcc9b7c0ab1d27, type: 3}
 --- !u!114 &114263587356817742
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -6995,8 +6997,9 @@ MonoBehaviour:
   isEnabled: 0
   isEquipped: 0
   listObjects: []
-  description: {fileID: 4900000, guid: 69288ec540672954aad4e99f92521d5a, type: 3}
-  image: {fileID: 0}
+  description: Descrizione Pickaxe
+  commands: 
+  image: {fileID: 21300000, guid: a3b0c3f3c08ae4f7d8069360ce47d353, type: 3}
 --- !u!114 &114436233461381204
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -7053,8 +7056,9 @@ MonoBehaviour:
   isEnabled: 0
   isEquipped: 0
   listObjects: []
-  description: {fileID: 0}
-  image: {fileID: 0}
+  description: DescrizionE Backpack
+  commands: 
+  image: {fileID: 21300000, guid: a292d6fcc5a6ff84b926c8681ea3880a, type: 3}
 --- !u!114 &114462447078115636
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -7097,8 +7101,9 @@ MonoBehaviour:
   isEnabled: 0
   isEquipped: 0
   listObjects: []
-  description: {fileID: 4900000, guid: ca9447de099750646b52bbd6af3cd985, type: 3}
-  image: {fileID: 21300194, guid: 71ae9cf2cbddbbf46afcc9b7c0ab1d27, type: 3}
+  description: Descrizione dello scanner?????
+  commands: 
+  image: {fileID: 21300000, guid: 2a13d030deb1f8444986dac47abce913, type: 3}
   updateSpeed: 1
   T_distance: 50
   beep: {fileID: 8300000, guid: cb4fd492b52842849977922acad34eee, type: 3}
@@ -7149,23 +7154,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gadgets: []
---- !u!114 &114651641771222634
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1014308700010478}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 93903846b3de547baa8beceb58dbbded, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gadgetType: 0
-  isEnabled: 0
-  isEquipped: 0
-  listObjects: []
-  description: {fileID: 0}
-  image: {fileID: 0}
 --- !u!114 &114653051859650562
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -7181,8 +7169,9 @@ MonoBehaviour:
   isEnabled: 0
   isEquipped: 0
   listObjects: []
-  description: {fileID: 0}
-  image: {fileID: 0}
+  description: Descrizione del casco??????
+  commands: 
+  image: {fileID: 21300000, guid: 69fd19a4f9328ce44bd4c95b0fe31d5d, type: 3}
 --- !u!114 &114687300987710722
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -7410,8 +7399,9 @@ MonoBehaviour:
   isEnabled: 0
   isEquipped: 0
   listObjects: []
-  description: {fileID: 4900000, guid: abdf1447fbc72484e8e766de0ae993d3, type: 3}
-  image: {fileID: 0}
+  description: Descrizione Jetpack???
+  commands: 
+  image: {fileID: 21300074, guid: 71ae9cf2cbddbbf46afcc9b7c0ab1d27, type: 3}
 --- !u!114 &114788054567290728
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -7427,8 +7417,9 @@ MonoBehaviour:
   isEnabled: 0
   isEquipped: 0
   listObjects: []
-  description: {fileID: 4900000, guid: c956d7973b576bf43873250df761be73, type: 3}
-  image: {fileID: 0}
+  description: Descrizione della Camera
+  commands: 
+  image: {fileID: 21300000, guid: a3983c59ebf804b4abba687bd7c9e92f, type: 3}
 --- !u!114 &114788550763934636
 MonoBehaviour:
   m_ObjectHideFlags: 1

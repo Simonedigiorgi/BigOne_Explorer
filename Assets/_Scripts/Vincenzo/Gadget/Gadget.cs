@@ -11,7 +11,13 @@ public class Gadget : MonoBehaviour {
     public bool isEquipped;
     [Header("Lista di oggetti da cercare nella scena")]
     public List<GameObject> listObjects;
-    public TextAsset description;
+    //public TextAsset description;
+
+    [Header("Info Panel Parameters")]
+    [TextArea]
+    public string description;
+    [TextArea]
+    public string commands;
     public Sprite image;
 
     public virtual void EnableGadget()

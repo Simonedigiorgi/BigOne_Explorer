@@ -388,8 +388,8 @@ public class UIManager : MonoBehaviour
 
         //Animation (First X, Second Y) 
 
-        infoAnimation.Append(infoPanel.GetComponent<RectTransform>().DOScaleX(0.01f, xVelocityClose));
-        infoAnimation.Append(infoPanel.GetComponent<RectTransform>().DOScaleY(0.005f, yVelocityClose));
+        infoAnimation.Append(infoPanel.GetComponent<RectTransform>().DOScaleX(0.005f, xVelocityClose));
+        infoAnimation.Append(infoPanel.GetComponent<RectTransform>().DOScaleY(0.01f, yVelocityClose));
 
         //Animation scale complete
         //infoAnimation.Append(infoPanel.GetComponent<RectTransform>().DOScale(0f, 1.0f));

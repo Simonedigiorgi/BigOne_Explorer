@@ -640,7 +640,7 @@ public class MainMenu : MonoBehaviour
 	public void PlayAnimationDoorUp()
 	{
 
-		doorUp.Play ("LeftDoor");
+		doorUp.SetTrigger("UpOpen");
 
 	}
 
@@ -650,7 +650,7 @@ public class MainMenu : MonoBehaviour
 	public void PlayAnimationDoorDown()
 	{
 
-		doorDown.Play ("RightOpen");
+		doorDown.SetTrigger("DownOpen");
 
 	}
 

@@ -119,6 +119,8 @@ public class TaskInteract : Task
                 Gadget gadget = gadgetManager.gadgets
                     .Find(x => x.gadgetType == (GadgetManager.GadgetType)Enum.Parse(typeof(GadgetManager.GadgetType), action.transform.parent.name.ToUpper()));
                 gadget.EnableGadget();
+
+                UIManager.instance.ShowInfoPanel(gadget.image, gadget.name, gadget.description, gadget.commands);
                 /*gadgetManager = FindObjectOfType<GadgetManager>();
                 GadgetManager.GadgetType gadget = (GadgetManager.GadgetType)Enum.Parse(typeof(GadgetManager.GadgetType), action.transform.parent.name.ToUpper());
                 gadgetManager.ActivateGadget(gadget, true);*/

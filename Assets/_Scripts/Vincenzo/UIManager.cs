@@ -21,6 +21,12 @@ public class UIManager : MonoBehaviour
     public float writeSpeed;
     public Color colorCheckedText;
 
+    [Header("Speed animation info panel")]
+    public float xVelocityOpen;
+    public float yVelocityOpen;
+    public float xVelocityClose;
+    public float yVelocityClose;
+
     /// <summary>
     /// 
     /// Public member that sets the y position of the help key canvas
@@ -72,12 +78,10 @@ public class UIManager : MonoBehaviour
     private void Update()
     {
 
-        /*if(Input.GetKeyDown(KeyCode.M))
+        if(Input.GetKeyDown(KeyCode.M))
         {
-            Sequence sequenceAnimation = OverlineTargetText();
-
-            sequenceAnimation.Append(FadeOutTargetText());
-        }*/
+            StartCoroutine(HideInfoPanel());
+        }
 
         if(helpKeyPanel.gameObject.activeSelf)
         {
@@ -349,21 +353,22 @@ public class UIManager : MonoBehaviour
     /// Function that shows the info panel.
     /// 
     /// </summary>
-    public void ShowInfoPanel(Sprite image, string title, string description)
+    public void ShowInfoPanel(Sprite image, string title, string description, string commands)
     {
         vThirdPersonController.instance.GetComponent<GenericSettings>().LockPlayer();
 
         infoPanel.SetActive(true);
         infoPanel.transform.GetChild(0).transform.GetChild(0).GetComponent<Image>().sprite = image;
         infoPanel.transform.GetChild(1).transform.GetChild(0).GetComponent<Text>().text = title;
-        infoPanel.transform.GetChild(1).transform.GetChild(1).GetComponent<Text>().text = description;
+        infoPanel.transform.GetChild(1).transform.GetChild(1).GetComponent<Text>().text = commands;
+        infoPanel.transform.GetChild(1).transform.GetChild(2).GetComponent<Text>().text = description;
 
         Sequence infoAnimation = DOTween.Sequence();
 
         //Animation (First Y, Second X) 
 
-        infoAnimation.Append(infoPanel.GetComponent<RectTransform>().DOScaleY(1.0f, 1.0f));
-        infoAnimation.Append(infoPanel.GetComponent<RectTransform>().DOScaleX(1.0f, 1.0f));
+        infoAnimation.Append(infoPanel.GetComponent<RectTransform>().DOScaleY(1.0f, yVelocityOpen));
+        infoAnimation.Append(infoPanel.GetComponent<RectTransform>().DOScaleX(1.0f, xVelocityOpen));
 
         //Animation scale complete
 
@@ -383,8 +388,8 @@ public class UIManager : MonoBehaviour
 
         //Animation (First X, Second Y) 
 
-        infoAnimation.Append(infoPanel.GetComponent<RectTransform>().DOScaleX(0.01f, 1.0f));
-        infoAnimation.Append(infoPanel.GetComponent<RectTransform>().DOScaleY(0.01f, 1.0f));
+        infoAnimation.Append(infoPanel.GetComponent<RectTransform>().DOScaleX(0.01f, xVelocityClose));
+        infoAnimation.Append(infoPanel.GetComponent<RectTransform>().DOScaleY(0.005f, yVelocityClose));
 
         //Animation scale complete
         //infoAnimation.Append(infoPanel.GetComponent<RectTransform>().DOScale(0f, 1.0f));

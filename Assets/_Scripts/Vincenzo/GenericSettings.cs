@@ -20,9 +20,9 @@ public class GenericSettings : MonoBehaviour
     public GameObject pocketShovel;
     public GameObject handShovel;
 
-    [Header("Change Player Positions")]
+    /*[Header("Change Player Positions")]
     public GameObject playerExit;
-    public GameObject playerEntry;
+    public GameObject playerEntry;*/
 
     public bool IsDead
     {
@@ -79,6 +79,8 @@ public class GenericSettings : MonoBehaviour
 
         if (currentModel == modelInside)
         {
+            GameObject playerExit = GameObject.Find("Uscita_player");
+
             modelInside.SetActive(false);
             this.gameObject.GetComponent<Animator>().avatar = avatarOutside;
             modelOutside.SetActive(true);
@@ -91,6 +93,9 @@ public class GenericSettings : MonoBehaviour
         }
         else
         {
+
+            GameObject playerEntry = GameObject.Find("Entrata_player");
+
             modelOutside.SetActive(false);
             this.gameObject.GetComponent<Animator>().avatar = avatarInside;
             modelInside.SetActive(true);

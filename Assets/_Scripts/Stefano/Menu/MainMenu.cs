@@ -862,6 +862,16 @@ public class MainMenu : MonoBehaviour
 	}
 
 	/// <summary>
+	/// Metodo che avvia i Credits
+	/// </summary>
+	public void ChangeSceneToCredits()
+	{
+
+		SceneManager.LoadScene (5);
+
+	}
+
+	/// <summary>
 	/// Coroutine che controlla il cambio di scena 
 	/// </summary>
 	/// <returns>The scena.</returns>

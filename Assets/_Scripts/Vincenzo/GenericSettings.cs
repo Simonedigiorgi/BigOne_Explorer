@@ -7,18 +7,22 @@ public class GenericSettings : MonoBehaviour
 {
 
     private bool isDead;
-    public bool isOutside;
 
+    [Header("Player's models variable")]
+    public bool isOutside;
     public Avatar avatarInside;
     public GameObject modelInside;
-
     public Avatar avatarOutside;
     public GameObject modelOutside;
-
     public GameObject currentModel;
 
+    [Header("Shovel Objects")]
     public GameObject pocketShovel;
     public GameObject handShovel;
+
+    [Header("Change Player Positions")]
+    public GameObject playerExit;
+    public GameObject playerEntry;
 
     public bool IsDead
     {
@@ -80,9 +84,10 @@ public class GenericSettings : MonoBehaviour
             modelOutside.SetActive(true);
             currentModel = modelOutside;
 
-            vThirdPersonController.instance.transform.position = new Vector3(vThirdPersonController.instance.transform.position.x + 5f,
+            /*vThirdPersonController.instance.transform.position = new Vector3(vThirdPersonController.instance.transform.position.x + 5f,
                                                                              vThirdPersonController.instance.transform.position.y, 
-                                                                             vThirdPersonController.instance.transform.position.z);
+                                                                             vThirdPersonController.instance.transform.position.z);*/
+            vThirdPersonController.instance.transform.position = playerExit.transform.position;
         }
         else
         {
@@ -91,9 +96,11 @@ public class GenericSettings : MonoBehaviour
             modelInside.SetActive(true);
             currentModel = modelInside;
 
-            vThirdPersonController.instance.transform.position = new Vector3(vThirdPersonController.instance.transform.position.x - 5f,
+            /*vThirdPersonController.instance.transform.position = new Vector3(vThirdPersonController.instance.transform.position.x - 5f,
                                                                              vThirdPersonController.instance.transform.position.y,
-                                                                             vThirdPersonController.instance.transform.position.z);
+                                                                             vThirdPersonController.instance.transform.position.z);*/
+            vThirdPersonController.instance.transform.position = playerEntry.transform.position;
+
         }
 
         yield return new WaitForSeconds(0.5f);

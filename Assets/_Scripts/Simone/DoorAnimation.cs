@@ -53,7 +53,10 @@ public class DoorAnimation : MonoBehaviour
         {
             if (other.gameObject.tag == "Player" &&
                 GameManager.instance.gadgetManager.GetGadgetByType(GadgetManager.GadgetType.HELMET).isEnabled &&
-                GameManager.instance.gadgetManager.GetGadgetByType(GadgetManager.GadgetType.BACKPACK).isEnabled) 
+                GameManager.instance.gadgetManager.GetGadgetByType(GadgetManager.GadgetType.BACKPACK).isEnabled &&
+                GameManager.instance.gadgetManager.GetGadgetByType(GadgetManager.GadgetType.TORCH).isEnabled &&
+                GameManager.instance.gadgetManager.GetGadgetByType(GadgetManager.GadgetType.PICKAXE).isEnabled &&
+                GameManager.instance.gadgetManager.GetGadgetByType(GadgetManager.GadgetType.COMPASS).isEnabled) 
             {
                 doorDown.SetTrigger("DownOpen");
                 doorUp.SetTrigger("UpOpen");

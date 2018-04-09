@@ -4886,7 +4886,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1262237382474364}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 133.49, y: 34.52, z: 77.07}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4591325776022578}
@@ -6831,9 +6831,13 @@ MonoBehaviour:
   isEnabled: 0
   isEquipped: 0
   listObjects: []
-  description: Descrizione Bussola????
-  commands: Premere il tasto 1
-  image: {fileID: 21300000, guid: 6ea0e3de66db60b4895a5af021ec2f96, type: 3}
+  description: "In Mars Life, we have a navigation compass working with the communication
+    from the base to the astronaut, but in reality this connection couldn't happen
+    for distances longer than 40 KMs using today's technology and would probably\r\nneed
+    the assistance of orbital satellites rotating mars, task that is currently being
+    planned by NASA."
+  commands: Premere il tasto R3 / 1
+  image: {fileID: 21300000, guid: 8377817cd36cc8147a6418676cb28270, type: 3}
   NorthDirection: {x: 0, y: 0, z: 0}
   Player: {fileID: 4700752438047502}
   MissionDirection: {x: 0, y: 0, z: 0, w: 0}
@@ -6933,8 +6937,12 @@ MonoBehaviour:
   isEnabled: 0
   isEquipped: 0
   listObjects: []
-  description: Descrizione geiger?????
-  commands: 
+  description: "The Geiger counter is an instrument used for detecting and measuring
+    ionizing radiation used widely in applications such as radiation dosimetry, radiological
+    protection, experimental physics and the nuclear \r\nindustry.\r\nIt detects ionizing
+    radiation such as alpha particles, beta particles and gamma rays using the ionization
+    effect produced in a Geiger\u2013M\xFCller tube; which gives its name to the instrument."
+  commands: To turn the Geiger counter on or off, press LT / 3
   image: {fileID: 21300000, guid: 90327464f60331d4fa9b4dd35b38473d, type: 3}
   Geiger_LOW: {fileID: 8300000, guid: 44299bbd37bcdbe41b5aa41c31fe3e8b, type: 3}
   Geiger_HIGH: {fileID: 8300000, guid: b471421467a9e054d9d5540ee0ebffee, type: 3}
@@ -6960,8 +6968,15 @@ MonoBehaviour:
   isEnabled: 0
   isEquipped: 0
   listObjects: []
-  description: Descrizione della torcia????
-  commands: 
+  description: "Above the Earth\u2019s atmosphere the solar irradiance is slightly
+    more than 1300 W/m2 (1300 watts per square metre), which is different from Mars.\r\nMars
+    is over 50 percent farther from the sun than Earth, so it receives less than half
+    as much sunlight. This is one of the main reasons why a spacesuit for a mission
+    on Mars requires a torchlight to be built in, especially for the exploration of
+    darker places like caves.\r\nThe first spacesuit to encounter this problem was
+    the \"Mercury IVA\", the first U.S. spacesuit design operated from 1959 to 1970,
+    which included lights at the tips of the gloves in order to provide visual aid."
+  commands: To turn the torch on or off, press Y / T
   image: {fileID: 21300026, guid: 71ae9cf2cbddbbf46afcc9b7c0ab1d27, type: 3}
 --- !u!114 &114263587356817742
 MonoBehaviour:
@@ -6997,8 +7012,10 @@ MonoBehaviour:
   isEnabled: 0
   isEquipped: 0
   listObjects: []
-  description: Descrizione Pickaxe
-  commands: 
+  description: "Pickaxe has evolved from a single fold spade with a straight handle,
+    to a tri-fold design with a modified \u201CD\u201D handle design with all steel
+    construction, \r\nto a similar light weight plastic and steel tri-fold design"
+  commands: To use the pick-shovel, press X / E when available
   image: {fileID: 21300000, guid: a3b0c3f3c08ae4f7d8069360ce47d353, type: 3}
 --- !u!114 &114436233461381204
 MonoBehaviour:
@@ -7101,8 +7118,14 @@ MonoBehaviour:
   isEnabled: 0
   isEquipped: 0
   listObjects: []
-  description: Descrizione dello scanner?????
-  commands: 
+  description: "In 1996 NAS began researching and developing an accurate electronic
+    inspection method for finding and computing the size of defects on Orbiter tiles.
+    \rIn Mars Life, an imaginary improved version of this scanner is built in the
+    spacesuit.\nOver the next four years a small hand-held instrument was developed
+    to obtain and archive high-resolution 3D surface maps of tile damage. This results
+    in rapid scans with high-resolution 3D images produced while the instrument is
+    scanning."
+  commands: To turn on or off the Scanner, press RT / 2
   image: {fileID: 21300000, guid: 2a13d030deb1f8444986dac47abce913, type: 3}
   updateSpeed: 1
   T_distance: 50
@@ -7399,8 +7422,14 @@ MonoBehaviour:
   isEnabled: 0
   isEquipped: 0
   listObjects: []
-  description: Descrizione Jetpack???
-  commands: 
+  description: "Flying on Mars is very difficult due to the thin atmosphere and hovering
+    with a Jetpack uses a lot of propellant that needs to be made, stored and transported.
+    Therefore, the solution proposed is to use the Jetpack as a grasshopper. \r\nIt
+    means that the astronaut would use a short and powerful impulsion to induce a
+    leap. The main objective is to be able to access the bottom of craters or explore
+    an upper plateau and any other location that is hardly reachable with \r\ncommon
+    vehicles."
+  commands: To use the jetpack, press A / SPACE after jumping
   image: {fileID: 21300074, guid: 71ae9cf2cbddbbf46afcc9b7c0ab1d27, type: 3}
 --- !u!114 &114788054567290728
 MonoBehaviour:
@@ -7417,8 +7446,14 @@ MonoBehaviour:
   isEnabled: 0
   isEquipped: 0
   listObjects: []
-  description: Descrizione della Camera
-  commands: 
+  description: "The Instrument Context Camera (ICC) is mounted just below the deck,
+    on the edge of the lander facing the workspace, which is the area of ground within
+    reach of the arm. The ICC has a \"fisheye\" field of view of \r\n120 degrees.
+    It will provide wide-angle views of the entire workspace. Like the Navcam, it
+    is based on a similar camera on Opportunity and Curiosity. It is mounted under
+    the edge of the lander's deck and \r\nprovides a complementary view of the instrument
+    deployment area."
+  commands: To use the camera, press X / E when available
   image: {fileID: 21300000, guid: a3983c59ebf804b4abba687bd7c9e92f, type: 3}
 --- !u!114 &114788550763934636
 MonoBehaviour:
@@ -7433,10 +7468,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   openCloseEvents: 0
   openCloseWindow: 1
-  selectedToolbar: 3
+  selectedToolbar: 0
   maxHealth: 2
   healthRecovery: 0
-  maxStamina: 4
+  maxStamina: 7
   staminaRecovery: 0.2
   currentStaminaRecoveryDelay: 0
   healthRecoveryDelay: 0

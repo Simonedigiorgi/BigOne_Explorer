@@ -184,12 +184,14 @@ public class UIManager : MonoBehaviour
         if (Input.GetJoystickNames().Length > 0)
         {
             helpKeyPanel.transform.GetChild(1).GetComponent<Image>().DOFade(1, 0.4f);
+            helpKeyPanel.transform.GetChild(1).transform.GetChild(0).GetComponent<Text>().DOFade(1, 0);
             helpKeyPanel.transform.GetChild(1).GetComponent<RectTransform>().DOScale(0.8f, 0.6f);
             helpKeyPanel.transform.GetChild(1).GetComponent<RectTransform>().DOLocalMoveY(16, 0.4f);
         }
         else
         {
             helpKeyPanel.transform.GetChild(0).GetComponent<Image>().DOFade(1, 0.4f);
+            helpKeyPanel.transform.GetChild(0).transform.GetChild(0).GetComponent<Text>().DOFade(1, 0);
             helpKeyPanel.transform.GetChild(0).GetComponent<RectTransform>().DOScale(1f, 0.6f);
             helpKeyPanel.transform.GetChild(0).GetComponent<RectTransform>().DOLocalMoveY(16, 0.4f);
         }
@@ -207,12 +209,14 @@ public class UIManager : MonoBehaviour
         if (Input.GetJoystickNames().Length > 0)
         {
             sequenceAnimation.Append(helpKeyPanel.transform.GetChild(1).GetComponent<Image>().DOFade(0, 0.4f));
+            sequenceAnimation.Join(helpKeyPanel.transform.GetChild(1).transform.GetChild(0).GetComponent<Text>().DOFade(0, 0.4f));
             sequenceAnimation.Join(helpKeyPanel.transform.GetChild(1).GetComponent<RectTransform>().DOScale(0.6f, 0.4f));
             sequenceAnimation.Join(helpKeyPanel.transform.GetChild(1).GetComponent<RectTransform>().DOLocalMoveY(-16, 0.4f));
         }
         else
         {
             sequenceAnimation.Append(helpKeyPanel.transform.GetChild(0).GetComponent<Image>().DOFade(0, 0.4f));
+            sequenceAnimation.Join(helpKeyPanel.transform.GetChild(0).transform.GetChild(0).GetComponent<Text>().DOFade(0, 0.4f));
             sequenceAnimation.Join(helpKeyPanel.transform.GetChild(0).GetComponent<RectTransform>().DOScale(0.6f, 0.4f));
             sequenceAnimation.Join(helpKeyPanel.transform.GetChild(0).GetComponent<RectTransform>().DOLocalMoveY(-16, 0.4f));
         }

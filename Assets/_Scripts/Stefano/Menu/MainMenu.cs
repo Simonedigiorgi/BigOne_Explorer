@@ -805,6 +805,7 @@ public class MainMenu : MonoBehaviour
 		else //vuol dire che si vuole creare una nuova partita
 		{
 
+			PlayerPrefs.SetInt ("isFirstTime", 0);
 			StartCoroutine (FadeScena (nameScena));
 
 		}
@@ -830,6 +831,7 @@ public class MainMenu : MonoBehaviour
 		else //vuol dire che si vuole creare una nuova partita
 		{
 
+			PlayerPrefs.SetInt ("isFirstTime", 0);
 			StartCoroutine (FadeScena (nameScena));
 
 		}
@@ -857,6 +859,7 @@ public class MainMenu : MonoBehaviour
 	public void ChangeScenaForNewGame(string nameScena)
 	{
         
+		PlayerPrefs.SetInt ("isFirstTime", 0);
         StartCoroutine (FadeScena (nameScena));
 
 	}

@@ -27,6 +27,9 @@ public class UIManager : MonoBehaviour
     public float xVelocityClose;
     public float yVelocityClose;
 
+    [Header("Speed animation dialogue panel")]
+    public float dialogueSpeed;
+
     /// <summary>
     /// 
     /// Public member that sets the y position of the help key canvas
@@ -100,12 +103,15 @@ public class UIManager : MonoBehaviour
     {
         this.dialoguePanel.GetComponentInChildren<Text>().text = "";
 
+        this.dialoguePanel.SetActive(true);
+        this.dialoguePanel.transform.DOScaleY(1f, dialogueSpeed);
+
         // ANIMATION
 
-        if (!moveUp)
+        /*if (!moveUp)
             dialoguePanel.GetComponent<Animation>().Play("MoveUp_Dialogue");
 
-        moveUp = true;
+        moveUp = true;*/
     }
 
     /// <summary>
@@ -119,10 +125,14 @@ public class UIManager : MonoBehaviour
 
         // ANIMATION
 
-        if (moveUp)
+        /*if (moveUp)
             dialoguePanel.GetComponent<Animation>().Play("MoveDown_Dialogue");
 
-        moveUp = false;
+        moveUp = false;*/
+
+        
+        this.dialoguePanel.transform.DOScaleY(0, dialogueSpeed);
+        //this.dialoguePanel.SetActive(false);
 
     }
 

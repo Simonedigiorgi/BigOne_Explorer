@@ -289,7 +289,7 @@ namespace Invector.CharacterController
             {
                 cc.Strafe();
                 // Richiamiamo la funzione dei feedback
-                cc.GetComponentInChildren<FeedbackIcons>(true).ToggleFeedbackGadget();
+                //cc.GetComponentInChildren<FeedbackIcons>(true).ToggleFeedbackGadget();
             }
                 
         }

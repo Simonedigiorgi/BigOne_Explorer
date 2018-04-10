@@ -43,7 +43,8 @@ public class Quest : MonoBehaviour
         //yield return null;
     }
 
-    public IEnumerator SetQuest(Database.DataQuest quest)
+    //public IEnumerator SetQuest(Database.DataQuest quest)
+    public void SetQuest(Database.DataQuest quest)
     {
         foreach(Database.DataTask dataTask in quest.tasks)
         {
@@ -51,13 +52,13 @@ public class Quest : MonoBehaviour
             task.currentState = dataTask.currentState;
             questTasks.Add(task);
 
-            if (dataTask.currentState == Task.TaskState.ENABLED)
+            if (dataTask.currentState == Task.TaskState.ENABLED || dataTask.currentState == Task.TaskState.READY || dataTask.currentState == Task.TaskState.ACTIVED)
             {
                 taskActived = questTasks[task.taskPriority];
             }
         }
 
-        yield return null;
+        //yield return null;
     }
 
     public void EnableQuest()

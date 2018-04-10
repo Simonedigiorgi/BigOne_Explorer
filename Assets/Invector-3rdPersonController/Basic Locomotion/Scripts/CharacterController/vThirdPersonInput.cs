@@ -323,8 +323,11 @@ namespace Invector.CharacterController
         protected virtual void TorchInput() // Torcia
         {
            
-            if (torchInput.GetButtonDown())
+            if (torchInput.GetButtonDown() && cc.GetComponent<GenericSettings>().isOutside)
             {
+                print("Gesu");
+
+
                 cc.GetComponentInChildren<Torch>().SetGadget();
                 //cc.Torch();
             }
@@ -333,14 +336,14 @@ namespace Invector.CharacterController
 
         protected virtual void ScannerInput() // Scanner
         {
-            if (scannerInput.GetButtonDown())
+            if (scannerInput.GetButtonDown() && cc.GetComponent<GenericSettings>().isOutside)
                 cc.GetComponentInChildren<Scanner>().SetGadget();
                 //cc.Scanner();
         }
 
         protected virtual void GeigerInput() // Geiger
         {
-            if (geigerInput.GetButtonDown())
+            if (geigerInput.GetButtonDown() && cc.GetComponent<GenericSettings>().isOutside)
                 cc.GetComponentInChildren<Geiger>().SetGadget();
                 //cc.Geiger();
         }

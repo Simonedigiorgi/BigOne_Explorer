@@ -60,6 +60,20 @@ public class TaskTalk : Task
 	{
         vThirdPersonController.instance.GetComponent<GenericSettings>().UnlockPlayer();
         npc.transform.parent.gameObject.GetComponent<Animator>().SetBool("isTalking", false);
+
+        if (gadgetsReward.Length > 0)
+        {
+            foreach (GadgetManager.GadgetType gadget in gadgetsReward)
+            {
+                Gadget gadgetToActivate = GameManager.instance.gadgetManager.gadgets.Find(x => x.gadgetType == gadget);
+                gadgetToActivate.EnableGadget();
+
+                Database.gadgets.Find(x => x.gadgetName == gadgetToActivate.name.ToUpper()).isActive = true;
+
+                UIManager.instance.ShowInfoPanel(gadgetToActivate.image, gadgetToActivate.name, gadgetToActivate.description, gadgetToActivate.commands);
+            }
+        }
+
         return base.CompletingTask();
 	}
 
@@ -70,14 +84,7 @@ public class TaskTalk : Task
 
         //DialogueManager dialogueManager = FindObjectOfType<DialogueManager>();
 
-        if(gadgetsReward.Length > 0)
-        {
-            foreach (GadgetManager.GadgetType gadget in gadgetsReward)
-            {
-                Gadget gadgetToActivate = GameManager.instance.gadgetManager.gadgets.Find(x => x.gadgetType == gadget);
-                gadgetToActivate.EnableGadget();
-            }
-        }
+       
         
 
     }

@@ -13,8 +13,8 @@ public class TaskInteract : Task
     public bool isDestroyable;
 
     //protected GameObject[] taskObjects;
-    protected int taskObjectsNumber;
-    protected int allTaskObjectsNumber;
+    protected int taskObjectsNumber = 0;
+    protected int allTaskObjectsNumber = 0;
     
 
     protected virtual void InitTaskObjects()
@@ -46,14 +46,29 @@ public class TaskInteract : Task
     protected virtual void LoadTaskObjects()
     {
         taskObjects.Clear();
-        foreach(Database.InteractableObject interactable in Database.interactableObjects)
-        {
-            if(interactable.type == (InteractableType)Enum.Parse(typeof(InteractableType), tagTaskObjects.ToUpper()) && interactable.isInteractable) 
-            {
-                GameObject action = GameObject.Find(interactable.interactableName).transform.GetChild(0).gameObject;
-                SetInteractableListener(action);
+        allTaskObjectsNumber = 0;
+        taskObjectsNumber = 0;
 
-                taskObjects.Add(action.transform.parent.gameObject);
+        foreach (Database.InteractableObject interactable in Database.interactableObjects)
+        {
+            if(interactable.type == (InteractableType)Enum.Parse(typeof(InteractableType), tagTaskObjects.ToUpper())) 
+            {
+
+                allTaskObjectsNumber++;
+
+                if(interactable.isInteractable)
+                {
+                    GameObject action = GameObject.Find(interactable.interactableName).transform.GetChild(0).gameObject;
+                    SetInteractableListener(action);
+
+                    taskObjects.Add(action.transform.parent.gameObject);
+
+                }
+                else
+                {
+                    taskObjectsNumber++;
+                }
+                
             }
         }
 
@@ -119,6 +134,8 @@ public class TaskInteract : Task
                 Gadget gadget = gadgetManager.gadgets
                     .Find(x => x.gadgetType == (GadgetManager.GadgetType)Enum.Parse(typeof(GadgetManager.GadgetType), action.transform.parent.name.ToUpper()));
                 gadget.EnableGadget();
+
+                Database.gadgets.Find(x => x.gadgetName == gadget.name.ToUpper()).isActive = true;
 
                 UIManager.instance.ShowInfoPanel(gadget.image, gadget.name, gadget.description, gadget.commands);
                 /*gadgetManager = FindObjectOfType<GadgetManager>();

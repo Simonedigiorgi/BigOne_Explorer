@@ -21,16 +21,21 @@ public class GadgetManager : MonoBehaviour {
 
     public List<Gadget> gadgets;
 
-    /*public void SetGadgets()
+    public void SetGadgets()
     {
         foreach(Database.DataGadget dataGadget in Database.gadgets)
         {
-            GadgetType gadget = (GadgetType)Enum.Parse(typeof(GadgetType), dataGadget.gadgetName);
-            ActivateGadget(gadget, dataGadget.isActive);
+            if(dataGadget.isActive)
+            {
+                GadgetType gadgetType = (GadgetType)Enum.Parse(typeof(GadgetType), dataGadget.gadgetName.ToUpper());
+                Gadget gadget = GetGadgetByType(gadgetType);
+                gadget.EnableGadget();
+            }
+            
         }
-    }*/
+    }
 
-    public void InitGadgets()
+    /*public void InitGadgets()
     {
         Gadget[] gadgetList = GetComponentsInChildren<Gadget>(true);
 
@@ -38,6 +43,18 @@ public class GadgetManager : MonoBehaviour {
         {
             gadgets.Add(gadgetList[i]);
             Database.DataGadget dataGadget = new Database.DataGadget(Enum.GetName(typeof(GadgetType), gadgetList[i].gadgetType), false);
+            Database.gadgets.Add(dataGadget);
+        }
+
+        //PrintGadget();
+    }*/
+
+    public void InitGadgets()
+    {
+   
+        for (int i = 0; i < gadgets.Count; i++)
+        {
+            Database.DataGadget dataGadget = new Database.DataGadget(Enum.GetName(typeof(GadgetType), gadgets[i].gadgetType), false);
             Database.gadgets.Add(dataGadget);
         }
 

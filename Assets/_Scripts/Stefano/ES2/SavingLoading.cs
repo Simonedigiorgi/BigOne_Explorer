@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 using UnityEngine.UI;
+using Invector.CharacterController;
 
 public class SavingLoading : MonoBehaviour 
 {
@@ -22,8 +23,8 @@ public class SavingLoading : MonoBehaviour
 	{
 
 		SaveCurrentScene ();
-		//SavePlayer ();
-		SaveCurrentQuest ();
+		SavePlayer ();
+		//SaveCurrentQuest ();
 		SaveData ();
 
 		//Salviamo il numero di quest per il caricamento
@@ -70,14 +71,15 @@ public class SavingLoading : MonoBehaviour
 	private void SavePlayer()
 	{
 
-		ES2.Save (Database.playerPosition, PlayerPrefs.GetString ("Slot") + ".txt?tag=player");
+        //ES2.Save (vThirdPersonController.instance.transform.position, PlayerPrefs.GetString ("Slot") + ".txt?tag=player");
+        ES2.Save(Database.playerIsOutside, PlayerPrefs.GetString("Slot") + ".txt?tag=playerIsOutside");
 
-	}
+    }
 
-	/// <summary>
-	/// Metodo che permette il salvataggio di una quest
-	/// </summary>
-	private void SaveQuest(Database.DataQuest q)
+    /// <summary>
+    /// Metodo che permette il salvataggio di una quest
+    /// </summary>
+    private void SaveQuest(Database.DataQuest q)
 	{
 
 		//Enum string
@@ -227,10 +229,11 @@ public class SavingLoading : MonoBehaviour
 	/// </summary>
 	public void Load()
 	{
+        Database.ResetDatabase();
 
-		StartCoroutine (LoadCoroutine ());
+        StartCoroutine (LoadCoroutine ());
 
-	}
+    }
 
 	/// <summary>
 	/// Metodo che esegue tutti i metodi di caricamento
@@ -243,7 +246,7 @@ public class SavingLoading : MonoBehaviour
 
 			LoadCurrentScene ();
 			//LoadPlayer ();
-			LoadCurrentQuest ();
+			//LoadCurrentQuest ();
 
 			//Carichiamo il numero di qust che abbiamo salvato
 			int numberQuest = ES2.Load<int> (PlayerPrefs.GetString ("Slot") + ".txt?tag=questNumberQuests");
@@ -298,14 +301,16 @@ public class SavingLoading : MonoBehaviour
 	private void LoadPlayer()
 	{
 
-		ES2.Load<Transform> (PlayerPrefs.GetString ("Slot") + ".txt?tag=player", Database.playerPosition);
+        //Database.playerPosition = ES2.Load<Vector3> (PlayerPrefs.GetString ("Slot") + ".txt?tag=player");
+        Database.playerIsOutside = ES2.Load<bool>(PlayerPrefs.GetString("Slot") + ".txt?tag=playerIsOutside");
 
-	}
 
-	/// <summary>
-	/// Metodo che carica una quest
-	/// </summary>
-	private void LoadQuest()
+    }
+
+    /// <summary>
+    /// Metodo che carica una quest
+    /// </summary>
+    private void LoadQuest()
 	{
 
 		//Costruttore della quest
@@ -313,6 +318,8 @@ public class SavingLoading : MonoBehaviour
 			ES2.Load<Quest.QuestState> (PlayerPrefs.GetString ("Slot") + ".txt?tag=" + number + "CurrentState"),
 			ES2.Load<string> (PlayerPrefs.GetString ("Slot") + ".txt?tag=" + number + "Name"),
 			ES2.Load<int> (PlayerPrefs.GetString ("Slot") + ".txt?tag=" + number + "QuestPriority"));
+
+        
 
 		//Inizilizzo la variabile Task
 		Database.DataTask task;
@@ -327,9 +334,16 @@ public class SavingLoading : MonoBehaviour
 				ES2.Load<string> (PlayerPrefs.GetString ("Slot") + ".txt?tag="+ number +"TaskTaskName" + i),
 				ES2.Load<int> (PlayerPrefs.GetString ("Slot") + ".txt?tag="+ number +"TaskTaskPriority" + i)
 			);
-				
-			//Aggiungo la task alla quest
-			dataQuest.tasks.Add (task);
+
+            if (dataQuest.currentState == Quest.QuestState.ENABLED &&
+                task.currentState == Task.TaskState.ENABLED || task.currentState == Task.TaskState.READY || task.currentState == Task.TaskState.ACTIVED)
+            {
+                Database.currentQuest = dataQuest;
+                dataQuest.activedTask = task;
+            }
+
+            //Aggiungo la task alla quest
+            dataQuest.tasks.Add (task);
 
 		}
 			

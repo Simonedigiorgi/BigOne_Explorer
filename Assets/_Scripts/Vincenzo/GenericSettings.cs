@@ -9,7 +9,7 @@ public class GenericSettings : MonoBehaviour
     private bool isDead;
 
     [Header("Player's models variable")]
-    public bool isOutside;
+    public bool isOutside = false;
     public Avatar avatarInside;
     public GameObject modelInside;
     public Avatar avatarOutside;
@@ -90,6 +90,9 @@ public class GenericSettings : MonoBehaviour
                                                                              vThirdPersonController.instance.transform.position.y, 
                                                                              vThirdPersonController.instance.transform.position.z);*/
             vThirdPersonController.instance.transform.position = playerExit.transform.position;
+
+            isOutside = true;
+            Database.playerIsOutside = true;
         }
         else
         {
@@ -106,6 +109,9 @@ public class GenericSettings : MonoBehaviour
                                                                              vThirdPersonController.instance.transform.position.z);*/
             vThirdPersonController.instance.transform.position = playerEntry.transform.position;
 
+            isOutside = false;
+            Database.playerIsOutside = false;
+
         }
 
         yield return new WaitForSeconds(0.5f);
@@ -113,6 +119,31 @@ public class GenericSettings : MonoBehaviour
         UIManager.instance.fadeImage.DOFade(0, 1f);
         UnlockPlayer();
 
+    }
+
+
+    public void SetPlayer()
+    {
+        if (Database.playerIsOutside)
+        {
+            modelInside.SetActive(false);
+            this.gameObject.GetComponent<Animator>().avatar = avatarOutside;
+            modelOutside.SetActive(true);
+            currentModel = modelOutside;
+
+            isOutside = true;
+        }
+        else
+        {
+
+            modelOutside.SetActive(false);
+            this.gameObject.GetComponent<Animator>().avatar = avatarInside;
+            modelInside.SetActive(true);
+            currentModel = modelInside;
+
+            isOutside = false;
+
+        }
     }
 
 

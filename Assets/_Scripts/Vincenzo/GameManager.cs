@@ -2,17 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Invector.CharacterController;
 
 public class GameManager : MonoBehaviour {
 
     public static GameManager instance;
-    public static bool newGame = true;
+    public static bool newGame;
     public string activeCheckpoint;
     public GadgetManager gadgetManager;
 
     List<string> scenes;
     QuestManager questManager;
-    Invector.vGameController gameController;
+    vThirdPersonController player;
+    //Invector.vGameController gameController;
 
     private void Awake()
     {
@@ -30,6 +32,7 @@ public class GameManager : MonoBehaviour {
         //questManager = QuestManager.instance;
         questManager = FindObjectOfType<QuestManager>();
         gadgetManager = FindObjectOfType<GadgetManager>();
+        player = FindObjectOfType<vThirdPersonController>();
 
         scenes = new List<string>();
 
@@ -41,6 +44,15 @@ public class GameManager : MonoBehaviour {
             questManager.InitQuests();
             gadgetManager.InitGadgets();
             this.SetScenes();
+
+        }
+        else
+        {
+
+            player.GetComponent<GenericSettings>().SetPlayer();
+            questManager.SetQuests();
+            gadgetManager.SetGadgets();
+            
 
         }
             

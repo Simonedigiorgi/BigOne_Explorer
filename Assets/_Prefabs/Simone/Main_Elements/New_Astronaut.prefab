@@ -696,10 +696,10 @@ GameObject:
   - component: {fileID: 114436233461381204}
   - component: {fileID: 54359159323406858}
   - component: {fileID: 136876469436832208}
-  - component: {fileID: 114613474784199516}
   - component: {fileID: 114081030537687446}
   - component: {fileID: 114263587356817742}
   - component: {fileID: 81739684268464388}
+  - component: {fileID: 114576133181572272}
   m_Layer: 8
   m_Name: New_Astronaut
   m_TagString: Player
@@ -4886,7 +4886,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1262237382474364}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 59.668, y: -0.00000023841858, z: -277.948}
+  m_LocalPosition: {x: 59.668, y: -0.00000023841858, z: -276.51}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4591325776022578}
@@ -6997,8 +6997,6 @@ MonoBehaviour:
   currentModel: {fileID: 1030660040107972}
   pocketShovel: {fileID: 1009223957874506}
   handShovel: {fileID: 1831544508720720}
-  playerExit: {fileID: 0}
-  playerEntry: {fileID: 0}
 --- !u!114 &114408770398305068
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -7106,6 +7104,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b04f4ac1b776ff48b5f78a97b57f776, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114576133181572272
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1262237382474364}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 449afd45f52c906408e141a084f1207a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gadgets:
+  - {fileID: 114600155904458028}
+  - {fileID: 114224800798538062}
+  - {fileID: 114653051859650562}
+  - {fileID: 114788054567290728}
+  - {fileID: 114254011211875782}
+  - {fileID: 114445502599655586}
+  - {fileID: 114696780215693862}
+  - {fileID: 114408770398305068}
+  - {fileID: 114069864092254370}
 --- !u!114 &114600155904458028
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -7172,18 +7191,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b04f4ac1b776ff48b5f78a97b57f776, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114613474784199516
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1262237382474364}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 449afd45f52c906408e141a084f1207a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gadgets: []
 --- !u!114 &114653051859650562
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -7480,7 +7487,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   openCloseEvents: 0
   openCloseWindow: 1
-  selectedToolbar: 2
+  selectedToolbar: 0
   maxHealth: 2
   healthRecovery: 0
   maxStamina: 7
@@ -8229,7 +8236,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 1709139568
+  randomSeed: 714168594
   InitialModule:
     serializedVersion: 3
     enabled: 1

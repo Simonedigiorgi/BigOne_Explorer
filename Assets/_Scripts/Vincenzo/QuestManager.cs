@@ -49,7 +49,7 @@ public class QuestManager : MonoBehaviour {
     //public IEnumerator InitQuests()
     public void InitQuests()
     {
-        
+        print("Init");
         for (int i = 0; i < this.transform.childCount; i++)
         {
             Quest quest = this.transform.GetChild(i).gameObject.GetComponent<Quest>();
@@ -74,8 +74,12 @@ public class QuestManager : MonoBehaviour {
         //yield return null;
     }
 
-    public IEnumerator SetQuests()
-    {
+    //public IEnumerator SetQuests()
+    public void SetQuests()
+    {   
+        quests.Clear();
+
+        print(Database.scenes.Count);
 
         foreach(Database.DataQuest dataQuest in Database.quests)
         {
@@ -83,13 +87,14 @@ public class QuestManager : MonoBehaviour {
             quest.currentState = dataQuest.currentState;
             quests.Add(quest);
 
-            yield return StartCoroutine(quest.SetQuest(dataQuest));
+            //yield return StartCoroutine(quest.SetQuest(dataQuest));
+            quest.SetQuest(dataQuest);
 
         }
 
         currentQuest = this.quests[Database.currentQuest.questPriority];
-
-        yield return null;
+        UIManager.instance.ChangeQuestText();
+        //yield return null;
     }
 
     public void SwitchToNextQuest()

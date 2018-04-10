@@ -3006,6 +3006,7 @@ Transform:
   - {fileID: 4037876894140552}
   - {fileID: 4777834553263972}
   - {fileID: 4080899883160530}
+  - {fileID: 4843826389305990}
   m_Father: {fileID: 4414228638291518}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4299,7 +4300,6 @@ Transform:
   - {fileID: 4063260429671818}
   - {fileID: 4864400746627770}
   - {fileID: 4244820882376442}
-  - {fileID: 4843826389305990}
   m_Father: {fileID: 4440998102100756}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5263,14 +5263,14 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1009223957874506}
-  m_LocalRotation: {x: 0.14653616, y: 0.054607444, z: -0.7114566, w: 0.6851093}
-  m_LocalPosition: {x: 0.646, y: -0.05, z: -0.21}
-  m_LocalScale: {x: 0.81773347, y: 0.8177335, z: 0.8177329}
+  m_LocalRotation: {x: -2.328306e-10, y: -2.328306e-10, z: -0.6940462, w: 0.7199305}
+  m_LocalPosition: {x: 0.907, y: 0.062, z: -0.881}
+  m_LocalScale: {x: 0.8177337, y: 0.81773376, z: 0.8177329}
   m_Children:
   - {fileID: 4440731780419032}
-  m_Father: {fileID: 4504751141403890}
+  m_Father: {fileID: 4031621144770212}
   m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 16.17, y: -8.001, z: -93.3}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -87.90301}
 --- !u!4 &4845909295304740
 Transform:
   m_ObjectHideFlags: 1
@@ -6837,7 +6837,7 @@ MonoBehaviour:
     the assistance of orbital satellites rotating mars, task that is currently being
     planned by NASA."
   commands: Premere il tasto R3 / 1
-  image: {fileID: 21300000, guid: 8377817cd36cc8147a6418676cb28270, type: 3}
+  image: {fileID: 21300000, guid: b87108ede544f794e91f54e133641a34, type: 3}
   NorthDirection: {x: 0, y: 0, z: 0}
   Player: {fileID: 4700752438047502}
   MissionDirection: {x: 0, y: 0, z: 0, w: 0}
@@ -6943,7 +6943,7 @@ MonoBehaviour:
     radiation such as alpha particles, beta particles and gamma rays using the ionization
     effect produced in a Geiger\u2013M\xFCller tube; which gives its name to the instrument."
   commands: To turn the Geiger counter on or off, press LT / 3
-  image: {fileID: 21300000, guid: 90327464f60331d4fa9b4dd35b38473d, type: 3}
+  image: {fileID: 21300000, guid: b6adda9f1babf6b468fdedcf379ac96e, type: 3}
   Geiger_LOW: {fileID: 8300000, guid: 44299bbd37bcdbe41b5aa41c31fe3e8b, type: 3}
   Geiger_HIGH: {fileID: 8300000, guid: b471421467a9e054d9d5540ee0ebffee, type: 3}
   audioSource: {fileID: 0}
@@ -6977,7 +6977,7 @@ MonoBehaviour:
     the \"Mercury IVA\", the first U.S. spacesuit design operated from 1959 to 1970,
     which included lights at the tips of the gloves in order to provide visual aid."
   commands: To turn the torch on or off, press Y / T
-  image: {fileID: 21300026, guid: 71ae9cf2cbddbbf46afcc9b7c0ab1d27, type: 3}
+  image: {fileID: 21300000, guid: 1496ebfeb4007e84798a9bfce4b6db89, type: 3}
 --- !u!114 &114263587356817742
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -7076,7 +7076,7 @@ MonoBehaviour:
   description: The backpack contains the essential to survive outside the base, such
     as a portable power generator and an oxygen storage
   commands: 
-  image: {fileID: 21300000, guid: a292d6fcc5a6ff84b926c8681ea3880a, type: 3}
+  image: {fileID: 21300000, guid: a11ec89c06c303249ab13a693bcc270a, type: 3}
 --- !u!114 &114462447078115636
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -7148,7 +7148,7 @@ MonoBehaviour:
     in rapid scans with high-resolution 3D images produced while the instrument is
     scanning."
   commands: To turn on or off the Scanner, press RT / 2
-  image: {fileID: 21300000, guid: 2a13d030deb1f8444986dac47abce913, type: 3}
+  image: {fileID: 21300000, guid: ffaf6787b20daee418b1dd109667dc3b, type: 3}
   updateSpeed: 0.1
   T_distance: 50
   beep: {fileID: 8300000, guid: cb4fd492b52842849977922acad34eee, type: 3}
@@ -7213,7 +7213,7 @@ MonoBehaviour:
     become dislodged during activity. And the integrated audio system is a universal
     size \u2014 no separate caps are needed for individual crew members."
   commands: 
-  image: {fileID: 21300000, guid: 69fd19a4f9328ce44bd4c95b0fe31d5d, type: 3}
+  image: {fileID: 21300000, guid: a15d253249af59244a090d94d1195524, type: 3}
 --- !u!114 &114687300987710722
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -7473,7 +7473,7 @@ MonoBehaviour:
     the edge of the lander's deck and \r\nprovides a complementary view of the instrument
     deployment area."
   commands: To use the camera, press X / E when available
-  image: {fileID: 21300000, guid: a3983c59ebf804b4abba687bd7c9e92f, type: 3}
+  image: {fileID: 21300000, guid: c62bb19585a572945bcfbae73e8bb75e, type: 3}
 --- !u!114 &114788550763934636
 MonoBehaviour:
   m_ObjectHideFlags: 1

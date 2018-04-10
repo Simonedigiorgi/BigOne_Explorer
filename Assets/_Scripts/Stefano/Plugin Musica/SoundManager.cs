@@ -161,7 +161,7 @@ public class SoundManager : MonoBehaviour {
 				activeTimer = true;
 				NextMusic ();
 				managerHUD.MoveOnMenu ("MusicNext");
-				managerHUD.ChangeTextSong (music.InfoClusterFadeNameSongInPlay (0));
+				managerHUD.ChangeTextSong (music.InfoClusterFadeNameNextSong (0));
 
 			}
 
@@ -172,7 +172,7 @@ public class SoundManager : MonoBehaviour {
 				activeTimer = true;
 				PreviousMusic ();
 				managerHUD.MoveOnMenu ("MusicPrevious");
-				managerHUD.ChangeTextSong (music.InfoClusterFadeNameSongInPlay (0));
+				managerHUD.ChangeTextSong (music.InfoClsuterFadeNamePreviousSong (0));
 
 			}
 

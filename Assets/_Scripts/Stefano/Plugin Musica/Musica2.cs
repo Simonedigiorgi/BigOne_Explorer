@@ -972,6 +972,73 @@ public class Musica2 : MonoBehaviour
 		return null;
 	}
 
+	public string InfoClsuterFadeNamePreviousSong(int IDcluster)
+	{
+
+
+		for (int i = 0; i < systemClusterFade [IDcluster].clusterFade.Length; i++) 
+		{
+
+			if (systemClusterFade [IDcluster].clusterFade [i].isInPlay == true) 
+			{
+
+
+				if (i - 1 < 0) 
+				{
+
+					return systemClusterFade [IDcluster].clusterFade [systemClusterFade[IDcluster].clusterFade.Length-1].clip.name;
+
+				} 
+				else 
+				{
+
+					return systemClusterFade [IDcluster].clusterFade [i-1].clip.name;
+
+				}
+
+
+
+			}
+
+		}
+
+
+		return null;
+
+	}
+
+	public string InfoClusterFadeNameNextSong(int IDcluster)
+	{
+
+
+		for (int i = 0; i < systemClusterFade [IDcluster].clusterFade.Length; i++) 
+		{
+
+			if (systemClusterFade [IDcluster].clusterFade [i].isInPlay == true) {
+
+
+				if (i + 1 > systemClusterFade [IDcluster].clusterFade.Length - 1) 
+				{
+
+					return systemClusterFade [IDcluster].clusterFade [0].clip.name;
+
+				} 
+				else 
+				{
+
+					return systemClusterFade [IDcluster].clusterFade [i + 1].clip.name;
+
+				}
+
+
+
+			}
+
+		}
+
+		return null;
+	}
+
 	#endregion
 
 

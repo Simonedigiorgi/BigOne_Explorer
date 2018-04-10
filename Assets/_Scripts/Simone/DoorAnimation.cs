@@ -42,7 +42,8 @@ public class DoorAnimation : MonoBehaviour
 
 		Debug.Log ("Eseguito");
 
-		if (isEnter == false && doorDown.IsInTransition(0) == false && doorUp.IsInTransition(0) == false) 
+		//Per evitare di eseguire quando le porte sono bloccate
+		if (isEnter == false && doorDown.IsInTransition(0) == true && doorUp.IsInTransition(0) == true) 
 		{
 			isEnter = true;
 			music.GoPlayOneShot (4);

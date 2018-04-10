@@ -111,7 +111,7 @@ public class HUD : MonoBehaviour {
 	void Start()
 	{
 
-		newSceneUnlock = "Valles Marineris";
+		//newSceneUnlock = "Valles Marineris";
 
 		//Impostiamo il primo bottone illuminato 
 		ChangeFirstSelected (CheckJoystick());
@@ -182,7 +182,7 @@ public class HUD : MonoBehaviour {
             if (isGamepad == false)
             {
 
-                if (Input.GetKeyDown(KeyCode.Escape) == true && menuIsOpen == true && roverMenuIsOpen == false)
+                /*if (Input.GetKeyDown(KeyCode.Escape) == true && menuIsOpen == true && roverMenuIsOpen == false)
                 {
 
                     bool canIclose = false;
@@ -212,14 +212,14 @@ public class HUD : MonoBehaviour {
                         SetCloseMenu();
                     }
 
-                }
+                }*/
 
 
             }
             else
             {
 
-                if (InputManager.StartButton() == true && menuIsOpen == true && roverMenuIsOpen == false)
+                /*if (InputManager.StartButton() == true && menuIsOpen == true && roverMenuIsOpen == false)
                 {
 
                     bool canIclose = false;
@@ -249,7 +249,7 @@ public class HUD : MonoBehaviour {
                         SetCloseMenu();
                     }
 
-                }
+                }*/
 
             }
 

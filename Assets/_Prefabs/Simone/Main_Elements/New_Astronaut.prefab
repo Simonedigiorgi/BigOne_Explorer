@@ -6948,10 +6948,10 @@ MonoBehaviour:
   Geiger_HIGH: {fileID: 8300000, guid: b471421467a9e054d9d5540ee0ebffee, type: 3}
   audioSource: {fileID: 0}
   vicino: 20
-  coloreVicino: {r: 0.11724138, g: 1, b: 0, a: 1}
-  coloreMedio: {r: 0.90344834, g: 1, b: 0, a: 1}
+  coloreVicino: {r: 0, g: 0.5294118, b: 0, a: 1}
+  coloreMedio: {r: 0.5294118, g: 0.5294118, b: 0, a: 1}
   lontano: 100
-  coloreLontano: {r: 1, g: 0, b: 0, a: 1}
+  coloreLontano: {r: 0.5294118, g: 0, b: 0, a: 1}
   ripple: {fileID: 198464829107649712}
 --- !u!114 &114254011211875782
 MonoBehaviour:
@@ -7130,7 +7130,7 @@ MonoBehaviour:
     scanning."
   commands: To turn on or off the Scanner, press RT / 2
   image: {fileID: 21300000, guid: 2a13d030deb1f8444986dac47abce913, type: 3}
-  updateSpeed: 1
+  updateSpeed: 0.1
   T_distance: 50
   beep: {fileID: 8300000, guid: cb4fd492b52842849977922acad34eee, type: 3}
   audioSource: {fileID: 0}
@@ -7150,13 +7150,17 @@ MonoBehaviour:
   ripple: {fileID: 198274239929262024}
   listRiplleSystem:
   - distance: 100
-    color: {r: 1, g: 0, b: 0, a: 1}
+    color: {r: 0.5294118, g: 0, b: 0, a: 1}
+    frequency: 0.5
   - distance: 50
-    color: {r: 0.9034482, g: 1, b: 0, a: 1}
+    color: {r: 0.5294118, g: 0.5294118, b: 0, a: 1}
+    frequency: 0.9
   - distance: 20
-    color: {r: 0.07586192, g: 1, b: 0, a: 1}
+    color: {r: 0, g: 0.5294118, b: 0, a: 1}
+    frequency: 1
   - distance: 2
-    color: {r: 0, g: 0, b: 1, a: 0}
+    color: {r: 0, g: 0, b: 0.5294118, a: 1}
+    frequency: 2
 --- !u!114 &114608769242921910
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -8621,7 +8625,7 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     randomizeRotationDirection: 0
-    maxNumParticles: 1000
+    maxNumParticles: 8
     size3D: 0
     rotation3D: 0
     gravityModifier:
@@ -8785,7 +8789,7 @@ ParticleSystem:
     rateOverTime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 2
+      scalar: 0.5
       minScalar: 10
       maxCurve:
         serializedVersion: 2

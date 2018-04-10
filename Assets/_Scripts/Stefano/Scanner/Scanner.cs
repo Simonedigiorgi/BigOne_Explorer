@@ -7,7 +7,7 @@ public class Scanner : Gadget {
 
     #region Public
 	[Header("Variabile che gestisce la velocità di aggiornamento dello scanner")]
-	public float updateSpeed;
+	public float updateSpeed = 0.1f;
     //public bool equip = false;
     public float T_distance = 50;
 	/*[Header("Lista di oggetti da cercare nella scena")]
@@ -44,6 +44,7 @@ public class Scanner : Gadget {
 
 		public float distance;
 		public Color color;
+        public float frequency;
 
 	}
 
@@ -77,6 +78,7 @@ public class Scanner : Gadget {
                 {
                     ripple.gameObject.SetActive(true);
                     ChangeRippleColor(ChooseRippleEffect().color);
+                    ChangeRippleFrequency(ChooseRippleEffect().frequency);
                     StartCoroutine(Sound());
                 }
                 else
@@ -94,6 +96,7 @@ public class Scanner : Gadget {
             {
                 ripple.gameObject.SetActive(true);
                 ChangeRippleColor(listRiplleSystem[0].color);
+                ChangeRippleFrequency(listRiplleSystem[0].frequency);
             }
             else
                 ripple.gameObject.SetActive(false);
@@ -195,6 +198,16 @@ public class Scanner : Gadget {
 		main.startColor = c;
 
 	}
+
+    /// <summary>
+    /// Metodo che cambia la frequenza di emissione del particle system
+    /// </summary>
+    
+    private void ChangeRippleFrequency(float frequency)
+    {
+        var main = ripple.emission;
+        main.rateOverTime = frequency;
+    }
 
 	#endregion
 

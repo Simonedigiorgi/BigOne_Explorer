@@ -58,6 +58,8 @@ public class UIManager : MonoBehaviour
     /// </summary>
     private bool moveUp;
 
+    private bool infoPanelOpen;
+
     /// <summary>
     /// 
     /// The instance of the ui manager
@@ -81,7 +83,7 @@ public class UIManager : MonoBehaviour
     private void Update()
     {
 
-        if(Input.GetKeyDown(KeyCode.M))
+        if(InputManager.StartButton() && infoPanelOpen)
         {
             StartCoroutine(HideInfoPanel());
         }
@@ -132,7 +134,7 @@ public class UIManager : MonoBehaviour
 
         
         this.dialoguePanel.transform.DOScaleY(0, dialogueSpeed);
-        //this.dialoguePanel.SetActive(false);
+        this.dialoguePanel.SetActive(false);
 
     }
 
@@ -365,6 +367,8 @@ public class UIManager : MonoBehaviour
     /// </summary>
     public void ShowInfoPanel(Sprite image, string title, string description, string commands)
     {
+        infoPanelOpen = true;
+
         vThirdPersonController.instance.GetComponent<GenericSettings>().LockPlayer();
 
         infoPanel.SetActive(true);
@@ -394,6 +398,8 @@ public class UIManager : MonoBehaviour
     /// <returns>The end of the info panel animation.</returns>
     public IEnumerator HideInfoPanel()
     {
+        infoPanelOpen = false;
+
         Sequence infoAnimation = DOTween.Sequence();
 
         //Animation (First X, Second Y) 

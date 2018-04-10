@@ -7,7 +7,7 @@ using Invector.CharacterController;
 public class GameManager : MonoBehaviour {
 
     public static GameManager instance;
-    public static bool newGame;
+    public static bool newGame = true;
     public string activeCheckpoint;
     public GadgetManager gadgetManager;
 

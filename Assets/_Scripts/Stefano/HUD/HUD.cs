@@ -254,7 +254,7 @@ public class HUD : MonoBehaviour {
             }
 
             //Se il tasto start viene premeuto avviamo il menu 
-            if (InputManager.StartButton() == true && menuIsOpen == false && roverMenuIsOpen == false)
+			if (InputManager.StartButton() == true && menuIsOpen == false && roverMenuIsOpen == false && UIManager.instance.dialoguePanel.activeSelf == false && UIManager.instance.infoPanel.activeSelf == false)
             {
 				
                 MoveOnMenu("PasueMenu_new");

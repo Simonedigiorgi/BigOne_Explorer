@@ -70,7 +70,7 @@ public class QuestManager : MonoBehaviour {
 
         }
 
-        //UIManager.instance.ChangeQuestText();
+        UIManager.instance.ChangeQuestText();
         //yield return null;
     }
 
@@ -110,6 +110,8 @@ public class QuestManager : MonoBehaviour {
             currentQuest.taskActived = currentQuest.questTasks[0];
             Database.currentQuest.activedTask = Database.currentQuest.tasks[0];
             currentQuest.questTasks[0].EnableTask();
+
+            UIManager.instance.ChangeQuestText();
 
             CheckQuest();
 

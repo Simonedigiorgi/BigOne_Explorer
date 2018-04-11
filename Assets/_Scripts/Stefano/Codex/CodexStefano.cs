@@ -174,6 +174,9 @@ public class CodexStefano : MonoBehaviour
 	[Header("Sezione per l'animazione del Codex")]
 	public Animator anim;
 
+	[Header("Codex crashed")]
+	public GameObject crashed;
+
 	#endregion
 
 	#region Private
@@ -195,6 +198,8 @@ public class CodexStefano : MonoBehaviour
 	private float timeAction = 0.2f;
 	private float timerAction = 0f;
 	private bool doAction = false;
+
+	private bool isCrashed = false;
 
 	#endregion
 
@@ -405,6 +410,9 @@ public class CodexStefano : MonoBehaviour
 
 			Debug.Log ("Error");
 
+			crashed.SetActive (true);
+			isCrashed = true;
+
 			//Controllo che array devo scorrere a seconda della categoria
 			if (currentCategory == 0) 
 			{
@@ -540,6 +548,9 @@ public class CodexStefano : MonoBehaviour
 		{
 
 			Debug.Log ("Error");
+
+			crashed.SetActive (true);
+			isCrashed = true;
 
 			//Controllo che array devo scorrere a seconda della categoria
 			if (currentCategory == 0) 
@@ -804,6 +815,17 @@ public class CodexStefano : MonoBehaviour
 	/// </summa
 	public void MoveOnCodex(string value)
 	{
+
+		if (isCrashed == true && value == "Open") 
+		{
+
+			crashed.SetActive (true);
+
+		}
+		else
+		{
+			crashed.SetActive (false);
+		}
 
 		anim.Play (value);
 

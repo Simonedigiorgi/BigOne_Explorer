@@ -372,29 +372,64 @@ public class CodexStefano : MonoBehaviour
 
 		#endregion
 
-		//Controllo che array devo scorrere a seconda della categoria
-		if (currentCategory == 0) 
+		try
 		{
 
-			GetCodexGadgetData (listGadget [currentSchede]);
+			//Controllo che array devo scorrere a seconda della categoria
+			if (currentCategory == 0) 
+			{
 
-		} 
-		else if (currentCategory == 1) 
-		{
+				GetCodexGadgetData (listGadget [currentSchede]);
 
-			GetCodexCharactertData (listCharacter [currentSchede]);
+			} 
+			else if (currentCategory == 1) 
+			{
 
-		} 
-		else if (currentCategory == 2) 
-		{
+				GetCodexCharactertData (listCharacter [currentSchede]);
 
-			GetCodexPlacetData (listPlace [currentSchede]);
+			} 
+			else if (currentCategory == 2) 
+			{
 
-		} 
-		else if (currentCategory == 3) 
-		{
+				GetCodexPlacetData (listPlace [currentSchede]);
 
-			GetCodexMissionData ( listMission[currentSchede]);
+			} 
+			else if (currentCategory == 3) 
+			{
+
+				GetCodexMissionData ( listMission[currentSchede]);
+
+			}
+		}
+		catch(Exception ex) {
+
+			Debug.Log ("Error");
+
+			//Controllo che array devo scorrere a seconda della categoria
+			if (currentCategory == 0) 
+			{
+
+				GetCodexGadgetData (listGadget [0]);
+
+			} 
+			else if (currentCategory == 1) 
+			{
+
+				GetCodexCharactertData (listCharacter [0]);
+
+			} 
+			else if (currentCategory == 2) 
+			{
+
+				GetCodexPlacetData (listPlace [0]);
+
+			} 
+			else if (currentCategory == 3) 
+			{
+
+				GetCodexMissionData ( listMission[0]);
+
+			}
 
 		}
 
@@ -471,29 +506,67 @@ public class CodexStefano : MonoBehaviour
 		} 
 		#endregion
 
-		//Controllo che array devo scorrere a seconda della categoria
-		if (currentCategory == 0) 
-		{
-			
-			GetCodexGadgetData (listGadget [currentSchede]);
-
-		} 
-		else if (currentCategory == 1) 
-		{
-			
-			GetCodexCharactertData (listCharacter [currentSchede]);
-
-		} 
-		else if (currentCategory == 2) 
-		{
-			
-			GetCodexPlacetData (listPlace [currentSchede]);
-
-		} 
-		else if (currentCategory == 3) 
+		try
 		{
 
-			GetCodexMissionData (listMission [currentSchede]);
+			//Controllo che array devo scorrere a seconda della categoria
+			if (currentCategory == 0) 
+			{
+				
+				GetCodexGadgetData (listGadget [currentSchede]);
+
+			} 
+			else if (currentCategory == 1) 
+			{
+				
+				GetCodexCharactertData (listCharacter [currentSchede]);
+
+			} 
+			else if (currentCategory == 2) 
+			{
+				
+				GetCodexPlacetData (listPlace [currentSchede]);
+
+			} 
+			else if (currentCategory == 3) 
+			{
+
+				GetCodexMissionData (listMission [currentSchede]);
+
+			}
+
+		}
+		catch(Exception e) 
+		{
+
+			Debug.Log ("Error");
+
+			//Controllo che array devo scorrere a seconda della categoria
+			if (currentCategory == 0) 
+			{
+
+				GetCodexGadgetData (listGadget [0]);
+
+			} 
+			else if (currentCategory == 1) 
+			{
+
+				GetCodexCharactertData (listCharacter [0]);
+
+			} 
+			else if (currentCategory == 2) 
+			{
+
+				GetCodexPlacetData (listPlace [0]);
+
+			} 
+			else if (currentCategory == 3) 
+			{
+
+				GetCodexMissionData (listMission [0]);
+
+			}
+
 
 		}
 

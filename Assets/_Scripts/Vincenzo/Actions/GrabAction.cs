@@ -34,7 +34,11 @@ public class GrabAction : vTriggerGenericAction
         sequenceGrab.Append(transform.parent.DORotate(Vector3.up * 200, 2f));
         sequenceGrab.Join(transform.parent.DOScale(0, 2f));
 
+        GameManager.instance.music.GoPlayOneShot(8);
+
         yield return sequenceGrab.WaitForCompletion();
+
+        
 
         Destroy(transform.parent.gameObject);
     }

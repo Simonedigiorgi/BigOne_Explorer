@@ -33,13 +33,13 @@ public class GenericSettings : MonoBehaviour
         }
     }
 
-    private void Update()
+    /*private void Update()
     {
         if (Input.GetKeyDown(KeyCode.P))
         {
             StartCoroutine(ChangePlayer());
         }
-    }
+    }*/
 
     /*void Update()
     {

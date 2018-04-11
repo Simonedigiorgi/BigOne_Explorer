@@ -36,7 +36,6 @@ public class GameManager : MonoBehaviour {
         questManager = FindObjectOfType<QuestManager>();
         gadgetManager = FindObjectOfType<GadgetManager>();
         player = FindObjectOfType<vThirdPersonController>();
-        music = FindObjectOfType<Musica2>();
 
         scenes = new List<string>();
 

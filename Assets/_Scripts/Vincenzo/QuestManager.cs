@@ -123,7 +123,9 @@ public class QuestManager : MonoBehaviour {
         }
         else
         {
-            CurrentTarget = "Missioni Completate";
+
+            SceneManager.LoadScene("Credits");
+
         }
     }
 

@@ -38,9 +38,10 @@ public class HUD : MonoBehaviour {
 	public Color32 enableColor;
 
 	[Header("Colore dei bottoni disabilitati nel rover menu")]
+	public Color32 enableColorRoverMenu;
 	public Color32 disableColorRoverMenu;
 
-	[Header("Lista MAIN VOLUME")]
+    [Header("Lista MAIN VOLUME")]
 	public List<Image> listMainVolume;
 	public AudioMixer mainAudio;
 	public AudioMixer invectorAudio;
@@ -1012,7 +1013,6 @@ public class HUD : MonoBehaviour {
     public void CheckAtiveScenes()
 	{
 		
-		
 		for (int i = 0; i < Database.scenes.Count; i++) 
 		{
 
@@ -1033,18 +1033,20 @@ public class HUD : MonoBehaviour {
 					else 
 					{
 
-						buttonsRover [j].textButton.color = enableColor;
+						buttonsRover [j].textButton.color = enableColorRoverMenu;
 
 					}
 
 					//controllo se è una scena sbloccata nuova
-					if (newSceneUnlock == buttonsRover [j].targetScene) 
+					/*if (newSceneUnlock == buttonsRover [j].targetScene) 
 					{
 						
 						buttonsRover [j].warningImage1.SetActive (true);
 						buttonsRover [j].warningImage2.SetActive (true);
 
-					}
+                        print(newSceneUnlock);
+
+					}*/
 
 					Debug.Log (buttonsRover [j].targetScene + " = " +Database.scenes [i].isUnlocked);
 

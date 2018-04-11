@@ -655,9 +655,10 @@ public class Musica2 : MonoBehaviour
 			else 
 			{
 
-				float currentVolume =  1.0f + ((SFXvolume / 4)/10);
+                //float currentVolume =  1.0f + ((SFXvolume / 4)/10);
+                float currentVolume = PlayList[ID].volume + ((SFXvolume / 4) / 10);
 
-				genericOutput.PlayOneShot (PlayList [ID].clip, currentVolume);
+                genericOutput.PlayOneShot (PlayList [ID].clip, currentVolume);
 
 			}
 

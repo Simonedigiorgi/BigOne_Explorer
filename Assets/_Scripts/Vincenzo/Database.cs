@@ -182,6 +182,7 @@ public static class Database
         quests.Clear();
         scenes.Clear();
         playerIsOutside = false;
+        playerPosition = new Vector3(0, 0, 0);
     }
 
 }

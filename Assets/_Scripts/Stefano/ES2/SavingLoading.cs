@@ -70,10 +70,11 @@ public class SavingLoading : MonoBehaviour
 	/// </summary>
 	private void SavePlayer()
 	{
+        ES2.Save (vThirdPersonController.instance.transform.position, PlayerPrefs.GetString ("Slot") + ".txt?tag=player");
+    
+        Database.playerPosition = vThirdPersonController.instance.transform.position;
 
-        //ES2.Save (vThirdPersonController.instance.transform.position, PlayerPrefs.GetString ("Slot") + ".txt?tag=player");
         ES2.Save(Database.playerIsOutside, PlayerPrefs.GetString("Slot") + ".txt?tag=playerIsOutside");
-
     }
 
     /// <summary>
@@ -301,7 +302,7 @@ public class SavingLoading : MonoBehaviour
 	private void LoadPlayer()
 	{
 
-        //Database.playerPosition = ES2.Load<Vector3> (PlayerPrefs.GetString ("Slot") + ".txt?tag=player");
+        Database.playerPosition = ES2.Load<Vector3> (PlayerPrefs.GetString ("Slot") + ".txt?tag=player");
         Database.playerIsOutside = ES2.Load<bool>(PlayerPrefs.GetString("Slot") + ".txt?tag=playerIsOutside");
 
 

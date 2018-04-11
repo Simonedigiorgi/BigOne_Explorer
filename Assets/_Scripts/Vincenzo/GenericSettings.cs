@@ -144,6 +144,9 @@ public class GenericSettings : MonoBehaviour
             isOutside = false;
 
         }
+
+        this.gameObject.transform.position = new Vector3(Database.playerPosition.x, Database.playerPosition.y, Database.playerPosition.z);
+
     }
 
 

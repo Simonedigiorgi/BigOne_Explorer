@@ -9,7 +9,10 @@ public class GameManager : MonoBehaviour {
     public static GameManager instance;
     public static bool newGame = true;
     public string activeCheckpoint;
+    [HideInInspector]
     public GadgetManager gadgetManager;
+
+    public Musica2 music;
 
     List<string> scenes;
     QuestManager questManager;
@@ -33,6 +36,7 @@ public class GameManager : MonoBehaviour {
         questManager = FindObjectOfType<QuestManager>();
         gadgetManager = FindObjectOfType<GadgetManager>();
         player = FindObjectOfType<vThirdPersonController>();
+        music = FindObjectOfType<Musica2>();
 
         scenes = new List<string>();
 

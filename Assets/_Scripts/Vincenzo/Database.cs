@@ -181,6 +181,7 @@ public static class Database
         gadgets.Clear();
         quests.Clear();
         scenes.Clear();
+        playerIsOutside = false;
     }
 
 }

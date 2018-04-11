@@ -245,7 +245,7 @@ public class SavingLoading : MonoBehaviour
 		{
 
 			LoadCurrentScene ();
-			//LoadPlayer ();
+			LoadPlayer ();
 			//LoadCurrentQuest ();
 
 			//Carichiamo il numero di qust che abbiamo salvato

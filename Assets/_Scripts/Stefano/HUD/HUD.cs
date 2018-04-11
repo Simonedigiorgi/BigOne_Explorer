@@ -1011,22 +1011,29 @@ public class HUD : MonoBehaviour {
     /// </summary>
     public void CheckAtiveScenes()
 	{
-
+		
+		
 		for (int i = 0; i < Database.scenes.Count; i++) 
 		{
 
 			for (int j = 0; j < buttonsRover.Length; j++) 
 			{
+						
 				//Se trovo la scena di riferimento al bottone lo setto al valore di locking della scena stessa
 				if (buttonsRover [j].targetScene == Database.scenes [i].sceneName) 
 				{
 					
 					buttonsRover [j].button.enabled = Database.scenes [i].isUnlocked;
 
-					if(Database.scenes [i].isUnlocked == false)
-					{
+					if (Database.scenes [i].isUnlocked == false) {
 
 						buttonsRover [j].textButton.color = disableColorRoverMenu;
+
+					}
+					else 
+					{
+
+						buttonsRover [j].textButton.color = enableColor;
 
 					}
 
@@ -1067,6 +1074,9 @@ public class HUD : MonoBehaviour {
 			}
 
 		}
+
+		//Resetto il valore della scena nuova
+		newSceneUnlock = "";
 
 	}
 

@@ -12,13 +12,15 @@ public class TaskTravel : Task
         if(!dataScene.isUnlocked)
         {
             dataScene.isUnlocked = true;
+			HUD.SetNewSceneUnlock (dataScene.sceneName);
         }
     }
 
     public override void ReadyTask()
     {
         base.ReadyTask();
-        this.CompleteTask();
+		StartCoroutine (CompletingTask ());
+        //this.CompleteTask();
     }
 
 }

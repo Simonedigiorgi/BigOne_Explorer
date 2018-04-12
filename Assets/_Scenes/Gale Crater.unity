@@ -55,7 +55,7 @@ LightmapSettings:
     m_EnableRealtimeLightmaps: 1
   m_LightmapEditorSettings:
     serializedVersion: 9
-    m_Resolution: 0.3
+    m_Resolution: 0.5
     m_BakeResolution: 10
     m_TextureWidth: 64
     m_TextureHeight: 1024
@@ -73,10 +73,10 @@ LightmapSettings:
     m_FinalGatherRayCount: 256
     m_ReflectionCompression: 0
     m_MixedBakeMode: 0
-    m_BakeBackend: 0
+    m_BakeBackend: 1
     m_PVRSampling: 1
     m_PVRDirectSampleCount: 32
-    m_PVRSampleCount: 500
+    m_PVRSampleCount: 16
     m_PVRBounces: 2
     m_PVRFiltering: 0
     m_PVRFilteringMode: 1
@@ -2201,7 +2201,7 @@ Light:
   serializedVersion: 8
   m_Type: 2
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 2
+  m_Intensity: 1.5
   m_Range: 3
   m_SpotAngle: 100
   m_CookieSize: 10
@@ -4348,7 +4348,7 @@ Light:
   serializedVersion: 8
   m_Type: 2
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 2
+  m_Intensity: 1.5
   m_Range: 3
   m_SpotAngle: 100
   m_CookieSize: 10
@@ -4847,7 +4847,7 @@ Light:
   serializedVersion: 8
   m_Type: 2
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 2
+  m_Intensity: 1.5
   m_Range: 3
   m_SpotAngle: 100
   m_CookieSize: 10
@@ -9276,7 +9276,7 @@ Light:
   serializedVersion: 8
   m_Type: 2
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 2
+  m_Intensity: 1.5
   m_Range: 3
   m_SpotAngle: 100
   m_CookieSize: 10
@@ -9678,7 +9678,7 @@ Light:
   serializedVersion: 8
   m_Type: 2
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 2
+  m_Intensity: 1.5
   m_Range: 3
   m_SpotAngle: 100
   m_CookieSize: 10
@@ -12941,6 +12941,10 @@ Prefab:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 7f340038399beb640a30e3c51e0e6b14, type: 2}
+    - target: {fileID: 100000, guid: bd5c084b0ead6f64e8673dc108b2fdce, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: bd5c084b0ead6f64e8673dc108b2fdce, type: 3}
   m_IsPrefabParent: 0
@@ -14178,7 +14182,7 @@ Light:
   serializedVersion: 8
   m_Type: 2
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 2
+  m_Intensity: 1.5
   m_Range: 3
   m_SpotAngle: 100
   m_CookieSize: 10
@@ -16812,7 +16816,7 @@ Light:
   serializedVersion: 8
   m_Type: 2
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 2
+  m_Intensity: 1.5
   m_Range: 3
   m_SpotAngle: 100
   m_CookieSize: 10
@@ -29571,7 +29575,7 @@ Light:
   serializedVersion: 8
   m_Type: 2
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 2
+  m_Intensity: 1.5
   m_Range: 3
   m_SpotAngle: 100
   m_CookieSize: 10
@@ -33056,7 +33060,7 @@ Light:
   serializedVersion: 8
   m_Type: 2
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 2
+  m_Intensity: 1.5
   m_Range: 3
   m_SpotAngle: 100
   m_CookieSize: 10
@@ -34577,7 +34581,7 @@ Light:
   serializedVersion: 8
   m_Type: 2
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 2
+  m_Intensity: 1.5
   m_Range: 3
   m_SpotAngle: 100
   m_CookieSize: 10
@@ -42651,7 +42655,7 @@ Prefab:
       objectReference: {fileID: 2100000, guid: 7f340038399beb640a30e3c51e0e6b14, type: 2}
     - target: {fileID: 100000, guid: ac8beadd33ac99a46a47d14427dbcb8a, type: 3}
       propertyPath: m_StaticEditorFlags
-      value: 4294967295
+      value: 4294967294
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ac8beadd33ac99a46a47d14427dbcb8a, type: 3}
@@ -44230,7 +44234,7 @@ Light:
   serializedVersion: 8
   m_Type: 2
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 2
+  m_Intensity: 1.5
   m_Range: 3
   m_SpotAngle: 100
   m_CookieSize: 10
@@ -45308,7 +45312,7 @@ Light:
   serializedVersion: 8
   m_Type: 2
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 2
+  m_Intensity: 1.5
   m_Range: 3
   m_SpotAngle: 100
   m_CookieSize: 10
@@ -46063,7 +46067,7 @@ Light:
   serializedVersion: 8
   m_Type: 2
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 2
+  m_Intensity: 1.5
   m_Range: 3
   m_SpotAngle: 100
   m_CookieSize: 10
@@ -48915,7 +48919,7 @@ Light:
   serializedVersion: 8
   m_Type: 2
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 2
+  m_Intensity: 1.5
   m_Range: 3
   m_SpotAngle: 100
   m_CookieSize: 10
@@ -49529,22 +49533,22 @@ Prefab:
     - target: {fileID: 224119642639795628, guid: 76161378f782c437989b5095892d24b4,
         type: 2}
       propertyPath: m_SizeDelta.y
-      value: 23.084995
+      value: 23.703705
       objectReference: {fileID: 0}
     - target: {fileID: 224655211286592534, guid: 76161378f782c437989b5095892d24b4,
         type: 2}
       propertyPath: m_SizeDelta.y
-      value: 18.887724
+      value: 19.1453
       objectReference: {fileID: 0}
     - target: {fileID: 224269344852078862, guid: 76161378f782c437989b5095892d24b4,
         type: 2}
       propertyPath: m_SizeDelta.y
-      value: 18.887724
+      value: 19.1453
       objectReference: {fileID: 0}
     - target: {fileID: 224119642639795628, guid: 76161378f782c437989b5095892d24b4,
         type: 2}
       propertyPath: m_SizeDelta.x
-      value: 84.78489
+      value: 86.60969
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 76161378f782c437989b5095892d24b4, type: 2}
